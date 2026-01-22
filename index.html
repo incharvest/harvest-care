@@ -151,10 +151,10 @@
         /* サービス選択カード */
         .service-cards {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             width: 100%;
-            max-width: 900px;
+            max-width: 1100px;
         }
 
         .service-card {
@@ -295,6 +295,18 @@
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .service-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-card:last-child {
+                grid-column: 1 / -1;
+                max-width: 400px;
+                margin: 0 auto;
+            }
 
             .service-card {
                 padding: 2rem 1.5rem;
@@ -362,6 +374,17 @@
                     <p class="service-card-description">
                         安心と快適を備えた住まいで、<br>
                         ゆとりある暮らしをお届けします。
+                    </p>
+                    <span class="service-card-link">詳しく見る</span>
+                </a>
+
+                <a href="shinkyu.html" class="service-card">
+                    <span class="service-card-icon">💆</span>
+                    <p class="service-card-en">ACUPUNCTURE</p>
+                    <h2 class="service-card-title">訪問鍼灸マッサージ</h2>
+                    <p class="service-card-description">
+                        ご自宅・施設へお伺いし、<br>
+                        専門的な施術をお届けします。
                     </p>
                     <span class="service-card-link">詳しく見る</span>
                 </a>
