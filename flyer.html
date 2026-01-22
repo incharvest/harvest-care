@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訪問鍼灸マッサージ ハーベスト チラシ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', serif;
+            background: #faf8f5;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .flyer {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: #faf8f5;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ヘッダー部分 */
+        .flyer-header {
+            background: #1a3328;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .flyer-header::before,
+        .flyer-header::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 30px;
+            height: 60px;
+            border: 1px solid #c9a868;
+        }
+
+        .flyer-header::before {
+            left: 20px;
+            border-right: none;
+        }
+
+        .flyer-header::after {
+            right: 20px;
+            border-left: none;
+        }
+
+        .flyer-subtitle {
+            color: #c9a868;
+            font-size: 14px;
+            letter-spacing: 0.3em;
+            margin-bottom: 15px;
+        }
+
+        .flyer-title {
+            font-family: 'Shippori Mincho', serif;
+            color: #fff;
+            font-size: 48px;
+            letter-spacing: 0.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .flyer-title-en {
+            color: #c9a868;
+            font-size: 14px;
+            letter-spacing: 0.3em;
+            margin-bottom: 15px;
+        }
+
+        .flyer-line {
+            width: 100px;
+            height: 1px;
+            background: #c9a868;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .flyer-line::before,
+        .flyer-line::after {
+            content: '◆';
+            position: absolute;
+            top: -7px;
+            color: #c9a868;
+            font-size: 10px;
+        }
+
+        .flyer-line::before {
+            left: -15px;
+        }
+
+        .flyer-line::after {
+            right: -15px;
+        }
+
+        /* メインコンテンツ */
+        .flyer-content {
+            padding: 30px;
+        }
+
+        /* メインメッセージ */
+        .main-message {
+            background: #1a3328;
+            color: #fff;
+            text-align: center;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+
+        .main-message h2 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 24px;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .main-message p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* 2カラムボックス */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .info-box {
+            background: #fff;
+            border: 1px solid #1a3328;
+            padding: 20px;
+        }
+
+        .info-box h3 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 16px;
+            color: #1a3328;
+            text-align: center;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #1a3328;
+        }
+
+        .info-box ul {
+            list-style: none;
+        }
+
+        .info-box li {
+            padding: 5px 0;
+            padding-left: 15px;
+            position: relative;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .info-box li::before {
+            content: '・';
+            position: absolute;
+            left: 0;
+            color: #1a3328;
+        }
+
+        /* 施術セクション */
+        .treatment-section {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .treatment-title {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 16px;
+            color: #1a3328;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .treatment-title::before,
+        .treatment-title::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: #1a3328;
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .treatment-card {
+            background: #1a3328;
+            color: #fff;
+            padding: 20px 15px;
+            border-radius: 5px;
+        }
+
+        .treatment-card h4 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 22px;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .treatment-card p {
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* 保険・体験セクション */
+        .highlight-box {
+            border: 2px solid #1a3328;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box.insurance {
+            background: #1a3328;
+            color: #fff;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 20px;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .highlight-box p {
+            font-size: 12px;
+        }
+
+        .highlight-box.insurance p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* フッター */
+        .flyer-footer {
+            background: #1a3328;
+            color: #fff;
+            padding: 25px 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .footer-left {
+            border-right: 1px solid rgba(255,255,255,0.2);
+            padding-right: 30px;
+        }
+
+        .footer-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 5px;
+        }
+
+        .footer-name {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .footer-hours {
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer-phone-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 5px;
+        }
+
+        .footer-phone {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 32px;
+            color: #c9a868;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .footer-area {
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* 印刷時の設定 */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .flyer {
+                width: 100%;
+                min-height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <!-- ヘッダー -->
+        <div class="flyer-header">
+            <p class="flyer-subtitle">鍼 灸 マ ッ サ ー ジ 治 療 院</p>
+            <h1 class="flyer-title">ハ ー ベ ス ト</h1>
+            <p class="flyer-title-en">H A R V E S T</p>
+            <div class="flyer-line"></div>
+        </div>
+
+        <!-- コンテンツ -->
+        <div class="flyer-content">
+            <!-- メインメッセージ -->
+            <div class="main-message">
+                <h2>ご自宅・各施設にお伺いいたします</h2>
+                <p>訪問鍼灸マッサージ</p>
+            </div>
+
+            <!-- 2カラム情報 -->
+            <div class="two-column">
+                <div class="info-box">
+                    <h3>このような症状ありませんか？</h3>
+                    <ul>
+                        <li>脳梗塞や脳出血などの後遺症<br>による麻痺や萎縮</li>
+                        <li>関節の動きの悪化</li>
+                        <li>筋力の低下</li>
+                        <li>からだの痛みやしびれ</li>
+                        <li>むくみなどの症状</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <h3>このような方へ</h3>
+                    <ul>
+                        <li>お一人では通院が困難な方</li>
+                        <li>日常生活をスムーズに<br>過ごせるようになりたい方</li>
+                        <li>ご高齢の方や<br>身体に障害のある方</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 施術内容 -->
+            <div class="treatment-section">
+                <p class="treatment-title">訪問施術</p>
+                <div class="treatment-grid">
+                    <div class="treatment-card">
+                        <h4>マッサージ</h4>
+                        <p>血行促進・筋肉の緊張緩和</p>
+                    </div>
+                    <div class="treatment-card">
+                        <h4>は り</h4>
+                        <p>経穴刺激・痛みの緩和</p>
+                    </div>
+                    <div class="treatment-card">
+                        <h4>きゅう</h4>
+                        <p>温熱療法・自然治癒力向上</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 保険・体験 -->
+            <div class="highlight-box insurance">
+                <h3>健康保険が使用できます</h3>
+                <p>※健康保険の使用は『医師の同意書』が必要です</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3>初回お試し体験実施しています</h3>
+            </div>
+        </div>
+
+        <!-- フッター -->
+        <div class="flyer-footer">
+            <div class="footer-left">
+                <p class="footer-label">鍼灸マッサージ治療院</p>
+                <p class="footer-name">ハーベスト</p>
+                <p class="footer-hours">受付時間 9:00〜17:30 ／ 定休日 日曜日</p>
+            </div>
+            <div class="footer-right">
+                <p class="footer-phone-label">お電話でお問い合わせください</p>
+                <p class="footer-phone">TEL 099-296-9843</p>
+                <p class="footer-area">訪問エリア：鹿児島市全域（喜入・桜島エリア除く）</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
