@@ -1031,6 +1031,410 @@
                 padding: 2rem 1.5rem;
             }
         }
+
+        /* 対応症状 */
+        .symptoms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .symptom-card {
+            background: var(--color-white);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .symptom-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .symptom-name {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .symptom-desc {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        /* ご利用の流れ */
+        .flow-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .flow-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--color-accent);
+        }
+
+        .flow-step {
+            text-align: center;
+            position: relative;
+            flex: 1;
+        }
+
+        .flow-step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--color-accent);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flow-step-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .flow-step-desc {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            padding: 0 0.5rem;
+        }
+
+        /* 料金表 */
+        .price-table {
+            background: var(--color-white);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+        }
+
+        .price-table-header {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .price-table-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .price-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .price-row:last-child {
+            border-bottom: none;
+        }
+
+        .price-row.header {
+            background: var(--color-cream-dark);
+            font-weight: 600;
+        }
+
+        .price-cell {
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .price-note {
+            padding: 1.5rem;
+            background: var(--color-cream);
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        /* スタッフ紹介 */
+        .staff-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .staff-image {
+            text-align: center;
+        }
+
+        .staff-image-placeholder {
+            width: 200px;
+            height: 200px;
+            background: var(--color-cream-dark);
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .staff-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .staff-qualifications {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .qualification-badge {
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .staff-message {
+            color: var(--color-text-light);
+            line-height: 2;
+        }
+
+        /* お客様の声 */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--color-white);
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--color-cream-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .testimonial-detail {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+
+        .testimonial-text {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.9;
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--color-white);
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .faq-q {
+            background: var(--color-accent);
+            color: var(--color-white);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .faq-question-text {
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+
+        .faq-answer {
+            padding: 0 2rem 1.5rem 4rem;
+            color: var(--color-text-light);
+            line-height: 1.9;
+        }
+
+        /* 医療連携 */
+        .cooperation-content {
+            background: var(--color-white);
+            padding: 3rem;
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+        }
+
+        .cooperation-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cooperation-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .cooperation-text {
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cooperation-points {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cooperation-point {
+            background: var(--color-cream);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* 会社概要 */
+        .company-table {
+            background: var(--color-white);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .company-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .company-row:last-child {
+            border-bottom: none;
+        }
+
+        .company-label {
+            background: var(--color-cream);
+            padding: 1.2rem 1.5rem;
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .company-value {
+            padding: 1.2rem 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .symptoms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-steps {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .flow-steps::before {
+                display: none;
+            }
+
+            .flow-step-number {
+                width: 60px;
+                height: 60px;
+                font-size: 1.2rem;
+            }
+
+            .price-row {
+                grid-template-columns: 1fr;
+            }
+
+            .price-cell {
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .price-row:last-child .price-cell:last-child {
+                border-bottom: none;
+            }
+
+            .staff-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .company-row {
+                grid-template-columns: 1fr;
+            }
+
+            .company-label {
+                border-bottom: 1px solid var(--color-border);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1055,12 +1459,11 @@
             </a>
             <nav>
                 <ul>
-                    <li><a href="#concept">コンセプト</a></li>
-                    <li><a href="#target">対象の方</a></li>
-                    <li><a href="#treatment">施術内容</a></li>
-                    <li><a href="#insurance">保険について</a></li>
-                    <li><a href="#area">訪問エリア</a></li>
-                    <li><a href="../">他のサービス</a></li>
+                    <li><a href="#symptoms">対応症状</a></li>
+                    <li><a href="#flow">ご利用の流れ</a></li>
+                    <li><a href="#pricing">料金</a></li>
+                    <li><a href="#faq">よくある質問</a></li>
+                    <li><a href="#contact">お問い合わせ</a></li>
                 </ul>
             </nav>
             <div class="header-contact">
@@ -1176,6 +1579,357 @@
                     <p class="treatment-description">
                         温熱療法により血行を促進し、自然治癒力の向上を図ります。
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 対応症状 -->
+    <section class="symptoms" id="symptoms">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">SYMPTOMS</p>
+                <h2 class="section-title">対応症状</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="symptoms-grid">
+                <div class="symptom-card">
+                    <div class="symptom-icon">🧠</div>
+                    <h3 class="symptom-name">脳梗塞後遺症</h3>
+                    <p class="symptom-desc">麻痺やしびれ、歩行困難などの症状に対応</p>
+                </div>
+                <div class="symptom-card">
+                    <div class="symptom-icon">🦴</div>
+                    <h3 class="symptom-name">関節拘縮・変形</h3>
+                    <p class="symptom-desc">関節の動きが悪い、曲がらない症状に</p>
+                </div>
+                <div class="symptom-card">
+                    <div class="symptom-icon">💪</div>
+                    <h3 class="symptom-name">筋力低下・廃用症候群</h3>
+                    <p class="symptom-desc">寝たきりや運動不足による筋力低下に</p>
+                </div>
+                <div class="symptom-card">
+                    <div class="symptom-icon">🏃</div>
+                    <h3 class="symptom-name">パーキンソン病</h3>
+                    <p class="symptom-desc">筋固縮や動作緩慢などの症状改善</p>
+                </div>
+                <div class="symptom-card">
+                    <div class="symptom-icon">🦵</div>
+                    <h3 class="symptom-name">腰痛・膝痛</h3>
+                    <p class="symptom-desc">慢性的な痛みの緩和とケア</p>
+                </div>
+                <div class="symptom-card">
+                    <div class="symptom-icon">🩹</div>
+                    <h3 class="symptom-name">リウマチ</h3>
+                    <p class="symptom-desc">関節の痛みや腫れの緩和</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ご利用の流れ -->
+    <section class="flow" id="flow">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">FLOW</p>
+                <h2 class="section-title">ご利用の流れ</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="flow-step-number">1</div>
+                    <h3 class="flow-step-title">お問い合わせ</h3>
+                    <p class="flow-step-desc">お電話またはフォームからお気軽にご連絡ください</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-number">2</div>
+                    <h3 class="flow-step-title">無料相談・体験</h3>
+                    <p class="flow-step-desc">ご自宅へ伺い、症状の確認と施術体験を行います</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-number">3</div>
+                    <h3 class="flow-step-title">医師の同意書</h3>
+                    <p class="flow-step-desc">かかりつけ医に同意書を依頼（サポートいたします）</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-number">4</div>
+                    <h3 class="flow-step-title">施術開始</h3>
+                    <p class="flow-step-desc">定期的な訪問施術がスタートします</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料金表 -->
+    <section class="pricing" id="pricing">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">PRICE</p>
+                <h2 class="section-title">料金について</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="price-table">
+                <div class="price-table-header">
+                    <h3>健康保険適用時の自己負担額（目安）</h3>
+                </div>
+                <div class="price-row header">
+                    <div class="price-cell">負担割合</div>
+                    <div class="price-cell">マッサージ</div>
+                    <div class="price-cell">鍼灸</div>
+                </div>
+                <div class="price-row">
+                    <div class="price-cell">1割負担</div>
+                    <div class="price-cell">300〜500円/回</div>
+                    <div class="price-cell">300〜400円/回</div>
+                </div>
+                <div class="price-row">
+                    <div class="price-cell">2割負担</div>
+                    <div class="price-cell">600〜1,000円/回</div>
+                    <div class="price-cell">600〜800円/回</div>
+                </div>
+                <div class="price-row">
+                    <div class="price-cell">3割負担</div>
+                    <div class="price-cell">900〜1,500円/回</div>
+                    <div class="price-cell">900〜1,200円/回</div>
+                </div>
+            </div>
+            <div class="price-note">
+                <p>※料金は施術内容・部位数・往療距離により変動します</p>
+                <p>※交通費は料金に含まれています</p>
+                <p>※詳しい料金はお問い合わせ時にご説明いたします</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- スタッフ紹介 -->
+    <section class="staff" id="staff">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">STAFF</p>
+                <h2 class="section-title">施術者紹介</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="staff-content">
+                <div class="staff-image">
+                    <div class="staff-image-placeholder">👨‍⚕️</div>
+                </div>
+                <div class="staff-info">
+                    <h3>国家資格を持つ専門スタッフ</h3>
+                    <div class="staff-qualifications">
+                        <span class="qualification-badge">あん摩マッサージ指圧師</span>
+                        <span class="qualification-badge">はり師</span>
+                        <span class="qualification-badge">きゅう師</span>
+                    </div>
+                    <p class="staff-message">
+                        当院のスタッフは全員が国家資格を保有しております。
+                        豊富な臨床経験を活かし、お一人おひとりの症状や
+                        ご要望に合わせた施術を心がけております。
+                        ご不安なことがございましたら、お気軽にご相談ください。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声 -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">VOICE</p>
+                <h2 class="section-title">ご利用者様の声</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👴</div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">A様（80代男性）</p>
+                            <p class="testimonial-detail">脳梗塞後遺症</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        退院後、自宅でのリハビリに困っていましたが、
+                        週2回の訪問マッサージで少しずつ手足が動くようになってきました。
+                        スタッフの方も親切で安心してお任せしています。
+                    </p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👵</div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">B様（70代女性）</p>
+                            <p class="testimonial-detail">膝の痛み・歩行困難</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        膝が痛くて外出もままならなかったのですが、
+                        鍼とマッサージを続けたおかげで、今では近所の散歩も
+                        できるようになりました。本当に感謝しています。
+                    </p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👨</div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">C様ご家族</p>
+                            <p class="testimonial-detail">パーキンソン病の父</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        父の介護をしながらの通院は大変でしたが、
+                        訪問で来ていただけるので本当に助かっています。
+                        父も施術を楽しみにしているようです。
+                    </p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👩</div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">D様（60代女性）</p>
+                            <p class="testimonial-detail">関節リウマチ</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        リウマチで手足のこわばりがひどかったのですが、
+                        定期的なマッサージで関節の動きが良くなりました。
+                        保険が使えるのも家計に優しくありがたいです。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- よくある質問 -->
+    <section class="faq" id="faq">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">FAQ</p>
+                <h2 class="section-title">よくある質問</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">どのような方が利用できますか？</span>
+                    </div>
+                    <div class="faq-answer">
+                        筋麻痺、関節拘縮、筋萎縮などの症状があり、歩行困難や寝たきりなどで
+                        通院が難しい方が対象となります。介護保険をお持ちの方も、医療保険での
+                        ご利用が可能です。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">医師の同意書はどうやって取得しますか？</span>
+                    </div>
+                    <div class="faq-answer">
+                        同意書の用紙は当院でご用意いたします。かかりつけ医への依頼方法も
+                        丁寧にご説明し、必要に応じて同行もいたしますのでご安心ください。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">施術時間はどのくらいですか？</span>
+                    </div>
+                    <div class="faq-answer">
+                        1回の施術は20〜30分程度です。お体の状態やご希望に合わせて
+                        調整いたします。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">施設への訪問も可能ですか？</span>
+                    </div>
+                    <div class="faq-answer">
+                        はい、ご自宅だけでなく、有料老人ホームやサービス付き高齢者向け住宅、
+                        グループホームなどの施設への訪問も承っております。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <span class="faq-question-text">キャンセルはできますか？</span>
+                    </div>
+                    <div class="faq-answer">
+                        体調不良や急なご予定の際は、お早めにご連絡いただければ
+                        キャンセル・日程変更が可能です。キャンセル料はいただいておりません。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 医療連携 -->
+    <section class="cooperation" id="cooperation">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">COOPERATION</p>
+                <h2 class="section-title">医療機関との連携</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="cooperation-content">
+                <div class="cooperation-icon">🏥</div>
+                <h3 class="cooperation-title">かかりつけ医・ケアマネージャーと連携</h3>
+                <p class="cooperation-text">
+                    当院では、ご利用者様の主治医やケアマネージャーと密に連携を取りながら
+                    施術を行っております。施術報告書の提出や、状態変化の共有を通じて、
+                    チームケアの一員として貢献いたします。
+                </p>
+                <div class="cooperation-points">
+                    <div class="cooperation-point">
+                        <span>📋</span>
+                        <span>定期的な施術報告</span>
+                    </div>
+                    <div class="cooperation-point">
+                        <span>🤝</span>
+                        <span>ケアマネとの情報共有</span>
+                    </div>
+                    <div class="cooperation-point">
+                        <span>📞</span>
+                        <span>緊急時の連絡体制</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 会社概要 -->
+    <section class="company" id="company">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">COMPANY</p>
+                <h2 class="section-title">会社概要</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="company-table">
+                <div class="company-row">
+                    <div class="company-label">事業所名</div>
+                    <div class="company-value">鍼灸マッサージ治療院 ハーベスト</div>
+                </div>
+                <div class="company-row">
+                    <div class="company-label">運営会社</div>
+                    <div class="company-value">株式会社ハーベスト</div>
+                </div>
+                <div class="company-row">
+                    <div class="company-label">所在地</div>
+                    <div class="company-value">〒891-0102 鹿児島県鹿児島市皇徳寺台3丁目58番1号</div>
+                </div>
+                <div class="company-row">
+                    <div class="company-label">電話番号</div>
+                    <div class="company-value">099-296-9843</div>
+                </div>
+                <div class="company-row">
+                    <div class="company-label">受付時間</div>
+                    <div class="company-value">9:00〜17:30（日曜定休）</div>
+                </div>
+                <div class="company-row">
+                    <div class="company-label">事業内容</div>
+                    <div class="company-value">訪問鍼灸マッサージ、在宅リハビリ</div>
                 </div>
             </div>
         </div>
@@ -1391,13 +2145,12 @@
                 <div class="footer-nav">
                     <ul>
                         <li><a href="#">TOP</a></li>
-                        <li><a href="#concept">コンセプト</a></li>
-                        <li><a href="#target">対象の方</a></li>
-                        <li><a href="#treatment">施術内容</a></li>
-                        <li><a href="#insurance">保険について</a></li>
-                        <li><a href="#area">訪問エリア</a></li>
-                        <li><a href="../">他のサービス</a></li>
-                        <li><a href="resthome.html">有料老人ホーム</a></li>
+                        <li><a href="#symptoms">対応症状</a></li>
+                        <li><a href="#flow">ご利用の流れ</a></li>
+                        <li><a href="#pricing">料金</a></li>
+                        <li><a href="#staff">スタッフ</a></li>
+                        <li><a href="#faq">よくある質問</a></li>
+                        <li><a href="#company">会社概要</a></li>
                     </ul>
                 </div>
             </div>
