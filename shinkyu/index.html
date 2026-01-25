@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訪問鍼灸マッサージ ハーベスト｜鹿児島市</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a3328'/%3E%3Cg transform='translate(16,17)'%3E%3Cpath d='M0-9Q2-1 0 10' fill='none' stroke='%23c9a868' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='-3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(-25-3-6)'/%3E%3Cellipse cx='-4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(-20-4-1)'/%3E%3Cellipse cx='3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(25 3-6)'/%3E%3Cellipse cx='4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(20 4-1)'/%3E%3C/g%3E%3C/svg%3E">
+    <style>
+        :root {
+            --color-primary: #8b6914;
+            --color-secondary: #a67c00;
+            --color-accent: #ffc107;
+            --color-accent-light: #ffda4a;
+            --color-accent-dark: #c79100;
+            --color-cream: #fffef5;
+            --color-cream-dark: #fff8e1;
+            --color-text: #4a4000;
+            --color-text-light: #7a6a20;
+            --color-white: #ffffff;
+            --color-border: #f0e6a0;
+            --font-display: 'Shippori Mincho', serif;
+            --font-body: 'Noto Serif JP', serif;
+            --shadow-soft: 0 4px 30px rgba(139, 105, 20, 0.1);
+            --shadow-medium: 0 8px 40px rgba(139, 105, 20, 0.15);
+            --shadow-elegant: 0 20px 60px rgba(139, 105, 20, 0.12);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background-color: var(--color-cream);
+            line-height: 2;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        /* ヘッダー */
+        header {
+            background: var(--color-primary);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo svg {
+            height: 50px;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-accent);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--color-accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            padding: 10px 20px;
+            font-weight: 400;
+            font-size: 0.85rem;
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            transition: var(--transition);
+        }
+
+        .header-contact-btn:hover {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .header-contact-btn.mail {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .header-contact-btn.mail:hover {
+            background: var(--color-accent-light);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: var(--color-primary);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1920&q=80') center/cover no-repeat;
+            opacity: 0.3;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg,
+                rgba(139, 105, 20, 0.85) 0%,
+                rgba(139, 105, 20, 0.65) 50%,
+                rgba(139, 105, 20, 0.9) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: var(--color-white);
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            padding: 8px 24px;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--color-accent);
+        }
+
+        .hero-description {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            line-height: 2.2;
+            font-weight: 300;
+        }
+
+        .hero-line {
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(180deg, var(--color-accent), transparent);
+            margin: 0 auto;
+        }
+
+        /* セクション共通 */
+        section {
+            padding: 120px 2rem;
+        }
+
+        .section-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-en {
+            font-size: 0.7rem;
+            color: var(--color-accent);
+            letter-spacing: 0.3em;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            letter-spacing: 0.15em;
+            font-weight: 600;
+        }
+
+        .section-line {
+            width: 40px;
+            height: 1px;
+            background: var(--color-accent);
+            margin: 1.5rem auto 0;
+        }
+
+        /* コンセプトセクション */
+        .concept {
+            background: var(--color-cream);
+        }
+
+        .concept-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .concept-image {
+            position: relative;
+        }
+
+        .concept-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid var(--color-accent);
+            z-index: 0;
+        }
+
+        .concept-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+        }
+
+        .concept-text h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+            line-height: 1.8;
+            font-weight: 600;
+        }
+
+        .concept-text p {
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .concept-details {
+            background: var(--color-white);
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 2px solid var(--color-accent);
+        }
+
+        .concept-details dt {
+            font-weight: 600;
+            color: var(--color-accent-dark);
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+        }
+
+        .concept-details dd {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .concept-details dd:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 対象の方 */
+        .target {
+            background: var(--color-cream-dark);
+        }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .target-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .target-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-accent);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .target-card ul {
+            list-style: none;
+        }
+
+        .target-card li {
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        .target-card li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1.1rem;
+            width: 6px;
+            height: 6px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        /* 施術内容 */
+        .treatment {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .treatment .section-title {
+            color: var(--color-white);
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .treatment-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            transition: var(--transition);
+        }
+
+        .treatment-card:hover {
+            border-color: var(--color-accent);
+            background: rgba(255, 193, 7, 0.05);
+        }
+
+        .treatment-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .treatment-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+        }
+
+        .treatment-subtitle {
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .treatment-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        /* 保険について */
+        .insurance {
+            background: var(--color-cream);
+        }
+
+        .insurance-content {
+            background: var(--color-white);
+            padding: 3rem;
+            box-shadow: var(--shadow-medium);
+            text-align: center;
+        }
+
+        .insurance-badge {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 0.5rem 2rem;
+            font-size: 1.2rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+        }
+
+        .insurance-text {
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .insurance-note {
+            background: var(--color-cream);
+            padding: 1.5rem;
+            border-left: 2px solid var(--color-accent);
+            text-align: left;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .insurance-note strong {
+            color: var(--color-primary);
+        }
+
+        /* 訪問エリア */
+        .area {
+            background: var(--color-cream-dark);
+        }
+
+        .area-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .area-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .area-info p {
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .area-badge {
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-family: var(--font-display);
+            letter-spacing: 0.1em;
+        }
+
+        .area-note {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .area-map {
+            box-shadow: var(--shadow-soft);
+        }
+
+        .area-map iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            filter: grayscale(20%);
+        }
+
+        /* 初回体験 */
+        .trial {
+            background: var(--color-primary);
+            text-align: center;
+            padding: 80px 2rem;
+        }
+
+        .trial-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .trial-badge {
+            display: inline-block;
+            border: 2px solid var(--color-accent);
+            color: var(--color-accent);
+            padding: 1rem 3rem;
+            font-size: 1.4rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+        }
+
+        .trial-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .trial-note {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        /* 施設情報 */
+        .facility {
+            background: var(--color-cream);
+        }
+
+        .facility-card {
+            background: var(--color-white);
+            box-shadow: var(--shadow-elegant);
+        }
+
+        .facility-header {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .facility-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+        }
+
+        .facility-body {
+            padding: 0;
+        }
+
+        .facility-row {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .facility-row:last-child {
+            border-bottom: none;
+        }
+
+        .facility-label {
+            background: var(--color-cream);
+            padding: 1.2rem 1.5rem;
+            font-weight: 500;
+            color: var(--color-text);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.05em;
+        }
+
+        .facility-value {
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .facility-value a {
+            color: var(--color-accent-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .facility-value a:hover {
+            color: var(--color-accent);
+        }
+
+        /* CTA */
+        .cta {
+            background: var(--color-primary);
+            text-align: center;
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+            padding: 100px 2rem;
+        }
+
+        .cta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1920&q=80') center/cover no-repeat;
+            opacity: 0.15;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta .section-title {
+            color: var(--color-white);
+            margin-bottom: 1rem;
+        }
+
+        .cta > .cta-content > p {
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: 1fr auto 1.5fr;
+            gap: 3rem;
+            align-items: start;
+            text-align: left;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .contact-phone {
+            text-align: center;
+        }
+
+        .cta-phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: transparent;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            padding: 20px 40px;
+            font-size: 1.6rem;
+            font-weight: 600;
+            font-family: var(--font-display);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            transition: var(--transition);
+        }
+
+        .cta-phone:hover {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .cta-note {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            letter-spacing: 0.1em;
+        }
+
+        .contact-divider {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 200px;
+        }
+
+        .contact-divider::before,
+        .contact-divider::after {
+            content: '';
+            width: 1px;
+            flex: 1;
+            background: rgba(255, 193, 7, 0.3);
+        }
+
+        .contact-divider span {
+            padding: 1rem 0;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        .contact-form-wrap {
+            width: 100%;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group .required {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            margin-left: 0.5rem;
+            letter-spacing: 0;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            color: var(--color-white);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            border: none;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background: var(--color-accent-light);
+        }
+
+        .form-note {
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+        }
+
+        /* フッター */
+        footer {
+            background: #5a4a00;
+            color: var(--color-white);
+            padding: 60px 2rem 30px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo svg {
+            height: 45px;
+            width: auto;
+        }
+
+        .footer-info p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .footer-info a {
+            color: var(--color-white);
+            text-decoration: none;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            transition: var(--transition);
+        }
+
+        .footer-nav a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.75rem;
+            opacity: 0.5;
+            letter-spacing: 0.1em;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 1024px) {
+            .concept-content,
+            .area-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .concept-image::before {
+                display: none;
+            }
+
+            .target-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .treatment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-divider {
+                flex-direction: row;
+                min-height: auto;
+                padding: 1rem 0;
+            }
+
+            .contact-divider::before,
+            .contact-divider::after {
+                width: auto;
+                height: 1px;
+                flex: 1;
+            }
+
+            .contact-divider span {
+                padding: 0 1rem;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.8rem 1rem;
+            }
+
+            nav, .header-contact {
+                display: none;
+            }
+
+            .logo svg {
+                height: 40px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 80px 1rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .facility-row {
+                grid-template-columns: 1fr;
+            }
+
+            .facility-label {
+                padding: 0.8rem 1rem;
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .cta-phone {
+                font-size: 1.3rem;
+                padding: 16px 30px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .trial-badge {
+                font-size: 1.1rem;
+                padding: 0.8rem 2rem;
+            }
+
+            .insurance-content {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <div class="header-inner">
+            <a href="./" class="logo">
+                <svg viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5" y="5" width="50" height="50" fill="none" stroke="#c9a868" stroke-width="1"/>
+                    <g transform="translate(30, 32)">
+                        <path d="M0 -18 Q3 -3 0 18" fill="none" stroke="#c9a868" stroke-width="1.5" stroke-linecap="round"/>
+                        <ellipse cx="-5" cy="-12" rx="3" ry="5" fill="#c9a868" transform="rotate(-28 -5 -12)"/>
+                        <ellipse cx="-6" cy="-4" rx="3" ry="5" fill="#c9a868" transform="rotate(-22 -6 -4)"/>
+                        <ellipse cx="5" cy="-12" rx="3" ry="5" fill="#c9a868" transform="rotate(28 5 -12)"/>
+                        <ellipse cx="6" cy="-4" rx="3" ry="5" fill="#c9a868" transform="rotate(22 6 -4)"/>
+                        <path d="M0 8 Q-8 12 -12 20" fill="none" stroke="#c9a868" stroke-width="1" stroke-linecap="round"/>
+                        <path d="M0 8 Q8 12 12 20" fill="none" stroke="#c9a868" stroke-width="1" stroke-linecap="round"/>
+                    </g>
+                    <text x="70" y="32" font-family="'Shippori Mincho', serif" font-size="22" font-weight="600" fill="#ffffff" letter-spacing="0.12em">ハーベスト</text>
+                    <text x="70" y="48" font-family="'Shippori Mincho', serif" font-size="8" fill="#c9a868" letter-spacing="0.1em">鍼灸マッサージ治療院</text>
+                </svg>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#concept">コンセプト</a></li>
+                    <li><a href="#target">対象の方</a></li>
+                    <li><a href="#treatment">施術内容</a></li>
+                    <li><a href="#insurance">保険について</a></li>
+                    <li><a href="#area">訪問エリア</a></li>
+                    <li><a href="../">他のサービス</a></li>
+                </ul>
+            </nav>
+            <div class="header-contact">
+                <a href="tel:099-296-9843" class="header-contact-btn tel">TEL</a>
+                <a href="#contact" class="header-contact-btn mail">MAIL</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">訪問鍼灸マッサージ</div>
+            <h1>ご自宅・各施設に<br><span>お伺い</span>いたします</h1>
+            <p class="hero-description">
+                通院が困難な方のもとへ、<br>
+                国家資格を持つ施術者が訪問いたします
+            </p>
+            <div class="hero-line"></div>
+        </div>
+    </section>
+
+    <!-- コンセプトセクション -->
+    <section class="concept" id="concept">
+        <div class="section-inner">
+            <div class="concept-content">
+                <div class="concept-image">
+                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80" alt="鍼灸施術">
+                </div>
+                <div class="concept-text">
+                    <h2>ご自宅で受けられる<br>専門的な鍼灸マッサージ</h2>
+                    <p>
+                        鍼灸マッサージ治療院ハーベストでは、通院が困難な方のご自宅や入居施設へ訪問し、国家資格を持つ施術者がマッサージ・はり・きゅうの施術を行います。
+                    </p>
+                    <p>
+                        お体の状態やご要望に合わせた施術で、痛みの緩和や機能回復をサポートいたします。
+                    </p>
+                    <dl class="concept-details">
+                        <dt>TREATMENT</dt>
+                        <dd>マッサージ / はり / きゅう</dd>
+                        <dt>INSURANCE</dt>
+                        <dd>健康保険適用可能（医師の同意書が必要）</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 対象の方 -->
+    <section class="target" id="target">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">TARGET</p>
+                <h2 class="section-title">このような方へ</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="target-grid">
+                <div class="target-card">
+                    <h3>このような症状ありませんか？</h3>
+                    <ul>
+                        <li>脳梗塞や脳出血などの後遺症による麻痺や萎縮</li>
+                        <li>関節の動きの悪化</li>
+                        <li>筋力の低下</li>
+                        <li>からだの痛みやしびれ</li>
+                        <li>むくみなどの症状</li>
+                    </ul>
+                </div>
+                <div class="target-card">
+                    <h3>このような方へ</h3>
+                    <ul>
+                        <li>お一人では通院が困難な方</li>
+                        <li>日常生活をスムーズに過ごせるようになりたい方</li>
+                        <li>ご高齢の方</li>
+                        <li>身体に障害のある方</li>
+                        <li>寝たきり・歩行困難な方</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 施術内容 -->
+    <section class="treatment" id="treatment">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">TREATMENT</p>
+                <h2 class="section-title">訪問施術</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="treatment-grid">
+                <div class="treatment-card">
+                    <div class="treatment-icon">💆</div>
+                    <h3 class="treatment-title">マッサージ</h3>
+                    <p class="treatment-subtitle">MASSAGE</p>
+                    <p class="treatment-description">
+                        血行促進・筋肉の緊張緩和を促し、身体機能の維持・改善をサポートします。
+                    </p>
+                </div>
+                <div class="treatment-card">
+                    <div class="treatment-icon">🪡</div>
+                    <h3 class="treatment-title">はり</h3>
+                    <p class="treatment-subtitle">ACUPUNCTURE</p>
+                    <p class="treatment-description">
+                        経穴（ツボ）を刺激し、痛みの緩和や自律神経の調整を行います。
+                    </p>
+                </div>
+                <div class="treatment-card">
+                    <div class="treatment-icon">🔥</div>
+                    <h3 class="treatment-title">きゅう</h3>
+                    <p class="treatment-subtitle">MOXIBUSTION</p>
+                    <p class="treatment-description">
+                        温熱療法により血行を促進し、自然治癒力の向上を図ります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 保険について -->
+    <section class="insurance" id="insurance">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">INSURANCE</p>
+                <h2 class="section-title">健康保険について</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="insurance-content">
+                <div class="insurance-badge">健康保険が使用できます</div>
+                <p class="insurance-text">
+                    訪問鍼灸マッサージは、一定の条件を満たすことで<br>
+                    健康保険を使用してご利用いただけます。
+                </p>
+                <div class="insurance-note">
+                    <p><strong>※健康保険の使用には『医師の同意書』が必要です</strong></p>
+                    <p>同意書の取得方法や手続きについては、お気軽にご相談ください。スタッフがサポートいたします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 初回体験 -->
+    <section class="trial">
+        <div class="trial-content">
+            <div class="trial-badge">初回お試し体験実施中</div>
+            <p class="trial-text">
+                初めての方には、お試し体験をご用意しております。<br>
+                まずはお気軽にお問い合わせください。
+            </p>
+            <p class="trial-note">※詳細はお電話にてお問い合わせください</p>
+        </div>
+    </section>
+
+    <!-- 訪問エリア -->
+    <section class="area" id="area">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">AREA</p>
+                <h2 class="section-title">訪問エリア</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="area-content">
+                <div class="area-info">
+                    <h3>鹿児島市全域に訪問いたします</h3>
+                    <p>
+                        ご自宅はもちろん、有料老人ホームやサービス付き高齢者向け住宅などの施設へも訪問いたします。
+                    </p>
+                    <div class="area-badge">鹿児島市全域</div>
+                    <p class="area-note">※喜入・桜島エリアは除きます</p>
+                </div>
+                <div class="area-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.5!2d130.4872!3d31.5189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDMxJzA4LjAiTiAxMzDCsDI5JzEzLjkiRQ!5e0!3m2!1sja!2sjp!4v1"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 施設情報 -->
+    <section class="facility" id="facility">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">INFORMATION</p>
+                <h2 class="section-title">施設情報</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-header">
+                    <h3>鍼灸マッサージ治療院 ハーベスト</h3>
+                </div>
+                <div class="facility-body">
+                    <div class="facility-row">
+                        <div class="facility-label">事業所名</div>
+                        <div class="facility-value">鍼灸マッサージ治療院 ハーベスト</div>
+                    </div>
+                    <div class="facility-row">
+                        <div class="facility-label">受付時間</div>
+                        <div class="facility-value">9:00〜17:30</div>
+                    </div>
+                    <div class="facility-row">
+                        <div class="facility-label">定休日</div>
+                        <div class="facility-value">日曜日</div>
+                    </div>
+                    <div class="facility-row">
+                        <div class="facility-label">訪問エリア</div>
+                        <div class="facility-value">鹿児島市全域（喜入・桜島エリア除く）</div>
+                    </div>
+                    <div class="facility-row">
+                        <div class="facility-label">住所</div>
+                        <div class="facility-value">〒891-0102 鹿児島県鹿児島市皇徳寺台3丁目58番1号</div>
+                    </div>
+                    <div class="facility-row">
+                        <div class="facility-label">電話番号</div>
+                        <div class="facility-value"><a href="tel:099-296-9843">099-296-9843</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-container" style="margin-top: 3rem; box-shadow: var(--shadow-soft);">
+                <iframe
+                    src="https://www.google.com/maps?q=鹿児島県鹿児島市皇徳寺台3丁目58番1号&output=embed"
+                    width="100%"
+                    height="400"
+                    style="border:0; filter: grayscale(20%);"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="contact">
+        <div class="cta-bg"></div>
+        <div class="cta-content">
+            <div class="section-header">
+                <p class="section-en">CONTACT</p>
+                <h2 class="section-title">お問い合わせ</h2>
+                <div class="section-line"></div>
+            </div>
+            <p>無料相談・お試し体験のお申し込みを承っております</p>
+
+            <div class="contact-methods">
+                <div class="contact-phone">
+                    <p class="contact-label">お電話でのお問い合わせ</p>
+                    <a href="tel:099-296-9843" class="cta-phone">099-296-9843</a>
+                    <p class="cta-note">受付時間：9:00〜17:30（日曜定休）</p>
+                </div>
+
+                <div class="contact-divider">
+                    <span>または</span>
+                </div>
+
+                <div class="contact-form-wrap">
+                    <p class="contact-label">メールでのお問い合わせ</p>
+                    <form class="contact-form" action="https://formsubmit.co/ltd.harvest.resthome@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="【ハーベスト鍼灸】ホームページからのお問い合わせ">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="#">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">お名前 <span class="required">必須</span></label>
+                                <input type="text" id="name" name="name" required placeholder="山田 太郎">
+                            </div>
+                            <div class="form-group">
+                                <label for="tel">電話番号 <span class="required">必須</span></label>
+                                <input type="tel" id="tel" name="tel" required placeholder="099-000-0000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">メールアドレス</label>
+                            <input type="email" id="email" name="email" placeholder="example@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiry-type">お問い合わせ種別</label>
+                            <select id="inquiry-type" name="inquiry-type">
+                                <option value="">選択してください</option>
+                                <option value="お試し体験希望">お試し体験希望</option>
+                                <option value="訪問施術について">訪問施術について</option>
+                                <option value="保険について">保険について</option>
+                                <option value="訪問エリアについて">訪問エリアについて</option>
+                                <option value="その他">その他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">お問い合わせ内容</label>
+                            <textarea id="message" name="message" rows="5" placeholder="ご質問やご要望をご記入ください"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">送信する</button>
+                    </form>
+                    <p class="form-note">※ 送信後、確認メールが届かない場合はお電話にてご連絡ください。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-main">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <svg viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="5" width="50" height="50" fill="none" stroke="#c9a868" stroke-width="1"/>
+                            <g transform="translate(30, 32)">
+                                <path d="M0 -18 Q3 -3 0 18" fill="none" stroke="#c9a868" stroke-width="1.5" stroke-linecap="round"/>
+                                <ellipse cx="-5" cy="-12" rx="3" ry="5" fill="#c9a868" transform="rotate(-28 -5 -12)"/>
+                                <ellipse cx="-6" cy="-4" rx="3" ry="5" fill="#c9a868" transform="rotate(-22 -6 -4)"/>
+                                <ellipse cx="5" cy="-12" rx="3" ry="5" fill="#c9a868" transform="rotate(28 5 -12)"/>
+                                <ellipse cx="6" cy="-4" rx="3" ry="5" fill="#c9a868" transform="rotate(22 6 -4)"/>
+                                <path d="M0 8 Q-8 12 -12 20" fill="none" stroke="#c9a868" stroke-width="1" stroke-linecap="round"/>
+                                <path d="M0 8 Q8 12 12 20" fill="none" stroke="#c9a868" stroke-width="1" stroke-linecap="round"/>
+                            </g>
+                            <text x="70" y="32" font-family="'Shippori Mincho', serif" font-size="22" font-weight="600" fill="#ffffff" letter-spacing="0.12em">ハーベスト</text>
+                            <text x="70" y="48" font-family="'Shippori Mincho', serif" font-size="8" fill="#c9a868" letter-spacing="0.1em">鍼灸マッサージ治療院</text>
+                        </svg>
+                    </div>
+                    <p>〒891-0102 鹿児島県鹿児島市皇徳寺台3丁目58番1号</p>
+                    <p>訪問エリア：鹿児島市全域（喜入・桜島エリア除く）</p>
+                    <p><a href="tel:099-296-9843">TEL 099-296-9843</a></p>
+                </div>
+                <div class="footer-nav">
+                    <ul>
+                        <li><a href="#">TOP</a></li>
+                        <li><a href="#concept">コンセプト</a></li>
+                        <li><a href="#target">対象の方</a></li>
+                        <li><a href="#treatment">施術内容</a></li>
+                        <li><a href="#insurance">保険について</a></li>
+                        <li><a href="#area">訪問エリア</a></li>
+                        <li><a href="../">他のサービス</a></li>
+                        <li><a href="resthome.html">有料老人ホーム</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ハーベスト All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
