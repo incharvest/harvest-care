@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ハーベスト訪問記録</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a3328;
+            --color-secondary: #264d3a;
+            --color-accent: #c9a868;
+            --color-accent-light: #dfc48a;
+            --color-success: #4caf50;
+            --color-warning: #ff9800;
+            --color-danger: #f44336;
+            --color-info: #2196f3;
+            --color-bg: #f5f5f5;
+            --color-white: #ffffff;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ヘッダー */
+        .header {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .header-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .header-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .header-user-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .logout-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--color-white);
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        /* メインコンテンツ */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ログイン画面 */
+        .login-screen {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+        }
+
+        .login-box {
+            background: var(--color-white);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .login-subtitle {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        .staff-select {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .staff-btn {
+            padding: 15px 20px;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius);
+            background: var(--color-white);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .staff-btn:hover {
+            border-color: var(--color-primary);
+            background: #f8f8f8;
+        }
+
+        .staff-btn.selected {
+            border-color: var(--color-primary);
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .staff-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .staff-btn.selected .staff-icon {
+            background: var(--color-white);
+        }
+
+        .admin-link {
+            margin-top: 20px;
+            color: var(--color-text-light);
+            font-size: 0.85rem;
+        }
+
+        .admin-link a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* カード */
+        .card {
+            background: var(--color-white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 15px 20px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* ステータスカード */
+        .status-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .status-card {
+            background: var(--color-white);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .status-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .status-label {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+
+        /* フォーム */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--color-text);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* 音声入力ボタン */
+        .voice-input-wrapper {
+            position: relative;
+        }
+
+        .voice-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .voice-btn:hover {
+            background: var(--color-secondary);
+        }
+
+        .voice-btn.recording {
+            background: var(--color-danger);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.1); }
+        }
+
+        .voice-input-wrapper .form-input {
+            padding-right: 60px;
+        }
+
+        /* ボタン */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-secondary);
+        }
+
+        .btn-success {
+            background: var(--color-success);
+            color: var(--color-white);
+        }
+
+        .btn-warning {
+            background: var(--color-warning);
+            color: var(--color-white);
+        }
+
+        .btn-danger {
+            background: var(--color-danger);
+            color: var(--color-white);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .btn-lg {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+        }
+
+        /* 訪問リスト */
+        .visit-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .visit-item {
+            background: var(--color-white);
+            border-radius: var(--radius);
+            padding: 15px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--color-border);
+        }
+
+        .visit-item.completed {
+            border-left-color: var(--color-success);
+            opacity: 0.8;
+        }
+
+        .visit-item.in-progress {
+            border-left-color: var(--color-warning);
+        }
+
+        .visit-item.pending {
+            border-left-color: var(--color-info);
+        }
+
+        .visit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .visit-patient {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .visit-status {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .visit-status.completed {
+            background: #e8f5e9;
+            color: var(--color-success);
+        }
+
+        .visit-status.in-progress {
+            background: #fff3e0;
+            color: var(--color-warning);
+        }
+
+        .visit-status.pending {
+            background: #e3f2fd;
+            color: var(--color-info);
+        }
+
+        .visit-time {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .visit-memo {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            background: #f8f8f8;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .visit-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .visit-actions .btn {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+        }
+
+        /* クイックアクション */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .quick-btn {
+            padding: 20px;
+            background: var(--color-white);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-btn:hover {
+            border-color: var(--color-primary);
+        }
+
+        .quick-btn-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .quick-btn-text {
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        /* モーダル */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--color-white);
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--color-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        /* 管理画面用 */
+        .staff-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--color-border);
+            border-radius: 20px;
+            background: var(--color-white);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            border-color: var(--color-primary);
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* タブ */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--color-border);
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-text-light);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tab.active {
+            color: var(--color-primary);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--color-primary);
+        }
+
+        /* 非表示 */
+        .hidden {
+            display: none !important;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 600px) {
+            .status-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .header-title {
+                font-size: 1rem;
+            }
+        }
+
+        /* 日付ピッカー */
+        .date-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .date-nav-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: var(--color-white);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .date-display {
+            font-size: 1.1rem;
+            font-weight: 600;
+            min-width: 150px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- ログイン画面 -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-box">
+            <div class="login-logo">🌿 ハーベスト</div>
+            <div class="login-subtitle">訪問記録システム</div>
+
+            <div class="staff-select" id="staffSelect">
+                <!-- JavaScriptで生成 -->
+            </div>
+
+            <button class="btn btn-primary btn-block btn-lg" id="loginBtn" disabled>ログイン</button>
+
+            <div class="admin-link">
+                <a href="#" id="adminLoginLink">管理者としてログイン →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- メイン画面 -->
+    <div id="mainScreen" class="hidden">
+        <header class="header">
+            <div class="header-inner">
+                <div class="header-title">🌿 ハーベスト訪問記録</div>
+                <div class="header-user">
+                    <div class="header-user-icon" id="userIcon">-</div>
+                    <span id="userName">-</span>
+                    <button class="logout-btn" id="logoutBtn">ログアウト</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <!-- ステータスカード -->
+            <div class="status-cards">
+                <div class="status-card">
+                    <div class="status-number" id="todayTotal">0</div>
+                    <div class="status-label">本日の予定</div>
+                </div>
+                <div class="status-card">
+                    <div class="status-number" id="todayCompleted">0</div>
+                    <div class="status-label">完了</div>
+                </div>
+                <div class="status-card">
+                    <div class="status-number" id="todayRemaining">0</div>
+                    <div class="status-label">残り</div>
+                </div>
+            </div>
+
+            <!-- クイックアクション -->
+            <div class="quick-actions">
+                <button class="quick-btn" id="startVisitBtn">
+                    <div class="quick-btn-icon">🏠</div>
+                    <div class="quick-btn-text">訪問開始</div>
+                </button>
+                <button class="quick-btn" id="addVisitBtn">
+                    <div class="quick-btn-icon">➕</div>
+                    <div class="quick-btn-text">新規記録</div>
+                </button>
+            </div>
+
+            <!-- 本日の訪問リスト -->
+            <div class="card">
+                <div class="card-header">
+                    <span>📋 本日の訪問</span>
+                    <span id="todayDate">-</span>
+                </div>
+                <div class="card-body">
+                    <div class="visit-list" id="visitList">
+                        <!-- JavaScriptで生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 管理者画面 -->
+    <div id="adminScreen" class="hidden">
+        <header class="header">
+            <div class="header-inner">
+                <div class="header-title">🌿 管理者ダッシュボード</div>
+                <div class="header-user">
+                    <span>管理者</span>
+                    <button class="logout-btn" id="adminLogoutBtn">ログアウト</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <!-- 日付ナビゲーション -->
+            <div class="date-nav">
+                <button class="date-nav-btn" id="prevDateBtn">◀</button>
+                <div class="date-display" id="adminDateDisplay">-</div>
+                <button class="date-nav-btn" id="nextDateBtn">▶</button>
+            </div>
+
+            <!-- ステータス概要 -->
+            <div class="status-cards">
+                <div class="status-card">
+                    <div class="status-number" id="adminTotalVisits">0</div>
+                    <div class="status-label">総訪問数</div>
+                </div>
+                <div class="status-card">
+                    <div class="status-number" id="adminCompletedVisits">0</div>
+                    <div class="status-label">完了</div>
+                </div>
+                <div class="status-card">
+                    <div class="status-number" id="adminActiveStaff">0</div>
+                    <div class="status-label">稼働中</div>
+                </div>
+            </div>
+
+            <!-- スタッフフィルター -->
+            <div class="staff-filter" id="staffFilter">
+                <button class="filter-btn active" data-staff="all">全員</button>
+                <!-- JavaScriptで生成 -->
+            </div>
+
+            <!-- 訪問一覧 -->
+            <div class="card">
+                <div class="card-header">
+                    <span>📋 訪問記録一覧</span>
+                </div>
+                <div class="card-body">
+                    <div class="visit-list" id="adminVisitList">
+                        <!-- JavaScriptで生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 訪問記録モーダル -->
+    <div class="modal-overlay" id="visitModal">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-title" id="modalTitle">訪問記録</span>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="visitForm">
+                    <input type="hidden" id="visitId">
+
+                    <div class="form-group">
+                        <label class="form-label">患者名 *</label>
+                        <div class="voice-input-wrapper">
+                            <input type="text" class="form-input" id="patientName" required placeholder="患者名を入力">
+                            <button type="button" class="voice-btn" data-target="patientName" title="音声入力">🎤</button>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">開始時間</label>
+                            <input type="time" class="form-input" id="startTime">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">終了時間</label>
+                            <input type="time" class="form-input" id="endTime">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">施術内容・メモ</label>
+                        <div class="voice-input-wrapper">
+                            <textarea class="form-input" id="visitMemo" rows="3" placeholder="施術内容やメモを入力"></textarea>
+                            <button type="button" class="voice-btn" data-target="visitMemo" title="音声入力">🎤</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">次の訪問先</label>
+                        <div class="voice-input-wrapper">
+                            <input type="text" class="form-input" id="nextVisit" placeholder="次の訪問先（任意）">
+                            <button type="button" class="voice-btn" data-target="nextVisit" title="音声入力">🎤</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" id="modalCancel">キャンセル</button>
+                <button type="button" class="btn btn-primary" id="modalSave">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // アプリケーションの状態
+        const APP = {
+            currentUser: null,
+            isAdmin: false,
+            selectedDate: new Date(),
+            staffList: [
+                { id: 1, name: '山田 太郎', icon: '山' },
+                { id: 2, name: '佐藤 花子', icon: '佐' },
+                { id: 3, name: '鈴木 一郎', icon: '鈴' },
+                { id: 4, name: '田中 美咲', icon: '田' }
+            ],
+            visits: []
+        };
+
+        // ローカルストレージからデータを読み込み
+        function loadData() {
+            const saved = localStorage.getItem('harvestVisits');
+            if (saved) {
+                APP.visits = JSON.parse(saved);
+            }
+        }
+
+        // ローカルストレージにデータを保存
+        function saveData() {
+            localStorage.setItem('harvestVisits', JSON.stringify(APP.visits));
+        }
+
+        // 日付フォーマット
+        function formatDate(date) {
+            const d = new Date(date);
+            return `${d.getFullYear()}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getDate().toString().padStart(2, '0')}`;
+        }
+
+        function formatDateJP(date) {
+            const d = new Date(date);
+            const days = ['日', '月', '火', '水', '木', '金', '土'];
+            return `${d.getMonth() + 1}月${d.getDate()}日（${days[d.getDay()]}）`;
+        }
+
+        // 初期化
+        function init() {
+            loadData();
+            renderStaffSelect();
+            setupEventListeners();
+        }
+
+        // スタッフ選択ボタンを生成
+        function renderStaffSelect() {
+            const container = document.getElementById('staffSelect');
+            container.innerHTML = APP.staffList.map(staff => `
+                <button type="button" class="staff-btn" data-id="${staff.id}">
+                    <div class="staff-icon">${staff.icon}</div>
+                    <span>${staff.name}</span>
+                </button>
+            `).join('');
+        }
+
+        // イベントリスナー設定
+        function setupEventListeners() {
+            // スタッフ選択
+            document.getElementById('staffSelect').addEventListener('click', (e) => {
+                const btn = e.target.closest('.staff-btn');
+                if (!btn) return;
+
+                document.querySelectorAll('.staff-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                document.getElementById('loginBtn').disabled = false;
+            });
+
+            // ログインボタン
+            document.getElementById('loginBtn').addEventListener('click', () => {
+                const selected = document.querySelector('.staff-btn.selected');
+                if (!selected) return;
+
+                const staffId = parseInt(selected.dataset.id);
+                APP.currentUser = APP.staffList.find(s => s.id === staffId);
+                APP.isAdmin = false;
+                showMainScreen();
+            });
+
+            // 管理者ログイン
+            document.getElementById('adminLoginLink').addEventListener('click', (e) => {
+                e.preventDefault();
+                APP.isAdmin = true;
+                showAdminScreen();
+            });
+
+            // ログアウト
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+            document.getElementById('adminLogoutBtn').addEventListener('click', logout);
+
+            // 訪問開始ボタン
+            document.getElementById('startVisitBtn').addEventListener('click', () => {
+                openVisitModal('start');
+            });
+
+            // 新規記録ボタン
+            document.getElementById('addVisitBtn').addEventListener('click', () => {
+                openVisitModal('new');
+            });
+
+            // モーダル
+            document.getElementById('modalClose').addEventListener('click', closeModal);
+            document.getElementById('modalCancel').addEventListener('click', closeModal);
+            document.getElementById('modalSave').addEventListener('click', saveVisit);
+
+            // 日付ナビゲーション
+            document.getElementById('prevDateBtn').addEventListener('click', () => {
+                APP.selectedDate.setDate(APP.selectedDate.getDate() - 1);
+                updateAdminScreen();
+            });
+
+            document.getElementById('nextDateBtn').addEventListener('click', () => {
+                APP.selectedDate.setDate(APP.selectedDate.getDate() + 1);
+                updateAdminScreen();
+            });
+
+            // スタッフフィルター
+            document.getElementById('staffFilter').addEventListener('click', (e) => {
+                const btn = e.target.closest('.filter-btn');
+                if (!btn) return;
+
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderAdminVisitList(btn.dataset.staff);
+            });
+
+            // 音声入力ボタン
+            document.querySelectorAll('.voice-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    startVoiceInput(btn.dataset.target, btn);
+                });
+            });
+        }
+
+        // メイン画面表示
+        function showMainScreen() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('adminScreen').classList.add('hidden');
+            document.getElementById('mainScreen').classList.remove('hidden');
+
+            document.getElementById('userName').textContent = APP.currentUser.name;
+            document.getElementById('userIcon').textContent = APP.currentUser.icon;
+            document.getElementById('todayDate').textContent = formatDateJP(new Date());
+
+            updateMainScreen();
+        }
+
+        // 管理者画面表示
+        function showAdminScreen() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('mainScreen').classList.add('hidden');
+            document.getElementById('adminScreen').classList.remove('hidden');
+
+            // スタッフフィルター生成
+            const filter = document.getElementById('staffFilter');
+            filter.innerHTML = `
+                <button class="filter-btn active" data-staff="all">全員</button>
+                ${APP.staffList.map(s => `
+                    <button class="filter-btn" data-staff="${s.id}">${s.name}</button>
+                `).join('')}
+            `;
+
+            APP.selectedDate = new Date();
+            updateAdminScreen();
+        }
+
+        // メイン画面更新
+        function updateMainScreen() {
+            const today = formatDate(new Date());
+            const userVisits = APP.visits.filter(v =>
+                v.staffId === APP.currentUser.id && v.date === today
+            );
+
+            const completed = userVisits.filter(v => v.status === 'completed').length;
+
+            document.getElementById('todayTotal').textContent = userVisits.length;
+            document.getElementById('todayCompleted').textContent = completed;
+            document.getElementById('todayRemaining').textContent = userVisits.length - completed;
+
+            renderVisitList(userVisits);
+        }
+
+        // 管理者画面更新
+        function updateAdminScreen() {
+            document.getElementById('adminDateDisplay').textContent = formatDateJP(APP.selectedDate);
+
+            const dateStr = formatDate(APP.selectedDate);
+            const dayVisits = APP.visits.filter(v => v.date === dateStr);
+
+            const completed = dayVisits.filter(v => v.status === 'completed').length;
+            const activeStaff = new Set(dayVisits.map(v => v.staffId)).size;
+
+            document.getElementById('adminTotalVisits').textContent = dayVisits.length;
+            document.getElementById('adminCompletedVisits').textContent = completed;
+            document.getElementById('adminActiveStaff').textContent = activeStaff;
+
+            renderAdminVisitList('all');
+        }
+
+        // 訪問リスト描画
+        function renderVisitList(visits) {
+            const container = document.getElementById('visitList');
+
+            if (visits.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #999;">本日の訪問記録はありません</p>';
+                return;
+            }
+
+            container.innerHTML = visits.map(v => {
+                const statusClass = v.status || 'pending';
+                const statusText = {
+                    'pending': '予定',
+                    'in-progress': '訪問中',
+                    'completed': '完了'
+                }[statusClass];
+
+                return `
+                    <div class="visit-item ${statusClass}">
+                        <div class="visit-header">
+                            <div class="visit-patient">${v.patientName}</div>
+                            <span class="visit-status ${statusClass}">${statusText}</span>
+                        </div>
+                        <div class="visit-time">
+                            ${v.startTime || '--:--'} 〜 ${v.endTime || '--:--'}
+                            ${v.nextVisit ? `→ 次: ${v.nextVisit}` : ''}
+                        </div>
+                        ${v.memo ? `<div class="visit-memo">${v.memo}</div>` : ''}
+                        <div class="visit-actions">
+                            ${statusClass === 'pending' ? `
+                                <button class="btn btn-warning" onclick="updateVisitStatus(${v.id}, 'in-progress')">訪問開始</button>
+                            ` : ''}
+                            ${statusClass === 'in-progress' ? `
+                                <button class="btn btn-success" onclick="completeVisit(${v.id})">訪問完了</button>
+                            ` : ''}
+                            <button class="btn" onclick="editVisit(${v.id})">編集</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 管理者用訪問リスト描画
+        function renderAdminVisitList(staffFilter) {
+            const dateStr = formatDate(APP.selectedDate);
+            let visits = APP.visits.filter(v => v.date === dateStr);
+
+            if (staffFilter !== 'all') {
+                visits = visits.filter(v => v.staffId === parseInt(staffFilter));
+            }
+
+            const container = document.getElementById('adminVisitList');
+
+            if (visits.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #999;">該当する訪問記録はありません</p>';
+                return;
+            }
+
+            container.innerHTML = visits.map(v => {
+                const staff = APP.staffList.find(s => s.id === v.staffId);
+                const statusClass = v.status || 'pending';
+                const statusText = {
+                    'pending': '予定',
+                    'in-progress': '訪問中',
+                    'completed': '完了'
+                }[statusClass];
+
+                return `
+                    <div class="visit-item ${statusClass}">
+                        <div class="visit-header">
+                            <div>
+                                <span style="background: var(--color-accent); color: var(--color-primary); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 8px;">${staff ? staff.name : '不明'}</span>
+                                <span class="visit-patient">${v.patientName}</span>
+                            </div>
+                            <span class="visit-status ${statusClass}">${statusText}</span>
+                        </div>
+                        <div class="visit-time">
+                            ${v.startTime || '--:--'} 〜 ${v.endTime || '--:--'}
+                            ${v.nextVisit ? `→ 次: ${v.nextVisit}` : ''}
+                        </div>
+                        ${v.memo ? `<div class="visit-memo">${v.memo}</div>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // モーダルを開く
+        function openVisitModal(mode, visitId = null) {
+            const modal = document.getElementById('visitModal');
+            const form = document.getElementById('visitForm');
+            form.reset();
+
+            if (mode === 'start') {
+                document.getElementById('modalTitle').textContent = '訪問開始';
+                const now = new Date();
+                document.getElementById('startTime').value =
+                    `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+            } else if (mode === 'edit' && visitId) {
+                document.getElementById('modalTitle').textContent = '訪問記録の編集';
+                const visit = APP.visits.find(v => v.id === visitId);
+                if (visit) {
+                    document.getElementById('visitId').value = visit.id;
+                    document.getElementById('patientName').value = visit.patientName;
+                    document.getElementById('startTime').value = visit.startTime || '';
+                    document.getElementById('endTime').value = visit.endTime || '';
+                    document.getElementById('visitMemo').value = visit.memo || '';
+                    document.getElementById('nextVisit').value = visit.nextVisit || '';
+                }
+            } else {
+                document.getElementById('modalTitle').textContent = '新規訪問記録';
+            }
+
+            modal.classList.add('active');
+        }
+
+        // モーダルを閉じる
+        function closeModal() {
+            document.getElementById('visitModal').classList.remove('active');
+        }
+
+        // 訪問記録を保存
+        function saveVisit() {
+            const patientName = document.getElementById('patientName').value.trim();
+            if (!patientName) {
+                alert('患者名を入力してください');
+                return;
+            }
+
+            const visitId = document.getElementById('visitId').value;
+            const visitData = {
+                patientName: patientName,
+                startTime: document.getElementById('startTime').value,
+                endTime: document.getElementById('endTime').value,
+                memo: document.getElementById('visitMemo').value.trim(),
+                nextVisit: document.getElementById('nextVisit').value.trim()
+            };
+
+            if (visitId) {
+                // 編集
+                const index = APP.visits.findIndex(v => v.id === parseInt(visitId));
+                if (index !== -1) {
+                    APP.visits[index] = { ...APP.visits[index], ...visitData };
+                }
+            } else {
+                // 新規
+                const newVisit = {
+                    id: Date.now(),
+                    staffId: APP.currentUser.id,
+                    date: formatDate(new Date()),
+                    status: visitData.startTime ? 'in-progress' : 'pending',
+                    ...visitData
+                };
+                APP.visits.push(newVisit);
+            }
+
+            saveData();
+            closeModal();
+            updateMainScreen();
+        }
+
+        // 訪問ステータス更新
+        function updateVisitStatus(id, status) {
+            const visit = APP.visits.find(v => v.id === id);
+            if (visit) {
+                visit.status = status;
+                if (status === 'in-progress' && !visit.startTime) {
+                    const now = new Date();
+                    visit.startTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+                }
+                saveData();
+                updateMainScreen();
+            }
+        }
+
+        // 訪問完了
+        function completeVisit(id) {
+            const visit = APP.visits.find(v => v.id === id);
+            if (visit) {
+                visit.status = 'completed';
+                const now = new Date();
+                visit.endTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+                saveData();
+                updateMainScreen();
+            }
+        }
+
+        // 訪問編集
+        function editVisit(id) {
+            openVisitModal('edit', id);
+        }
+
+        // ログアウト
+        function logout() {
+            APP.currentUser = null;
+            APP.isAdmin = false;
+            document.getElementById('mainScreen').classList.add('hidden');
+            document.getElementById('adminScreen').classList.add('hidden');
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.querySelectorAll('.staff-btn').forEach(b => b.classList.remove('selected'));
+            document.getElementById('loginBtn').disabled = true;
+        }
+
+        // 音声入力
+        function startVoiceInput(targetId, btn) {
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                alert('お使いのブラウザは音声入力に対応していません。\nChrome または Edge をお使いください。');
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+
+            recognition.lang = 'ja-JP';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            btn.classList.add('recording');
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                const target = document.getElementById(targetId);
+                if (target.tagName === 'TEXTAREA') {
+                    target.value += (target.value ? '\n' : '') + transcript;
+                } else {
+                    target.value = transcript;
+                }
+                btn.classList.remove('recording');
+            };
+
+            recognition.onerror = (event) => {
+                console.error('音声認識エラー:', event.error);
+                btn.classList.remove('recording');
+                if (event.error === 'not-allowed') {
+                    alert('マイクへのアクセスを許可してください。');
+                }
+            };
+
+            recognition.onend = () => {
+                btn.classList.remove('recording');
+            };
+
+            recognition.start();
+        }
+
+        // 初期化実行
+        init();
+    </script>
+</body>
+</html>
