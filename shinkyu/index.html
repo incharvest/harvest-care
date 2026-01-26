@@ -112,6 +112,79 @@
             width: 100%;
         }
 
+        /* ハンバーガーメニュー */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--color-accent);
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* モバイルナビゲーション */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: var(--color-primary);
+            padding: 1rem 0;
+            box-shadow: var(--shadow-medium);
+            z-index: 999;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 1rem 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-accent);
+        }
+
         .header-contact {
             display: flex;
             align-items: center;
@@ -984,6 +1057,10 @@
                 display: none;
             }
 
+            .hamburger {
+                display: flex;
+            }
+
             .logo svg {
                 height: 40px;
             }
@@ -1589,10 +1666,12 @@
             </a>
             <nav>
                 <ul>
-                    <li><a href="#symptoms">対応症状</a></li>
+                    <li><a href="#concept">コンセプト</a></li>
+                    <li><a href="#treatment">施術内容</a></li>
                     <li><a href="#flow">ご利用の流れ</a></li>
                     <li><a href="#pricing">料金</a></li>
                     <li><a href="#faq">よくある質問</a></li>
+                    <li><a href="#company">会社概要</a></li>
                     <li><a href="#contact">お問い合わせ</a></li>
                 </ul>
             </nav>
@@ -1600,8 +1679,32 @@
                 <a href="tel:099-296-9843" class="header-contact-btn tel">TEL</a>
                 <a href="#contact" class="header-contact-btn mail">MAIL</a>
             </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
+
+    <!-- モバイルナビゲーション -->
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="#concept" onclick="closeMenu()">コンセプト</a></li>
+            <li><a href="#target" onclick="closeMenu()">対象の方</a></li>
+            <li><a href="#treatment" onclick="closeMenu()">施術内容</a></li>
+            <li><a href="#symptoms" onclick="closeMenu()">対応症状</a></li>
+            <li><a href="#flow" onclick="closeMenu()">ご利用の流れ</a></li>
+            <li><a href="#pricing" onclick="closeMenu()">料金</a></li>
+            <li><a href="#staff" onclick="closeMenu()">スタッフ</a></li>
+            <li><a href="#faq" onclick="closeMenu()">よくある質問</a></li>
+            <li><a href="#cooperation" onclick="closeMenu()">医療連携</a></li>
+            <li><a href="#company" onclick="closeMenu()">会社概要</a></li>
+            <li><a href="#insurance" onclick="closeMenu()">保険について</a></li>
+            <li><a href="#area" onclick="closeMenu()">訪問エリア</a></li>
+            <li><a href="#contact" onclick="closeMenu()">お問い合わせ</a></li>
+        </ul>
+    </div>
 
     <!-- ヒーローセクション -->
     <section class="hero">
@@ -2454,5 +2557,22 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.hamburger').classList.toggle('active');
+            document.getElementById('mobileNav').classList.toggle('active');
+        }
+
+        function closeMenu() {
+            document.querySelector('.hamburger').classList.remove('active');
+            document.getElementById('mobileNav').classList.remove('active');
+        }
+
+        // スクロール時にメニューを閉じる
+        window.addEventListener('scroll', function() {
+            closeMenu();
+        });
+    </script>
 </body>
 </html>
