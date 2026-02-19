@@ -1,0 +1,395 @@
+/**
+ * ============================================
+ * HARVEST DESIGN SYSTEM
+ * ============================================
+ *
+ * Version: 1.0.0
+ * Author: Harvest Care Services Design Team
+ *
+ * A unified design system for Harvest elderly care services,
+ * built with Apple's design principles in mind:
+ * - Simplicity
+ * - Consistency
+ * - Attention to Detail
+ * - Strategic Whitespace
+ * - Natural Motion
+ *
+ * Usage:
+ * <link rel="stylesheet" href="design-system/harvest.css">
+ *
+ * ============================================
+ */
+
+/* ========================================
+ * 1. DESIGN TOKENS
+ * ======================================== */
+@import url('./tokens/tokens.css');
+
+/* ========================================
+ * 2. BASE STYLES
+ * ======================================== */
+@import url('./base/reset.css');
+@import url('./base/typography.css');
+
+/* ========================================
+ * 3. LAYOUT
+ * ======================================== */
+@import url('./layouts/containers.css');
+@import url('./layouts/grid.css');
+
+/* ========================================
+ * 4. COMPONENTS
+ * ======================================== */
+@import url('./components/buttons.css');
+@import url('./components/cards.css');
+@import url('./components/forms.css');
+@import url('./components/navigation.css');
+@import url('./components/sections.css');
+
+/* ========================================
+ * 5. UTILITIES
+ * ======================================== */
+@import url('./utilities/utilities.css');
+
+/* ========================================
+ * 6. THEME VARIANTS
+ * ======================================== */
+
+/* Day Service Theme (Default) */
+[data-theme="dayservice"] {
+  --theme-primary: var(--theme-dayservice-primary);
+  --theme-secondary: var(--theme-dayservice-secondary);
+  --theme-accent: var(--theme-dayservice-accent);
+}
+
+/* Rest Home Theme */
+[data-theme="resthome"] {
+  --theme-primary: var(--theme-resthome-primary);
+  --theme-secondary: var(--theme-resthome-secondary);
+  --theme-accent: var(--theme-resthome-accent);
+
+  /* Override specific colors for rest home */
+  --color-primary: #4a4035;
+  --color-primary-light: #6b5d4d;
+  --color-accent: #b8956e;
+  --color-accent-light: #d4b896;
+  --color-accent-dark: #96754a;
+  --color-cream: #fdfcfa;
+  --color-cream-dark: #f7f5f0;
+  --color-text: #3a3530;
+  --color-text-secondary: #6b6560;
+  --color-border: #e8e4dc;
+
+  /* Shadow colors for rest home theme */
+  --shadow-xs: 0 1px 2px rgba(74, 64, 53, 0.04);
+  --shadow-sm: 0 2px 8px rgba(74, 64, 53, 0.06);
+  --shadow-md: 0 4px 16px rgba(74, 64, 53, 0.08);
+  --shadow-lg: 0 8px 32px rgba(74, 64, 53, 0.10);
+  --shadow-xl: 0 16px 48px rgba(74, 64, 53, 0.12);
+  --shadow-elegant: 0 20px 60px rgba(74, 64, 53, 0.15);
+}
+
+/* ========================================
+ * 7. COMPONENT EXTENSIONS
+ * ======================================== */
+
+/* Badge Component */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent);
+  background: transparent;
+}
+
+.badge--filled {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.badge--subtle {
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+/* Location Badge */
+.badge-location {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.badge-location::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+}
+
+/* Decorative Line */
+.decorative-line {
+  width: 40px;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+.decorative-line--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Icon Circle */
+.icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--color-accent-muted);
+  border-radius: var(--radius-full);
+  color: var(--color-accent);
+}
+
+.icon-circle--sm {
+  width: 32px;
+  height: 32px;
+}
+
+.icon-circle--lg {
+  width: 64px;
+  height: 64px;
+}
+
+/* Number Circle */
+.number-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Quote Block */
+.quote {
+  position: relative;
+  padding: var(--space-6) var(--space-8);
+  background: var(--color-cream);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+.quote-text {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  font-style: italic;
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text);
+}
+
+.quote-author {
+  margin-top: var(--space-4);
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+
+/* Stat/Number Display */
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.stat-label {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Overlay Utilities */
+.overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.overlay--dark {
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 51, 40, 0.6),
+    rgba(26, 51, 40, 0.4)
+  );
+}
+
+.overlay--light {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.overlay--gradient-bottom {
+  background: linear-gradient(
+    to top,
+    rgba(26, 51, 40, 0.8) 0%,
+    transparent 60%
+  );
+}
+
+/* List Styles */
+.list-check {
+  list-style: none;
+  padding: 0;
+}
+
+.list-check li {
+  position: relative;
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-3);
+}
+
+.list-check li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 12px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c9a868' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20,6 9,17 4,12'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* Service Hours Table */
+.hours-table {
+  width: 100%;
+}
+
+.hours-table tr {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hours-table td {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-body-sm);
+}
+
+.hours-table td:first-child {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+/* Map Container */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ========================================
+ * 8. PRINT STYLES
+ * ======================================== */
+
+@media print {
+  .header,
+  .footer,
+  .nav,
+  .btn,
+  .form {
+    display: none !important;
+  }
+
+  .section {
+    padding: var(--space-6) 0;
+    break-inside: avoid;
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+
+/* ========================================
+ * 9. ACCESSIBILITY ENHANCEMENTS
+ * ======================================== */
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: #000000;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+  }
+
+  .btn,
+  .card,
+  .form-input {
+    border-width: 2px;
+  }
+}
+
+/* ========================================
+ * 10. CUSTOM SCROLLBAR
+ * ======================================== */
+
+:root {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}

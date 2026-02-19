@@ -1,0 +1,408 @@
+/**
+ * Harvest Design System - Cards
+ * Version: 1.0.0
+ *
+ * Card components for the Harvest design system.
+ */
+
+/* ========================================
+ * BASE CARD
+ * ======================================== */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-normal);
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+/* ========================================
+ * CARD SECTIONS
+ * ======================================== */
+
+.card-header {
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-body {
+  flex: 1;
+  padding: var(--space-6);
+}
+
+.card-footer {
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-cream);
+}
+
+/* ========================================
+ * CARD WITH IMAGE
+ * ======================================== */
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: var(--aspect-photo);
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-default);
+}
+
+.card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 51, 40, 0.8) 0%,
+    transparent 60%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-6);
+  color: var(--color-white);
+}
+
+/* ========================================
+ * FEATURE CARD
+ * ======================================== */
+
+.card-feature {
+  text-align: center;
+  padding: var(--space-8);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: var(--transition-normal);
+}
+
+.card-feature:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px);
+}
+
+.card-feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-5);
+  background-color: var(--color-accent-muted);
+  border-radius: var(--radius-full);
+  color: var(--color-accent);
+  font-size: var(--icon-lg);
+}
+
+.card-feature-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto var(--space-5);
+  background-color: var(--color-accent);
+  border-radius: var(--radius-full);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+}
+
+.card-feature-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+}
+
+.card-feature-description {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+ * SERVICE CARD
+ * ======================================== */
+
+.card-service {
+  position: relative;
+  padding: var(--space-8);
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  color: var(--color-white);
+  transition: var(--transition-normal);
+}
+
+.card-service:hover {
+  border-color: var(--color-accent);
+  background-color: rgba(255, 255, 255, 0.06);
+  transform: translateY(-8px);
+}
+
+.card-service-badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-caption);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent);
+}
+
+.card-service-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--space-3);
+}
+
+.card-service-description {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-inverse-muted);
+  margin-bottom: var(--space-5);
+}
+
+.card-service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-small);
+  color: var(--color-accent);
+  transition: var(--transition-fast);
+}
+
+.card-service-link:hover {
+  gap: var(--space-3);
+}
+
+/* ========================================
+ * PRICING CARD
+ * ======================================== */
+
+.card-pricing {
+  text-align: center;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-normal);
+}
+
+.card-pricing:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-pricing-header {
+  padding: var(--space-4);
+  background-color: var(--color-cream);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-pricing-label {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-text-secondary);
+}
+
+.card-pricing-body {
+  padding: var(--space-6);
+}
+
+.card-pricing-price {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+.card-pricing-price small {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-regular);
+}
+
+.card-pricing-description {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+/* Highlighted pricing card */
+.card-pricing--highlighted {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.card-pricing--highlighted .card-pricing-header {
+  background-color: var(--color-accent);
+}
+
+.card-pricing--highlighted .card-pricing-label {
+  color: var(--color-primary);
+}
+
+/* ========================================
+ * INFO CARD
+ * ======================================== */
+
+.card-info {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background-color: var(--color-cream);
+  border-radius: var(--radius-lg);
+}
+
+.card-info-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-white);
+  border-radius: var(--radius-full);
+  color: var(--color-accent);
+}
+
+.card-info-content {
+  flex: 1;
+}
+
+.card-info-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-1);
+}
+
+.card-info-text {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-snug);
+}
+
+/* ========================================
+ * HORIZONTAL CARD
+ * ======================================== */
+
+.card-horizontal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+.card-horizontal .card-image {
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .card-horizontal {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+ * CARD VARIANTS
+ * ======================================== */
+
+/* No hover effect */
+.card--static {
+  cursor: default;
+}
+
+.card--static:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Elevated card */
+.card--elevated {
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+.card--elevated:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Glass card (for dark backgrounds) */
+.card--glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.card--glass:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-accent);
+}
+
+/* ========================================
+ * CARD GRID
+ * ======================================== */
+
+.card-grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.card-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .card-grid--3,
+  .card-grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .card-grid--2,
+  .card-grid--3,
+  .card-grid--4 {
+    grid-template-columns: 1fr;
+  }
+}

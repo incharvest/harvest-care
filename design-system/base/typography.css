@@ -1,0 +1,301 @@
+/**
+ * Harvest Design System - Typography
+ * Version: 1.0.0
+ *
+ * Typography styles for the Harvest design system.
+ * Uses Shippori Mincho for headings and Noto Serif JP for body text.
+ */
+
+/* ========================================
+ * HEADING STYLES
+ * ======================================== */
+
+.heading-hero {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-text-inverse);
+}
+
+.heading-1 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-primary);
+}
+
+.heading-2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-primary);
+}
+
+.heading-3 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text);
+}
+
+.heading-4 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-text);
+}
+
+/* ========================================
+ * BODY TEXT STYLES
+ * ======================================== */
+
+.body-large {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text);
+}
+
+.body-normal {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text);
+}
+
+.body-small {
+  font-family: var(--font-body);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+ * LABEL & CAPTION STYLES
+ * ======================================== */
+
+.label {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.caption {
+  font-family: var(--font-body);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-text-muted);
+}
+
+/* ========================================
+ * SECTION LABEL
+ * ======================================== */
+
+.section-label {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+
+/* ========================================
+ * DECORATIVE ELEMENTS
+ * ======================================== */
+
+/* Underline decoration after headings */
+.heading-decorated::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--color-accent);
+  margin-top: var(--space-4);
+}
+
+.heading-decorated--center::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========================================
+ * TEXT COLORS
+ * ======================================== */
+
+.text-primary { color: var(--color-primary); }
+.text-accent { color: var(--color-accent); }
+.text-muted { color: var(--color-text-secondary); }
+.text-inverse { color: var(--color-text-inverse); }
+.text-inverse-muted { color: var(--color-text-inverse-muted); }
+
+/* ========================================
+ * TEXT ALIGNMENT
+ * ======================================== */
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+/* ========================================
+ * TEXT UTILITIES
+ * ======================================== */
+
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+.text-nowrap { white-space: nowrap; }
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Multi-line truncation */
+.text-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ========================================
+ * FONT WEIGHTS
+ * ======================================== */
+
+.font-light { font-weight: var(--font-weight-light); }
+.font-normal { font-weight: var(--font-weight-regular); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+/* ========================================
+ * LETTER SPACING
+ * ======================================== */
+
+.tracking-tight { letter-spacing: var(--letter-spacing-tight); }
+.tracking-normal { letter-spacing: var(--letter-spacing-normal); }
+.tracking-wide { letter-spacing: var(--letter-spacing-wide); }
+.tracking-wider { letter-spacing: var(--letter-spacing-wider); }
+.tracking-widest { letter-spacing: var(--letter-spacing-widest); }
+
+/* ========================================
+ * PROSE STYLES (for rich text content)
+ * ======================================== */
+
+.prose {
+  max-width: 65ch;
+}
+
+.prose > * + * {
+  margin-top: var(--space-4);
+}
+
+.prose h2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+
+.prose h3 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-3);
+}
+
+.prose p {
+  line-height: var(--line-height-relaxed);
+}
+
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: var(--color-accent-dark);
+}
+
+.prose ul,
+.prose ol {
+  padding-left: var(--space-6);
+}
+
+.prose ul {
+  list-style: disc;
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose li {
+  margin-bottom: var(--space-2);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: var(--space-4);
+  margin-left: 0;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+.prose hr {
+  margin: var(--space-8) 0;
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ========================================
+ * RESPONSIVE TYPOGRAPHY
+ * ======================================== */
+
+@media (max-width: 768px) {
+  .heading-hero {
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  .heading-1,
+  .heading-2 {
+    letter-spacing: var(--letter-spacing-wide);
+  }
+}

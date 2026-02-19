@@ -1,0 +1,247 @@
+/**
+ * Harvest Design System - Containers
+ * Version: 1.0.0
+ *
+ * Container and wrapper utilities.
+ */
+
+/* ========================================
+ * BASE CONTAINER
+ * ======================================== */
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+/* ========================================
+ * CONTAINER SIZES
+ * ======================================== */
+
+.container--xs {
+  max-width: var(--container-xs);
+}
+
+.container--sm {
+  max-width: var(--container-sm);
+}
+
+.container--md {
+  max-width: var(--container-md);
+}
+
+.container--lg {
+  max-width: var(--container-lg);
+}
+
+.container--xl {
+  max-width: var(--container-xl);
+}
+
+.container--2xl {
+  max-width: var(--container-2xl);
+}
+
+.container--content {
+  max-width: var(--container-content);
+}
+
+.container--full {
+  max-width: none;
+}
+
+/* ========================================
+ * RESPONSIVE CONTAINERS
+ * ======================================== */
+
+@media (min-width: 576px) {
+  .container {
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+}
+
+/* ========================================
+ * PROSE CONTAINER
+ * ======================================== */
+
+.prose-container {
+  width: 100%;
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========================================
+ * NARROW CONTAINER
+ * ======================================== */
+
+.narrow {
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========================================
+ * WIDE CONTAINER
+ * ======================================== */
+
+.wide {
+  width: 100%;
+  max-width: var(--container-2xl);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+/* ========================================
+ * FULL BLEED
+ * ======================================== */
+
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* ========================================
+ * WRAPPER (Negative margin to offset padding)
+ * ======================================== */
+
+.wrapper {
+  margin-left: calc(-1 * var(--space-4));
+  margin-right: calc(-1 * var(--space-4));
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+/* ========================================
+ * ASPECT RATIO BOXES
+ * ======================================== */
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-photo {
+  aspect-ratio: 4 / 3;
+}
+
+.aspect-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.aspect-wide {
+  aspect-ratio: 21 / 9;
+}
+
+/* ========================================
+ * OBJECT FIT
+ * ======================================== */
+
+.object-cover {
+  object-fit: cover;
+}
+
+.object-contain {
+  object-fit: contain;
+}
+
+.object-fill {
+  object-fit: fill;
+}
+
+.object-center {
+  object-position: center;
+}
+
+.object-top {
+  object-position: top;
+}
+
+.object-bottom {
+  object-position: bottom;
+}
+
+/* ========================================
+ * OVERFLOW
+ * ======================================== */
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+/* ========================================
+ * SCROLLBAR STYLING
+ * ======================================== */
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ========================================
+ * STICKY ELEMENTS
+ * ======================================== */
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
+.sticky-header {
+  position: sticky;
+  top: 80px; /* Account for main header */
+  z-index: var(--z-sticky);
+}
