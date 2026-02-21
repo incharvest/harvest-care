@@ -1,1434 +1,399 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-theme="resthome">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>住宅型有料老人ホーム ハーベスト｜鹿児島市東谷山</title>
+    <meta name="description" content="鹿児島市東谷山の住宅型有料老人ホーム ハーベスト。定員8名の少人数制で、24時間見守り体制。安心と快適を備えた暮らしをご提供します。">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a3328'/%3E%3Cg transform='translate(16,17)'%3E%3Cpath d='M0-9Q2-1 0 10' fill='none' stroke='%23c9a868' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='-3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(-25-3-6)'/%3E%3Cellipse cx='-4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(-20-4-1)'/%3E%3Cellipse cx='3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(25 3-6)'/%3E%3Cellipse cx='4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(20 4-1)'/%3E%3C/g%3E%3C/svg%3E">
-    <style>
-        :root {
-            --color-primary: #4a4035;
-            --color-secondary: #6b5d4d;
-            --color-accent: #b8956e;
-            --color-accent-light: #d4b896;
-            --color-accent-dark: #96754a;
-            --color-cream: #fdfcfa;
-            --color-cream-dark: #f7f5f0;
-            --color-text: #3a3530;
-            --color-text-light: #6b6560;
-            --color-white: #ffffff;
-            --color-border: #e8e4dc;
-            --font-display: 'Shippori Mincho', serif;
-            --font-body: 'Noto Serif JP', serif;
-            --shadow-soft: 0 4px 30px rgba(74, 64, 53, 0.06);
-            --shadow-medium: 0 8px 40px rgba(74, 64, 53, 0.10);
-            --shadow-elegant: 0 20px 60px rgba(74, 64, 53, 0.08);
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%234a4035'/%3E%3Cg transform='translate(16,17)'%3E%3Cpath d='M0-9Q2-1 0 10' fill='none' stroke='%23b8956e' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='-3' cy='-6' rx='2' ry='4' fill='%23b8956e' transform='rotate(-25-3-6)'/%3E%3Cellipse cx='-4' cy='-1' rx='2' ry='3' fill='%23b8956e' transform='rotate(-20-4-1)'/%3E%3Cellipse cx='3' cy='-6' rx='2' ry='4' fill='%23b8956e' transform='rotate(25 3-6)'/%3E%3Cellipse cx='4' cy='-1' rx='2' ry='3' fill='%23b8956e' transform='rotate(20 4-1)'/%3E%3C/g%3E%3C/svg%3E">
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-body);
-            color: var(--color-text);
-            background-color: var(--color-cream);
-            line-height: 2;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-        }
-
-        /* ヘッダー */
-        header {
-            background: var(--color-primary);
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .logo svg {
-            height: 50px;
-            width: auto;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 400;
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--color-accent);
-            transition: var(--transition);
-        }
-
-        nav a:hover {
-            color: var(--color-accent);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .header-contact {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .header-contact-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: transparent;
-            border: 1px solid var(--color-accent);
-            color: var(--color-accent);
-            padding: 10px 20px;
-            font-weight: 400;
-            font-size: 0.85rem;
-            text-decoration: none;
-            letter-spacing: 0.1em;
-            transition: var(--transition);
-        }
-
-        .header-contact-btn:hover {
-            background: var(--color-accent);
-            color: var(--color-primary);
-        }
-
-        .header-contact-btn.mail {
-            background: var(--color-accent);
-            color: var(--color-primary);
-        }
-
-        .header-contact-btn.mail:hover {
-            background: var(--color-accent-light);
-        }
-
-        /* ヒーローセクション */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: var(--color-primary);
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1920&q=80') center/cover no-repeat;
-            opacity: 0.3;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg,
-                rgba(74, 64, 53, 0.8) 0%,
-                rgba(74, 64, 53, 0.6) 50%,
-                rgba(74, 64, 53, 0.85) 100%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            color: var(--color-white);
-            max-width: 800px;
-            padding: 0 2rem;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            border: 1px solid var(--color-accent);
-            color: var(--color-accent);
-            padding: 8px 24px;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            margin-bottom: 2rem;
-        }
-
-        .hero h1 {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 span {
-            color: var(--color-accent);
-        }
-
-        .hero-description {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 3rem;
-            line-height: 2.2;
-            font-weight: 300;
-        }
-
-        .hero-line {
-            width: 1px;
-            height: 80px;
-            background: linear-gradient(180deg, var(--color-accent), transparent);
-            margin: 0 auto;
-        }
-
-        /* セクション共通 */
-        section {
-            padding: 120px 2rem;
-        }
-
-        .section-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-en {
-            font-size: 0.7rem;
-            color: var(--color-accent);
-            letter-spacing: 0.3em;
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            color: var(--color-primary);
-            letter-spacing: 0.15em;
-            font-weight: 600;
-        }
-
-        .section-line {
-            width: 40px;
-            height: 1px;
-            background: var(--color-accent);
-            margin: 1.5rem auto 0;
-        }
-
-        /* コンセプトセクション */
-        .concept {
-            background: var(--color-cream);
-        }
-
-        .concept-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .concept-image {
-            position: relative;
-        }
-
-        .concept-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: 20px;
-            bottom: 20px;
-            border: 1px solid var(--color-accent);
-            z-index: 0;
-        }
-
-        .concept-image img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            position: relative;
-            z-index: 1;
-        }
-
-        .concept-text h2 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            margin-bottom: 2rem;
-            letter-spacing: 0.1em;
-            line-height: 1.8;
-            font-weight: 600;
-        }
-
-        .concept-text p {
-            color: var(--color-text-light);
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
-
-        .concept-details {
-            background: var(--color-white);
-            padding: 2rem;
-            margin-top: 2rem;
-            border-left: 2px solid var(--color-accent);
-        }
-
-        .concept-details dt {
-            font-weight: 600;
-            color: var(--color-accent-dark);
-            margin-bottom: 0.5rem;
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-        }
-
-        .concept-details dd {
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--color-text-light);
-        }
-
-        .concept-details dd:last-child {
-            margin-bottom: 0;
-        }
-
-        /* 特徴セクション */
-        .features {
-            background: var(--color-primary);
-            color: var(--color-white);
-        }
-
-        .features .section-title {
-            color: var(--color-white);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 3rem 2rem;
-            border: 1px solid rgba(184, 149, 110, 0.3);
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            border-color: var(--color-accent);
-            background: rgba(184, 149, 110, 0.05);
-        }
-
-        .feature-number {
-            font-size: 0.7rem;
-            color: var(--color-accent);
-            letter-spacing: 0.2em;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-title {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            letter-spacing: 0.1em;
-            font-weight: 500;
-        }
-
-        .feature-description {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.9;
-            font-weight: 300;
-        }
-
-        .features-images {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-        }
-
-        .features-images img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            filter: grayscale(30%);
-            transition: var(--transition);
-        }
-
-        .features-images img:hover {
-            filter: grayscale(0%);
-        }
-
-        /* 居室紹介 */
-        .room {
-            background: var(--color-cream-dark);
-        }
-
-        .room-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .room-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .room-images img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .room-images img:first-child {
-            grid-column: 1 / -1;
-            height: 250px;
-        }
-
-        .room-info h3 {
-            font-family: var(--font-display);
-            font-size: 1.3rem;
-            color: var(--color-primary);
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.1em;
-            font-weight: 600;
-        }
-
-        .room-info p {
-            color: var(--color-text-light);
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
-
-        .room-specs {
-            background: var(--color-white);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .room-spec-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--color-border);
-            font-size: 0.9rem;
-        }
-
-        .room-spec-item:last-child {
-            border-bottom: none;
-        }
-
-        .room-spec-label {
-            color: var(--color-text-light);
-        }
-
-        .room-spec-value {
-            font-weight: 500;
-            color: var(--color-primary);
-        }
-
-        /* 料金セクション */
-        .pricing {
-            background: var(--color-cream);
-        }
-
-        .pricing-intro {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--color-text-light);
-            font-size: 0.95rem;
-        }
-
-        .pricing-table {
-            background: var(--color-white);
-            box-shadow: var(--shadow-medium);
-            overflow: hidden;
-        }
-
-        .pricing-table-header {
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 1.5rem 2rem;
-            text-align: center;
-        }
-
-        .pricing-table-header h3 {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            letter-spacing: 0.1em;
-            font-weight: 500;
-        }
-
-        .pricing-table-body {
-            padding: 0;
-        }
-
-        .pricing-row {
-            display: grid;
-            grid-template-columns: 200px 1fr 150px;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .pricing-row:last-child {
-            border-bottom: none;
-        }
-
-        .pricing-row.total {
-            background: var(--color-cream);
-        }
-
-        .pricing-label {
-            background: var(--color-cream);
-            padding: 1.2rem 1.5rem;
-            font-weight: 500;
-            color: var(--color-text);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            letter-spacing: 0.05em;
-        }
-
-        .pricing-row.total .pricing-label {
-            background: var(--color-accent);
-            color: var(--color-primary);
-        }
-
-        .pricing-desc {
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            align-items: center;
-            font-size: 0.85rem;
-            color: var(--color-text-light);
-        }
-
-        .pricing-amount {
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--color-primary);
-        }
-
-        .pricing-row.total .pricing-amount {
-            font-size: 1.4rem;
-        }
-
-        .pricing-unit {
-            font-size: 0.8rem;
-            font-weight: 400;
-            margin-left: 0.3rem;
-        }
-
-        .pricing-note {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: var(--color-white);
-            border-left: 2px solid var(--color-accent);
-            font-size: 0.85rem;
-            color: var(--color-text-light);
-        }
-
-        /* 入居条件 */
-        .requirements {
-            background: var(--color-cream-dark);
-        }
-
-        .requirements-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .requirement-card {
-            background: var(--color-white);
-            padding: 2rem;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .requirement-card h4 {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            color: var(--color-primary);
-            margin-bottom: 1rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid var(--color-accent);
-            letter-spacing: 0.1em;
-            font-weight: 600;
-        }
-
-        .requirement-card ul {
-            list-style: none;
-        }
-
-        .requirement-card li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            font-size: 0.9rem;
-            color: var(--color-text-light);
-        }
-
-        .requirement-card li::before {
-            content: '●';
-            position: absolute;
-            left: 0;
-            color: var(--color-accent);
-            font-size: 0.5rem;
-            top: 0.9rem;
-        }
-
-        /* 施設情報 */
-        .facility {
-            background: var(--color-cream);
-        }
-
-        .facility-card {
-            background: var(--color-white);
-            box-shadow: var(--shadow-elegant);
-        }
-
-        .facility-header {
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .facility-header h3 {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            letter-spacing: 0.15em;
-            font-weight: 500;
-        }
-
-        .facility-body {
-            padding: 0;
-        }
-
-        .facility-row {
-            display: grid;
-            grid-template-columns: 160px 1fr;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .facility-row:last-child {
-            border-bottom: none;
-        }
-
-        .facility-label {
-            background: var(--color-cream);
-            padding: 1.2rem 1.5rem;
-            font-weight: 500;
-            color: var(--color-text);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            letter-spacing: 0.05em;
-        }
-
-        .facility-value {
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-        }
-
-        .facility-value a {
-            color: var(--color-accent-dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .facility-value a:hover {
-            color: var(--color-accent);
-        }
-
-        /* 地図 */
-        .map-container {
-            margin-top: 3rem;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
-            filter: grayscale(20%);
-        }
-
-        /* CTA */
-        .cta {
-            background: var(--color-primary);
-            text-align: center;
-            color: var(--color-white);
-            position: relative;
-            overflow: hidden;
-            padding: 100px 2rem;
-        }
-
-        .cta-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1920&q=80') center/cover no-repeat;
-            opacity: 0.15;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .cta .section-title {
-            color: var(--color-white);
-            margin-bottom: 1rem;
-        }
-
-        .cta > .cta-content > p {
-            margin-bottom: 3rem;
-            opacity: 0.8;
-            font-weight: 300;
-        }
-
-        .contact-methods {
-            display: grid;
-            grid-template-columns: 1fr auto 1.5fr;
-            gap: 3rem;
-            align-items: start;
-            text-align: left;
-        }
-
-        .contact-label {
-            font-size: 0.85rem;
-            color: var(--color-accent);
-            margin-bottom: 1rem;
-            letter-spacing: 0.1em;
-        }
-
-        .contact-phone {
-            text-align: center;
-        }
-
-        .cta-phone {
-            display: inline-flex;
-            align-items: center;
-            gap: 16px;
-            background: transparent;
-            border: 1px solid var(--color-accent);
-            color: var(--color-accent);
-            padding: 20px 40px;
-            font-size: 1.6rem;
-            font-weight: 600;
-            font-family: var(--font-display);
-            text-decoration: none;
-            letter-spacing: 0.1em;
-            transition: var(--transition);
-        }
-
-        .cta-phone:hover {
-            background: var(--color-accent);
-            color: var(--color-primary);
-        }
-
-        .cta-note {
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            opacity: 0.7;
-            letter-spacing: 0.1em;
-        }
-
-        .contact-divider {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            min-height: 200px;
-        }
-
-        .contact-divider::before,
-        .contact-divider::after {
-            content: '';
-            width: 1px;
-            flex: 1;
-            background: rgba(184, 149, 110, 0.3);
-        }
-
-        .contact-divider span {
-            padding: 1rem 0;
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.5);
-            letter-spacing: 0.1em;
-        }
-
-        .contact-form-wrap {
-            width: 100%;
-        }
-
-        .contact-form {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border: 1px solid rgba(184, 149, 110, 0.2);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.05em;
-        }
-
-        .form-group .required {
-            background: var(--color-accent);
-            color: var(--color-primary);
-            font-size: 0.65rem;
-            padding: 2px 6px;
-            margin-left: 0.5rem;
-            letter-spacing: 0;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(184, 149, 110, 0.3);
-            color: var(--color-white);
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-accent);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .form-group select {
-            cursor: pointer;
-        }
-
-        .form-group select option {
-            background: var(--color-primary);
-            color: var(--color-white);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--color-accent);
-            color: var(--color-primary);
-            border: none;
-            font-family: var(--font-display);
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .submit-btn:hover {
-            background: var(--color-accent-light);
-        }
-
-        .form-note {
-            margin-top: 1rem;
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.5);
-            text-align: center;
-        }
-
-        /* フッター */
-        footer {
-            background: #3a3530;
-            color: var(--color-white);
-            padding: 60px 2rem 30px;
-        }
-
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-main {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 4rem;
-            margin-bottom: 3rem;
-            padding-bottom: 3rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-logo {
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-logo svg {
-            height: 45px;
-            width: auto;
-        }
-
-        .footer-info p {
-            font-size: 0.85rem;
-            opacity: 0.7;
-            margin-bottom: 0.5rem;
-            font-weight: 300;
-        }
-
-        .footer-info a {
-            color: var(--color-white);
-            text-decoration: none;
-        }
-
-        .footer-nav ul {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .footer-nav a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            transition: var(--transition);
-        }
-
-        .footer-nav a:hover {
-            color: var(--color-accent);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            font-size: 0.75rem;
-            opacity: 0.5;
-            letter-spacing: 0.1em;
-        }
-
-        /* レスポンシブ */
-        @media (max-width: 1024px) {
-            .concept-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .concept-image::before {
-                display: none;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .features-images {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .room-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .requirements-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-row {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-label {
-                border-bottom: none;
-            }
-
-            .pricing-desc {
-                padding-top: 0;
-            }
-
-            .pricing-amount {
-                justify-content: flex-start;
-                padding-top: 0;
-            }
-
-            .contact-methods {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .contact-divider {
-                flex-direction: row;
-                min-height: auto;
-                padding: 1rem 0;
-            }
-
-            .contact-divider::before,
-            .contact-divider::after {
-                width: auto;
-                height: 1px;
-                flex: 1;
-            }
-
-            .contact-divider span {
-                padding: 0 1rem;
-            }
-
-            .footer-main {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 0.8rem 1rem;
-            }
-
-            nav, .header-contact {
-                display: none;
-            }
-
-            .logo svg {
-                height: 40px;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            section {
-                padding: 80px 1rem;
-            }
-
-            .section-title {
-                font-size: 1.4rem;
-            }
-
-            .facility-row {
-                grid-template-columns: 1fr;
-            }
-
-            .facility-label {
-                padding: 0.8rem 1rem;
-                border-bottom: 1px solid var(--color-border);
-            }
-
-            .cta-phone {
-                font-size: 1.3rem;
-                padding: 16px 30px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-form {
-                padding: 1.5rem;
-            }
-
-            .room-images {
-                grid-template-columns: 1fr;
-            }
-
-            .room-images img:first-child {
-                height: 200px;
-            }
-        }
-    </style>
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="design-system/harvest.css">
+    <link rel="stylesheet" href="design-system/pages/resthome.css">
 </head>
 <body>
-    <!-- ヘッダー -->
-    <header>
-        <div class="header-inner">
+    <!-- Skip Navigation -->
+    <a href="#main" class="skip-link">本文へスキップ</a>
+
+    <!-- Header -->
+    <header class="header header--transparent">
+        <div class="header-container">
             <a href="index.html" class="logo">
-                <svg viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="5" y="5" width="50" height="50" fill="none" stroke="#c9a868" stroke-width="1"/>
+                <svg class="logo-image" viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5" y="5" width="50" height="50" fill="none" stroke="#b8956e" stroke-width="1"/>
                     <g transform="translate(30, 32)">
-                        <path d="M0 -18 Q3 -3 0 18" fill="none" stroke="#c9a868" stroke-width="1.5" stroke-linecap="round"/>
-                        <ellipse cx="-5" cy="-12" rx="3" ry="5" fill="#c9a868" transform="rotate(-28 -5 -12)"/>
-                        <ellipse cx="-6" cy="-4" rx="3" ry="5" fill="#c9a868" transform="rotate(-22 -6 -4)"/>
-                        <ellipse cx="5" cy="-12" rx="3" ry="5" fill="#c9a868" transform="rotate(28 5 -12)"/>
-                        <ellipse cx="6" cy="-4" rx="3" ry="5" fill="#c9a868" transform="rotate(22 6 -4)"/>
-                        <path d="M0 8 Q-8 12 -12 20" fill="none" stroke="#c9a868" stroke-width="1" stroke-linecap="round"/>
-                        <path d="M0 8 Q8 12 12 20" fill="none" stroke="#c9a868" stroke-width="1" stroke-linecap="round"/>
+                        <path d="M0 -18 Q3 -3 0 18" fill="none" stroke="#b8956e" stroke-width="1.5" stroke-linecap="round"/>
+                        <ellipse cx="-5" cy="-12" rx="3" ry="5" fill="#b8956e" transform="rotate(-28 -5 -12)"/>
+                        <ellipse cx="-6" cy="-4" rx="3" ry="5" fill="#b8956e" transform="rotate(-22 -6 -4)"/>
+                        <ellipse cx="5" cy="-12" rx="3" ry="5" fill="#b8956e" transform="rotate(28 5 -12)"/>
+                        <ellipse cx="6" cy="-4" rx="3" ry="5" fill="#b8956e" transform="rotate(22 6 -4)"/>
+                        <path d="M0 8 Q-8 12 -12 20" fill="none" stroke="#b8956e" stroke-width="1" stroke-linecap="round"/>
+                        <path d="M0 8 Q8 12 12 20" fill="none" stroke="#b8956e" stroke-width="1" stroke-linecap="round"/>
                     </g>
                     <text x="70" y="32" font-family="'Shippori Mincho', serif" font-size="22" font-weight="600" fill="#ffffff" letter-spacing="0.12em">HARVEST</text>
-                    <text x="70" y="48" font-family="'Shippori Mincho', serif" font-size="8" fill="#c9a868" letter-spacing="0.1em">住宅型有料老人ホーム</text>
+                    <text x="70" y="48" font-family="'Shippori Mincho', serif" font-size="8" fill="#b8956e" letter-spacing="0.1em">住宅型有料老人ホーム</text>
                 </svg>
             </a>
-            <nav>
-                <ul>
-                    <li><a href="#concept">コンセプト</a></li>
-                    <li><a href="#features">サービス</a></li>
-                    <li><a href="#room">居室</a></li>
-                    <li><a href="#pricing">料金</a></li>
-                    <li><a href="#facility">施設情報</a></li>
-                    <li><a href="dayservice.html">デイサービス</a></li>
+            <nav class="nav" aria-label="メインナビゲーション">
+                <ul class="nav-list">
+                    <li><a href="#concept" class="nav-link">コンセプト</a></li>
+                    <li><a href="#features" class="nav-link">サービス</a></li>
+                    <li><a href="#room" class="nav-link">居室</a></li>
+                    <li><a href="#pricing" class="nav-link">料金</a></li>
+                    <li><a href="#facility" class="nav-link">施設情報</a></li>
+                    <li><a href="dayservice.html" class="nav-link">デイサービス</a></li>
                 </ul>
             </nav>
-            <div class="header-contact">
-                <a href="tel:099-296-9844" class="header-contact-btn tel">TEL</a>
-                <a href="#contact" class="header-contact-btn mail">MAIL</a>
+            <div class="nav-actions">
+                <a href="tel:099-296-9844" class="btn btn-secondary btn-sm">TEL</a>
+                <a href="#contact" class="btn btn-primary btn-sm">MAIL</a>
             </div>
+
+            <!-- Mobile Toggle -->
+            <button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false">
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
         </div>
     </header>
 
-    <!-- ヒーローセクション -->
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-badge">住宅型有料老人ホーム</div>
-            <h1>あなたらしい<span>暮らし</span>を<br>ここから、はじめる</h1>
-            <p class="hero-description">
-                安心と快適を備えた住まいで、<br>
-                ゆとりある毎日をお届けします
-            </p>
-            <div class="hero-line"></div>
-        </div>
-    </section>
+    <!-- Mobile Navigation -->
+    <div class="nav-mobile" id="mobile-nav" role="dialog" aria-label="モバイルメニュー">
+        <button class="nav-mobile-close btn btn-icon btn-ghost" aria-label="メニューを閉じる">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <a href="#concept" class="nav-mobile-link">コンセプト</a>
+        <a href="#features" class="nav-mobile-link">サービス</a>
+        <a href="#room" class="nav-mobile-link">居室</a>
+        <a href="#pricing" class="nav-mobile-link">料金</a>
+        <a href="#facility" class="nav-mobile-link">施設情報</a>
+        <a href="#contact" class="nav-mobile-link">お問い合わせ</a>
+        <a href="dayservice.html" class="nav-mobile-link">デイサービス</a>
+    </div>
 
-    <!-- コンセプトセクション -->
-    <section class="concept" id="concept">
-        <div class="section-inner">
-            <div class="concept-content">
-                <div class="concept-image">
-                    <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=800&q=80" alt="快適な居住空間">
-                </div>
-                <div class="concept-text">
-                    <h2>「第二の我が家」として<br>安心して暮らせる住まい</h2>
-                    <p>
-                        住宅型有料老人ホーム ハーベストは、ご入居者様お一人おひとりが自分らしく、安心して暮らせる住まいを目指しています。
-                    </p>
-                    <p>
-                        少人数制ならではのきめ細やかなサービスと、24時間体制の見守りで、ご家族様にも安心していただける環境を整えております。
-                    </p>
-                    <dl class="concept-details">
-                        <dt>CAPACITY</dt>
-                        <dd>定員8名の少人数制</dd>
-                        <dt>CARE</dt>
-                        <dd>24時間スタッフ常駐 / 訪問介護サービス利用可</dd>
-                    </dl>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Main Content -->
+    <main id="main">
 
-    <!-- 特徴セクション -->
-    <section class="features" id="features">
-        <div class="section-inner">
-            <div class="section-header">
-                <p class="section-en">SERVICE</p>
-                <h2 class="section-title">サービスの特徴</h2>
-                <div class="section-line"></div>
+        <!-- Hero Section -->
+        <section class="resthome-hero" aria-label="ヒーロー">
+            <div class="resthome-hero-bg" role="img" aria-label="老人ホームの温かな風景"></div>
+            <div class="resthome-hero-overlay"></div>
+            <div class="resthome-hero-content">
+                <span class="resthome-hero-badge">住宅型有料老人ホーム</span>
+                <h1 class="resthome-hero-title">
+                    あなたらしい<span class="accent">暮らし</span>を<br>ここから、はじめる
+                </h1>
+                <p class="resthome-hero-subtitle">
+                    安心と快適を備えた住まいで、<br>
+                    ゆとりある毎日をお届けします
+                </p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <p class="feature-number">01</p>
-                    <div class="feature-icon">🏠</div>
-                    <h3 class="feature-title">少人数制の安心感</h3>
-                    <p class="feature-description">
-                        定員8名の少人数制だからこそ、お一人おひとりに目が届く丁寧なケアを実現しています。
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <p class="feature-number">02</p>
-                    <div class="feature-icon">🌙</div>
-                    <h3 class="feature-title">24時間見守り体制</h3>
-                    <p class="feature-description">
-                        スタッフが24時間常駐し、夜間も安心してお過ごしいただける体制を整えています。
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <p class="feature-number">03</p>
-                    <div class="feature-icon">🍽️</div>
-                    <h3 class="feature-title">栄養バランスの取れた食事</h3>
-                    <p class="feature-description">
-                        毎日の食事は栄養バランスを考慮し、季節感のあるメニューをご提供いたします。
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <p class="feature-number">04</p>
-                    <div class="feature-icon">🏥</div>
-                    <h3 class="feature-title">医療機関との連携</h3>
-                    <p class="feature-description">
-                        協力医療機関との連携により、日々の健康管理から緊急時の対応まで安心です。
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <p class="feature-number">05</p>
-                    <div class="feature-icon">🌿</div>
-                    <h3 class="feature-title">デイサービス併設</h3>
-                    <p class="feature-description">
-                        併設のデイサービスでマッサージやリハビリを受けることができます。
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <p class="feature-number">06</p>
-                    <div class="feature-icon">👨‍👩‍👧</div>
-                    <h3 class="feature-title">ご家族様との交流</h3>
-                    <p class="feature-description">
-                        ご家族様の面会や外出・外泊も自由。大切な方との時間を大切にしています。
-                    </p>
-                </div>
+            <div class="resthome-hero-scroll" aria-hidden="true">
+                <span>SCROLL</span>
+                <svg width="16" height="24" viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="8" y1="0" x2="8" y2="20"/>
+                    <polyline points="3,15 8,20 13,15"/>
+                </svg>
             </div>
-            <div class="features-images">
-                <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=400&q=80" alt="居室">
-                <img src="https://images.unsplash.com/photo-1559599189-fe84dea4eb79?w=400&q=80" alt="共有スペース">
-                <img src="https://images.unsplash.com/photo-1556911073-52527ac43761?w=400&q=80" alt="ケア">
-                <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&q=80" alt="施設外観">
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 居室紹介 -->
-    <section class="room" id="room">
-        <div class="section-inner">
-            <div class="section-header">
-                <p class="section-en">ROOM</p>
-                <h2 class="section-title">居室のご案内</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="room-content">
-                <div class="room-images">
-                    <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=800&q=80" alt="居室メイン">
-                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&q=80" alt="居室詳細1">
-                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=80" alt="居室詳細2">
+        <!-- Concept Section -->
+        <section class="section section--cream" id="concept" aria-labelledby="concept-title">
+            <div class="container container--content">
+                <div class="concept-grid reveal">
+                    <div class="concept-image">
+                        <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=800&q=80"
+                             alt="快適な居住空間"
+                             width="800" height="600"
+                             loading="lazy">
+                        <div class="concept-image-accent"></div>
+                    </div>
+                    <div class="concept-text">
+                        <span class="section-label">CONCEPT</span>
+                        <h2 id="concept-title">
+                            「第二の我が家」として<br>安心して暮らせる住まい
+                        </h2>
+                        <p class="concept-lead">
+                            住宅型有料老人ホーム ハーベストは、ご入居者様お一人おひとりが自分らしく、安心して暮らせる住まいを目指しています。
+                        </p>
+                        <p class="concept-body">
+                            少人数制ならではのきめ細やかなサービスと、24時間体制の見守りで、ご家族様にも安心していただける環境を整えております。
+                        </p>
+                        <dl class="mt-6">
+                            <div class="card-info mb-4">
+                                <div class="card-info-icon">8</div>
+                                <div class="card-info-content">
+                                    <dt class="card-info-title">CAPACITY</dt>
+                                    <dd class="card-info-text">定員8名の少人数制</dd>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <div class="card-info-icon">24</div>
+                                <div class="card-info-content">
+                                    <dt class="card-info-title">CARE</dt>
+                                    <dd class="card-info-text">24時間スタッフ常駐 / 訪問介護サービス利用可</dd>
+                                </div>
+                            </div>
+                        </dl>
+                    </div>
                 </div>
-                <div class="room-info">
-                    <h3>プライベートを大切にした個室</h3>
-                    <p>
-                        全室個室で、ご自身の時間を大切にお過ごしいただけます。使い慣れた家具や思い出の品をお持ち込みいただき、ご自分らしい空間をつくっていただけます。
-                    </p>
-                    <p>
-                        各居室にはナースコール、エアコンを完備。安全と快適さを両立した設計となっております。
-                    </p>
-                    <div class="room-specs">
-                        <div class="room-spec-item">
-                            <span class="room-spec-label">居室タイプ</span>
-                            <span class="room-spec-value">全室個室</span>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section section--dark" id="features" aria-labelledby="features-title">
+            <div class="container container--content">
+                <div class="section-header reveal">
+                    <span class="section-label">SERVICE</span>
+                    <h2 class="section-title" id="features-title">サービスの特徴</h2>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card card--glass reveal reveal-delay-1">
+                        <div class="feature-card-icon"><span class="section-label mb-0">01</span></div>
+                        <h3 class="feature-card-title text-inverse">少人数制の安心感</h3>
+                        <p class="feature-card-desc text-inverse-muted">
+                            定員8名の少人数制だからこそ、お一人おひとりに目が届く丁寧なケアを実現しています。
+                        </p>
+                    </div>
+                    <div class="feature-card card--glass reveal reveal-delay-2">
+                        <div class="feature-card-icon"><span class="section-label mb-0">02</span></div>
+                        <h3 class="feature-card-title text-inverse">24時間見守り体制</h3>
+                        <p class="feature-card-desc text-inverse-muted">
+                            スタッフが24時間常駐し、夜間も安心してお過ごしいただける体制を整えています。
+                        </p>
+                    </div>
+                    <div class="feature-card card--glass reveal reveal-delay-3">
+                        <div class="feature-card-icon"><span class="section-label mb-0">03</span></div>
+                        <h3 class="feature-card-title text-inverse">栄養バランスの取れた食事</h3>
+                        <p class="feature-card-desc text-inverse-muted">
+                            毎日の食事は栄養バランスを考慮し、季節感のあるメニューをご提供いたします。
+                        </p>
+                    </div>
+                    <div class="feature-card card--glass reveal reveal-delay-1">
+                        <div class="feature-card-icon"><span class="section-label mb-0">04</span></div>
+                        <h3 class="feature-card-title text-inverse">医療機関との連携</h3>
+                        <p class="feature-card-desc text-inverse-muted">
+                            協力医療機関との連携により、日々の健康管理から緊急時の対応まで安心です。
+                        </p>
+                    </div>
+                    <div class="feature-card card--glass reveal reveal-delay-2">
+                        <div class="feature-card-icon"><span class="section-label mb-0">05</span></div>
+                        <h3 class="feature-card-title text-inverse">デイサービス併設</h3>
+                        <p class="feature-card-desc text-inverse-muted">
+                            併設のデイサービスでマッサージやリハビリを受けることができます。
+                        </p>
+                    </div>
+                    <div class="feature-card card--glass reveal reveal-delay-3">
+                        <div class="feature-card-icon"><span class="section-label mb-0">06</span></div>
+                        <h3 class="feature-card-title text-inverse">ご家族様との交流</h3>
+                        <p class="feature-card-desc text-inverse-muted">
+                            ご家族様の面会や外出・外泊も自由。大切な方との時間を大切にしています。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature Images Gallery -->
+                <div class="gallery mt-12 reveal">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=400&q=80"
+                             alt="居室" width="400" height="300" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1559599189-fe84dea4eb79?w=400&q=80"
+                             alt="共有スペース" width="400" height="300" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1556911073-52527ac43761?w=400&q=80"
+                             alt="ケア" width="400" height="300" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&q=80"
+                             alt="施設外観" width="400" height="300" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Room Section -->
+        <section class="section section--cream" id="room" aria-labelledby="room-title">
+            <div class="container container--content">
+                <div class="section-header reveal">
+                    <span class="section-label">ROOM</span>
+                    <h2 class="section-title" id="room-title">居室のご案内</h2>
+                </div>
+
+                <div class="room-showcase reveal">
+                    <div class="room-images">
+                        <div class="room-image room-image--large">
+                            <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=800&q=80"
+                                 alt="居室メイン" width="800" height="450" loading="lazy">
                         </div>
-                        <div class="room-spec-item">
-                            <span class="room-spec-label">定員</span>
-                            <span class="room-spec-value">8名</span>
+                        <div class="room-image room-image--small">
+                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&q=80"
+                                 alt="居室の設備" width="400" height="300" loading="lazy">
                         </div>
-                        <div class="room-spec-item">
-                            <span class="room-spec-label">設備</span>
-                            <span class="room-spec-value">エアコン・ナースコール完備</span>
-                        </div>
-                        <div class="room-spec-item">
-                            <span class="room-spec-label">家具持込</span>
-                            <span class="room-spec-value">可能</span>
+                        <div class="room-image room-image--small">
+                            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=80"
+                                 alt="居室の内装" width="400" height="300" loading="lazy">
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 料金セクション -->
-    <section class="pricing" id="pricing">
-        <div class="section-inner">
-            <div class="section-header">
-                <p class="section-en">PRICE</p>
-                <h2 class="section-title">利用料金</h2>
-                <div class="section-line"></div>
-            </div>
-
-            <div class="pricing-intro">
-                <p>入居時費用と月額費用のご案内です。<br>詳細はお気軽にお問い合わせください。</p>
-            </div>
-
-            <!-- 入居時費用 -->
-            <div class="pricing-table" style="margin-bottom: 2rem;">
-                <div class="pricing-table-header">
-                    <h3>入居時費用</h3>
-                </div>
-                <div class="pricing-table-body">
-                    <div class="pricing-row">
-                        <div class="pricing-label">敷金</div>
-                        <div class="pricing-desc">退去時の原状回復費用等に充当</div>
-                        <div class="pricing-amount">100,000<span class="pricing-unit">円</span></div>
+                    <div class="room-info">
+                        <h3>プライベートを大切にした個室</h3>
+                        <p class="body-normal mb-4">
+                            全室個室で、ご自身の時間を大切にお過ごしいただけます。使い慣れた家具や思い出の品をお持ち込みいただき、ご自分らしい空間をつくっていただけます。
+                        </p>
+                        <p class="body-small mb-6">
+                            各居室にはナースコール、エアコンを完備。安全と快適さを両立した設計となっております。
+                        </p>
+                        <div class="room-specs">
+                            <div class="room-spec-row">
+                                <span class="room-spec-label">居室タイプ</span>
+                                <span class="room-spec-value">全室個室</span>
+                            </div>
+                            <div class="room-spec-row">
+                                <span class="room-spec-label">定員</span>
+                                <span class="room-spec-value">8名</span>
+                            </div>
+                            <div class="room-spec-row">
+                                <span class="room-spec-label">設備</span>
+                                <span class="room-spec-value">エアコン・ナースコール完備</span>
+                            </div>
+                            <div class="room-spec-row">
+                                <span class="room-spec-label">家具持込</span>
+                                <span class="room-spec-value">可能</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- 月額費用 -->
-            <div class="pricing-table">
-                <div class="pricing-table-header">
-                    <h3>月額費用</h3>
+        <!-- Pricing Section -->
+        <section class="section section--dark" id="pricing" aria-labelledby="pricing-title">
+            <div class="container container--content">
+                <div class="section-header reveal">
+                    <span class="section-label">PRICE</span>
+                    <h2 class="section-title" id="pricing-title">利用料金</h2>
                 </div>
-                <div class="pricing-table-body">
-                    <div class="pricing-row">
-                        <div class="pricing-label">家賃</div>
-                        <div class="pricing-desc">居室利用料</div>
-                        <div class="pricing-amount">45,000<span class="pricing-unit">円</span></div>
-                    </div>
-                    <div class="pricing-row">
-                        <div class="pricing-label">管理費</div>
-                        <div class="pricing-desc">共用部分の維持管理・光熱費等</div>
-                        <div class="pricing-amount">20,000<span class="pricing-unit">円</span></div>
-                    </div>
-                    <div class="pricing-row">
-                        <div class="pricing-label">食費</div>
-                        <div class="pricing-desc">1日3食（30日分）</div>
-                        <div class="pricing-amount">45,000<span class="pricing-unit">円</span></div>
-                    </div>
-                    <div class="pricing-row total">
-                        <div class="pricing-label">月額合計</div>
-                        <div class="pricing-desc"></div>
-                        <div class="pricing-amount">110,000<span class="pricing-unit">円〜</span></div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="pricing-note">
-                <p>※ 上記料金は目安です。介護サービス費は別途必要となります。</p>
-                <p>※ 介護保険サービスをご利用の場合、自己負担分が必要です。</p>
-                <p>※ 医療費、日用品費、理美容費等は別途実費となります。</p>
-                <p>※ 詳しい料金についてはお気軽にお問い合わせください。</p>
-            </div>
-        </div>
-    </section>
+                <p class="pricing-intro reveal">
+                    入居時費用と月額費用のご案内です。<br>詳細はお気軽にお問い合わせください。
+                </p>
 
-    <!-- 入居条件 -->
-    <section class="requirements" id="requirements">
-        <div class="section-inner">
-            <div class="section-header">
-                <p class="section-en">REQUIREMENTS</p>
-                <h2 class="section-title">入居条件</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="requirements-grid">
-                <div class="requirement-card">
-                    <h4>入居対象</h4>
-                    <ul>
-                        <li>60歳以上の方</li>
-                        <li>要支援・要介護認定を受けている方</li>
-                        <li>自傷・他害の恐れのない方</li>
-                        <li>共同生活に支障のない方</li>
-                    </ul>
+                <div class="pricing-grid reveal">
+                    <div class="pricing-card">
+                        <div class="pricing-card-header">
+                            <span class="pricing-card-label">入居時</span>
+                        </div>
+                        <div class="pricing-card-body">
+                            <div class="pricing-card-price">100,000<small>円</small></div>
+                            <p class="pricing-card-note">敷金（退去時の原状回復費用等に充当）</p>
+                        </div>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-card-header">
+                            <span class="pricing-card-label">月額費用</span>
+                        </div>
+                        <div class="pricing-card-body">
+                            <div class="pricing-card-price">110,000<small>円〜</small></div>
+                            <p class="pricing-card-note">家賃45,000円 + 管理費20,000円 + 食費45,000円</p>
+                        </div>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-card-header">
+                            <span class="pricing-card-label">食費内訳</span>
+                        </div>
+                        <div class="pricing-card-body">
+                            <div class="pricing-card-price">45,000<small>円/月</small></div>
+                            <p class="pricing-card-note">1日3食（30日分）栄養バランスを考慮</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="requirement-card">
-                    <h4>入居までの流れ</h4>
-                    <ul>
-                        <li>お問い合わせ・ご相談</li>
-                        <li>施設見学・面談</li>
-                        <li>入居審査・契約</li>
-                        <li>ご入居</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- 施設情報 -->
-    <section class="facility" id="facility">
-        <div class="section-inner">
-            <div class="section-header">
-                <p class="section-en">INFORMATION</p>
-                <h2 class="section-title">施設情報</h2>
-                <div class="section-line"></div>
+                <p class="pricing-note reveal">
+                    ※ 上記料金は目安です。介護サービス費は別途必要となります。<br>
+                    ※ 詳しい料金についてはお気軽にお問い合わせください。
+                </p>
             </div>
-            <div class="facility-card">
-                <div class="facility-header">
-                    <h3>住宅型有料老人ホーム ハーベスト</h3>
+        </section>
+
+        <!-- Requirements Section -->
+        <section class="section section--white" id="requirements" aria-labelledby="requirements-title">
+            <div class="container container--content">
+                <div class="section-header reveal">
+                    <span class="section-label">REQUIREMENTS</span>
+                    <h2 class="section-title" id="requirements-title">入居条件</h2>
                 </div>
-                <div class="facility-body">
+
+                <div class="grid grid-2 grid-md-1 gap-8 reveal">
+                    <div class="requirements-card">
+                        <h3 class="heading-4 mb-4" style="padding-bottom:var(--space-3);border-bottom:1px solid var(--color-accent)">入居対象</h3>
+                        <div class="requirements-list">
+                            <div class="requirement-item">
+                                <span class="requirement-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="3"/></svg></span>
+                                <span class="requirement-text">60歳以上の方</span>
+                            </div>
+                            <div class="requirement-item">
+                                <span class="requirement-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="3"/></svg></span>
+                                <span class="requirement-text">要支援・要介護認定を受けている方</span>
+                            </div>
+                            <div class="requirement-item">
+                                <span class="requirement-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="3"/></svg></span>
+                                <span class="requirement-text">自傷・他害の恐れのない方</span>
+                            </div>
+                            <div class="requirement-item">
+                                <span class="requirement-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="3"/></svg></span>
+                                <span class="requirement-text">共同生活に支障のない方</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="requirements-card">
+                        <h3 class="heading-4 mb-4" style="padding-bottom:var(--space-3);border-bottom:1px solid var(--color-accent)">入居までの流れ</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-time">STEP 01</div>
+                                <div class="timeline-title">お問い合わせ・ご相談</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-time">STEP 02</div>
+                                <div class="timeline-title">施設見学・面談</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-time">STEP 03</div>
+                                <div class="timeline-title">入居審査・契約</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-time">STEP 04</div>
+                                <div class="timeline-title">ご入居</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facility Section -->
+        <section class="section section--cream" id="facility" aria-labelledby="facility-title">
+            <div class="container container--content">
+                <div class="section-header reveal">
+                    <span class="section-label">INFORMATION</span>
+                    <h2 class="section-title" id="facility-title">施設情報</h2>
+                </div>
+
+                <div class="facility-table reveal">
                     <div class="facility-row">
                         <div class="facility-label">事業所名</div>
                         <div class="facility-value">住宅型有料老人ホーム ハーベスト</div>
@@ -1447,127 +412,165 @@
                     </div>
                     <div class="facility-row">
                         <div class="facility-label">電話番号</div>
-                        <div class="facility-value"><a href="tel:099-296-9844">099-296-9844</a></div>
+                        <div class="facility-value"><a href="tel:099-296-9844" class="text-accent">099-296-9844</a></div>
+                    </div>
+                </div>
+
+                <div class="map-wrapper reveal">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3398.0!2d130.5475!3d31.5425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x353e626f1f1f1f1f%3A0x1f1f1f1f1f1f1f1f!2z6bm_5YWQ5bO255yM6bm_5YWQ5bO25biC5p2x6LC35bGxMuS4geebrjQw55Wq77yR77yV5Y-3!5e0!3m2!1sja!2sjp!4v1"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="ハーベストの地図">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact / CTA Section -->
+        <section class="section section--dark" id="contact" aria-labelledby="contact-title">
+            <div class="container container--content">
+                <div class="section-header reveal">
+                    <span class="section-label">CONTACT</span>
+                    <h2 class="section-title" id="contact-title">お問い合わせ</h2>
+                    <p class="section-description">見学・入居相談を承っております</p>
+                </div>
+
+                <div class="cta-grid reveal">
+                    <div class="cta-phone">
+                        <span class="cta-phone-label">お電話でのお問い合わせ</span>
+                        <a href="tel:099-296-9844" class="cta-phone-number">099-296-9844</a>
+                        <span class="cta-phone-hours">受付時間：8:30〜17:30</span>
+                    </div>
+
+                    <div class="cta-form-wrapper">
+                        <h3>メールでのお問い合わせ</h3>
+                        <form class="form" action="https://formsubmit.co/ltd.harvest.resthome@gmail.com" method="POST">
+                            <input type="hidden" name="_subject" value="【ハーベスト有料老人ホーム】ホームページからのお問い合わせ">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="#">
+
+                            <div class="form-row form-row--2">
+                                <div class="form-group">
+                                    <label for="name" class="form-label form-label--light">お名前 <span class="badge badge--filled" style="font-size:0.65rem;padding:2px 6px">必須</span></label>
+                                    <input type="text" id="name" name="name" required class="form-input form-input--dark" placeholder="山田 太郎">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tel" class="form-label form-label--light">電話番号 <span class="badge badge--filled" style="font-size:0.65rem;padding:2px 6px">必須</span></label>
+                                    <input type="tel" id="tel" name="tel" required class="form-input form-input--dark" placeholder="099-000-0000">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label form-label--light">メールアドレス</label>
+                                <input type="email" id="email" name="email" class="form-input form-input--dark" placeholder="example@email.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inquiry-type" class="form-label form-label--light">お問い合わせ種別</label>
+                                <select id="inquiry-type" name="inquiry-type" class="form-input form-input--dark form-select form-select--dark">
+                                    <option value="">選択してください</option>
+                                    <option value="見学希望">見学希望</option>
+                                    <option value="入居相談">入居相談</option>
+                                    <option value="料金について">料金について</option>
+                                    <option value="サービスについて">サービスについて</option>
+                                    <option value="その他">その他</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="form-label form-label--light">お問い合わせ内容</label>
+                                <textarea id="message" name="message" rows="5" class="form-input form-input--dark form-textarea" placeholder="ご質問やご要望をご記入ください"></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary btn-block btn-lg">送信する</button>
+                            </div>
+
+                            <p class="caption text-center mt-4" style="color:rgba(255,255,255,0.5)">
+                                ※ 送信後、確認メールが届かない場合はお電話にてご連絡ください。
+                            </p>
+                        </form>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="map-container">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3398.0!2d130.5475!3d31.5425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x353e626f1f1f1f1f%3A0x1f1f1f1f1f1f1f1f!2z6bm_5YWQ5bO255yM6bm_5YWQ5bO25biC5p2x6LC35bGxMuS4geebrjQw55Wq77yR77yV5Y-3!5e0!3m2!1sja!2sjp!4v1"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </div>
-    </section>
+    </main>
 
-    <!-- CTA -->
-    <section class="cta" id="contact">
-        <div class="cta-bg"></div>
-        <div class="cta-content">
-            <div class="section-header">
-                <p class="section-en">CONTACT</p>
-                <h2 class="section-title">お問い合わせ</h2>
-                <div class="section-line"></div>
-            </div>
-            <p>見学・入居相談を承っております</p>
-
-            <div class="contact-methods">
-                <div class="contact-phone">
-                    <p class="contact-label">お電話でのお問い合わせ</p>
-                    <a href="tel:099-296-9844" class="cta-phone">099-296-9844</a>
-                    <p class="cta-note">受付時間：8:30〜17:30</p>
-                </div>
-
-                <div class="contact-divider">
-                    <span>または</span>
-                </div>
-
-                <div class="contact-form-wrap">
-                    <p class="contact-label">メールでのお問い合わせ</p>
-                    <form class="contact-form" action="https://formsubmit.co/ltd.harvest.resthome@gmail.com" method="POST">
-                        <input type="hidden" name="_subject" value="【ハーベスト有料老人ホーム】ホームページからのお問い合わせ">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="#">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">お名前 <span class="required">必須</span></label>
-                                <input type="text" id="name" name="name" required placeholder="山田 太郎">
-                            </div>
-                            <div class="form-group">
-                                <label for="tel">電話番号 <span class="required">必須</span></label>
-                                <input type="tel" id="tel" name="tel" required placeholder="099-000-0000">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">メールアドレス</label>
-                            <input type="email" id="email" name="email" placeholder="example@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="inquiry-type">お問い合わせ種別</label>
-                            <select id="inquiry-type" name="inquiry-type">
-                                <option value="">選択してください</option>
-                                <option value="見学希望">見学希望</option>
-                                <option value="入居相談">入居相談</option>
-                                <option value="料金について">料金について</option>
-                                <option value="サービスについて">サービスについて</option>
-                                <option value="その他">その他</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">お問い合わせ内容</label>
-                            <textarea id="message" name="message" rows="5" placeholder="ご質問やご要望をご記入ください"></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">送信する</button>
-                    </form>
-                    <p class="form-note">※ 送信後、確認メールが届かない場合はお電話にてご連絡ください。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- フッター -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-main">
-                <div class="footer-info">
-                    <div class="footer-logo">
-                        <svg viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="5" y="5" width="50" height="50" fill="none" stroke="#c9a868" stroke-width="1"/>
-                            <g transform="translate(30, 32)">
-                                <path d="M0 -18 Q3 -3 0 18" fill="none" stroke="#c9a868" stroke-width="1.5" stroke-linecap="round"/>
-                                <ellipse cx="-5" cy="-12" rx="3" ry="5" fill="#c9a868" transform="rotate(-28 -5 -12)"/>
-                                <ellipse cx="-6" cy="-4" rx="3" ry="5" fill="#c9a868" transform="rotate(-22 -6 -4)"/>
-                                <ellipse cx="5" cy="-12" rx="3" ry="5" fill="#c9a868" transform="rotate(28 5 -12)"/>
-                                <ellipse cx="6" cy="-4" rx="3" ry="5" fill="#c9a868" transform="rotate(22 6 -4)"/>
-                                <path d="M0 8 Q-8 12 -12 20" fill="none" stroke="#c9a868" stroke-width="1" stroke-linecap="round"/>
-                                <path d="M0 8 Q8 12 12 20" fill="none" stroke="#c9a868" stroke-width="1" stroke-linecap="round"/>
-                            </g>
-                            <text x="70" y="32" font-family="'Shippori Mincho', serif" font-size="22" font-weight="600" fill="#ffffff" letter-spacing="0.12em">HARVEST</text>
-                            <text x="70" y="48" font-family="'Shippori Mincho', serif" font-size="8" fill="#c9a868" letter-spacing="0.1em">住宅型有料老人ホーム</text>
-                        </svg>
-                    </div>
-                    <p>〒891-0115 鹿児島県鹿児島市東谷山2丁目40番15号</p>
-                    <p><a href="tel:099-296-9844">TEL 099-296-9844</a></p>
-                </div>
-                <div class="footer-nav">
-                    <ul>
-                        <li><a href="index.html">TOP</a></li>
-                        <li><a href="#concept">コンセプト</a></li>
-                        <li><a href="#features">サービス</a></li>
-                        <li><a href="#room">居室</a></li>
-                        <li><a href="#pricing">料金</a></li>
-                        <li><a href="#facility">施設情報</a></li>
-                        <li><a href="dayservice.html">デイサービス</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 HARVEST All Rights Reserved.</p>
-            </div>
+    <!-- Footer -->
+    <footer class="resthome-footer">
+        <div class="container container--content">
+            <nav class="resthome-footer-nav" aria-label="フッターナビゲーション">
+                <a href="index.html">TOP</a>
+                <a href="#concept">コンセプト</a>
+                <a href="#features">サービス</a>
+                <a href="#room">居室</a>
+                <a href="#pricing">料金</a>
+                <a href="#facility">施設情報</a>
+                <a href="dayservice.html">デイサービス</a>
+            </nav>
+            <div class="resthome-footer-divider"></div>
+            <p class="resthome-footer-company">住宅型有料老人ホーム ハーベスト</p>
+            <p class="resthome-footer-copyright">&copy; 2025 HARVEST All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Intersection Observer for scroll reveal animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        revealElements.forEach(el => observer.observe(el));
+
+        // Mobile navigation
+        const navToggle = document.querySelector('.nav-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileLinks = mobileNav.querySelectorAll('.nav-mobile-link');
+        const mobileClose = mobileNav.querySelector('.nav-mobile-close');
+
+        function openNav() {
+            mobileNav.classList.add('nav-mobile--active');
+            navToggle.classList.add('nav-toggle--active');
+            navToggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeNav() {
+            mobileNav.classList.remove('nav-mobile--active');
+            navToggle.classList.remove('nav-toggle--active');
+            navToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        navToggle.addEventListener('click', () => {
+            mobileNav.classList.contains('nav-mobile--active') ? closeNav() : openNav();
+        });
+
+        mobileClose.addEventListener('click', closeNav);
+        mobileLinks.forEach(link => link.addEventListener('click', closeNav));
+
+        // Header scroll state
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('header--scrolled');
+                header.classList.remove('header--transparent');
+            } else {
+                header.classList.remove('header--scrolled');
+                header.classList.add('header--transparent');
+            }
+        }, { passive: true });
+    </script>
 </body>
 </html>
