@@ -373,9 +373,9 @@
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-6);
-  max-width: 900px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -438,10 +438,71 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
+/* Pricing Breakdown Table */
+.pricing-breakdown,
+.pricing-extra {
+  max-width: 700px;
+  margin: var(--space-10) auto 0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+}
+
+.pricing-breakdown h3,
+.pricing-extra h3 {
+  color: var(--color-white);
+}
+
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pricing-table th,
+.pricing-table td {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-small);
+  color: rgba(255, 255, 255, 0.8);
+  text-align: left;
+}
+
+.pricing-table th {
+  white-space: nowrap;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+  width: 140px;
+}
+
+.pricing-table td {
+  text-align: right;
+}
+
+.pricing-table tr:not(.pricing-table-sub) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pricing-table-sub td {
+  padding: 0 var(--space-4) var(--space-3);
+  font-size: var(--font-size-caption);
+  color: rgba(255, 255, 255, 0.45);
+  text-align: left;
+  line-height: var(--line-height-normal);
+}
+
+.pricing-extra .pricing-card-note {
+  margin-top: 0;
+  line-height: var(--line-height-normal);
+}
+
 @media (max-width: 768px) {
   .pricing-grid {
     grid-template-columns: 1fr;
     max-width: 400px;
+  }
+
+  .pricing-table th {
+    width: 110px;
   }
 }
 
