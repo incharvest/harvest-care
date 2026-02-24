@@ -678,6 +678,70 @@
             color: var(--color-text-light);
         }
 
+        /* ご利用までの流れ */
+        .start-flow {
+            background: var(--color-white);
+        }
+
+        .start-flow-steps {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .start-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background: var(--color-cream);
+            padding: 1.5rem 2rem;
+            border-radius: var(--radius-medium);
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .start-step-number {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .start-step-content h4 {
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .start-step-content p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        .start-step-arrow {
+            text-align: center;
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            padding: 0.8rem 0;
+        }
+
+        .start-flow-note {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            padding: 1rem 1.5rem;
+            background: var(--color-cream-dark);
+            border-radius: var(--radius-small);
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
         /* 施設情報 */
         .facility {
             background: var(--color-cream-dark);
@@ -1467,8 +1531,8 @@
                     <li><a href="#features">特徴</a></li>
                     <li><a href="#daily-flow">一日の流れ</a></li>
                     <li><a href="#pricing">料金</a></li>
+                    <li><a href="#start-flow">ご利用の流れ</a></li>
                     <li><a href="#facility">施設情報</a></li>
-                    <li><a href="#gallery" class="gallery-link">ギャラリー</a></li>
                 </ul>
             </nav>
             <div class="header-contact">
@@ -1814,6 +1878,53 @@
                 <p>※ 介護職員等処遇改善加算等により、実際の金額は多少変動します。</p>
                 <p>※ ご利用前に担当のケアマネージャー様にご相談ください。</p>
                 <p>※ 詳しい料金についてはお気軽にお問い合わせください。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ご利用までの流れ -->
+    <section class="start-flow" id="start-flow">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">はじめての方へ</p>
+                <h2 class="section-title">ご利用までの流れ</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="start-flow-steps">
+                <div class="start-step">
+                    <div class="start-step-number">1</div>
+                    <div class="start-step-content">
+                        <h4>お問い合わせ・ご相談</h4>
+                        <p>まずはお電話またはお問い合わせフォームよりご連絡ください。ご不明な点やご質問など、お気軽にご相談いただけます。</p>
+                    </div>
+                </div>
+                <div class="start-step-arrow">▼</div>
+                <div class="start-step">
+                    <div class="start-step-number">2</div>
+                    <div class="start-step-content">
+                        <h4>見学・体験利用</h4>
+                        <p>実際に施設をご覧いただき、雰囲気やサービス内容をご確認ください。体験利用も可能です（要予約）。</p>
+                    </div>
+                </div>
+                <div class="start-step-arrow">▼</div>
+                <div class="start-step">
+                    <div class="start-step-number">3</div>
+                    <div class="start-step-content">
+                        <h4>ケアマネージャーに相談</h4>
+                        <p>担当のケアマネージャー様にご利用の意向をお伝えください。ケアプランへの組み込みを調整していただきます。</p>
+                    </div>
+                </div>
+                <div class="start-step-arrow">▼</div>
+                <div class="start-step">
+                    <div class="start-step-number">4</div>
+                    <div class="start-step-content">
+                        <h4>契約・ご利用開始</h4>
+                        <p>利用契約を締結後、ご利用開始となります。初日はスタッフが丁寧にサポートいたしますのでご安心ください。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="start-flow-note">
+                <p>※ 介護認定をまだ受けていない方は、お住まいの市区町村の窓口または地域包括支援センターにご相談ください。</p>
             </div>
         </div>
     </section>
@@ -2185,8 +2296,8 @@
                         <li><a href="#features">特徴</a></li>
                         <li><a href="#daily-flow">一日の流れ</a></li>
                         <li><a href="#pricing">料金</a></li>
+                        <li><a href="#start-flow">ご利用の流れ</a></li>
                         <li><a href="#facility">施設情報</a></li>
-                        <li><a href="#gallery">ギャラリー</a></li>
                     </ul>
                 </div>
             </div>
