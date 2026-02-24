@@ -7,30 +7,32 @@
     <title>ハーベスト｜鹿児島市のマッサージリハビリ重視型デイサービス</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- ファビコン -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a3328'/%3E%3Cg transform='translate(16,17)'%3E%3Cpath d='M0-9Q2-1 0 10' fill='none' stroke='%23c9a868' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='-3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(-25-3-6)'/%3E%3Cellipse cx='-4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(-20-4-1)'/%3E%3Cellipse cx='3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(25 3-6)'/%3E%3Cellipse cx='4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(20 4-1)'/%3E%3C/g%3E%3C/svg%3E">
     <style>
         :root {
-            --color-primary: #1a3328;
-            --color-secondary: #264d3a;
-            --color-accent: #c9a868;
-            --color-accent-light: #dfc48a;
-            --color-accent-dark: #a88a4a;
-            --color-cream: #faf8f5;
-            --color-cream-dark: #f0ebe3;
-            --color-text: #333333;
-            --color-text-light: #666666;
+            /* 地域密着型向け：親しみやすく温かみのある配色 */
+            --color-primary: #3d7a5a;
+            --color-secondary: #5a9a78;
+            --color-accent: #e8a45c;
+            --color-accent-light: #f5c98a;
+            --color-accent-dark: #c88a3a;
+            --color-cream: #fdfcfa;
+            --color-cream-dark: #f5f3ef;
+            --color-text: #3a3a3a;
+            --color-text-light: #5a5a5a;
             --color-white: #ffffff;
-            --color-border: #e0ddd5;
-            --font-display: 'Shippori Mincho', serif;
-            --font-body: 'Noto Serif JP', serif;
-            --shadow-soft: 0 4px 30px rgba(26, 51, 40, 0.08);
-            --shadow-medium: 0 8px 40px rgba(26, 51, 40, 0.12);
-            --shadow-elegant: 0 20px 60px rgba(26, 51, 40, 0.1);
-            --radius-small: 4px;
-            --radius-medium: 8px;
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --color-border: #e5e0d8;
+            /* 読みやすいゴシック体をメインに */
+            --font-display: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'メイリオ', sans-serif;
+            --font-body: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'メイリオ', sans-serif;
+            --shadow-soft: 0 2px 12px rgba(61, 122, 90, 0.08);
+            --shadow-medium: 0 4px 20px rgba(61, 122, 90, 0.12);
+            --shadow-elegant: 0 8px 30px rgba(61, 122, 90, 0.1);
+            --radius-small: 6px;
+            --radius-medium: 12px;
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -47,9 +49,9 @@
             font-family: var(--font-body);
             color: var(--color-text);
             background-color: var(--color-cream);
-            line-height: 2;
+            line-height: 1.9;
             font-weight: 400;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.02em;
         }
 
         /* ヘッダー */
@@ -501,10 +503,21 @@
             font-weight: 600;
         }
 
+        .flow-time {
+            display: inline-block;
+            background: var(--color-accent);
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+            font-weight: 500;
+        }
+
         .flow-content p {
             color: var(--color-text-light);
             font-size: 0.9rem;
-            font-weight: 300;
+            font-weight: 400;
         }
 
         /* 料金セクション */
@@ -1202,7 +1215,7 @@
 
         /* フッター */
         footer {
-            background: #122620;
+            background: #2d5f47;
             color: var(--color-white);
             padding: 60px 2rem 30px;
         }
@@ -1432,20 +1445,20 @@
                 <!-- ロゴSVG -->
                 <svg viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
                     <!-- アイコン枠 -->
-                    <rect x="5" y="5" width="50" height="50" fill="none" stroke="#c9a868" stroke-width="1"/>
+                    <rect x="5" y="5" width="50" height="50" fill="none" stroke="#e8a45c" stroke-width="1"/>
                     <!-- 稲穂 -->
                     <g transform="translate(30, 32)">
-                        <path d="M0 -18 Q3 -3 0 18" fill="none" stroke="#c9a868" stroke-width="1.5" stroke-linecap="round"/>
-                        <ellipse cx="-5" cy="-12" rx="3" ry="5" fill="#c9a868" transform="rotate(-28 -5 -12)"/>
-                        <ellipse cx="-6" cy="-4" rx="3" ry="5" fill="#c9a868" transform="rotate(-22 -6 -4)"/>
-                        <ellipse cx="5" cy="-12" rx="3" ry="5" fill="#c9a868" transform="rotate(28 5 -12)"/>
-                        <ellipse cx="6" cy="-4" rx="3" ry="5" fill="#c9a868" transform="rotate(22 6 -4)"/>
-                        <path d="M0 8 Q-8 12 -12 20" fill="none" stroke="#c9a868" stroke-width="1" stroke-linecap="round"/>
-                        <path d="M0 8 Q8 12 12 20" fill="none" stroke="#c9a868" stroke-width="1" stroke-linecap="round"/>
+                        <path d="M0 -18 Q3 -3 0 18" fill="none" stroke="#e8a45c" stroke-width="1.5" stroke-linecap="round"/>
+                        <ellipse cx="-5" cy="-12" rx="3" ry="5" fill="#e8a45c" transform="rotate(-28 -5 -12)"/>
+                        <ellipse cx="-6" cy="-4" rx="3" ry="5" fill="#e8a45c" transform="rotate(-22 -6 -4)"/>
+                        <ellipse cx="5" cy="-12" rx="3" ry="5" fill="#e8a45c" transform="rotate(28 5 -12)"/>
+                        <ellipse cx="6" cy="-4" rx="3" ry="5" fill="#e8a45c" transform="rotate(22 6 -4)"/>
+                        <path d="M0 8 Q-8 12 -12 20" fill="none" stroke="#e8a45c" stroke-width="1" stroke-linecap="round"/>
+                        <path d="M0 8 Q8 12 12 20" fill="none" stroke="#e8a45c" stroke-width="1" stroke-linecap="round"/>
                     </g>
                     <!-- テキスト -->
-                    <text x="70" y="32" font-family="'Shippori Mincho', serif" font-size="22" font-weight="600" fill="#ffffff" letter-spacing="0.12em">ハーベスト</text>
-                    <text x="70" y="48" font-family="'Shippori Mincho', serif" font-size="8" fill="#c9a868" letter-spacing="0.1em">マッサージリハビリ重視型デイサービス</text>
+                    <text x="70" y="32" font-family="'Noto Sans JP', sans-serif" font-size="22" font-weight="600" fill="#ffffff" letter-spacing="0.08em">ハーベスト</text>
+                    <text x="70" y="48" font-family="'Noto Sans JP', sans-serif" font-size="8" fill="#e8a45c" letter-spacing="0.08em">マッサージリハビリ重視型デイサービス</text>
                 </svg>
             </a>
             <nav>
@@ -1470,11 +1483,11 @@
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="hero-badge">鹿児島市東谷山</div>
-            <h1>心と体に<span>やすらぎ</span>を<br>上質なケアをあなたに</h1>
+            <div class="hero-badge">地域密着型通所介護</div>
+            <h1>笑顔あふれる<span>毎日</span>を<br>みんなで一緒に</h1>
             <p class="hero-description">
-                マッサージとリハビリを融合した、<br>
-                一人ひとりに寄り添う丁寧なデイサービス
+                マッサージとリハビリで心も体もリフレッシュ。<br>
+                スタッフ一同、笑顔でお待ちしております。
             </p>
             <div class="hero-line"></div>
         </div>
@@ -1488,18 +1501,20 @@
                     <img src="https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=800&q=80" alt="丁寧なケア">
                 </div>
                 <div class="concept-text">
-                    <h2>マッサージとリハビリを繋ぐ<br>新しいデイサービスのかたち</h2>
+                    <h2>マッサージとリハビリで<br>いきいきとした毎日を</h2>
                     <p>
-                        ハーベストでは、専門スタッフが中心となり、生活機能の維持・向上に必要なマッサージやリハビリプログラムを提供しております。
+                        ハーベストは、地域の皆様に愛されるデイサービスを目指しています。専門スタッフが、お一人おひとりに合わせたマッサージやリハビリプログラムをご提供いたします。
                     </p>
                     <p>
-                        単に施術を受けるだけの受動的なケアではなく、ご利用者様ご本人が「できること」を大切にし、自立した生活を目指すサポートをテーマとしています。
+                        「今日も来てよかった」と思っていただけるよう、スタッフ一同、笑顔でお迎えいたします。お気軽にご相談ください。
                     </p>
                     <dl class="concept-details">
-                        <dt>SERVICE</dt>
-                        <dd>送迎 / 健康チェック / マッサージ / 機能訓練 / 入浴 / 食事</dd>
-                        <dt>TARGET</dt>
-                        <dd>要介護の介護認定を受けている方</dd>
+                        <dt>サービス内容</dt>
+                        <dd>送迎 / 健康チェック / マッサージ / 機能訓練 / 入浴 / 食事 / レクリエーション</dd>
+                        <dt>ご利用対象</dt>
+                        <dd>要介護1〜5の介護認定を受けている方</dd>
+                        <dt>送迎エリア</dt>
+                        <dd>鹿児島市内（東谷山周辺）※詳しくはお問い合わせください</dd>
                     </dl>
                 </div>
             </div>
@@ -1510,30 +1525,30 @@
     <section class="features" id="features">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-en">FEATURES</p>
+                <p class="section-en">私たちの強み</p>
                 <h2 class="section-title">サービスの特徴</h2>
                 <div class="section-line"></div>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <p class="feature-number">01</p>
-                    <h3 class="feature-title">専門的なマッサージ</h3>
+                    <h3 class="feature-title">気持ちいいマッサージ</h3>
                     <p class="feature-description">
-                        資格を持った専門スタッフが、お一人おひとりの状態に合わせた丁寧なマッサージを提供いたします。
+                        資格を持ったスタッフが、肩こり・腰痛・むくみなど、お体の状態に合わせて丁寧にマッサージいたします。
                     </p>
                 </div>
                 <div class="feature-card">
                     <p class="feature-number">02</p>
-                    <h3 class="feature-title">個別リハビリプログラム</h3>
+                    <h3 class="feature-title">無理のないリハビリ</h3>
                     <p class="feature-description">
-                        機能訓練指導員が、ご利用者様の目標に合わせたオーダーメイドのリハビリプログラムを作成します。
+                        「歩きたい」「トイレに一人で行きたい」など、ご希望に合わせた無理のないリハビリを行います。
                     </p>
                 </div>
                 <div class="feature-card">
                     <p class="feature-number">03</p>
-                    <h3 class="feature-title">落ち着いた空間</h3>
+                    <h3 class="feature-title">アットホームな雰囲気</h3>
                     <p class="feature-description">
-                        清潔感のある落ち着いた雰囲気の中で、ゆったりと心身のケアができる環境を整えています。
+                        少人数制でスタッフとの距離が近く、まるで家にいるようなくつろげる空間です。
                     </p>
                 </div>
             </div>
@@ -1550,52 +1565,59 @@
     <section class="daily-flow" id="daily-flow">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-en">DAILY FLOW</p>
-                <h2 class="section-title">一日の流れ</h2>
+                <p class="section-en">ご利用の流れ</p>
+                <h2 class="section-title">一日のスケジュール</h2>
                 <div class="section-line"></div>
             </div>
             <div class="flow-timeline">
                 <div class="flow-item">
                     <div class="flow-content">
-                        <h4>お迎え・バイタルチェック</h4>
+                        <h4><span class="flow-time">9:00頃</span>お迎え・バイタルチェック</h4>
                         <p>ご自宅までお迎えに伺います。到着後、体温・血圧・脈拍などを測定し、体調を確認します。</p>
                     </div>
                     <div class="flow-number">01</div>
                 </div>
                 <div class="flow-item">
                     <div class="flow-content">
-                        <h4>全体体操</h4>
+                        <h4><span class="flow-time">9:30頃</span>全体体操</h4>
                         <p>皆様で一緒に体操を行い、無理のない範囲で体を動かします。</p>
                     </div>
                     <div class="flow-number">02</div>
                 </div>
                 <div class="flow-item">
                     <div class="flow-content">
-                        <h4>マッサージ・個別リハビリ</h4>
+                        <h4><span class="flow-time">10:00頃</span>マッサージ・個別リハビリ</h4>
                         <p>専門スタッフによるマッサージと、お一人おひとりに合わせた個別のリハビリテーションを行います。</p>
                     </div>
                     <div class="flow-number">03</div>
                 </div>
                 <div class="flow-item">
                     <div class="flow-content">
-                        <h4>入浴</h4>
+                        <h4><span class="flow-time">11:30頃</span>入浴</h4>
                         <p>安全に配慮した入浴設備で、ゆったりとした入浴時間をお過ごしいただけます。</p>
                     </div>
                     <div class="flow-number">04</div>
                 </div>
                 <div class="flow-item">
                     <div class="flow-content">
-                        <h4>昼食・ティータイム</h4>
-                        <p>栄養バランスの取れた美味しいお食事をご提供いたします。</p>
+                        <h4><span class="flow-time">12:00頃</span>昼食・休憩</h4>
+                        <p>栄養バランスの取れた美味しいお食事をご提供いたします。食後はゆっくりお休みください。</p>
                     </div>
                     <div class="flow-number">05</div>
                 </div>
                 <div class="flow-item">
                     <div class="flow-content">
-                        <h4>レクリエーション・お送り</h4>
-                        <p>心身をリフレッシュするレクリエーションの後、ご自宅までお送りいたします。</p>
+                        <h4><span class="flow-time">14:00頃</span>レクリエーション</h4>
+                        <p>脳トレやゲームなど、皆様で楽しめるレクリエーションを行います。</p>
                     </div>
                     <div class="flow-number">06</div>
+                </div>
+                <div class="flow-item">
+                    <div class="flow-content">
+                        <h4><span class="flow-time">16:00頃</span>お送り</h4>
+                        <p>スタッフがご自宅までお送りいたします。お気をつけてお帰りください。</p>
+                    </div>
+                    <div class="flow-number">07</div>
                 </div>
             </div>
         </div>
@@ -1605,13 +1627,13 @@
     <section class="pricing" id="pricing">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-en">PRICE</p>
-                <h2 class="section-title">利用料金</h2>
+                <p class="section-en">ご利用料金について</p>
+                <h2 class="section-title">利用料金のご案内</h2>
                 <div class="section-line"></div>
             </div>
 
             <div class="pricing-intro">
-                <p>令和6年度介護報酬改定に基づく料金です。<br>7時間以上8時間未満のご利用の場合の目安となります。</p>
+                <p>令和6年度介護報酬改定に基づく料金です。<br>7時間以上8時間未満のご利用の場合の目安となります。<br><strong>※ご不明な点はお気軽にお問い合わせください。</strong></p>
             </div>
 
             <!-- 基本料金 -->
@@ -1790,6 +1812,7 @@
             <div class="pricing-note">
                 <p>※ 上記料金は1割負担の場合の目安です。2割・3割負担の方は金額が異なります。</p>
                 <p>※ 介護職員等処遇改善加算等により、実際の金額は多少変動します。</p>
+                <p>※ ご利用前に担当のケアマネージャー様にご相談ください。</p>
                 <p>※ 詳しい料金についてはお気軽にお問い合わせください。</p>
             </div>
         </div>
@@ -1799,7 +1822,7 @@
     <section class="facility" id="facility">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-en">INFORMATION</p>
+                <p class="section-en">事業所のご紹介</p>
                 <h2 class="section-title">施設情報</h2>
                 <div class="section-line"></div>
             </div>
@@ -1811,6 +1834,18 @@
                     <div class="facility-row">
                         <div class="facility-label">事業所名</div>
                         <div class="facility-value">マッサージリハビリ重視型デイサービス ハーベスト</div>
+                    </div>
+                    <div class="facility-row">
+                        <div class="facility-label">サービス種別</div>
+                        <div class="facility-value">地域密着型通所介護</div>
+                    </div>
+                    <div class="facility-row">
+                        <div class="facility-label">定員</div>
+                        <div class="facility-value">18名</div>
+                    </div>
+                    <div class="facility-row">
+                        <div class="facility-label">サービス提供時間</div>
+                        <div class="facility-value">9:00〜16:00（7時間）</div>
                     </div>
                     <div class="facility-row">
                         <div class="facility-label">営業時間</div>
@@ -1850,10 +1885,10 @@
     <section class="gallery" id="gallery">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-en">GALLERY</p>
-                <h2 class="section-title">ギャラリー</h2>
+                <p class="section-en">ご利用者様専用</p>
+                <h2 class="section-title">フォトギャラリー</h2>
                 <div class="section-line"></div>
-                <p class="gallery-subtitle">ご利用者様専用ページです</p>
+                <p class="gallery-subtitle">活動の様子をご覧いただけます</p>
             </div>
 
             <div class="gallery-login" id="galleryLogin">
@@ -2126,18 +2161,18 @@
                     <!-- フッター用ロゴ -->
                     <div class="footer-logo">
                         <svg viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="5" y="5" width="50" height="50" fill="none" stroke="#c9a868" stroke-width="1"/>
+                            <rect x="5" y="5" width="50" height="50" fill="none" stroke="#e8a45c" stroke-width="1"/>
                             <g transform="translate(30, 32)">
-                                <path d="M0 -18 Q3 -3 0 18" fill="none" stroke="#c9a868" stroke-width="1.5" stroke-linecap="round"/>
-                                <ellipse cx="-5" cy="-12" rx="3" ry="5" fill="#c9a868" transform="rotate(-28 -5 -12)"/>
-                                <ellipse cx="-6" cy="-4" rx="3" ry="5" fill="#c9a868" transform="rotate(-22 -6 -4)"/>
-                                <ellipse cx="5" cy="-12" rx="3" ry="5" fill="#c9a868" transform="rotate(28 5 -12)"/>
-                                <ellipse cx="6" cy="-4" rx="3" ry="5" fill="#c9a868" transform="rotate(22 6 -4)"/>
-                                <path d="M0 8 Q-8 12 -12 20" fill="none" stroke="#c9a868" stroke-width="1" stroke-linecap="round"/>
-                                <path d="M0 8 Q8 12 12 20" fill="none" stroke="#c9a868" stroke-width="1" stroke-linecap="round"/>
+                                <path d="M0 -18 Q3 -3 0 18" fill="none" stroke="#e8a45c" stroke-width="1.5" stroke-linecap="round"/>
+                                <ellipse cx="-5" cy="-12" rx="3" ry="5" fill="#e8a45c" transform="rotate(-28 -5 -12)"/>
+                                <ellipse cx="-6" cy="-4" rx="3" ry="5" fill="#e8a45c" transform="rotate(-22 -6 -4)"/>
+                                <ellipse cx="5" cy="-12" rx="3" ry="5" fill="#e8a45c" transform="rotate(28 5 -12)"/>
+                                <ellipse cx="6" cy="-4" rx="3" ry="5" fill="#e8a45c" transform="rotate(22 6 -4)"/>
+                                <path d="M0 8 Q-8 12 -12 20" fill="none" stroke="#e8a45c" stroke-width="1" stroke-linecap="round"/>
+                                <path d="M0 8 Q8 12 12 20" fill="none" stroke="#e8a45c" stroke-width="1" stroke-linecap="round"/>
                             </g>
-                            <text x="70" y="32" font-family="'Shippori Mincho', serif" font-size="22" font-weight="600" fill="#ffffff" letter-spacing="0.12em">ハーベスト</text>
-                            <text x="70" y="48" font-family="'Shippori Mincho', serif" font-size="8" fill="#c9a868" letter-spacing="0.1em">マッサージリハビリ重視型デイサービス</text>
+                            <text x="70" y="32" font-family="'Noto Sans JP', sans-serif" font-size="22" font-weight="600" fill="#ffffff" letter-spacing="0.08em">ハーベスト</text>
+                            <text x="70" y="48" font-family="'Noto Sans JP', sans-serif" font-size="8" fill="#e8a45c" letter-spacing="0.08em">マッサージリハビリ重視型デイサービス</text>
                         </svg>
                     </div>
                     <p>〒891-0115 鹿児島県鹿児島市東谷山2丁目40番15号</p>
@@ -2145,7 +2180,7 @@
                 </div>
                 <div class="footer-nav">
                     <ul>
-                        <li><a href="#">TOP</a></li>
+                        <li><a href="#">トップ</a></li>
                         <li><a href="#concept">コンセプト</a></li>
                         <li><a href="#features">特徴</a></li>
                         <li><a href="#daily-flow">一日の流れ</a></li>
