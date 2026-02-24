@@ -7,11 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a3328'/%3E%3Cg transform='translate(16,17)'%3E%3Cpath d='M0-9Q2-1 0 10' fill='none' stroke='%23c9a868' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='-3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(-25-3-6)'/%3E%3Cellipse cx='-4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(-20-4-1)'/%3E%3Cellipse cx='3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(25 3-6)'/%3E%3Cellipse cx='4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(20 4-1)'/%3E%3C/g%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231e3a5f'/%3E%3Cg transform='translate(16,17)'%3E%3Cpath d='M0-9Q2-1 0 10' fill='none' stroke='%23c9a868' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='-3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(-25-3-6)'/%3E%3Cellipse cx='-4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(-20-4-1)'/%3E%3Cellipse cx='3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(25 3-6)'/%3E%3Cellipse cx='4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(20 4-1)'/%3E%3C/g%3E%3C/svg%3E">
     <style>
         :root {
-            --color-primary: #1a3328;
-            --color-secondary: #264d3a;
+            /* ディープネイビー：信頼感・落ち着き・知性 */
+            --color-primary: #1e3a5f;
+            --color-secondary: #2d4a6f;
+            --color-tertiary: #3d5a7f;
             --color-accent: #c9a868;
             --color-accent-light: #dfc48a;
             --color-accent-dark: #a88a4a;
@@ -22,9 +24,9 @@
             --color-white: #ffffff;
             --font-display: 'Shippori Mincho', serif;
             --font-body: 'Noto Serif JP', serif;
-            --shadow-soft: 0 4px 30px rgba(26, 51, 40, 0.08);
-            --shadow-medium: 0 8px 40px rgba(26, 51, 40, 0.12);
-            --shadow-elegant: 0 20px 60px rgba(26, 51, 40, 0.15);
+            --shadow-soft: 0 4px 30px rgba(30, 58, 95, 0.08);
+            --shadow-medium: 0 8px 40px rgba(30, 58, 95, 0.12);
+            --shadow-elegant: 0 20px 60px rgba(30, 58, 95, 0.2);
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -52,25 +54,72 @@
 
         /* ヘッダー */
         header {
-            background: transparent;
-            padding: 1.5rem 2rem;
-            position: absolute;
+            background: rgba(30, 58, 95, 0.95);
+            padding: 0.8rem 2rem;
+            position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(201, 168, 104, 0.2);
         }
 
         .header-inner {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
         }
 
         .logo svg {
-            height: 60px;
+            height: 50px;
             width: auto;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header-nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            transition: var(--transition);
+        }
+
+        .header-nav a:hover {
+            color: var(--color-accent);
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-tel {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 1rem;
+            font-family: var(--font-display);
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+        }
+
+        .header-tel:hover {
+            color: var(--color-accent-light);
+        }
+
+        .header-tel svg {
+            width: 16px;
+            height: 16px;
         }
 
         /* メインコンテンツ */
@@ -91,8 +140,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('https://images.unsplash.com/photo-1516733968668-dbdce39c4651?w=1920&q=80') center/cover no-repeat;
-            opacity: 0.2;
+            background: url('https://images.unsplash.com/photo-1559526324-593bc073d938?w=1920&q=80') center/cover no-repeat;
+            opacity: 0.15;
         }
 
         .main-overlay {
@@ -102,9 +151,9 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(180deg,
-                rgba(26, 51, 40, 0.9) 0%,
-                rgba(26, 51, 40, 0.7) 50%,
-                rgba(26, 51, 40, 0.9) 100%);
+                rgba(30, 58, 95, 0.92) 0%,
+                rgba(30, 58, 95, 0.75) 50%,
+                rgba(30, 58, 95, 0.92) 100%);
         }
 
         .main-content {
@@ -241,9 +290,27 @@
         footer {
             position: relative;
             z-index: 1;
-            background: transparent;
-            padding: 2rem;
+            background: rgba(30, 58, 95, 0.95);
+            padding: 2.5rem 2rem;
             text-align: center;
+            border-top: 1px solid rgba(201, 168, 104, 0.2);
+        }
+
+        .footer-nav {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            margin: 0 1rem;
+            transition: var(--transition);
+        }
+
+        .footer-nav a:hover {
+            color: var(--color-accent);
         }
 
         .footer-info {
@@ -271,11 +338,19 @@
         /* レスポンシブ */
         @media (max-width: 768px) {
             header {
-                padding: 1rem;
+                padding: 0.6rem 1rem;
             }
 
             .logo svg {
-                height: 50px;
+                height: 40px;
+            }
+
+            .header-nav {
+                display: none;
+            }
+
+            .header-tel {
+                font-size: 0.9rem;
             }
 
             .main-content {
@@ -294,6 +369,11 @@
             .service-cards {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+            }
+
+            .footer-nav a {
+                display: block;
+                margin: 0.5rem 0;
             }
         }
 
@@ -330,6 +410,19 @@
                     <text x="70" y="32" font-family="'Shippori Mincho', serif" font-size="22" font-weight="600" fill="#ffffff" letter-spacing="0.12em">ハーベスト</text>
                     <text x="70" y="48" font-family="'Shippori Mincho', serif" font-size="8" fill="#c9a868" letter-spacing="0.1em">鹿児島市の介護サービス</text>
                 </svg>
+            </div>
+            <nav class="header-nav">
+                <a href="dayservice.html">デイサービス</a>
+                <a href="resthome.html">有料老人ホーム</a>
+                <a href="recruit.html">採用情報</a>
+            </nav>
+            <div class="header-contact">
+                <a href="tel:099-296-9844" class="header-tel">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    099-296-9844
+                </a>
             </div>
         </div>
     </header>
@@ -372,6 +465,11 @@
     </main>
 
     <footer>
+        <nav class="footer-nav">
+            <a href="dayservice.html">デイサービス</a>
+            <a href="resthome.html">有料老人ホーム</a>
+            <a href="recruit.html">採用情報</a>
+        </nav>
         <div class="footer-info">
             <p>〒891-0115 鹿児島県鹿児島市東谷山2丁目40番15号</p>
             <p><a href="tel:099-296-9844">TEL 099-296-9844</a></p>
