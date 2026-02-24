@@ -742,6 +742,82 @@
             color: var(--color-text-light);
         }
 
+        /* よくある質問 */
+        .faq {
+            background: var(--color-cream-dark);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--color-white);
+            margin-bottom: 1rem;
+            border-radius: var(--radius-medium);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .faq-q {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--color-accent);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .faq-question p {
+            font-weight: 500;
+            font-size: 1rem;
+            line-height: 1.6;
+            padding-top: 4px;
+        }
+
+        .faq-answer {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+        }
+
+        .faq-a {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--color-secondary);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .faq-answer p {
+            color: var(--color-text);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            padding-top: 4px;
+        }
+
         /* 施設情報 */
         .facility {
             background: var(--color-cream-dark);
@@ -1532,7 +1608,7 @@
                     <li><a href="#daily-flow">一日の流れ</a></li>
                     <li><a href="#pricing">料金</a></li>
                     <li><a href="#start-flow">ご利用の流れ</a></li>
-                    <li><a href="#facility">施設情報</a></li>
+                    <li><a href="#faq">よくある質問</a></li>
                 </ul>
             </nav>
             <div class="header-contact">
@@ -1929,6 +2005,69 @@
         </div>
     </section>
 
+    <!-- よくある質問 -->
+    <section class="faq" id="faq">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">ご不明な点はお気軽に</p>
+                <h2 class="section-title">よくあるご質問</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <p>送迎はどこまで来てもらえますか？</p>
+                    </div>
+                    <div class="faq-answer">
+                        <span class="faq-a">A</span>
+                        <p>鹿児島市内（松元・桜島地区を除く）で、8時に事業所を出発し9時までにお迎えできる範囲となります。詳しくはお問い合わせください。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <p>体験利用はできますか？</p>
+                    </div>
+                    <div class="faq-answer">
+                        <span class="faq-a">A</span>
+                        <p>はい、体験利用が可能です。実際のサービス内容や施設の雰囲気をご確認いただけます。ご希望の方はお電話またはお問い合わせフォームよりご予約ください。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <p>持ち物は何が必要ですか？</p>
+                    </div>
+                    <div class="faq-answer">
+                        <span class="faq-a">A</span>
+                        <p>（準備中）</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <p>食事制限がありますが対応してもらえますか？</p>
+                    </div>
+                    <div class="faq-answer">
+                        <span class="faq-a">A</span>
+                        <p>きざみ食・ミキサー食・減塩食など、できる限り対応いたします。アレルギーをお持ちの方も、事前にご相談ください。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <p>週に何回利用できますか？</p>
+                    </div>
+                    <div class="faq-answer">
+                        <span class="faq-a">A</span>
+                        <p>ケアプランに基づいてご利用いただけます。ご利用回数については担当のケアマネージャー様にご相談ください。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 施設情報 -->
     <section class="facility" id="facility">
         <div class="section-inner">
@@ -1944,15 +2083,23 @@
                 <div class="facility-body">
                     <div class="facility-row">
                         <div class="facility-label">事業所名</div>
-                        <div class="facility-value">マッサージリハビリ重視型デイサービス ハーベスト</div>
+                        <div class="facility-value">マッサージ・リハビリ重視型デイサービス ハーベスト</div>
+                    </div>
+                    <div class="facility-row">
+                        <div class="facility-label">事業所番号</div>
+                        <div class="facility-value">4670111212</div>
                     </div>
                     <div class="facility-row">
                         <div class="facility-label">サービス種別</div>
                         <div class="facility-value">地域密着型通所介護</div>
                     </div>
                     <div class="facility-row">
+                        <div class="facility-label">運営法人</div>
+                        <div class="facility-value">株式会社ハーベスト</div>
+                    </div>
+                    <div class="facility-row">
                         <div class="facility-label">定員</div>
-                        <div class="facility-value">18名</div>
+                        <div class="facility-value">15名</div>
                     </div>
                     <div class="facility-row">
                         <div class="facility-label">サービス提供時間</div>
@@ -1977,6 +2124,10 @@
                     <div class="facility-row">
                         <div class="facility-label">電話番号</div>
                         <div class="facility-value"><a href="tel:099-296-9844">099-296-9844</a></div>
+                    </div>
+                    <div class="facility-row">
+                        <div class="facility-label">FAX番号</div>
+                        <div class="facility-value">099-296-9843</div>
                     </div>
                 </div>
             </div>
@@ -2297,7 +2448,7 @@
                         <li><a href="#daily-flow">一日の流れ</a></li>
                         <li><a href="#pricing">料金</a></li>
                         <li><a href="#start-flow">ご利用の流れ</a></li>
-                        <li><a href="#facility">施設情報</a></li>
+                        <li><a href="#faq">よくある質問</a></li>
                     </ul>
                 </div>
             </div>
