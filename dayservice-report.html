@@ -1,0 +1,2243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>デイサービス日報システム | いんちき村</title>
+    <link rel="manifest" href="data:application/json,{}">
+    <style>
+        :root {
+            --primary: #2E7D32;
+            --primary-light: #4CAF50;
+            --primary-dark: #1B5E20;
+            --secondary: #FF6F00;
+            --secondary-light: #FFA726;
+            --accent: #00ACC1;
+            --background: #F5F7FA;
+            --surface: #FFFFFF;
+            --text-primary: #212121;
+            --text-secondary: #757575;
+            --border: #E0E0E0;
+            --success: #43A047;
+            --warning: #FB8C00;
+            --error: #E53935;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+            --radius: 16px;
+            --radius-sm: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(46,125,50,0.3);
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+        }
+
+        .header h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .header-btn {
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-size: 1.2rem;
+        }
+
+        .header-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.05);
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            background: rgba(0,0,0,0.1);
+            padding: 0 16px;
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 12px 16px;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-tab.active {
+            color: white;
+        }
+
+        .nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: white;
+            border-radius: 3px 3px 0 0;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 110px;
+            padding: 20px;
+            padding-bottom: 100px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* View Container */
+        .view {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--background);
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .form-label.required::after {
+            content: ' *';
+            color: var(--error);
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            transition: all 0.2s;
+            background: var(--surface);
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(46,125,50,0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 500px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Voice Input */
+        .voice-input-container {
+            position: relative;
+        }
+
+        .voice-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .voice-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 15px rgba(255,111,0,0.4);
+        }
+
+        .voice-btn.recording {
+            animation: pulse 1s infinite;
+            background: var(--error);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(229,57,53,0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(229,57,53,0); }
+        }
+
+        .voice-textarea {
+            padding-right: 70px;
+        }
+
+        /* Photo Section */
+        .photo-section {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .photo-section:hover {
+            border-color: var(--primary);
+            background: rgba(46,125,50,0.03);
+        }
+
+        .photo-section.has-photos {
+            border-style: solid;
+            border-color: var(--primary-light);
+        }
+
+        .photo-icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+
+        .photo-text {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .photo-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .photo-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .photo-btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .photo-btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .photo-btn-secondary {
+            background: var(--background);
+            color: var(--text-primary);
+        }
+
+        .photo-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .photo-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-item-delete {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 28px;
+            height: 28px;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Vital Signs */
+        .vital-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+        }
+
+        .vital-item {
+            background: var(--background);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            text-align: center;
+        }
+
+        .vital-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .vital-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .vital-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1.1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .vital-unit {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Activity Tags */
+        .activity-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .activity-tag {
+            padding: 10px 18px;
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            background: var(--surface);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .activity-tag:hover {
+            border-color: var(--primary-light);
+        }
+
+        .activity-tag.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Mood Selector */
+        .mood-selector {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+
+        .mood-item {
+            flex: 1;
+            padding: 16px 8px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: var(--surface);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .mood-item:hover {
+            border-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .mood-item.selected {
+            border-color: var(--primary);
+            background: rgba(46,125,50,0.05);
+        }
+
+        .mood-emoji {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .mood-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: var(--radius);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46,125,50,0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Records List */
+        .records-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .records-count {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+        }
+
+        .filter-select {
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            background: var(--surface);
+            min-width: 140px;
+        }
+
+        .record-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .record-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .record-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .record-client {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .record-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            background: var(--background);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .record-staff {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .record-content {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .record-footer {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--background);
+        }
+
+        .record-tag {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .record-photos {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .record-photo-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        /* Report View */
+        .report-controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .report-btn {
+            padding: 12px 24px;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius-sm);
+            background: var(--surface);
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .report-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .report-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .report-btn.primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .client-report {
+            background: var(--surface);
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .client-report-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .client-report-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .client-report-count {
+            background: rgba(255,255,255,0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .client-report-body {
+            padding: 20px;
+        }
+
+        .report-entry {
+            padding: 16px;
+            background: var(--background);
+            border-radius: var(--radius-sm);
+            margin-bottom: 12px;
+        }
+
+        .report-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .report-entry-date {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .report-entry-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Statistics */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--surface);
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalIn 0.3s ease;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: var(--background);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        /* Toast */
+        .toast-container {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3000;
+        }
+
+        .toast {
+            background: var(--text-primary);
+            color: white;
+            padding: 14px 24px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-hover);
+            animation: toastIn 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.success {
+            background: var(--success);
+        }
+
+        .toast.error {
+            background: var(--error);
+        }
+
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .empty-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Hidden inputs */
+        .hidden-input {
+            display: none;
+        }
+
+        /* Detail View */
+        .detail-section {
+            margin-bottom: 24px;
+        }
+
+        .detail-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .detail-value {
+            font-size: 1rem;
+        }
+
+        .detail-photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .detail-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+        }
+
+        /* Settings */
+        .settings-section {
+            margin-bottom: 32px;
+        }
+
+        .settings-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .settings-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background: var(--background);
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
+        }
+
+        .settings-item-label {
+            font-size: 0.95rem;
+        }
+
+        .settings-item-action {
+            padding: 8px 16px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        /* Data list management */
+        .data-list {
+            background: var(--background);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+        }
+
+        .data-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: var(--surface);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .data-list-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .data-list-add {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .data-list-input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .delete-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: var(--error);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .add-btn {
+            padding: 10px 20px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.1rem;
+            }
+
+            .main-content {
+                padding: 16px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            .vital-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mood-selector {
+                flex-wrap: wrap;
+            }
+
+            .mood-item {
+                flex: 1 1 calc(33% - 10px);
+                min-width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-main">
+            <h1>
+                <span class="header-icon">📋</span>
+                デイサービス日報
+            </h1>
+            <div class="header-actions">
+                <button class="header-btn" onclick="showSettings()" title="設定">⚙️</button>
+            </div>
+        </div>
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-view="input">記録入力</button>
+            <button class="nav-tab" data-view="list">一覧</button>
+            <button class="nav-tab" data-view="report">月次レポート</button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- Input View -->
+        <div class="view active" id="input-view">
+            <form id="report-form">
+                <!-- Basic Info Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👤</div>
+                        <div>
+                            <div class="card-title">基本情報</div>
+                            <div class="card-subtitle">入力者と利用者を選択</div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label required">入力者（職員）</label>
+                            <select class="form-select" id="staff-select" required>
+                                <option value="">選択してください</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label required">利用者名</label>
+                            <select class="form-select" id="client-select" required>
+                                <option value="">選択してください</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required">日時</label>
+                        <input type="datetime-local" class="form-input" id="datetime-input" required>
+                    </div>
+                </div>
+
+                <!-- Daily Report Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📝</div>
+                        <div>
+                            <div class="card-title">本日の記録</div>
+                            <div class="card-subtitle">音声入力で簡単記録</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required">活動内容・特記事項</label>
+                        <div class="voice-input-container">
+                            <textarea class="form-textarea voice-textarea" id="content-input"
+                                placeholder="音声入力ボタンを押して話すか、直接入力してください..." required></textarea>
+                            <button type="button" class="voice-btn" id="voice-btn" title="音声入力">🎤</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">活動カテゴリ</label>
+                        <div class="activity-tags" id="activity-tags">
+                            <span class="activity-tag" data-tag="入浴">🛁 入浴</span>
+                            <span class="activity-tag" data-tag="食事">🍽️ 食事</span>
+                            <span class="activity-tag" data-tag="レクリエーション">🎯 レク</span>
+                            <span class="activity-tag" data-tag="機能訓練">💪 機能訓練</span>
+                            <span class="activity-tag" data-tag="服薬">💊 服薬</span>
+                            <span class="activity-tag" data-tag="排泄">🚽 排泄</span>
+                            <span class="activity-tag" data-tag="送迎">🚗 送迎</span>
+                            <span class="activity-tag" data-tag="その他">📌 その他</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Condition Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💚</div>
+                        <div>
+                            <div class="card-title">本日の様子</div>
+                            <div class="card-subtitle">体調と気分を記録</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">気分・状態</label>
+                        <div class="mood-selector">
+                            <div class="mood-item" data-mood="very-good">
+                                <div class="mood-emoji">😄</div>
+                                <div class="mood-label">とても良い</div>
+                            </div>
+                            <div class="mood-item" data-mood="good">
+                                <div class="mood-emoji">🙂</div>
+                                <div class="mood-label">良い</div>
+                            </div>
+                            <div class="mood-item" data-mood="normal">
+                                <div class="mood-emoji">😐</div>
+                                <div class="mood-label">普通</div>
+                            </div>
+                            <div class="mood-item" data-mood="not-good">
+                                <div class="mood-emoji">😔</div>
+                                <div class="mood-label">やや不調</div>
+                            </div>
+                            <div class="mood-item" data-mood="bad">
+                                <div class="mood-emoji">😢</div>
+                                <div class="mood-label">不調</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vitals Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🩺</div>
+                        <div>
+                            <div class="card-title">バイタルサイン</div>
+                            <div class="card-subtitle">測定値を記録（任意）</div>
+                        </div>
+                    </div>
+
+                    <div class="vital-grid">
+                        <div class="vital-item">
+                            <div class="vital-icon">🌡️</div>
+                            <div class="vital-label">体温</div>
+                            <input type="number" class="vital-input" id="temp-input" step="0.1" placeholder="36.5">
+                            <div class="vital-unit">℃</div>
+                        </div>
+                        <div class="vital-item">
+                            <div class="vital-icon">❤️</div>
+                            <div class="vital-label">血圧（上）</div>
+                            <input type="number" class="vital-input" id="bp-high-input" placeholder="120">
+                            <div class="vital-unit">mmHg</div>
+                        </div>
+                        <div class="vital-item">
+                            <div class="vital-icon">💙</div>
+                            <div class="vital-label">血圧（下）</div>
+                            <input type="number" class="vital-input" id="bp-low-input" placeholder="80">
+                            <div class="vital-unit">mmHg</div>
+                        </div>
+                        <div class="vital-item">
+                            <div class="vital-icon">💓</div>
+                            <div class="vital-label">脈拍</div>
+                            <input type="number" class="vital-input" id="pulse-input" placeholder="70">
+                            <div class="vital-unit">回/分</div>
+                        </div>
+                        <div class="vital-item">
+                            <div class="vital-icon">🫁</div>
+                            <div class="vital-label">SpO2</div>
+                            <input type="number" class="vital-input" id="spo2-input" placeholder="98">
+                            <div class="vital-unit">%</div>
+                        </div>
+                        <div class="vital-item">
+                            <div class="vital-icon">⚖️</div>
+                            <div class="vital-label">体重</div>
+                            <input type="number" class="vital-input" id="weight-input" step="0.1" placeholder="60.0">
+                            <div class="vital-unit">kg</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📸</div>
+                        <div>
+                            <div class="card-title">写真記録</div>
+                            <div class="card-subtitle">活動の様子を撮影</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-section" id="photo-section">
+                        <div class="photo-icon">📷</div>
+                        <div class="photo-text">写真を追加してください</div>
+                        <div class="photo-actions">
+                            <button type="button" class="photo-btn photo-btn-primary" onclick="capturePhoto()">
+                                📸 撮影する
+                            </button>
+                            <button type="button" class="photo-btn photo-btn-secondary" onclick="selectPhoto()">
+                                🖼️ 選択する
+                            </button>
+                        </div>
+                        <div class="photo-preview" id="photo-preview"></div>
+                    </div>
+                    <input type="file" id="photo-input" class="hidden-input" accept="image/*" multiple>
+                    <input type="file" id="camera-input" class="hidden-input" accept="image/*" capture="environment">
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="submit-btn">
+                    💾 記録を保存
+                </button>
+            </form>
+        </div>
+
+        <!-- List View -->
+        <div class="view" id="list-view">
+            <div class="filter-bar">
+                <input type="text" class="filter-input" id="search-input" placeholder="🔍 利用者名・内容で検索...">
+                <select class="filter-select" id="date-filter">
+                    <option value="all">全期間</option>
+                    <option value="today">今日</option>
+                    <option value="week">今週</option>
+                    <option value="month">今月</option>
+                </select>
+            </div>
+
+            <div class="records-header">
+                <span class="records-count" id="records-count">0件の記録</span>
+            </div>
+
+            <div id="records-list"></div>
+        </div>
+
+        <!-- Report View -->
+        <div class="view" id="report-view">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📊</div>
+                    <div>
+                        <div class="card-title">月次レポート</div>
+                        <div class="card-subtitle">利用者ごとの月間まとめ</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">対象年月</label>
+                        <input type="month" class="form-input" id="report-month">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">利用者</label>
+                        <select class="form-select" id="report-client">
+                            <option value="all">全員</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="report-controls">
+                    <button class="report-btn primary" onclick="generateReport()">
+                        📋 レポート生成
+                    </button>
+                    <button class="report-btn" onclick="exportToExcel()">
+                        📥 Excel出力
+                    </button>
+                    <button class="report-btn" onclick="printReport()">
+                        🖨️ 印刷
+                    </button>
+                </div>
+            </div>
+
+            <div id="report-stats"></div>
+            <div id="report-content"></div>
+        </div>
+    </main>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-title">⚙️ 設定</span>
+                <button class="modal-close" onclick="closeSettings()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <div class="settings-title">職員リスト</div>
+                    <div class="data-list" id="staff-list"></div>
+                    <div class="data-list-add">
+                        <input type="text" class="data-list-input" id="new-staff-input" placeholder="新しい職員名">
+                        <button class="add-btn" onclick="addStaff()">追加</button>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="settings-title">利用者リスト</div>
+                    <div class="data-list" id="client-list"></div>
+                    <div class="data-list-add">
+                        <input type="text" class="data-list-input" id="new-client-input" placeholder="新しい利用者名">
+                        <button class="add-btn" onclick="addClient()">追加</button>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="settings-title">データ管理</div>
+                    <div class="settings-item">
+                        <span class="settings-item-label">データのバックアップ</span>
+                        <button class="settings-item-action" onclick="backupData()">エクスポート</button>
+                    </div>
+                    <div class="settings-item">
+                        <span class="settings-item-label">データの復元</span>
+                        <button class="settings-item-action" onclick="restoreData()">インポート</button>
+                    </div>
+                    <div class="settings-item">
+                        <span class="settings-item-label" style="color: var(--error);">全データ削除</span>
+                        <button class="settings-item-action" style="background: var(--error);" onclick="clearAllData()">削除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div class="modal-overlay" id="detail-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-title">📋 記録詳細</span>
+                <button class="modal-close" onclick="closeDetail()">✕</button>
+            </div>
+            <div class="modal-body" id="detail-content"></div>
+            <div class="modal-footer">
+                <button class="report-btn" onclick="editRecord()">✏️ 編集</button>
+                <button class="report-btn" style="border-color: var(--error); color: var(--error);" onclick="deleteRecord()">🗑️ 削除</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Restore Input -->
+    <input type="file" id="restore-input" class="hidden-input" accept=".json">
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script>
+        // ===== Data Management =====
+        const DB_KEYS = {
+            RECORDS: 'dayservice_records',
+            STAFF: 'dayservice_staff',
+            CLIENTS: 'dayservice_clients'
+        };
+
+        let records = JSON.parse(localStorage.getItem(DB_KEYS.RECORDS) || '[]');
+        let staffList = JSON.parse(localStorage.getItem(DB_KEYS.STAFF) || '["山田太郎", "佐藤花子", "鈴木一郎"]');
+        let clientList = JSON.parse(localStorage.getItem(DB_KEYS.CLIENTS) || '["田中様", "高橋様", "伊藤様", "渡辺様", "中村様"]');
+        let currentPhotos = [];
+        let selectedTags = [];
+        let selectedMood = '';
+        let currentRecordId = null;
+
+        // ===== Initialization =====
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeForm();
+            initializeNavigation();
+            initializeVoiceInput();
+            initializePhotoInput();
+            initializeActivityTags();
+            initializeMoodSelector();
+            renderStaffSelect();
+            renderClientSelect();
+            renderRecordsList();
+            setDefaultDateTime();
+        });
+
+        function initializeForm() {
+            document.getElementById('report-form').addEventListener('submit', handleSubmit);
+        }
+
+        function initializeNavigation() {
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+                    tab.classList.add('active');
+                    document.getElementById(`${tab.dataset.view}-view`).classList.add('active');
+
+                    if (tab.dataset.view === 'list') {
+                        renderRecordsList();
+                    } else if (tab.dataset.view === 'report') {
+                        initializeReportView();
+                    }
+                });
+            });
+        }
+
+        function setDefaultDateTime() {
+            const now = new Date();
+            const offset = now.getTimezoneOffset();
+            const local = new Date(now.getTime() - offset * 60 * 1000);
+            document.getElementById('datetime-input').value = local.toISOString().slice(0, 16);
+        }
+
+        // ===== Voice Input =====
+        let recognition = null;
+        let isRecording = false;
+
+        function initializeVoiceInput() {
+            const voiceBtn = document.getElementById('voice-btn');
+            const contentInput = document.getElementById('content-input');
+
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                recognition = new SpeechRecognition();
+                recognition.lang = 'ja-JP';
+                recognition.continuous = true;
+                recognition.interimResults = true;
+
+                let finalTranscript = '';
+
+                recognition.onstart = () => {
+                    isRecording = true;
+                    voiceBtn.classList.add('recording');
+                    voiceBtn.innerHTML = '⏹️';
+                    showToast('音声入力中...', 'success');
+                };
+
+                recognition.onresult = (event) => {
+                    let interimTranscript = '';
+                    for (let i = event.resultIndex; i < event.results.length; i++) {
+                        const transcript = event.results[i][0].transcript;
+                        if (event.results[i].isFinal) {
+                            finalTranscript += transcript;
+                        } else {
+                            interimTranscript += transcript;
+                        }
+                    }
+                    contentInput.value = finalTranscript + interimTranscript;
+                };
+
+                recognition.onend = () => {
+                    isRecording = false;
+                    voiceBtn.classList.remove('recording');
+                    voiceBtn.innerHTML = '🎤';
+                };
+
+                recognition.onerror = (event) => {
+                    console.error('Speech recognition error:', event.error);
+                    showToast('音声認識エラー', 'error');
+                    isRecording = false;
+                    voiceBtn.classList.remove('recording');
+                    voiceBtn.innerHTML = '🎤';
+                };
+
+                voiceBtn.addEventListener('click', () => {
+                    if (isRecording) {
+                        recognition.stop();
+                    } else {
+                        finalTranscript = contentInput.value;
+                        recognition.start();
+                    }
+                });
+            } else {
+                voiceBtn.style.display = 'none';
+                showToast('このブラウザは音声入力に対応していません', 'error');
+            }
+        }
+
+        // ===== Photo Input =====
+        function initializePhotoInput() {
+            const photoInput = document.getElementById('photo-input');
+            const cameraInput = document.getElementById('camera-input');
+
+            photoInput.addEventListener('change', handlePhotoSelect);
+            cameraInput.addEventListener('change', handlePhotoSelect);
+        }
+
+        function capturePhoto() {
+            document.getElementById('camera-input').click();
+        }
+
+        function selectPhoto() {
+            document.getElementById('photo-input').click();
+        }
+
+        function handlePhotoSelect(event) {
+            const files = event.target.files;
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    currentPhotos.push(e.target.result);
+                    renderPhotoPreview();
+                };
+                reader.readAsDataURL(file);
+            });
+            event.target.value = '';
+        }
+
+        function renderPhotoPreview() {
+            const preview = document.getElementById('photo-preview');
+            const section = document.getElementById('photo-section');
+
+            if (currentPhotos.length > 0) {
+                section.classList.add('has-photos');
+            } else {
+                section.classList.remove('has-photos');
+            }
+
+            preview.innerHTML = currentPhotos.map((photo, index) => `
+                <div class="photo-item">
+                    <img src="${photo}" alt="写真${index + 1}">
+                    <button type="button" class="photo-item-delete" onclick="removePhoto(${index})">✕</button>
+                </div>
+            `).join('');
+        }
+
+        function removePhoto(index) {
+            currentPhotos.splice(index, 1);
+            renderPhotoPreview();
+        }
+
+        // ===== Activity Tags =====
+        function initializeActivityTags() {
+            document.querySelectorAll('.activity-tag').forEach(tag => {
+                tag.addEventListener('click', () => {
+                    tag.classList.toggle('selected');
+                    const tagValue = tag.dataset.tag;
+                    if (selectedTags.includes(tagValue)) {
+                        selectedTags = selectedTags.filter(t => t !== tagValue);
+                    } else {
+                        selectedTags.push(tagValue);
+                    }
+                });
+            });
+        }
+
+        // ===== Mood Selector =====
+        function initializeMoodSelector() {
+            document.querySelectorAll('.mood-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    document.querySelectorAll('.mood-item').forEach(i => i.classList.remove('selected'));
+                    item.classList.add('selected');
+                    selectedMood = item.dataset.mood;
+                });
+            });
+        }
+
+        // ===== Staff & Client Management =====
+        function renderStaffSelect() {
+            const select = document.getElementById('staff-select');
+            select.innerHTML = '<option value="">選択してください</option>' +
+                staffList.map(s => `<option value="${s}">${s}</option>`).join('');
+        }
+
+        function renderClientSelect() {
+            const select = document.getElementById('client-select');
+            const reportSelect = document.getElementById('report-client');
+
+            select.innerHTML = '<option value="">選択してください</option>' +
+                clientList.map(c => `<option value="${c}">${c}</option>`).join('');
+
+            if (reportSelect) {
+                reportSelect.innerHTML = '<option value="all">全員</option>' +
+                    clientList.map(c => `<option value="${c}">${c}</option>`).join('');
+            }
+        }
+
+        // ===== Form Submission =====
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const record = {
+                id: currentRecordId || Date.now().toString(),
+                staff: document.getElementById('staff-select').value,
+                client: document.getElementById('client-select').value,
+                datetime: document.getElementById('datetime-input').value,
+                content: document.getElementById('content-input').value,
+                tags: [...selectedTags],
+                mood: selectedMood,
+                vitals: {
+                    temperature: document.getElementById('temp-input').value,
+                    bpHigh: document.getElementById('bp-high-input').value,
+                    bpLow: document.getElementById('bp-low-input').value,
+                    pulse: document.getElementById('pulse-input').value,
+                    spo2: document.getElementById('spo2-input').value,
+                    weight: document.getElementById('weight-input').value
+                },
+                photos: [...currentPhotos],
+                createdAt: currentRecordId ? records.find(r => r.id === currentRecordId)?.createdAt : new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+
+            if (currentRecordId) {
+                const index = records.findIndex(r => r.id === currentRecordId);
+                if (index !== -1) {
+                    records[index] = record;
+                }
+                currentRecordId = null;
+            } else {
+                records.unshift(record);
+            }
+
+            saveRecords();
+            resetForm();
+            showToast('記録を保存しました！', 'success');
+        }
+
+        function saveRecords() {
+            localStorage.setItem(DB_KEYS.RECORDS, JSON.stringify(records));
+        }
+
+        function resetForm() {
+            document.getElementById('report-form').reset();
+            currentPhotos = [];
+            selectedTags = [];
+            selectedMood = '';
+            renderPhotoPreview();
+            document.querySelectorAll('.activity-tag').forEach(t => t.classList.remove('selected'));
+            document.querySelectorAll('.mood-item').forEach(i => i.classList.remove('selected'));
+            setDefaultDateTime();
+        }
+
+        // ===== Records List =====
+        function renderRecordsList() {
+            const container = document.getElementById('records-list');
+            const searchInput = document.getElementById('search-input');
+            const dateFilter = document.getElementById('date-filter');
+
+            const search = searchInput?.value?.toLowerCase() || '';
+            const dateRange = dateFilter?.value || 'all';
+
+            let filtered = records.filter(r => {
+                const matchSearch = r.client.toLowerCase().includes(search) ||
+                                   r.content.toLowerCase().includes(search) ||
+                                   r.staff.toLowerCase().includes(search);
+
+                let matchDate = true;
+                if (dateRange !== 'all') {
+                    const recordDate = new Date(r.datetime);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+
+                    if (dateRange === 'today') {
+                        matchDate = recordDate >= today;
+                    } else if (dateRange === 'week') {
+                        const weekAgo = new Date(today);
+                        weekAgo.setDate(weekAgo.getDate() - 7);
+                        matchDate = recordDate >= weekAgo;
+                    } else if (dateRange === 'month') {
+                        const monthAgo = new Date(today);
+                        monthAgo.setMonth(monthAgo.getMonth() - 1);
+                        matchDate = recordDate >= monthAgo;
+                    }
+                }
+
+                return matchSearch && matchDate;
+            });
+
+            document.getElementById('records-count').textContent = `${filtered.length}件の記録`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📋</div>
+                        <div class="empty-text">記録がありません</div>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(record => {
+                const date = new Date(record.datetime);
+                const dateStr = `${date.getFullYear()}/${(date.getMonth()+1).toString().padStart(2,'0')}/${date.getDate().toString().padStart(2,'0')} ${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}`;
+
+                const moodEmojis = {
+                    'very-good': '😄',
+                    'good': '🙂',
+                    'normal': '😐',
+                    'not-good': '😔',
+                    'bad': '😢'
+                };
+
+                return `
+                    <div class="record-card" onclick="showDetail('${record.id}')">
+                        <div class="record-header">
+                            <span class="record-client">${record.client}</span>
+                            <span class="record-date">${dateStr}</span>
+                        </div>
+                        <div class="record-staff">👤 記録者: ${record.staff}</div>
+                        <div class="record-content">${record.content}</div>
+                        ${record.photos.length > 0 ? `
+                            <div class="record-photos">
+                                ${record.photos.slice(0, 3).map(p => `<img src="${p}" class="record-photo-thumb">`).join('')}
+                                ${record.photos.length > 3 ? `<span style="color: var(--text-secondary);">+${record.photos.length - 3}</span>` : ''}
+                            </div>
+                        ` : ''}
+                        <div class="record-footer">
+                            ${record.mood ? `<span class="record-tag">${moodEmojis[record.mood] || ''}</span>` : ''}
+                            ${record.tags.map(t => `<span class="record-tag">🏷️ ${t}</span>`).join('')}
+                            ${record.photos.length > 0 ? `<span class="record-tag">📷 ${record.photos.length}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Initialize search and filter
+        document.getElementById('search-input')?.addEventListener('input', renderRecordsList);
+        document.getElementById('date-filter')?.addEventListener('change', renderRecordsList);
+
+        // ===== Record Detail =====
+        function showDetail(id) {
+            currentRecordId = id;
+            const record = records.find(r => r.id === id);
+            if (!record) return;
+
+            const date = new Date(record.datetime);
+            const dateStr = `${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日 ${date.getHours()}:${date.getMinutes().toString().padStart(2,'0')}`;
+
+            const moodLabels = {
+                'very-good': 'とても良い 😄',
+                'good': '良い 🙂',
+                'normal': '普通 😐',
+                'not-good': 'やや不調 😔',
+                'bad': '不調 😢'
+            };
+
+            let vitalsHtml = '';
+            const v = record.vitals;
+            if (v.temperature || v.bpHigh || v.bpLow || v.pulse || v.spo2 || v.weight) {
+                vitalsHtml = `
+                    <div class="detail-section">
+                        <div class="detail-label">バイタルサイン</div>
+                        <div class="vital-grid" style="margin-top: 8px;">
+                            ${v.temperature ? `<div class="vital-item"><div class="vital-icon">🌡️</div><div class="detail-value">${v.temperature}℃</div></div>` : ''}
+                            ${v.bpHigh && v.bpLow ? `<div class="vital-item"><div class="vital-icon">❤️</div><div class="detail-value">${v.bpHigh}/${v.bpLow} mmHg</div></div>` : ''}
+                            ${v.pulse ? `<div class="vital-item"><div class="vital-icon">💓</div><div class="detail-value">${v.pulse} 回/分</div></div>` : ''}
+                            ${v.spo2 ? `<div class="vital-item"><div class="vital-icon">🫁</div><div class="detail-value">${v.spo2}%</div></div>` : ''}
+                            ${v.weight ? `<div class="vital-item"><div class="vital-icon">⚖️</div><div class="detail-value">${v.weight} kg</div></div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            document.getElementById('detail-content').innerHTML = `
+                <div class="detail-section">
+                    <div class="detail-label">利用者</div>
+                    <div class="detail-value" style="font-size: 1.2rem; font-weight: 700;">${record.client}</div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-label">記録者</div>
+                    <div class="detail-value">${record.staff}</div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-label">日時</div>
+                    <div class="detail-value">${dateStr}</div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-label">活動内容・特記事項</div>
+                    <div class="detail-value" style="white-space: pre-wrap;">${record.content}</div>
+                </div>
+                ${record.tags.length > 0 ? `
+                    <div class="detail-section">
+                        <div class="detail-label">カテゴリ</div>
+                        <div class="activity-tags" style="margin-top: 8px;">
+                            ${record.tags.map(t => `<span class="activity-tag selected">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+                ${record.mood ? `
+                    <div class="detail-section">
+                        <div class="detail-label">気分・状態</div>
+                        <div class="detail-value">${moodLabels[record.mood] || record.mood}</div>
+                    </div>
+                ` : ''}
+                ${vitalsHtml}
+                ${record.photos.length > 0 ? `
+                    <div class="detail-section">
+                        <div class="detail-label">写真（${record.photos.length}枚）</div>
+                        <div class="detail-photos">
+                            ${record.photos.map(p => `<img src="${p}" class="detail-photo" onclick="window.open('${p}', '_blank')">`).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+
+            document.getElementById('detail-modal').classList.add('active');
+        }
+
+        function closeDetail() {
+            document.getElementById('detail-modal').classList.remove('active');
+            currentRecordId = null;
+        }
+
+        function editRecord() {
+            const record = records.find(r => r.id === currentRecordId);
+            if (!record) return;
+
+            // Fill form with record data
+            document.getElementById('staff-select').value = record.staff;
+            document.getElementById('client-select').value = record.client;
+            document.getElementById('datetime-input').value = record.datetime;
+            document.getElementById('content-input').value = record.content;
+            document.getElementById('temp-input').value = record.vitals.temperature || '';
+            document.getElementById('bp-high-input').value = record.vitals.bpHigh || '';
+            document.getElementById('bp-low-input').value = record.vitals.bpLow || '';
+            document.getElementById('pulse-input').value = record.vitals.pulse || '';
+            document.getElementById('spo2-input').value = record.vitals.spo2 || '';
+            document.getElementById('weight-input').value = record.vitals.weight || '';
+
+            currentPhotos = [...record.photos];
+            renderPhotoPreview();
+
+            selectedTags = [...record.tags];
+            document.querySelectorAll('.activity-tag').forEach(tag => {
+                tag.classList.toggle('selected', selectedTags.includes(tag.dataset.tag));
+            });
+
+            selectedMood = record.mood;
+            document.querySelectorAll('.mood-item').forEach(item => {
+                item.classList.toggle('selected', item.dataset.mood === selectedMood);
+            });
+
+            // Switch to input view
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.querySelector('[data-view="input"]').classList.add('active');
+            document.getElementById('input-view').classList.add('active');
+
+            closeDetail();
+            showToast('編集モードです', 'success');
+        }
+
+        function deleteRecord() {
+            if (!confirm('この記録を削除しますか？')) return;
+
+            records = records.filter(r => r.id !== currentRecordId);
+            saveRecords();
+            closeDetail();
+            renderRecordsList();
+            showToast('記録を削除しました', 'success');
+        }
+
+        // ===== Report View =====
+        function initializeReportView() {
+            const now = new Date();
+            document.getElementById('report-month').value = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2,'0')}`;
+            renderClientSelect();
+        }
+
+        function generateReport() {
+            const monthValue = document.getElementById('report-month').value;
+            const clientFilter = document.getElementById('report-client').value;
+
+            if (!monthValue) {
+                showToast('対象年月を選択してください', 'error');
+                return;
+            }
+
+            const [year, month] = monthValue.split('-').map(Number);
+            const startDate = new Date(year, month - 1, 1);
+            const endDate = new Date(year, month, 0, 23, 59, 59);
+
+            let filtered = records.filter(r => {
+                const date = new Date(r.datetime);
+                return date >= startDate && date <= endDate;
+            });
+
+            if (clientFilter !== 'all') {
+                filtered = filtered.filter(r => r.client === clientFilter);
+            }
+
+            // Statistics
+            const stats = {
+                total: filtered.length,
+                clients: new Set(filtered.map(r => r.client)).size,
+                photos: filtered.reduce((sum, r) => sum + r.photos.length, 0),
+                activities: {}
+            };
+
+            filtered.forEach(r => {
+                r.tags.forEach(t => {
+                    stats.activities[t] = (stats.activities[t] || 0) + 1;
+                });
+            });
+
+            document.getElementById('report-stats').innerHTML = `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">${stats.total}</div>
+                        <div class="stat-label">記録数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${stats.clients}</div>
+                        <div class="stat-label">利用者数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${stats.photos}</div>
+                        <div class="stat-label">写真枚数</div>
+                    </div>
+                </div>
+            `;
+
+            // Group by client
+            const byClient = {};
+            filtered.forEach(r => {
+                if (!byClient[r.client]) {
+                    byClient[r.client] = [];
+                }
+                byClient[r.client].push(r);
+            });
+
+            if (Object.keys(byClient).length === 0) {
+                document.getElementById('report-content').innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📊</div>
+                        <div class="empty-text">該当する記録がありません</div>
+                    </div>
+                `;
+                return;
+            }
+
+            document.getElementById('report-content').innerHTML = Object.entries(byClient).map(([client, clientRecords]) => `
+                <div class="client-report">
+                    <div class="client-report-header">
+                        <span class="client-report-name">${client}</span>
+                        <span class="client-report-count">${clientRecords.length}件</span>
+                    </div>
+                    <div class="client-report-body">
+                        ${clientRecords.sort((a, b) => new Date(a.datetime) - new Date(b.datetime)).map(r => {
+                            const date = new Date(r.datetime);
+                            return `
+                                <div class="report-entry">
+                                    <div class="report-entry-date">${date.getMonth()+1}/${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2,'0')} - ${r.staff}</div>
+                                    <div class="report-entry-content">${r.content}</div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function exportToExcel() {
+            const monthValue = document.getElementById('report-month').value;
+            const clientFilter = document.getElementById('report-client').value;
+
+            if (!monthValue) {
+                showToast('対象年月を選択してください', 'error');
+                return;
+            }
+
+            const [year, month] = monthValue.split('-').map(Number);
+            const startDate = new Date(year, month - 1, 1);
+            const endDate = new Date(year, month, 0, 23, 59, 59);
+
+            let filtered = records.filter(r => {
+                const date = new Date(r.datetime);
+                return date >= startDate && date <= endDate;
+            });
+
+            if (clientFilter !== 'all') {
+                filtered = filtered.filter(r => r.client === clientFilter);
+            }
+
+            if (filtered.length === 0) {
+                showToast('出力するデータがありません', 'error');
+                return;
+            }
+
+            // Create CSV content
+            const headers = ['日時', '利用者', '記録者', '内容', 'カテゴリ', '気分', '体温', '血圧(上)', '血圧(下)', '脈拍', 'SpO2', '体重'];
+            const rows = filtered.map(r => {
+                const date = new Date(r.datetime);
+                const dateStr = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2,'0')}`;
+                const moodLabels = {
+                    'very-good': 'とても良い',
+                    'good': '良い',
+                    'normal': '普通',
+                    'not-good': 'やや不調',
+                    'bad': '不調'
+                };
+                return [
+                    dateStr,
+                    r.client,
+                    r.staff,
+                    r.content.replace(/[\n\r]/g, ' '),
+                    r.tags.join('、'),
+                    moodLabels[r.mood] || '',
+                    r.vitals.temperature || '',
+                    r.vitals.bpHigh || '',
+                    r.vitals.bpLow || '',
+                    r.vitals.pulse || '',
+                    r.vitals.spo2 || '',
+                    r.vitals.weight || ''
+                ];
+            });
+
+            const csvContent = '\uFEFF' + [headers, ...rows].map(row =>
+                row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',')
+            ).join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `デイサービス日報_${year}年${month}月.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            showToast('Excelファイルをダウンロードしました', 'success');
+        }
+
+        function printReport() {
+            window.print();
+        }
+
+        // ===== Settings =====
+        function showSettings() {
+            renderSettingsLists();
+            document.getElementById('settings-modal').classList.add('active');
+        }
+
+        function closeSettings() {
+            document.getElementById('settings-modal').classList.remove('active');
+        }
+
+        function renderSettingsLists() {
+            document.getElementById('staff-list').innerHTML = staffList.map((staff, i) => `
+                <div class="data-list-item">
+                    <span>${staff}</span>
+                    <button class="delete-btn" onclick="removeStaff(${i})">✕</button>
+                </div>
+            `).join('');
+
+            document.getElementById('client-list').innerHTML = clientList.map((client, i) => `
+                <div class="data-list-item">
+                    <span>${client}</span>
+                    <button class="delete-btn" onclick="removeClient(${i})">✕</button>
+                </div>
+            `).join('');
+        }
+
+        function addStaff() {
+            const input = document.getElementById('new-staff-input');
+            const name = input.value.trim();
+            if (name && !staffList.includes(name)) {
+                staffList.push(name);
+                localStorage.setItem(DB_KEYS.STAFF, JSON.stringify(staffList));
+                input.value = '';
+                renderSettingsLists();
+                renderStaffSelect();
+                showToast('職員を追加しました', 'success');
+            }
+        }
+
+        function removeStaff(index) {
+            if (confirm('この職員を削除しますか？')) {
+                staffList.splice(index, 1);
+                localStorage.setItem(DB_KEYS.STAFF, JSON.stringify(staffList));
+                renderSettingsLists();
+                renderStaffSelect();
+            }
+        }
+
+        function addClient() {
+            const input = document.getElementById('new-client-input');
+            const name = input.value.trim();
+            if (name && !clientList.includes(name)) {
+                clientList.push(name);
+                localStorage.setItem(DB_KEYS.CLIENTS, JSON.stringify(clientList));
+                input.value = '';
+                renderSettingsLists();
+                renderClientSelect();
+                showToast('利用者を追加しました', 'success');
+            }
+        }
+
+        function removeClient(index) {
+            if (confirm('この利用者を削除しますか？')) {
+                clientList.splice(index, 1);
+                localStorage.setItem(DB_KEYS.CLIENTS, JSON.stringify(clientList));
+                renderSettingsLists();
+                renderClientSelect();
+            }
+        }
+
+        // ===== Backup & Restore =====
+        function backupData() {
+            const data = {
+                records,
+                staffList,
+                clientList,
+                exportedAt: new Date().toISOString()
+            };
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `デイサービス日報_バックアップ_${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            showToast('バックアップを作成しました', 'success');
+        }
+
+        function restoreData() {
+            document.getElementById('restore-input').click();
+        }
+
+        document.getElementById('restore-input').addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (data.records && data.staffList && data.clientList) {
+                        if (confirm(`${data.records.length}件の記録を復元しますか？\n※現在のデータは上書きされます`)) {
+                            records = data.records;
+                            staffList = data.staffList;
+                            clientList = data.clientList;
+                            localStorage.setItem(DB_KEYS.RECORDS, JSON.stringify(records));
+                            localStorage.setItem(DB_KEYS.STAFF, JSON.stringify(staffList));
+                            localStorage.setItem(DB_KEYS.CLIENTS, JSON.stringify(clientList));
+                            renderStaffSelect();
+                            renderClientSelect();
+                            renderRecordsList();
+                            showToast('データを復元しました', 'success');
+                        }
+                    } else {
+                        showToast('無効なバックアップファイルです', 'error');
+                    }
+                } catch (err) {
+                    showToast('ファイルの読み込みに失敗しました', 'error');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        });
+
+        function clearAllData() {
+            if (confirm('全てのデータを削除しますか？\nこの操作は取り消せません。')) {
+                if (confirm('本当に削除しますか？')) {
+                    localStorage.removeItem(DB_KEYS.RECORDS);
+                    localStorage.removeItem(DB_KEYS.STAFF);
+                    localStorage.removeItem(DB_KEYS.CLIENTS);
+                    records = [];
+                    staffList = [];
+                    clientList = [];
+                    renderStaffSelect();
+                    renderClientSelect();
+                    renderRecordsList();
+                    closeSettings();
+                    showToast('全データを削除しました', 'success');
+                }
+            }
+        }
+
+        // ===== Toast =====
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = message;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'toastIn 0.3s ease reverse';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // ===== Keyboard shortcut =====
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeSettings();
+                closeDetail();
+            }
+        });
+
+        // Close modal on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
