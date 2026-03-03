@@ -211,15 +211,12 @@
 .feature-card {
   text-align: center;
   padding: var(--space-8);
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   transition: var(--transition-normal);
 }
 
 .feature-card:hover {
   border-color: var(--color-accent);
-  box-shadow: var(--shadow-lg);
   transform: translateY(-8px);
 }
 
