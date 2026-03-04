@@ -242,10 +242,19 @@
   margin-bottom: var(--space-3);
 }
 
+/* ダークセクション内のfeature-cardテキストを明るく */
+.section--dark .feature-card-title {
+  color: var(--color-white);
+}
+
 .feature-card-desc {
   font-size: var(--font-size-small);
   line-height: var(--line-height-normal);
   color: var(--color-text-secondary);
+}
+
+.section--dark .feature-card-desc {
+  color: rgba(255, 255, 255, 0.75);
 }
 
 @media (max-width: 1024px) {
