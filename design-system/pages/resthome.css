@@ -823,4 +823,111 @@
 .reveal-delay-3 { transition-delay: 300ms; }
 .reveal-delay-4 { transition-delay: 400ms; }
 .reveal-delay-5 { transition-delay: 500ms; }
+
+/* ========================================
+ * OVERVIEW SUMMARY SECTION
+ * ======================================== */
+
+.overview-table {
+  max-width: 800px;
+  margin: 0 auto var(--space-8);
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.summary-table th,
+.summary-table td {
+  padding: var(--space-4) var(--space-5);
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.summary-table th {
+  width: 140px;
+  font-size: var(--font-size-caption);
+  font-weight: 500;
+  color: var(--color-accent);
+  background: rgba(184, 149, 110, 0.08);
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.summary-table td {
+  font-size: var(--font-size-body);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+.summary-table td strong {
+  color: var(--color-accent);
+  font-size: var(--font-size-lg);
+}
+
+.summary-table td small {
+  display: block;
+  font-size: var(--font-size-caption);
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: var(--space-1);
+}
+
+.summary-table tr:last-child th,
+.summary-table tr:last-child td {
+  border-bottom: none;
+}
+
+.overview-cta {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.overview-cta .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+@media (max-width: 640px) {
+  .summary-table th,
+  .summary-table td {
+    display: block;
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .summary-table th {
+    padding-bottom: var(--space-1);
+    border-bottom: none;
+  }
+
+  .summary-table td {
+    padding-top: 0;
+  }
+
+  .summary-table tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .summary-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .overview-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .overview-cta .btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
 .reveal-delay-6 { transition-delay: 600ms; }
