@@ -426,6 +426,105 @@
             filter: grayscale(0%);
         }
 
+        /* 中間CTAバナー */
+        .mid-cta {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #2d5a45 100%);
+            padding: 4rem 2rem;
+        }
+
+        .mid-cta-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .mid-cta-text {
+            color: var(--color-white);
+        }
+
+        .mid-cta-label {
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .mid-cta-text h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .mid-cta-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+        }
+
+        .mid-cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+
+        .mid-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: var(--radius-small);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .mid-cta-btn.primary {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .mid-cta-btn.primary:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+        }
+
+        .mid-cta-btn.secondary {
+            background: transparent;
+            color: var(--color-white);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .mid-cta-btn.secondary:hover {
+            border-color: var(--color-white);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mid-cta-btn .btn-badge {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        @media (max-width: 768px) {
+            .mid-cta-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .mid-cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .mid-cta-btn {
+                justify-content: center;
+            }
+        }
+
         /* 設備紹介 */
         .equipment {
             background: var(--color-cream);
@@ -629,6 +728,201 @@
             font-weight: 400;
         }
 
+        /* サービス詳細セクション */
+        .service-details {
+            background: var(--color-white);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .detail-card {
+            background: var(--color-cream);
+            padding: 2rem;
+            border-radius: var(--radius-medium);
+            border: 1px solid var(--color-border);
+        }
+
+        .detail-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1rem;
+        }
+
+        .detail-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .detail-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .detail-list {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .detail-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .detail-list li:last-child {
+            border-bottom: none;
+        }
+
+        .detail-list .check-icon {
+            color: var(--color-primary);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .detail-list .label {
+            color: var(--color-text-light);
+            font-size: 0.85rem;
+            min-width: 100px;
+            flex-shrink: 0;
+        }
+
+        .detail-list .value {
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        .detail-list .value.highlight {
+            color: var(--color-accent-dark);
+            font-weight: 600;
+        }
+
+        .detail-note {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            padding-top: 0.5rem;
+        }
+
+        .detail-area {
+            background: var(--color-white);
+            padding: 1rem;
+            border-radius: var(--radius-small);
+            margin-top: 1rem;
+        }
+
+        .area-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .area-list {
+            font-size: 0.8rem;
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+
+        .area-note {
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 緊急時対応セクション */
+        .emergency {
+            background: var(--color-cream-dark);
+            padding: 4rem 2rem;
+        }
+
+        .emergency-box {
+            background: var(--color-primary);
+            border-radius: var(--radius-medium);
+            padding: 2.5rem;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .emergency-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .emergency-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .emergency-content {
+            color: var(--color-white);
+        }
+
+        .emergency-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.08em;
+        }
+
+        .emergency-content p {
+            font-size: 0.9rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.5rem;
+        }
+
+        .emergency-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .emergency-features span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--color-accent);
+        }
+
+        .emergency-features svg {
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .emergency-box {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+
+            .emergency-features {
+                justify-content: center;
+            }
+        }
+
         /* 料金セクション */
         .pricing {
             background: var(--color-cream);
@@ -636,9 +930,135 @@
 
         .pricing-intro {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             color: var(--color-text-light);
             font-size: 0.95rem;
+        }
+
+        .pricing-simulation {
+            background: var(--color-white);
+            border: 2px solid var(--color-accent);
+            border-radius: var(--radius-medium);
+            padding: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-simulation-title {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .simulation-icon {
+            font-size: 1.4rem;
+        }
+
+        .pricing-simulation-subtitle {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+        }
+
+        .simulation-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .simulation-card {
+            background: var(--color-cream);
+            border-radius: var(--radius-medium);
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+        }
+
+        .simulation-card.popular {
+            border: 2px solid var(--color-accent);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .simulation-badge {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-accent);
+            color: var(--color-white);
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 0 0 8px 8px;
+            font-weight: 500;
+        }
+
+        .simulation-header {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 1rem;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .simulation-card.popular .simulation-header {
+            padding-top: 1.5rem;
+        }
+
+        .simulation-body {
+            padding: 1.5rem;
+        }
+
+        .simulation-amount {
+            margin-bottom: 0.8rem;
+        }
+
+        .simulation-prefix {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .simulation-number {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--color-accent-dark);
+        }
+
+        .simulation-unit {
+            font-size: 1rem;
+            color: var(--color-text);
+        }
+
+        .simulation-breakdown {
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+
+        .simulation-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+
+        @media (max-width: 768px) {
+            .simulation-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-simulation {
+                padding: 1.5rem;
+            }
         }
 
         .pricing-section {
@@ -1677,6 +2097,54 @@
             color: var(--color-text-light);
         }
 
+        .testimonial-card.highlight {
+            border: 2px solid var(--color-accent);
+            position: relative;
+        }
+
+        .testimonial-badge {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--color-accent);
+            color: var(--color-white);
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .testimonial-text strong {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .testimonial-result {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background: rgba(61, 122, 90, 0.08);
+            border-radius: var(--radius-small);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .result-label {
+            background: var(--color-primary);
+            color: var(--color-white);
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+
+        .result-text {
+            font-size: 0.85rem;
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
         /* ヒーローCTAボタン */
         .hero-cta {
             display: flex;
@@ -1718,6 +2186,35 @@
         .hero-btn-secondary:hover {
             border-color: var(--color-white);
             background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-btn svg {
+            flex-shrink: 0;
+        }
+
+        .btn-badge {
+            background: #fff;
+            color: var(--color-primary);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 3px;
+            margin-right: 8px;
+        }
+
+        .hero-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-benefits span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         /* レスポンシブ */
@@ -1926,6 +2423,7 @@
                     <li><a href="#equipment">設備</a></li>
                     <li><a href="#staff">スタッフ</a></li>
                     <li><a href="#daily-flow">一日の流れ</a></li>
+                    <li><a href="#service-details">サービス詳細</a></li>
                     <li><a href="#pricing">料金</a></li>
                     <li><a href="#faq">よくある質問</a></li>
                     <li><a href="recruit.html">採用情報</a></li>
@@ -1950,9 +2448,22 @@
                 スタッフ一同、笑顔でお待ちしております。
             </p>
             <div class="hero-cta">
-                <a href="#contact" class="hero-btn hero-btn-primary">見学・体験を申し込む</a>
-                <a href="tel:099-296-9844" class="hero-btn hero-btn-secondary">電話で相談する</a>
+                <a href="#contact" class="hero-btn hero-btn-primary">
+                    <span class="btn-badge">無料</span>
+                    見学・体験を申し込む
+                </a>
+                <a href="tel:099-296-9844" class="hero-btn hero-btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    電話で相談する
+                </a>
             </div>
+            <p class="hero-benefits">
+                <span>✓ 送迎無料</span>
+                <span>✓ 昼食付き</span>
+                <span>✓ 鍼灸マッサージ師5名在籍</span>
+            </p>
             <div class="hero-line"></div>
         </div>
     </section>
@@ -2217,6 +2728,31 @@
         </div>
     </section>
 
+    <!-- 中間CTAバナー -->
+    <section class="mid-cta">
+        <div class="section-inner">
+            <div class="mid-cta-content">
+                <div class="mid-cta-text">
+                    <p class="mid-cta-label">まずはお気軽に</p>
+                    <h3>無料で見学・体験できます</h3>
+                    <p class="mid-cta-description">実際の雰囲気やサービス内容をご確認いただけます。送迎・昼食付きで1日体験も可能です。</p>
+                </div>
+                <div class="mid-cta-buttons">
+                    <a href="#contact" class="mid-cta-btn primary">
+                        <span class="btn-badge">無料</span>
+                        体験を申し込む
+                    </a>
+                    <a href="tel:099-296-9844" class="mid-cta-btn secondary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        099-296-9844
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- スタッフ紹介 -->
     <section class="staff" id="staff">
         <div class="section-inner">
@@ -2345,6 +2881,146 @@
         </div>
     </section>
 
+    <!-- サービス詳細セクション -->
+    <section class="service-details" id="service-details">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">SERVICE DETAILS</p>
+                <h2 class="section-title">サービス詳細</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="details-grid">
+                <!-- 対応可能な状態 -->
+                <div class="detail-card">
+                    <div class="detail-icon">
+                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <g stroke="#3d7a5a" fill="none" stroke-width="1.5" stroke-linecap="round">
+                                <circle cx="24" cy="12" r="6"/>
+                                <path d="M12 44 L12 28 Q12 22 24 22 Q36 22 36 28 L36 44"/>
+                                <path d="M18 32 L30 32"/>
+                                <circle cx="24" cy="36" r="4" stroke-dasharray="2 2"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="detail-title">こんな方がご利用されています</h3>
+                    <ul class="detail-list">
+                        <li><span class="check-icon">✓</span>要介護1〜5の認定を受けた方</li>
+                        <li><span class="check-icon">✓</span>車椅子をご利用の方</li>
+                        <li><span class="check-icon">✓</span>認知症の方（対応可能）</li>
+                        <li><span class="check-icon">✓</span>脳卒中後のリハビリが必要な方</li>
+                        <li><span class="check-icon">✓</span>慢性的な痛みでお悩みの方</li>
+                        <li><span class="check-icon">✓</span>体力低下・筋力低下が気になる方</li>
+                    </ul>
+                    <p class="detail-note">※医療行為が必要な方はご相談ください</p>
+                </div>
+
+                <!-- 入浴について -->
+                <div class="detail-card">
+                    <div class="detail-icon">
+                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <g stroke="#3d7a5a" fill="none" stroke-width="1.5" stroke-linecap="round">
+                                <path d="M8 24 L40 24"/>
+                                <path d="M10 24 L10 36 Q10 40 16 40 L32 40 Q38 40 38 36 L38 24"/>
+                                <path d="M8 24 Q8 16 16 16 L20 16"/>
+                                <circle cx="16" cy="10" r="3"/>
+                                <path d="M24 18 Q24 14 28 14" stroke-dasharray="2 2"/>
+                                <path d="M30 18 Q30 12 36 12" stroke-dasharray="2 2"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="detail-title">入浴について</h3>
+                    <ul class="detail-list">
+                        <li><span class="label">浴室タイプ</span><span class="value">一般浴・個浴</span></li>
+                        <li><span class="label">介助体制</span><span class="value">スタッフがサポート</span></li>
+                        <li><span class="label">プライバシー</span><span class="value">個別対応で安心</span></li>
+                        <li><span class="label">設備</span><span class="value">手すり・滑り止め完備</span></li>
+                    </ul>
+                    <p class="detail-note">お体の状態に合わせて安全に入浴いただけます</p>
+                </div>
+
+                <!-- 食事について -->
+                <div class="detail-card">
+                    <div class="detail-icon">
+                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <g stroke="#3d7a5a" fill="none" stroke-width="1.5" stroke-linecap="round">
+                                <ellipse cx="24" cy="32" rx="14" ry="6"/>
+                                <path d="M10 32 L10 20 Q10 14 24 14 Q38 14 38 20 L38 32"/>
+                                <path d="M18 22 L18 10 M24 20 L24 8 M30 22 L30 10"/>
+                                <circle cx="18" cy="8" r="2"/>
+                                <circle cx="24" cy="6" r="2"/>
+                                <circle cx="30" cy="8" r="2"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="detail-title">食事について</h3>
+                    <ul class="detail-list">
+                        <li><span class="label">昼食</span><span class="value">栄養バランスの取れた食事</span></li>
+                        <li><span class="label">おやつ</span><span class="value">15時にご提供</span></li>
+                        <li><span class="label">制限食対応</span><span class="value">糖尿病食・減塩食など</span></li>
+                        <li><span class="label">形態</span><span class="value">刻み食・ソフト食対応可</span></li>
+                    </ul>
+                    <p class="detail-note">お体の状態に合わせた食事をご用意します</p>
+                </div>
+
+                <!-- 送迎について -->
+                <div class="detail-card">
+                    <div class="detail-icon">
+                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <g stroke="#3d7a5a" fill="none" stroke-width="1.5" stroke-linecap="round">
+                                <rect x="6" y="18" width="36" height="16" rx="3"/>
+                                <circle cx="14" cy="34" r="4"/>
+                                <circle cx="34" cy="34" r="4"/>
+                                <path d="M6 26 L42 26"/>
+                                <path d="M32 18 L36 12 L42 12 L42 18"/>
+                                <rect x="10" y="22" width="6" height="4" rx="1"/>
+                                <rect x="20" y="22" width="6" height="4" rx="1"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="detail-title">送迎について</h3>
+                    <ul class="detail-list">
+                        <li><span class="label">送迎料金</span><span class="value highlight">無料</span></li>
+                        <li><span class="label">対応エリア</span><span class="value">鹿児島市内</span></li>
+                        <li><span class="label">車両</span><span class="value">車椅子対応車両あり</span></li>
+                        <li><span class="label">時間</span><span class="value">ご自宅の玄関先まで</span></li>
+                    </ul>
+                    <div class="detail-area">
+                        <p class="area-title">送迎対応エリア</p>
+                        <p class="area-list">谷山・東谷山・卸本町・和田・中山・坂之上・慈眼寺・宇宿・郡元・鴨池・紫原・桜ケ丘・武岡・田上・西田・伊敷・吉野 など</p>
+                        <p class="area-note">※松元・桜島地区は要相談</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 緊急時対応 -->
+    <section class="emergency" id="emergency">
+        <div class="section-inner">
+            <div class="emergency-box">
+                <div class="emergency-icon">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <g stroke="#fff" fill="none" stroke-width="2" stroke-linecap="round">
+                            <path d="M24 8 L24 28"/>
+                            <circle cx="24" cy="36" r="2" fill="#fff"/>
+                            <circle cx="24" cy="24" r="18"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="emergency-content">
+                    <h3>緊急時の対応について</h3>
+                    <p>ご利用中に体調が急変した場合は、速やかにご家族様へ連絡し、必要に応じて医療機関への搬送を行います。近隣の医療機関と連携体制を整えておりますので、安心してご利用ください。</p>
+                    <div class="emergency-features">
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>看護師による健康管理</span>
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>近隣医療機関との連携</span>
+                        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>ご家族様への速やかな連絡</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 料金セクション -->
     <section class="pricing" id="pricing">
         <div class="section-inner">
@@ -2355,7 +3031,59 @@
             </div>
 
             <div class="pricing-intro">
-                <p>令和6年度介護報酬改定に基づく料金です。<br>7時間以上8時間未満のご利用の場合の目安となります。<br><strong>※ご不明な点はお気軽にお問い合わせください。</strong></p>
+                <p>令和6年度介護報酬改定に基づく料金です。<br>7時間以上8時間未満のご利用の場合の目安となります。</p>
+            </div>
+
+            <!-- 月額シミュレーション -->
+            <div class="pricing-simulation">
+                <h3 class="pricing-simulation-title">
+                    <span class="simulation-icon">💡</span>
+                    月額料金シミュレーション（1割負担の場合）
+                </h3>
+                <p class="pricing-simulation-subtitle">週2回（月8回）ご利用の場合の目安</p>
+                <div class="simulation-cards">
+                    <div class="simulation-card">
+                        <div class="simulation-header">要介護1</div>
+                        <div class="simulation-body">
+                            <div class="simulation-amount">
+                                <span class="simulation-prefix">月額</span>
+                                <span class="simulation-number">約 12,400</span>
+                                <span class="simulation-unit">円</span>
+                            </div>
+                            <div class="simulation-breakdown">
+                                <span>介護保険 849円×8回 + 昼食代 700円×8回</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="simulation-card popular">
+                        <div class="simulation-badge">よくあるご利用</div>
+                        <div class="simulation-header">要介護2</div>
+                        <div class="simulation-body">
+                            <div class="simulation-amount">
+                                <span class="simulation-prefix">月額</span>
+                                <span class="simulation-number">約 13,500</span>
+                                <span class="simulation-unit">円</span>
+                            </div>
+                            <div class="simulation-breakdown">
+                                <span>介護保険 986円×8回 + 昼食代 700円×8回</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="simulation-card">
+                        <div class="simulation-header">要介護3</div>
+                        <div class="simulation-body">
+                            <div class="simulation-amount">
+                                <span class="simulation-prefix">月額</span>
+                                <span class="simulation-number">約 14,600</span>
+                                <span class="simulation-unit">円</span>
+                            </div>
+                            <div class="simulation-breakdown">
+                                <span>介護保険 1,128円×8回 + 昼食代 700円×8回</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="simulation-note">※ 上記は入浴介助・機能訓練加算を含む目安です。詳細はお問い合わせください。</p>
             </div>
 
             <!-- 基本料金 -->
@@ -2722,50 +3450,55 @@
                 <div class="section-line"></div>
             </div>
             <div class="testimonials-grid">
-                <div class="testimonial-card">
+                <div class="testimonial-card highlight">
+                    <div class="testimonial-badge">ご家族の声</div>
                     <div class="testimonial-content">
-                        <p class="testimonial-text">マッサージがとても気持ちよくて、毎回楽しみにしています。スタッフの皆さんも優しくて、安心して通えます。体が軽くなった気がして、家での生活も楽になりました。</p>
+                        <p class="testimonial-text"><strong>最初は「デイサービスなんて行きたくない」と言っていた父が</strong>、今では週3回の利用日を楽しみにしています。マッサージが気に入ったようで、「体が楽になる」と喜んでいます。家族としても、父に笑顔が戻って本当に嬉しいです。</p>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">A</div>
                             <div class="testimonial-info">
-                                <p class="testimonial-name">A様（80代女性）</p>
-                                <p class="testimonial-relation">ご利用者様</p>
+                                <p class="testimonial-name">A様のご家族（80代男性のご家族）</p>
+                                <p class="testimonial-relation">ご家族様</p>
                             </div>
+                        </div>
+                        <div class="testimonial-result">
+                            <span class="result-label">変化</span>
+                            <span class="result-text">表情が明るくなり、自宅での会話も増えた</span>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p class="testimonial-text">父がお世話になっています。以前は家にこもりがちでしたが、ハーベストに通い始めてから表情が明るくなりました。リハビリのおかげで歩行も安定してきて、家族一同感謝しています。</p>
+                        <p class="testimonial-text">膝と腰の痛みがひどくて歩くのも大変でしたが、3ヶ月通ううちに<strong>杖なしで歩けるようになりました</strong>。干渉波やホットマグナーでの治療が効いているのだと思います。スタッフさんも優しくて、毎回行くのが楽しみです。</p>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">B</div>
                             <div class="testimonial-info">
-                                <p class="testimonial-name">B様のご家族</p>
-                                <p class="testimonial-relation">ご家族様</p>
+                                <p class="testimonial-name">B様（70代女性）</p>
+                                <p class="testimonial-relation">ご利用者様・要介護2</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p class="testimonial-text">少人数なのでスタッフさんとゆっくり話せるのが嬉しいです。マッサージの先生も私の体のことをよく分かってくれていて、痛いところを的確にほぐしてもらえます。</p>
+                        <p class="testimonial-text">認知症の母を預けられる場所を探していました。少人数制なので目が行き届いていて安心です。<strong>入浴も丁寧に介助してもらえる</strong>ので、自宅での入浴介助の負担がなくなり、私自身の体も楽になりました。</p>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">C</div>
                             <div class="testimonial-info">
-                                <p class="testimonial-name">C様（70代男性）</p>
-                                <p class="testimonial-relation">ご利用者様</p>
+                                <p class="testimonial-name">C様のご家族（80代女性のご家族）</p>
+                                <p class="testimonial-relation">ご家族様</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p class="testimonial-text">母の介護をしながら仕事もしているので、デイサービスに助けられています。送迎もしっかりしていて、安心してお任せできます。母も「また行きたい」と言っています。</p>
+                        <p class="testimonial-text">脳梗塞の後遺症で右半身に麻痺がありますが、<strong>平行棒を使った歩行訓練</strong>のおかげで、少しずつ歩けるようになってきました。マッサージ師さんが5人もいるのは珍しいと思います。専門的なケアを受けられて満足しています。</p>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">D</div>
                             <div class="testimonial-info">
-                                <p class="testimonial-name">D様のご家族</p>
-                                <p class="testimonial-relation">ご家族様</p>
+                                <p class="testimonial-name">D様（60代男性）</p>
+                                <p class="testimonial-relation">ご利用者様・要介護3</p>
                             </div>
                         </div>
                     </div>
