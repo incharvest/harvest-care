@@ -1426,6 +1426,197 @@
             letter-spacing: 0.1em;
         }
 
+        /* スタッフ紹介セクション */
+        .staff {
+            background: var(--color-cream);
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .staff-card {
+            background: var(--color-white);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .staff-card:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-5px);
+        }
+
+        .staff-image {
+            width: 100%;
+            height: 200px;
+            background: var(--color-cream-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .staff-image svg {
+            width: 80px;
+            height: 80px;
+            opacity: 0.5;
+        }
+
+        .staff-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .staff-role {
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--color-white);
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .staff-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .staff-message {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        /* お客様の声セクション */
+        .testimonials {
+            background: var(--color-white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--color-cream);
+            padding: 2rem;
+            border-radius: var(--radius-medium);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 4rem;
+            color: var(--color-accent);
+            opacity: 0.3;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            padding-top: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--color-text);
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-family: var(--font-display);
+            font-weight: 600;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--color-text);
+            font-size: 0.95rem;
+        }
+
+        .testimonial-relation {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+
+        /* ヒーローCTAボタン */
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            transition: var(--transition);
+            border-radius: var(--radius-small);
+        }
+
+        .hero-btn-primary {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            border: 2px solid var(--color-accent);
+        }
+
+        .hero-btn-primary:hover {
+            background: var(--color-accent-light);
+            border-color: var(--color-accent-light);
+        }
+
+        .hero-btn-secondary {
+            background: transparent;
+            color: var(--color-white);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-btn-secondary:hover {
+            border-color: var(--color-white);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
         /* レスポンシブ */
         @media (max-width: 1024px) {
             .concept-content {
@@ -1579,6 +1770,25 @@
             .admin-user-list {
                 grid-template-columns: 1fr;
             }
+
+            .staff-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -1610,9 +1820,9 @@
                 <ul>
                     <li><a href="#concept">コンセプト</a></li>
                     <li><a href="#features">特徴</a></li>
+                    <li><a href="#staff">スタッフ</a></li>
                     <li><a href="#daily-flow">一日の流れ</a></li>
                     <li><a href="#pricing">料金</a></li>
-                    <li><a href="#start-flow">ご利用の流れ</a></li>
                     <li><a href="#faq">よくある質問</a></li>
                     <li><a href="recruit.html">採用情報</a></li>
                 </ul>
@@ -1635,6 +1845,10 @@
                 マッサージとリハビリで心も体もリフレッシュ。<br>
                 スタッフ一同、笑顔でお待ちしております。
             </p>
+            <div class="hero-cta">
+                <a href="#contact" class="hero-btn hero-btn-primary">見学・体験を申し込む</a>
+                <a href="tel:099-296-9844" class="hero-btn hero-btn-secondary">電話で相談する</a>
+            </div>
             <div class="hero-line"></div>
         </div>
     </section>
@@ -1735,6 +1949,58 @@
                 <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80" alt="リハビリ">
                 <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80" alt="スタッフ">
                 <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&q=80" alt="施設">
+            </div>
+        </div>
+    </section>
+
+    <!-- スタッフ紹介 -->
+    <section class="staff" id="staff">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">STAFF</p>
+                <h2 class="section-title">スタッフ紹介</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="30" r="18" fill="#3d7a5a" opacity="0.3"/>
+                            <path d="M15 75 Q15 50 40 45 Q65 50 65 75" fill="#3d7a5a" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="staff-info">
+                        <span class="staff-role">管理者・鍼灸マッサージ師</span>
+                        <h4 class="staff-name">管理者</h4>
+                        <p class="staff-message">皆様が安心して過ごせる場所づくりを心がけています。お体の不調があれば、いつでもご相談ください。</p>
+                    </div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="30" r="18" fill="#3d7a5a" opacity="0.3"/>
+                            <path d="M15 75 Q15 50 40 45 Q65 50 65 75" fill="#3d7a5a" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="staff-info">
+                        <span class="staff-role">鍼灸マッサージ師</span>
+                        <h4 class="staff-name">施術スタッフ</h4>
+                        <p class="staff-message">お一人おひとりの体調に合わせたマッサージを心がけています。気持ちよくリラックスしていただけたら嬉しいです。</p>
+                    </div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="30" r="18" fill="#3d7a5a" opacity="0.3"/>
+                            <path d="M15 75 Q15 50 40 45 Q65 50 65 75" fill="#3d7a5a" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="staff-info">
+                        <span class="staff-role">介護スタッフ</span>
+                        <h4 class="staff-name">介護スタッフ</h4>
+                        <p class="staff-message">毎日の生活をサポートさせていただきます。困ったことがあれば何でもお声がけください。</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -2169,6 +2435,67 @@
         </div>
     </section>
 
+    <!-- お客様の声 -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">VOICE</p>
+                <h2 class="section-title">ご利用者様・ご家族様の声</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">マッサージがとても気持ちよくて、毎回楽しみにしています。スタッフの皆さんも優しくて、安心して通えます。体が軽くなった気がして、家での生活も楽になりました。</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">A</div>
+                            <div class="testimonial-info">
+                                <p class="testimonial-name">A様（80代女性）</p>
+                                <p class="testimonial-relation">ご利用者様</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">父がお世話になっています。以前は家にこもりがちでしたが、ハーベストに通い始めてから表情が明るくなりました。リハビリのおかげで歩行も安定してきて、家族一同感謝しています。</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">B</div>
+                            <div class="testimonial-info">
+                                <p class="testimonial-name">B様のご家族</p>
+                                <p class="testimonial-relation">ご家族様</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">少人数なのでスタッフさんとゆっくり話せるのが嬉しいです。マッサージの先生も私の体のことをよく分かってくれていて、痛いところを的確にほぐしてもらえます。</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">C</div>
+                            <div class="testimonial-info">
+                                <p class="testimonial-name">C様（70代男性）</p>
+                                <p class="testimonial-relation">ご利用者様</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">母の介護をしながら仕事もしているので、デイサービスに助けられています。送迎もしっかりしていて、安心してお任せできます。母も「また行きたい」と言っています。</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">D</div>
+                            <div class="testimonial-info">
+                                <p class="testimonial-name">D様のご家族</p>
+                                <p class="testimonial-relation">ご家族様</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 施設情報 -->
     <section class="facility" id="facility">
         <div class="section-inner">
@@ -2567,9 +2894,10 @@
                         <li><a href="#">トップ</a></li>
                         <li><a href="#concept">コンセプト</a></li>
                         <li><a href="#features">特徴</a></li>
+                        <li><a href="#staff">スタッフ</a></li>
                         <li><a href="#daily-flow">一日の流れ</a></li>
                         <li><a href="#pricing">料金</a></li>
-                        <li><a href="#start-flow">ご利用の流れ</a></li>
+                        <li><a href="#testimonials">お客様の声</a></li>
                         <li><a href="#faq">よくある質問</a></li>
                         <li><a href="recruit.html">採用情報</a></li>
                     </ul>
