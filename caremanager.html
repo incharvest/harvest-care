@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ケアマネージャーの方へ｜デイサービス ハーベスト</title>
+    <meta name="description" content="ケアマネージャー様向けの施設情報ページです。デイサービス ハーベストの特徴、サービス内容、空き状況、お問い合わせ先をご案内します。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23847669'/%3E%3Cg transform='translate(16,17)'%3E%3Cpath d='M0-9Q2-1 0 10' fill='none' stroke='%23f0e8df' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='-3' cy='-6' rx='2' ry='4' fill='%23f0e8df' transform='rotate(-25-3-6)'/%3E%3Cellipse cx='-4' cy='-1' rx='2' ry='3' fill='%23f0e8df' transform='rotate(-20-4-1)'/%3E%3Cellipse cx='3' cy='-6' rx='2' ry='4' fill='%23f0e8df' transform='rotate(25 3-6)'/%3E%3Cellipse cx='4' cy='-1' rx='2' ry='3' fill='%23f0e8df' transform='rotate(20 4-1)'/%3E%3C/g%3E%3C/svg%3E">
+    <style>
+        :root {
+            --color-primary: #3d7a5a;
+            --color-primary-light: #5a9a78;
+            --color-primary-dark: #2d5a45;
+            --color-accent: #e8a45c;
+            --color-accent-light: #f5c98a;
+            --color-bg: #f7f4f0;
+            --color-bg-warm: #f0ebe4;
+            --color-bg-card: #ffffff;
+            --color-text: #3a3a3a;
+            --color-text-light: #5a5a5a;
+            --color-text-muted: #888888;
+            --color-white: #ffffff;
+            --color-border: #e5e0d8;
+            --font-display: 'Zen Old Mincho', serif;
+            --font-body: 'Noto Sans JP', sans-serif;
+            --shadow-soft: 0 2px 12px rgba(61, 122, 90, 0.08);
+            --shadow-medium: 0 4px 20px rgba(61, 122, 90, 0.12);
+            --radius-small: 6px;
+            --radius-medium: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        /* ヘッダー */
+        header {
+            background: var(--color-primary);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 1rem;
+        }
+
+        .logo-text {
+            color: var(--color-white);
+        }
+
+        .logo-main {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+
+        .logo-sub {
+            font-size: 0.65rem;
+            opacity: 0.8;
+            letter-spacing: 0.1em;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--color-accent);
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-tel {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .header-tel svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ヒーロー */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            padding: 140px 2rem 80px;
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-primary-dark);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 20px;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* セクション共通 */
+        section {
+            padding: 80px 2rem;
+        }
+
+        .section-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--color-primary);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        /* クイックコンタクト */
+        .quick-contact {
+            background: var(--color-white);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .quick-contact-inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .quick-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .quick-contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quick-contact-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--color-white);
+        }
+
+        .quick-contact-text {
+            text-align: left;
+        }
+
+        .quick-contact-label {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2px;
+        }
+
+        .quick-contact-value {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .quick-contact-value a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* 特徴セクション */
+        .features {
+            background: var(--color-bg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius-medium);
+            text-align: center;
+            border: 1px solid var(--color-border);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(61, 122, 90, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--color-primary);
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .feature-card p {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        /* 施設概要 */
+        .facility-info {
+            background: var(--color-white);
+        }
+
+        .facility-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        .facility-table th,
+        .facility-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 0.9rem;
+        }
+
+        .facility-table th {
+            background: var(--color-bg);
+            font-weight: 500;
+            color: var(--color-primary);
+            width: 200px;
+        }
+
+        .facility-table td {
+            color: var(--color-text);
+        }
+
+        .facility-table .highlight {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        /* 対応可能な方 */
+        .target-users {
+            background: var(--color-bg);
+        }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .target-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius-medium);
+            border: 1px solid var(--color-border);
+        }
+
+        .target-card h3 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .target-list {
+            list-style: none;
+        }
+
+        .target-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .target-list .icon {
+            color: var(--color-primary);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .target-list .icon.caution {
+            color: var(--color-accent);
+        }
+
+        /* 送迎エリア */
+        .pickup-area {
+            background: var(--color-white);
+        }
+
+        .area-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .area-list-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .area-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .area-tag {
+            background: var(--color-bg);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--color-text);
+        }
+
+        .area-note {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            padding: 1rem;
+            background: var(--color-bg);
+            border-radius: var(--radius-small);
+        }
+
+        .area-map {
+            background: var(--color-bg);
+            border-radius: var(--radius-medium);
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .area-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* お問い合わせ */
+        .contact-section {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .contact-section .section-title {
+            color: var(--color-white);
+        }
+
+        .contact-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: var(--radius-medium);
+            text-align: center;
+        }
+
+        .contact-card-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .contact-card-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--color-white);
+        }
+
+        .contact-card h3 {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-card .contact-value {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card .contact-value a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .contact-card p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* 資料ダウンロード */
+        .download-section {
+            background: var(--color-bg-warm);
+        }
+
+        .download-box {
+            background: var(--color-white);
+            padding: 3rem;
+            border-radius: var(--radius-medium);
+            text-align: center;
+            border: 2px dashed var(--color-border);
+        }
+
+        .download-box h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .download-box p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 14px 32px;
+            border-radius: var(--radius-small);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .download-btn:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .download-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* フッター */
+        footer {
+            background: var(--color-primary-dark);
+            color: var(--color-white);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-info h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-info p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            line-height: 2;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .footer-nav a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-copyright {
+            text-align: center;
+            font-size: 0.75rem;
+            opacity: 0.6;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .quick-contact-inner {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .target-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .area-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .facility-table th {
+                width: 120px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-text">
+                    <div class="logo-main">ハーベスト</div>
+                    <div class="logo-sub">鹿児島市の介護サービス</div>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="dayservice.html">デイサービス</a></li>
+                    <li><a href="resthome.html">有料老人ホーム</a></li>
+                    <li><a href="caremanager.html">ケアマネージャーの方へ</a></li>
+                    <li><a href="recruit.html">採用情報</a></li>
+                </ul>
+            </nav>
+            <a href="tel:099-296-9844" class="header-tel">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                099-296-9844
+            </a>
+        </div>
+    </header>
+
+    <!-- ヒーロー -->
+    <section class="hero">
+        <span class="hero-badge">FOR CARE MANAGER</span>
+        <h1>ケアマネージャーの方へ</h1>
+        <p>デイサービス ハーベストの施設情報をご案内いたします。<br>ご利用者様のご紹介・ご相談はお気軽にお問い合わせください。</p>
+    </section>
+
+    <!-- クイックコンタクト -->
+    <section class="quick-contact">
+        <div class="section-inner">
+            <div class="quick-contact-inner">
+                <div class="quick-contact-item">
+                    <div class="quick-contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <div class="quick-contact-text">
+                        <p class="quick-contact-label">お電話でのお問い合わせ</p>
+                        <p class="quick-contact-value"><a href="tel:099-296-9844">099-296-9844</a></p>
+                    </div>
+                </div>
+                <div class="quick-contact-item">
+                    <div class="quick-contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                    </div>
+                    <div class="quick-contact-text">
+                        <p class="quick-contact-label">FAX（紹介状送付先）</p>
+                        <p class="quick-contact-value">099-296-9843</p>
+                    </div>
+                </div>
+                <div class="quick-contact-item">
+                    <div class="quick-contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <div class="quick-contact-text">
+                        <p class="quick-contact-label">受付時間</p>
+                        <p class="quick-contact-value">8:30〜17:30</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 当施設の特徴 -->
+    <section class="features">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">当施設の特徴</h2>
+                <p class="section-subtitle">ご紹介いただく際のポイント</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                            <path d="M9 14l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>鍼灸マッサージ師5名在籍</h3>
+                    <p>国家資格を持つ鍼灸マッサージ師が5名在籍。専門的なマッサージ・機能訓練を提供できます。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3>充実のリハビリ機器</h3>
+                    <p>干渉波・SSP・ドクターメドマー・ホットマグナー・平行棒など多彩な機器を完備しています。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>少人数制（定員18名）</h3>
+                    <p>地域密着型通所介護として少人数制を採用。お一人おひとりに目が届く環境です。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <h3>土曜日も営業</h3>
+                    <p>月曜〜土曜まで営業。週末のご利用ニーズにも対応可能です。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3>認知症対応可</h3>
+                    <p>認知症の方も安心してご利用いただけます。スタッフが丁寧に対応いたします。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                            <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                            <circle cx="12" cy="20" r="1"/>
+                        </svg>
+                    </div>
+                    <h3>送迎無料</h3>
+                    <p>鹿児島市内の広範囲に対応。車椅子対応車両もございます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 施設概要 -->
+    <section class="facility-info">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">施設概要</h2>
+            </div>
+            <table class="facility-table">
+                <tr>
+                    <th>事業所名</th>
+                    <td>マッサージ・リハビリ重視型デイサービス ハーベスト</td>
+                </tr>
+                <tr>
+                    <th>事業所番号</th>
+                    <td>4670111212</td>
+                </tr>
+                <tr>
+                    <th>サービス種別</th>
+                    <td>地域密着型通所介護</td>
+                </tr>
+                <tr>
+                    <th>定員</th>
+                    <td class="highlight">18名</td>
+                </tr>
+                <tr>
+                    <th>サービス提供時間</th>
+                    <td>9:00〜16:05（7時間5分）</td>
+                </tr>
+                <tr>
+                    <th>営業日</th>
+                    <td>月曜日〜土曜日</td>
+                </tr>
+                <tr>
+                    <th>休業日</th>
+                    <td>日曜日・年末年始</td>
+                </tr>
+                <tr>
+                    <th>専門スタッフ</th>
+                    <td class="highlight">鍼灸マッサージ師 5名在籍</td>
+                </tr>
+                <tr>
+                    <th>リハビリ機器</th>
+                    <td>干渉波、SSP、ドクターメドマー、ホットマグナー、プーリー、電動ルームサイクル、フットマッサージャー、平行棒</td>
+                </tr>
+                <tr>
+                    <th>入浴</th>
+                    <td>一般浴・個浴対応</td>
+                </tr>
+                <tr>
+                    <th>食事</th>
+                    <td>昼食提供あり（制限食対応可：糖尿病食・減塩食・刻み食・ソフト食）</td>
+                </tr>
+                <tr>
+                    <th>送迎</th>
+                    <td>無料（車椅子対応車両あり）</td>
+                </tr>
+                <tr>
+                    <th>住所</th>
+                    <td>〒891-0115 鹿児島県鹿児島市東谷山2丁目40番15号</td>
+                </tr>
+                <tr>
+                    <th>電話番号</th>
+                    <td><a href="tel:099-296-9844">099-296-9844</a></td>
+                </tr>
+                <tr>
+                    <th>FAX番号</th>
+                    <td>099-296-9843</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- 対応可能な方 -->
+    <section class="target-users">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">対応可能な方・ご利用条件</h2>
+            </div>
+            <div class="target-grid">
+                <div class="target-card">
+                    <h3>対応可能な方</h3>
+                    <ul class="target-list">
+                        <li><span class="icon">&#10003;</span>要介護1〜5の認定を受けた方</li>
+                        <li><span class="icon">&#10003;</span>鹿児島市にお住まいの方</li>
+                        <li><span class="icon">&#10003;</span>車椅子をご利用の方</li>
+                        <li><span class="icon">&#10003;</span>認知症の方</li>
+                        <li><span class="icon">&#10003;</span>脳卒中後のリハビリが必要な方</li>
+                        <li><span class="icon">&#10003;</span>慢性的な痛み（腰痛・膝痛等）でお悩みの方</li>
+                        <li><span class="icon">&#10003;</span>筋力低下・体力低下が気になる方</li>
+                        <li><span class="icon">&#10003;</span>むくみでお悩みの方</li>
+                    </ul>
+                </div>
+                <div class="target-card">
+                    <h3>ご利用が難しい場合</h3>
+                    <ul class="target-list">
+                        <li><span class="icon caution">&#9651;</span>医療行為が必要な方（要相談）</li>
+                        <li><span class="icon caution">&#9651;</span>感染症をお持ちの方（要相談）</li>
+                        <li><span class="icon caution">&#9651;</span>他の利用者様に危害を加える恐れのある方</li>
+                        <li><span class="icon caution">&#9651;</span>送迎エリア外にお住まいの方（要相談）</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--color-text-light);">※ 上記に該当する場合でも、状況によっては対応可能な場合がございます。まずはご相談ください。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 送迎エリア -->
+    <section class="pickup-area">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">送迎対応エリア</h2>
+            </div>
+            <div class="area-content">
+                <div class="area-list-section">
+                    <h3>対応地域</h3>
+                    <div class="area-tags">
+                        <span class="area-tag">谷山</span>
+                        <span class="area-tag">東谷山</span>
+                        <span class="area-tag">卸本町</span>
+                        <span class="area-tag">和田</span>
+                        <span class="area-tag">中山</span>
+                        <span class="area-tag">坂之上</span>
+                        <span class="area-tag">慈眼寺</span>
+                        <span class="area-tag">宇宿</span>
+                        <span class="area-tag">郡元</span>
+                        <span class="area-tag">鴨池</span>
+                        <span class="area-tag">紫原</span>
+                        <span class="area-tag">桜ケ丘</span>
+                        <span class="area-tag">武岡</span>
+                        <span class="area-tag">田上</span>
+                        <span class="area-tag">西田</span>
+                        <span class="area-tag">伊敷</span>
+                        <span class="area-tag">吉野</span>
+                    </div>
+                    <div class="area-note">
+                        <p><strong>※ 松元・桜島地区は要相談</strong></p>
+                        <p>上記以外のエリアについてもご相談ください。可能な限り対応いたします。</p>
+                    </div>
+                </div>
+                <div class="area-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3398.0!2d130.5475!3d31.5425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x353e626f1f1f1f1f%3A0x1f1f1f1f1f1f1f1f!2z6bm_5YWQ5bO255yM6bm_5YWQ5bO25biC5p2x6LC35bGxMuS4geebrjQw55Wq77yR77yV5Y-3!5e0!3m2!1sja!2sjp!4v1"
+                        allowfullscreen=""
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section class="contact-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">お問い合わせ・ご紹介</h2>
+                <p class="section-subtitle">ご利用者様のご紹介、空き状況のお問い合わせはこちらまで</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <h3>お電話</h3>
+                    <p class="contact-value"><a href="tel:099-296-9844">099-296-9844</a></p>
+                    <p>受付時間 8:30〜17:30</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                    </div>
+                    <h3>FAX</h3>
+                    <p class="contact-value">099-296-9843</p>
+                    <p>紹介状の送付先</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>所在地</h3>
+                    <p class="contact-value" style="font-size: 1rem;">東谷山2-40-15</p>
+                    <p>鹿児島市東谷山</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 資料ダウンロード -->
+    <section class="download-section">
+        <div class="section-inner">
+            <div class="download-box">
+                <h3>施設パンフレットのダウンロード</h3>
+                <p>当施設の詳しい情報をまとめたパンフレットをご用意しております。<br>ご利用者様へのご案内にご活用ください。</p>
+                <a href="#" class="download-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    パンフレットをダウンロード（PDF）
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h4>デイサービス ハーベスト</h4>
+                    <p>〒891-0115 鹿児島県鹿児島市東谷山2丁目40番15号<br>
+                    TEL: 099-296-9844 / FAX: 099-296-9843<br>
+                    受付時間: 8:30〜17:30（日曜・年末年始休み）</p>
+                </div>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="index.html">トップ</a></li>
+                        <li><a href="dayservice.html">デイサービス</a></li>
+                        <li><a href="resthome.html">有料老人ホーム</a></li>
+                        <li><a href="recruit.html">採用情報</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <p class="footer-copyright">&copy; 2026 ハーベスト All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
