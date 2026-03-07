@@ -1151,6 +1151,48 @@
             margin-bottom: 1.5rem;
         }
 
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--color-white);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .pricing-table th {
+            background: var(--color-primary);
+            color: var(--color-accent);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-table td:first-child {
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+
+        .pricing-table td:last-child {
+            color: var(--color-accent-dark);
+            font-weight: 600;
+        }
+
+        .pricing-table tbody tr:hover {
+            background: var(--color-bg-light);
+        }
+
+        .pricing-table-note {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
         .pricing-addon-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -2336,6 +2378,12 @@
                 font-size: 1rem;
             }
 
+            .pricing-table th,
+            .pricing-table td {
+                padding: 0.8rem 0.5rem;
+                font-size: 0.85rem;
+            }
+
             .facility-row {
                 grid-template-columns: 1fr;
             }
@@ -3021,162 +3069,46 @@
                 <p class="simulation-note">※ 上記は入浴介助・機能訓練加算を含む目安です。別途処遇改善加算がかかります。詳細はお問い合わせください。</p>
             </div>
 
-            <!-- 基本料金 -->
+            <!-- 料金表 -->
             <div class="pricing-section">
-                <h3 class="pricing-section-title">基本料金（1割負担の場合）</h3>
-                <div class="pricing-cards">
-                    <div class="pricing-card">
-                        <div class="pricing-card-header">
-                            <span class="pricing-label">要介護1</span>
-                        </div>
-                        <div class="pricing-card-body">
-                            <div class="pricing-amount">
-                                <span class="pricing-number">753</span>
-                                <span class="pricing-unit">円/回</span>
-                            </div>
-                            <p class="pricing-detail">753単位</p>
-                        </div>
-                    </div>
-                    <div class="pricing-card">
-                        <div class="pricing-card-header">
-                            <span class="pricing-label">要介護2</span>
-                        </div>
-                        <div class="pricing-card-body">
-                            <div class="pricing-amount">
-                                <span class="pricing-number">890</span>
-                                <span class="pricing-unit">円/回</span>
-                            </div>
-                            <p class="pricing-detail">890単位</p>
-                        </div>
-                    </div>
-                    <div class="pricing-card">
-                        <div class="pricing-card-header">
-                            <span class="pricing-label">要介護3</span>
-                        </div>
-                        <div class="pricing-card-body">
-                            <div class="pricing-amount">
-                                <span class="pricing-number">1,032</span>
-                                <span class="pricing-unit">円/回</span>
-                            </div>
-                            <p class="pricing-detail">1,032単位</p>
-                        </div>
-                    </div>
-                    <div class="pricing-card">
-                        <div class="pricing-card-header">
-                            <span class="pricing-label">要介護4</span>
-                        </div>
-                        <div class="pricing-card-body">
-                            <div class="pricing-amount">
-                                <span class="pricing-number">1,172</span>
-                                <span class="pricing-unit">円/回</span>
-                            </div>
-                            <p class="pricing-detail">1,172単位</p>
-                        </div>
-                    </div>
-                    <div class="pricing-card">
-                        <div class="pricing-card-header">
-                            <span class="pricing-label">要介護5</span>
-                        </div>
-                        <div class="pricing-card-body">
-                            <div class="pricing-amount">
-                                <span class="pricing-number">1,312</span>
-                                <span class="pricing-unit">円/回</span>
-                            </div>
-                            <p class="pricing-detail">1,312単位</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 加算料金 -->
-            <div class="pricing-section">
-                <h3 class="pricing-section-title">加算料金（1割負担の場合）</h3>
-                <div class="pricing-addon-grid">
-                    <div class="pricing-addon-item">
-                        <div class="pricing-addon-name">入浴介助加算（Ⅰ）</div>
-                        <div class="pricing-addon-price">
-                            <span class="addon-number">40</span>
-                            <span class="addon-unit">円/回</span>
-                        </div>
-                        <p class="pricing-addon-detail">40単位/日</p>
-                    </div>
-                    <div class="pricing-addon-item">
-                        <div class="pricing-addon-name">個別機能訓練加算（Ⅰ）イ</div>
-                        <div class="pricing-addon-price">
-                            <span class="addon-number">56</span>
-                            <span class="addon-unit">円/回</span>
-                        </div>
-                        <p class="pricing-addon-detail">56単位/日</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 合計金額 -->
-            <div class="pricing-section">
-                <h3 class="pricing-section-title">合計金額目安（1割負担の場合）</h3>
-                <p class="pricing-total-note">基本料金 + 加算料金（96単位）の合計</p>
-                <div class="pricing-cards pricing-cards-total">
-                    <div class="pricing-card pricing-card-total">
-                        <div class="pricing-card-header">
-                            <span class="pricing-label">要介護1</span>
-                        </div>
-                        <div class="pricing-card-body">
-                            <div class="pricing-amount">
-                                <span class="pricing-number">849</span>
-                                <span class="pricing-unit">円〜/回</span>
-                            </div>
-                            <p class="pricing-detail">849単位</p>
-                        </div>
-                    </div>
-                    <div class="pricing-card pricing-card-total">
-                        <div class="pricing-card-header">
-                            <span class="pricing-label">要介護2</span>
-                        </div>
-                        <div class="pricing-card-body">
-                            <div class="pricing-amount">
-                                <span class="pricing-number">986</span>
-                                <span class="pricing-unit">円〜/回</span>
-                            </div>
-                            <p class="pricing-detail">986単位</p>
-                        </div>
-                    </div>
-                    <div class="pricing-card pricing-card-total">
-                        <div class="pricing-card-header">
-                            <span class="pricing-label">要介護3</span>
-                        </div>
-                        <div class="pricing-card-body">
-                            <div class="pricing-amount">
-                                <span class="pricing-number">1,128</span>
-                                <span class="pricing-unit">円〜/回</span>
-                            </div>
-                            <p class="pricing-detail">1,128単位</p>
-                        </div>
-                    </div>
-                    <div class="pricing-card pricing-card-total">
-                        <div class="pricing-card-header">
-                            <span class="pricing-label">要介護4</span>
-                        </div>
-                        <div class="pricing-card-body">
-                            <div class="pricing-amount">
-                                <span class="pricing-number">1,268</span>
-                                <span class="pricing-unit">円〜/回</span>
-                            </div>
-                            <p class="pricing-detail">1,268単位</p>
-                        </div>
-                    </div>
-                    <div class="pricing-card pricing-card-total">
-                        <div class="pricing-card-header">
-                            <span class="pricing-label">要介護5</span>
-                        </div>
-                        <div class="pricing-card-body">
-                            <div class="pricing-amount">
-                                <span class="pricing-number">1,408</span>
-                                <span class="pricing-unit">円〜/回</span>
-                            </div>
-                            <p class="pricing-detail">1,408単位</p>
-                        </div>
-                    </div>
-                </div>
+                <h3 class="pricing-section-title">ご利用料金（1割負担の場合）</h3>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>介護度</th>
+                            <th>基本料金</th>
+                            <th>加算込み目安</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>要介護1</td>
+                            <td>753円/回</td>
+                            <td>849円〜/回</td>
+                        </tr>
+                        <tr>
+                            <td>要介護2</td>
+                            <td>890円/回</td>
+                            <td>986円〜/回</td>
+                        </tr>
+                        <tr>
+                            <td>要介護3</td>
+                            <td>1,032円/回</td>
+                            <td>1,128円〜/回</td>
+                        </tr>
+                        <tr>
+                            <td>要介護4</td>
+                            <td>1,172円/回</td>
+                            <td>1,268円〜/回</td>
+                        </tr>
+                        <tr>
+                            <td>要介護5</td>
+                            <td>1,312円/回</td>
+                            <td>1,408円〜/回</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="pricing-table-note">※加算込み目安は入浴介助加算（40単位）・個別機能訓練加算（56単位）を含みます</p>
             </div>
 
             <!-- その他実費 -->
