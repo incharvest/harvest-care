@@ -213,6 +213,8 @@
   padding: var(--space-8);
   border-radius: var(--radius-lg);
   transition: var(--transition-normal);
+  display: flex;
+  flex-direction: column;
 }
 
 .feature-card:hover {
@@ -251,6 +253,7 @@
   font-size: var(--font-size-small);
   line-height: var(--line-height-normal);
   color: var(--color-text-secondary);
+  flex-grow: 1;
 }
 
 .section--dark .feature-card-desc {
