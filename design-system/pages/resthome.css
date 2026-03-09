@@ -274,7 +274,7 @@
 
 /* Expanded Feature Card */
 .feature-card--expanded {
-  grid-column: span 2;
+  grid-column: span 3;
   text-align: left;
   padding: var(--space-8);
 }
@@ -323,6 +323,12 @@
 @media (max-width: 1024px) {
   .feature-card--expanded {
     grid-column: span 2;
+  }
+}
+
+@media (min-width: 1025px) {
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
