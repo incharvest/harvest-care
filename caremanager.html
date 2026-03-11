@@ -345,6 +345,99 @@
             font-weight: 600;
         }
 
+        /* サービス詳細 */
+        .service-details {
+            background: var(--color-bg-warm);
+        }
+
+        .service-details-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .detail-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius-medium);
+            border: 1px solid var(--color-border);
+        }
+
+        .detail-card-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--color-accent);
+            letter-spacing: 0.05em;
+        }
+
+        .detail-list {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .detail-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 0.85rem;
+            gap: 1rem;
+        }
+
+        .detail-list li:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: var(--color-text-muted);
+            flex-shrink: 0;
+            width: 80px;
+        }
+
+        .detail-value {
+            color: var(--color-text);
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .detail-value.highlight {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .detail-note {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            background: var(--color-bg);
+            padding: 0.8rem 1rem;
+            border-radius: var(--radius-small);
+            margin-top: 1rem;
+        }
+
+        .pricing-table-cm {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .pricing-table-cm th,
+        .pricing-table-cm td {
+            padding: 0.5rem 0.6rem;
+            text-align: center;
+            border: 1px solid var(--color-border);
+        }
+
+        .pricing-table-cm th {
+            background: var(--color-bg);
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
         /* 対応可能な方 */
         .target-users {
             background: var(--color-bg);
@@ -640,6 +733,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .service-details-grid {
+                grid-template-columns: 1fr;
+            }
+
             .target-grid {
                 grid-template-columns: 1fr;
             }
@@ -895,6 +992,99 @@
                     <td>099-296-9843</td>
                 </tr>
             </table>
+        </div>
+    </section>
+
+    <!-- サービス詳細 -->
+    <section class="service-details">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">サービス詳細</h2>
+                <p class="section-subtitle">ケアマネジャー様がよくご確認される項目</p>
+            </div>
+            <div class="service-details-grid">
+                <!-- 入浴 -->
+                <div class="detail-card">
+                    <h3 class="detail-card-title">入浴について</h3>
+                    <ul class="detail-list">
+                        <li>
+                            <span class="detail-label">浴室タイプ</span>
+                            <span class="detail-value">一般浴・個浴</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">介助体制</span>
+                            <span class="detail-value">必要に応じてスタッフ2名対応</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">設備</span>
+                            <span class="detail-value">手すり・滑り止め完備</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">入浴回数</span>
+                            <span class="detail-value">週1〜2回（ご希望に応じて）</span>
+                        </li>
+                    </ul>
+                    <p class="detail-note">お体の状態に合わせて安全に入浴いただけます</p>
+                </div>
+
+                <!-- 運動・リハビリ -->
+                <div class="detail-card">
+                    <h3 class="detail-card-title">運動・リハビリについて</h3>
+                    <ul class="detail-list">
+                        <li>
+                            <span class="detail-label">専門スタッフ</span>
+                            <span class="detail-value highlight">鍼灸マッサージ師 5名</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">機能訓練</span>
+                            <span class="detail-value">個別機能訓練加算あり</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">体操</span>
+                            <span class="detail-value">全体体操・個別運動</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">主な機器</span>
+                            <span class="detail-value">干渉波・SSP・平行棒・ドクターメドマー 他</span>
+                        </li>
+                    </ul>
+                    <p class="detail-note">「歩きたい」「一人でトイレに行きたい」など、ご本人の目標に合わせたプログラムを提供します</p>
+                </div>
+
+                <!-- 食事・加算 -->
+                <div class="detail-card">
+                    <h3 class="detail-card-title">食事・算定加算について</h3>
+                    <ul class="detail-list">
+                        <li>
+                            <span class="detail-label">昼食代</span>
+                            <span class="detail-value highlight">700円/回</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">おやつ</span>
+                            <span class="detail-value">15:30ご提供</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">制限食</span>
+                            <span class="detail-value">糖尿病食・減塩食・刻み食・ソフト食 対応可</span>
+                        </li>
+                    </ul>
+                    <p style="font-size:0.85rem; color:var(--color-primary); font-weight:500; margin-bottom:0.5rem;">現在算定中の加算</p>
+                    <ul class="detail-list">
+                        <li>
+                            <span class="detail-label" style="width:auto; flex:1;">入浴介助加算</span>
+                            <span class="detail-value">40単位</span>
+                        </li>
+                        <li>
+                            <span class="detail-label" style="width:auto; flex:1;">個別機能訓練加算</span>
+                            <span class="detail-value">56単位</span>
+                        </li>
+                        <li>
+                            <span class="detail-label" style="width:auto; flex:1;">介護職員等処遇改善加算</span>
+                            <span class="detail-value">（Ⅲ）</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
