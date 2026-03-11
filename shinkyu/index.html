@@ -85,7 +85,7 @@
 
         nav a {
             text-decoration: none;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.92);
             font-weight: 400;
             font-size: 0.75rem;
             letter-spacing: 0.05em;
@@ -1644,6 +1644,249 @@
                 border-bottom: 1px solid var(--color-border);
             }
         }
+
+        /* ---- タブUI ---- */
+        .tab-nav {
+            display: flex;
+            border-bottom: 2px solid var(--color-border);
+            margin-bottom: 2.5rem;
+            gap: 0;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.9rem 1.5rem;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: var(--color-text-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn:hover {
+            color: var(--color-primary);
+        }
+
+        .tab-btn.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-accent);
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* ---- 効果グリッド ---- */
+        .effect-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            background: var(--color-cream);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .effect-item {
+            text-align: center;
+        }
+
+        .effect-icon {
+            margin-bottom: 0.6rem;
+        }
+
+        .effect-name {
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .effect-desc {
+            font-size: 0.82rem;
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+
+        /* ---- 施術カード ---- */
+        .treatment-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .treat-card {
+            background: var(--color-white);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-soft);
+            border-top: 3px solid transparent;
+            transition: var(--transition);
+        }
+
+        .treat-card:hover {
+            border-top-color: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .treat-card h4 {
+            color: var(--color-accent-dark);
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        .treat-card p {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .treat-card .tag {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            background: var(--color-cream);
+            padding: 0.6rem 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* ---- 症状カード ---- */
+        .symptom-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .symp-card {
+            background: var(--color-white);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .symp-card-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .symp-card-body h4 {
+            color: var(--color-primary);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .symp-card-body p {
+            color: var(--color-text-light);
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .symp-card-body ul {
+            list-style: none;
+            padding: 0;
+            background: var(--color-cream);
+            padding: 0.6rem 0.8rem;
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        /* ---- 中盤CTAバナー ---- */
+        .mid-cta {
+            background: var(--color-primary);
+            padding: 3rem 2rem;
+        }
+
+        .mid-cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .mid-cta-text h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .mid-cta-text p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .mid-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 1rem 2rem;
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+
+        .mid-cta-btn:hover {
+            background: var(--color-accent-light);
+        }
+
+        /* ---- スクロールアニメーション ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
+
+        @media (max-width: 768px) {
+            .effect-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .symptom-cards {
+                grid-template-columns: 1fr;
+            }
+            .mid-cta-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .mid-cta-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1738,7 +1981,7 @@
     <!-- コンセプトセクション -->
     <section class="concept" id="concept">
         <div class="section-inner">
-            <div class="concept-content">
+            <div class="concept-content fade-in">
                 <div class="concept-image">
                     <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80" alt="鍼灸施術">
                 </div>
@@ -1907,7 +2150,7 @@
                 自力での通院が困難な方で、医師の同意が得られた場合に健康保険を使ってご利用いただけます。<br>
                 筋麻痺や運動機能障害など、医療上マッサージが必要と判断される方が対象です。
             </p>
-            <div class="target-grid">
+            <div class="target-grid fade-in">
                 <div class="target-card">
                     <h3>マッサージの対象となる症状</h3>
                     <ul>
@@ -1938,104 +2181,89 @@
     <!-- 施術内容 -->
     <section class="treatment" id="treatment">
         <div class="section-inner">
-            <div class="section-header">
-                <p class="section-en">施術内容</p>
+            <div class="section-header fade-in">
+                <p class="section-en">TREATMENT</p>
                 <h2 class="section-title">施術内容</h2>
                 <div class="section-line"></div>
             </div>
-            <p style="text-align: center; margin-bottom: 2rem; color: var(--color-text-light);">
+            <p style="text-align: center; margin-bottom: 2.5rem; color: var(--color-text-light);" class="fade-in">
                 国家資格を持つ施術者が、ご利用者様の症状に合わせた施術を行います。<br>
                 リハビリよりも身体的な負担が少なく、リラックスしながら受けていただけます。
             </p>
 
-            <!-- 施術の効果 -->
-            <div style="background: var(--color-cream); padding: 2rem; margin-bottom: 3rem;">
-                <h3 style="font-family: var(--font-display); color: var(--color-primary); text-align: center; margin-bottom: 1.5rem;">施術の効果</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
-                    <div style="text-align: center;">
-                        <div style="margin-bottom: 0.5rem;"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M16 4 Q8 14 8 20 Q8 28 16 28 Q24 28 24 20 Q24 14 16 4" /><path d="M12 18 Q14 22 18 20" stroke-width="1" opacity="0.6" /></g></svg></div>
-                        <p style="font-weight: 600; color: var(--color-primary); margin-bottom: 0.3rem;">血行促進</p>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light);">血液・リンパの循環を改善し、むくみや冷えを緩和します</p>
+            <!-- 施術の効果 4アイコン -->
+            <div class="effect-grid fade-in">
+                <div class="effect-item">
+                    <div class="effect-icon"><svg viewBox="0 0 32 32" width="36" height="36" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M16 4 Q8 14 8 20 Q8 28 16 28 Q24 28 24 20 Q24 14 16 4" /><path d="M12 18 Q14 22 18 20" stroke-width="1" opacity="0.6" /></g></svg></div>
+                    <p class="effect-name">血行促進</p>
+                    <p class="effect-desc">循環を改善しむくみ・冷えを緩和</p>
+                </div>
+                <div class="effect-item">
+                    <div class="effect-icon"><svg viewBox="0 0 32 32" width="36" height="36" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M6 18 L10 14 L14 16 L18 10 L22 12 L26 6" /><path d="M22 6 L26 6 L26 10" /><path d="M6 22 L26 22" stroke-width="1" opacity="0.5" /></g></svg></div>
+                    <p class="effect-name">筋緊張の緩和</p>
+                    <p class="effect-desc">硬くなった筋肉をほぐし痛みを軽減</p>
+                </div>
+                <div class="effect-item">
+                    <div class="effect-icon"><svg viewBox="0 0 32 32" width="36" height="36" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="16" r="6" /><path d="M16 16 L26 16" /><path d="M22 12 L26 16 L22 20" /></g></svg></div>
+                    <p class="effect-name">関節可動域の改善</p>
+                    <p class="effect-desc">関節の動きを回復し動作をスムーズに</p>
+                </div>
+                <div class="effect-item">
+                    <div class="effect-icon"><svg viewBox="0 0 32 32" width="36" height="36" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="16" r="12" /><path d="M10 14 Q12 12 14 14" /><path d="M18 14 Q20 12 22 14" /><path d="M11 20 Q16 24 21 20" /></g></svg></div>
+                    <p class="effect-name">リラクゼーション</p>
+                    <p class="effect-desc">心身の緊張をほぐし精神的安定をもたらす</p>
+                </div>
+            </div>
+
+            <!-- タブUI -->
+            <div class="fade-in">
+                <div class="tab-nav" role="tablist">
+                    <button class="tab-btn active" onclick="switchTab(event,'treatment','massage')" role="tab" aria-selected="true">
+                        マッサージ施術
+                    </button>
+                    <button class="tab-btn" onclick="switchTab(event,'treatment','shinkyu')" role="tab" aria-selected="false">
+                        鍼灸施術
+                    </button>
+                </div>
+
+                <div id="treatment-massage" class="tab-panel active">
+                    <div class="treatment-cards">
+                        <div class="treat-card">
+                            <h4>マッサージ</h4>
+                            <p>「さする・押す・揉む・叩く」などの刺激を皮膚に直接与えることで、<strong>血液やリンパ液の循環を促進</strong>します。筋肉の緊張をやわらげ、痛みの緩和や疲労回復に効果があります。</p>
+                            <p class="tag"><strong>施術目的：</strong>血行促進、筋緊張の緩和、関節可動域の改善、痛みの緩和</p>
+                        </div>
+                        <div class="treat-card">
+                            <h4>変形徒手矯正術</h4>
+                            <p>関節拘縮（関節が固まって動きにくい状態）がある方に対し、<strong>狭くなった可動域の回復</strong>を目指す施術です。関節を他動的に動かし、日常生活動作の改善につなげます。</p>
+                            <p class="tag"><strong>対象：</strong>脳卒中後遺症、骨折後、長期臥床などによる関節拘縮</p>
+                        </div>
+                        <div class="treat-card">
+                            <h4>温罨法（おんあんぽう）</h4>
+                            <p>温熱機や温タオルを使用して患部を温め、<strong>マッサージ効果を高める</strong>補助療法です。血行を促進し、筋肉をほぐれやすい状態にしてから施術を行います。</p>
+                            <p class="tag"><strong>主な効果：</strong>血行促進、筋肉の弛緩、施術効果の向上</p>
+                        </div>
                     </div>
-                    <div style="text-align: center;">
-                        <div style="margin-bottom: 0.5rem;"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M6 18 L10 14 L14 16 L18 10 L22 12 L26 6" /><path d="M22 6 L26 6 L26 10" /><path d="M6 22 L26 22" stroke-width="1" opacity="0.5" /></g></svg></div>
-                        <p style="font-weight: 600; color: var(--color-primary); margin-bottom: 0.3rem;">筋緊張の緩和</p>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light);">硬くなった筋肉をほぐし、痛みやこわばりを軽減します</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="margin-bottom: 0.5rem;"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="16" r="6" /><path d="M16 16 L26 16" /><path d="M22 12 L26 16 L22 20" /></g></svg></div>
-                        <p style="font-weight: 600; color: var(--color-primary); margin-bottom: 0.3rem;">関節可動域の改善</p>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light);">関節の動きを良くし、日常動作をスムーズにします</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="margin-bottom: 0.5rem;"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="16" r="12" /><path d="M10 14 Q12 12 14 14" /><path d="M18 14 Q20 12 22 14" /><path d="M11 20 Q16 24 21 20" /></g></svg></div>
-                        <p style="font-weight: 600; color: var(--color-primary); margin-bottom: 0.3rem;">リラクゼーション</p>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light);">心身のリラックス効果で、精神的な安定にもつながります</p>
+                </div>
+
+                <div id="treatment-shinkyu" class="tab-panel">
+                    <div class="treatment-cards">
+                        <div class="treat-card">
+                            <h4>はり（鍼）</h4>
+                            <p>髪の毛ほどの細さ（直径0.14〜0.2mm）の鍼で経穴（ツボ）を刺激し、<strong>痛みの緩和や自律神経の調整</strong>を行います。使い捨て（ディスポーザブル）製品を使用しますので衛生面も安心です。</p>
+                            <p class="tag"><strong>対象疾患：</strong>神経痛、五十肩、頚腕症候群、腰痛症、リウマチ、頚椎捻挫後遺症</p>
+                        </div>
+                        <div class="treat-card">
+                            <h4>きゅう（灸）</h4>
+                            <p>艾（もぐさ）を燃やして経穴（ツボ）に温熱刺激を与え、<strong>血行促進と自然治癒力の向上</strong>を図ります。体を芯から温め、冷え性や慢性的な痛みの緩和に効果的です。</p>
+                            <p class="tag"><strong>対象疾患：</strong>神経痛、五十肩、頚腕症候群、腰痛症、リウマチ、頚椎捻挫後遺症</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- マッサージ施術 -->
-            <div style="margin-bottom: 3rem;">
-                <h3 style="font-family: var(--font-display); color: var(--color-primary); border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">マッサージ施術</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-                    <div style="background: var(--color-white); padding: 1.5rem; box-shadow: var(--shadow-soft);">
-                        <h4 style="color: var(--color-accent); margin-bottom: 0.8rem; font-size: 1.1rem;">マッサージ</h4>
-                        <p style="color: var(--color-text-light); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem;">
-                            「さする・押す・揉む・叩く」などの刺激を皮膚に直接与えることで、<strong>血液やリンパ液の循環を促進</strong>します。筋肉の緊張をやわらげ、痛みの緩和や疲労回復に効果があります。
-                        </p>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); background: var(--color-cream); padding: 0.8rem;">
-                            <strong>施術目的：</strong>血行・リンパ循環の促進、筋緊張の緩和、関節可動域の改善、痛みの緩和
-                        </p>
-                    </div>
-                    <div style="background: var(--color-white); padding: 1.5rem; box-shadow: var(--shadow-soft);">
-                        <h4 style="color: var(--color-accent); margin-bottom: 0.8rem; font-size: 1.1rem;">変形徒手矯正術</h4>
-                        <p style="color: var(--color-text-light); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem;">
-                            関節拘縮（関節が固まって動きにくい状態）がある方に対し、<strong>狭くなった可動域の回復</strong>を目指す施術です。関節を他動的に動かし、日常生活動作の改善につなげます。
-                        </p>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); background: var(--color-cream); padding: 0.8rem;">
-                            <strong>対象：</strong>脳卒中後遺症、骨折後、長期臥床などによる関節拘縮
-                        </p>
-                    </div>
-                    <div style="background: var(--color-white); padding: 1.5rem; box-shadow: var(--shadow-soft);">
-                        <h4 style="color: var(--color-accent); margin-bottom: 0.8rem; font-size: 1.1rem;">温罨法（おんあんぽう）</h4>
-                        <p style="color: var(--color-text-light); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem;">
-                            温熱機や温タオルを使用して患部を温め、<strong>マッサージ効果を高める</strong>補助療法です。血行を促進し、筋肉をほぐれやすい状態にしてから施術を行います。
-                        </p>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); background: var(--color-cream); padding: 0.8rem;">
-                            <strong>主な効果：</strong>血行促進、筋肉の弛緩、施術効果の向上
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 鍼灸施術 -->
-            <div>
-                <h3 style="font-family: var(--font-display); color: var(--color-primary); border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">鍼灸施術</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-                    <div style="background: var(--color-white); padding: 1.5rem; box-shadow: var(--shadow-soft);">
-                        <h4 style="color: var(--color-accent); margin-bottom: 0.8rem; font-size: 1.1rem;">はり（鍼）</h4>
-                        <p style="color: var(--color-text-light); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem;">
-                            髪の毛ほどの細さ（直径0.14mm〜0.2mm程度）の鍼で経穴（ツボ）を刺激し、<strong>痛みの緩和や自律神経の調整</strong>を行います。使用する鍼は滅菌処理された使い捨て（ディスポーザブル）製品ですので、衛生面も安心です。
-                        </p>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); background: var(--color-cream); padding: 0.8rem;">
-                            <strong>対象疾患：</strong>神経痛、五十肩、頚腕症候群、腰痛症、リウマチ、頚椎捻挫後遺症
-                        </p>
-                    </div>
-                    <div style="background: var(--color-white); padding: 1.5rem; box-shadow: var(--shadow-soft);">
-                        <h4 style="color: var(--color-accent); margin-bottom: 0.8rem; font-size: 1.1rem;">きゅう（灸）</h4>
-                        <p style="color: var(--color-text-light); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem;">
-                            艾（もぐさ）を燃やして経穴（ツボ）に温熱刺激を与え、<strong>血行促進と自然治癒力の向上</strong>を図ります。体を芯から温め、冷え性や慢性的な痛みの緩和に効果的です。
-                        </p>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); background: var(--color-cream); padding: 0.8rem;">
-                            <strong>対象疾患：</strong>神経痛、五十肩、頚腕症候群、腰痛症、リウマチ、頚椎捻挫後遺症
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <p style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: var(--color-cream); font-size: 0.95rem;">
-                施術時間は1回20〜30分程度です。お体の状態やご希望に合わせて、最適な施術を組み合わせて行います。<br>
+            <p style="text-align: center; margin-top: 2.5rem; padding: 1.5rem; background: var(--color-cream); font-size: 0.95rem;">
+                施術時間は1回20〜30分程度。お体の状態に合わせて最適な施術を組み合わせます。<br>
                 <strong>初回は無料体験が可能です。</strong>まずはお気軽にお問い合わせください。
             </p>
         </div>
@@ -2044,135 +2272,102 @@
     <!-- 対応症状 -->
     <section class="symptoms" id="symptoms">
         <div class="section-inner">
-            <div class="section-header">
-                <p class="section-en">対応症状</p>
+            <div class="section-header fade-in">
+                <p class="section-en">SYMPTOMS</p>
                 <h2 class="section-title">対応症状</h2>
                 <div class="section-line"></div>
             </div>
-            <p style="text-align: center; margin-bottom: 2rem; color: var(--color-text-light);">
+            <p style="text-align: center; margin-bottom: 2.5rem; color: var(--color-text-light);" class="fade-in">
                 以下のような症状・疾患でお悩みの方に、訪問鍼灸マッサージをご利用いただけます。<br>
                 症状に合わせた施術で、日常生活の質の向上をサポートいたします。
             </p>
 
-            <!-- マッサージ適応症状 -->
-            <div style="margin-bottom: 3rem;">
-                <h3 style="font-family: var(--font-display); color: var(--color-primary); border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; text-align: center;">マッサージ適応症状</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                    <div style="background: var(--color-white); padding: 1.5rem; box-shadow: var(--shadow-soft);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <span style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><ellipse cx="16" cy="14" rx="10" ry="9" /><path d="M10 10 Q12 14 10 18" /><path d="M16 8 L16 20" /><path d="M22 10 Q20 14 22 18" /><path d="M16 23 L16 28" /></g></svg></span>
-                            <h4 style="color: var(--color-primary); font-size: 1.1rem; margin: 0;">脳血管障害後遺症</h4>
+            <div class="fade-in">
+                <div class="tab-nav" role="tablist">
+                    <button class="tab-btn active" onclick="switchTab(event,'symptoms','massage')" role="tab" aria-selected="true">
+                        マッサージ適応症状
+                    </button>
+                    <button class="tab-btn" onclick="switchTab(event,'symptoms','shinkyu')" role="tab" aria-selected="false">
+                        鍼灸適応症状（保険適用）
+                    </button>
+                </div>
+
+                <div id="symptoms-massage" class="tab-panel active">
+                    <div class="symptom-cards">
+                        <div class="symp-card">
+                            <div class="symp-card-icon"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><ellipse cx="16" cy="14" rx="10" ry="9" /><path d="M10 10 Q12 14 10 18" /><path d="M16 8 L16 20" /><path d="M22 10 Q20 14 22 18" /><path d="M16 23 L16 28" /></g></svg></div>
+                            <div class="symp-card-body">
+                                <h4>脳血管障害後遺症</h4>
+                                <p>脳梗塞・脳出血などによる<strong>片麻痺、しびれ、歩行困難</strong>などに対応します。</p>
+                                <ul><li>・麻痺側の筋肉の緊張緩和</li><li>・関節可動域の維持・改善</li><li>・血行促進によるむくみ軽減</li></ul>
+                            </div>
                         </div>
-                        <p style="color: var(--color-text-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 0.8rem;">
-                            脳梗塞・脳出血などによる<strong>片麻痺、しびれ、歩行困難</strong>などの症状に対応します。
-                        </p>
-                        <ul style="font-size: 0.85rem; color: var(--color-text-light); list-style: none; padding: 0; margin: 0; background: var(--color-cream); padding: 0.8rem;">
-                            <li>・麻痺側の筋肉の緊張緩和</li>
-                            <li>・関節可動域の維持・改善</li>
-                            <li>・血行促進によるむくみ軽減</li>
-                        </ul>
+                        <div class="symp-card">
+                            <div class="symp-card-icon"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="4" /><circle cx="24" cy="24" r="4" /><path d="M11 11 L21 21" stroke-width="3" /><circle cx="8" cy="14" r="2" opacity="0.6" /><circle cx="14" cy="8" r="2" opacity="0.6" /><circle cx="24" cy="18" r="2" opacity="0.6" /><circle cx="18" cy="24" r="2" opacity="0.6" /></g></svg></div>
+                            <div class="symp-card-body">
+                                <h4>関節拘縮</h4>
+                                <p>長期臥床や運動不足により<strong>関節が固まって動きにくくなった状態</strong>を改善します。</p>
+                                <ul><li>・関節周囲の筋肉をほぐす</li><li>・変形徒手矯正術で可動域拡大</li><li>・日常動作（着替え等）の改善</li></ul>
+                            </div>
+                        </div>
+                        <div class="symp-card">
+                            <div class="symp-card-icon"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M6 20 L10 16 L14 18 L18 12 L22 14 L26 8" /><path d="M22 8 L26 8 L26 12" /><path d="M6 24 L26 24" stroke-width="1" opacity="0.5" /></g></svg></div>
+                            <div class="symp-card-body">
+                                <h4>筋萎縮・廃用症候群</h4>
+                                <p>病気や入院により<strong>筋肉がやせ細り体力が低下した状態</strong>の回復をサポートします。</p>
+                                <ul><li>・筋肉への刺激で萎縮予防</li><li>・血行促進で栄養供給を改善</li><li>・寝たきり予防・ADL維持</li></ul>
+                            </div>
+                        </div>
+                        <div class="symp-card">
+                            <div class="symp-card-icon"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="6" r="4" /><path d="M14 12 L18 16 L22 12" /><path d="M18 16 L18 22" /><path d="M18 22 L12 28" /><path d="M18 22 L24 28" /><path d="M10 14 L14 12" /><path d="M22 12 L26 14" /></g></svg></div>
+                            <div class="symp-card-body">
+                                <h4>パーキンソン病</h4>
+                                <p><strong>筋固縮、振戦、動作緩慢</strong>などの症状を緩和し、日常生活をサポートします。</p>
+                                <ul><li>・固くなった筋肉をほぐす</li><li>・関節の柔軟性を維持</li><li>・姿勢改善・転倒予防</li></ul>
+                            </div>
+                        </div>
                     </div>
-                    <div style="background: var(--color-white); padding: 1.5rem; box-shadow: var(--shadow-soft);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <span style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="4" /><circle cx="24" cy="24" r="4" /><path d="M11 11 L21 21" stroke-width="3" /><circle cx="8" cy="14" r="2" opacity="0.6" /><circle cx="14" cy="8" r="2" opacity="0.6" /><circle cx="24" cy="18" r="2" opacity="0.6" /><circle cx="18" cy="24" r="2" opacity="0.6" /></g></svg></span>
-                            <h4 style="color: var(--color-primary); font-size: 1.1rem; margin: 0;">関節拘縮</h4>
+                </div>
+
+                <div id="symptoms-shinkyu" class="tab-panel">
+                    <div class="symptom-cards">
+                        <div class="symp-card">
+                            <div class="symp-card-icon"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 4 L10 16 L16 16 L14 28 L24 14 L17 14 L18 4" /></g></svg></div>
+                            <div class="symp-card-body">
+                                <h4>神経痛</h4>
+                                <p>坐骨神経痛・肋間神経痛・三叉神経痛など<strong>神経に沿った痛みやしびれ</strong>を緩和します。</p>
+                                <ul><li>・鍼で神経周囲の血行を改善</li><li>・炎症・圧迫を軽減</li></ul>
+                            </div>
                         </div>
-                        <p style="color: var(--color-text-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 0.8rem;">
-                            長期臥床や運動不足により<strong>関節が固まって動きにくくなった状態</strong>を改善します。
-                        </p>
-                        <ul style="font-size: 0.85rem; color: var(--color-text-light); list-style: none; padding: 0; margin: 0; background: var(--color-cream); padding: 0.8rem;">
-                            <li>・関節周囲の筋肉をほぐす</li>
-                            <li>・変形徒手矯正術で可動域拡大</li>
-                            <li>・日常動作（着替え等）の改善</li>
-                        </ul>
-                    </div>
-                    <div style="background: var(--color-white); padding: 1.5rem; box-shadow: var(--shadow-soft);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <span style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M6 20 L10 16 L14 18 L18 12 L22 14 L26 8" /><path d="M22 8 L26 8 L26 12" /><path d="M6 24 L26 24" stroke-width="1" opacity="0.5" /></g></svg></span>
-                            <h4 style="color: var(--color-primary); font-size: 1.1rem; margin: 0;">筋萎縮・廃用症候群</h4>
+                        <div class="symp-card">
+                            <div class="symp-card-icon"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="8" r="5" /><path d="M16 13 L16 18" /><path d="M10 15 L16 16 L22 15" /><path d="M12 18 Q10 22 12 26" /><path d="M20 18 Q22 22 20 26" /></g></svg></div>
+                            <div class="symp-card-body">
+                                <h4>五十肩・腰痛症</h4>
+                                <p><strong>肩関節周囲炎（五十肩）</strong>や<strong>慢性腰痛</strong>による痛み・可動域制限に対応します。</p>
+                                <ul><li>・筋肉の緊張を緩め血行を促進</li><li>・痛みの根本改善をサポート</li></ul>
+                            </div>
                         </div>
-                        <p style="color: var(--color-text-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 0.8rem;">
-                            病気や入院により<strong>筋肉がやせ細り、体力が低下した状態</strong>の回復をサポートします。
-                        </p>
-                        <ul style="font-size: 0.85rem; color: var(--color-text-light); list-style: none; padding: 0; margin: 0; background: var(--color-cream); padding: 0.8rem;">
-                            <li>・筋肉への刺激で萎縮予防</li>
-                            <li>・血行促進で栄養供給を改善</li>
-                            <li>・寝たきり予防・ADL維持</li>
-                        </ul>
-                    </div>
-                    <div style="background: var(--color-white); padding: 1.5rem; box-shadow: var(--shadow-soft);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <span style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="6" r="4" /><path d="M14 12 L18 16 L22 12" /><path d="M18 16 L18 22" /><path d="M18 22 L12 28" /><path d="M18 22 L24 28" /><path d="M10 14 L14 12" /><path d="M22 12 L26 14" /></g></svg></span>
-                            <h4 style="color: var(--color-primary); font-size: 1.1rem; margin: 0;">パーキンソン病</h4>
+                        <div class="symp-card">
+                            <div class="symp-card-icon"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="4" y="12" width="24" height="8" rx="2" /><rect x="12" y="4" width="8" height="24" rx="2" /><circle cx="16" cy="16" r="2" fill="#8b6914" opacity="0.5" /></g></svg></div>
+                            <div class="symp-card-body">
+                                <h4>リウマチ</h4>
+                                <p>関節リウマチによる<strong>関節の痛み、腫れ、こわばり</strong>を緩和し関節機能を維持します。</p>
+                                <ul><li>・炎症を抑え痛みを軽減</li><li>・関節可動域の維持をサポート</li></ul>
+                            </div>
                         </div>
-                        <p style="color: var(--color-text-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 0.8rem;">
-                            <strong>筋固縮、振戦、動作緩慢</strong>などの症状を緩和し、日常生活をサポートします。
-                        </p>
-                        <ul style="font-size: 0.85rem; color: var(--color-text-light); list-style: none; padding: 0; margin: 0; background: var(--color-cream); padding: 0.8rem;">
-                            <li>・固くなった筋肉をほぐす</li>
-                            <li>・関節の柔軟性を維持</li>
-                            <li>・姿勢改善・転倒予防</li>
-                        </ul>
+                        <div class="symp-card">
+                            <div class="symp-card-icon"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="14" r="8" /><path d="M12 12 L12 14" /><path d="M20 12 L20 14" /><path d="M13 18 Q16 16 19 18" /><path d="M8 8 L24 8" stroke-width="2" /><path d="M6 6 L26 6" stroke-width="1" opacity="0.5" /></g></svg></div>
+                            <div class="symp-card-body">
+                                <h4>頚腕症候群・頚椎捻挫後遺症</h4>
+                                <p>首から肩・腕にかけての<strong>痛み、しびれ、だるさ</strong>やむち打ち後遺症に対応します。</p>
+                                <ul><li>・頚部周囲の筋緊張を緩和</li><li>・神経への圧迫を軽減</li></ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 鍼灸適応症状 -->
-            <div style="margin-bottom: 2rem;">
-                <h3 style="font-family: var(--font-display); color: var(--color-primary); border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; text-align: center;">鍼灸適応症状（健康保険適用）</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                    <div style="background: var(--color-white); padding: 1.5rem; box-shadow: var(--shadow-soft);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <span style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 4 L10 16 L16 16 L14 28 L24 14 L17 14 L18 4" /></g></svg></span>
-                            <h4 style="color: var(--color-primary); font-size: 1.1rem; margin: 0;">神経痛</h4>
-                        </div>
-                        <p style="color: var(--color-text-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 0.8rem;">
-                            坐骨神経痛、肋間神経痛、三叉神経痛など、<strong>神経に沿った痛みやしびれ</strong>を緩和します。
-                        </p>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); background: var(--color-cream); padding: 0.8rem; margin: 0;">
-                            鍼で神経周囲の血行を改善し、痛みの原因となる炎症や圧迫を軽減します。
-                        </p>
-                    </div>
-                    <div style="background: var(--color-white); padding: 1.5rem; box-shadow: var(--shadow-soft);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <span style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="8" r="5" /><path d="M16 13 L16 18" /><path d="M10 15 L16 16 L22 15" /><path d="M12 18 Q10 22 12 26" /><path d="M20 18 Q22 22 20 26" /></g></svg></span>
-                            <h4 style="color: var(--color-primary); font-size: 1.1rem; margin: 0;">五十肩・腰痛症</h4>
-                        </div>
-                        <p style="color: var(--color-text-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 0.8rem;">
-                            <strong>肩関節周囲炎（五十肩）</strong>による肩の痛みや可動域制限、<strong>慢性的な腰痛</strong>に対応します。
-                        </p>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); background: var(--color-cream); padding: 0.8rem; margin: 0;">
-                            鍼灸で筋肉の緊張を緩め、血行を促進して痛みを和らげます。
-                        </p>
-                    </div>
-                    <div style="background: var(--color-white); padding: 1.5rem; box-shadow: var(--shadow-soft);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <span style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><rect x="4" y="12" width="24" height="8" rx="2" /><rect x="12" y="4" width="8" height="24" rx="2" /><circle cx="16" cy="16" r="2" fill="#8b6914" opacity="0.5" /></g></svg></span>
-                            <h4 style="color: var(--color-primary); font-size: 1.1rem; margin: 0;">リウマチ</h4>
-                        </div>
-                        <p style="color: var(--color-text-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 0.8rem;">
-                            関節リウマチによる<strong>関節の痛み、腫れ、こわばり</strong>を緩和し、関節機能の維持を図ります。
-                        </p>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); background: var(--color-cream); padding: 0.8rem; margin: 0;">
-                            炎症を抑え、痛みの軽減と関節可動域の維持をサポートします。
-                        </p>
-                    </div>
-                    <div style="background: var(--color-white); padding: 1.5rem; box-shadow: var(--shadow-soft);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <span style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;"><svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g stroke="#8b6914" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="14" r="8" /><path d="M12 12 L12 14" /><path d="M20 12 L20 14" /><path d="M13 18 Q16 16 19 18" /><path d="M8 8 L24 8" stroke-width="2" /><path d="M6 6 L26 6" stroke-width="1" opacity="0.5" /></g></svg></span>
-                            <h4 style="color: var(--color-primary); font-size: 1.1rem; margin: 0;">頚腕症候群・頚椎捻挫後遺症</h4>
-                        </div>
-                        <p style="color: var(--color-text-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 0.8rem;">
-                            首から肩・腕にかけての<strong>痛み、しびれ、だるさ</strong>、むち打ち症の後遺症に対応します。
-                        </p>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light); background: var(--color-cream); padding: 0.8rem; margin: 0;">
-                            頚部周囲の筋緊張を緩和し、神経への圧迫を軽減します。
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <p style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: var(--color-cream); font-size: 0.95rem;">
+            <p style="text-align: center; margin-top: 2.5rem; padding: 1.5rem; background: var(--color-cream); font-size: 0.95rem;">
                 ※上記以外の症状でも対応できる場合がございます。まずはお気軽にご相談ください。<br>
                 <strong>無料相談・体験施術</strong>で、お身体の状態を確認させていただきます。
             </p>
@@ -2183,7 +2378,7 @@
     <section class="flow" id="flow">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-en">ご利用の流れ</p>
+                <p class="section-en">HOW TO START</p>
                 <h2 class="section-title">ご利用の流れ</h2>
                 <div class="section-line"></div>
             </div>
@@ -2192,7 +2387,7 @@
                 ご不明な点がございましたら、お気軽にご相談ください。
             </p>
 
-            <div style="max-width: 800px; margin: 0 auto;">
+            <div style="max-width: 800px; margin: 0 auto;" class="fade-in">
                 <!-- STEP 1 -->
                 <div style="display: flex; gap: 2rem; margin-bottom: 2.5rem; align-items: flex-start;">
                     <div style="flex-shrink: 0; width: 60px; height: 60px; background: var(--color-accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 1.2rem;">1</div>
@@ -2279,16 +2474,30 @@
         </div>
     </section>
 
+    <!-- 中盤CTAバナー -->
+    <div class="mid-cta">
+        <div class="mid-cta-inner">
+            <div class="mid-cta-text">
+                <h3>まず、無料でお試しください</h3>
+                <p>初回の相談・体験施術は完全無料。自宅まで伺います。</p>
+            </div>
+            <a href="#contact" class="mid-cta-btn">
+                <svg viewBox="0 0 20 20" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><g stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M2 5h16v12H2z" rx="1"/><path d="M2 5l8 7 8-7"/></g></svg>
+                無料体験を申し込む
+            </a>
+        </div>
+    </div>
+
     <!-- 料金表 -->
     <section class="pricing" id="pricing">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-en">料金案内</p>
+                <p class="section-en">PRICING</p>
                 <h2 class="section-title">料金について</h2>
                 <div class="section-line"></div>
             </div>
 
-            <div class="price-intro">
+            <div class="price-intro fade-in">
                 <p class="price-intro-text">健康保険が適用されるため、少ない自己負担でご利用いただけます</p>
                 <span class="price-intro-highlight">1回あたり約300円〜1,500円程度</span>
             </div>
@@ -2415,11 +2624,11 @@
     <section class="insurance" id="insurance">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-en">保険について</p>
+                <p class="section-en">INSURANCE</p>
                 <h2 class="section-title">健康保険について</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="insurance-content">
+            <div class="insurance-content fade-in">
                 <div class="insurance-badge">健康保険（医療保険）が使用できます</div>
                 <p class="insurance-text">
                     かかりつけの医師（主治医）の同意が得られた場合、<br>
@@ -2447,7 +2656,7 @@
     <section class="area" id="area">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-en">訪問エリア</p>
+                <p class="section-en">SERVICE AREA</p>
                 <h2 class="section-title">訪問エリア</h2>
                 <div class="section-line"></div>
             </div>
@@ -2468,7 +2677,7 @@
     <section class="cooperation" id="cooperation">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-en">医療連携</p>
+                <p class="section-en">COOPERATION</p>
                 <h2 class="section-title">医療機関との連携</h2>
                 <div class="section-line"></div>
             </div>
@@ -2554,11 +2763,11 @@
     <section class="faq" id="faq">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-en">よくある質問</p>
+                <p class="section-en">FAQ</p>
                 <h2 class="section-title">よくある質問</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="faq-list">
+            <div class="faq-list fade-in">
                 <div class="faq-item">
                     <div class="faq-question">
                         <span class="faq-q">Q</span>
@@ -2652,11 +2861,11 @@
     <section class="staff" id="staff">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-en">スタッフ紹介</p>
+                <p class="section-en">OUR STAFF</p>
                 <h2 class="section-title">施術者紹介</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="staff-content">
+            <div class="staff-content fade-in">
                 <div class="staff-image">
                     <div class="staff-image-placeholder">
                         <svg viewBox="0 0 80 80" width="80" height="80" xmlns="http://www.w3.org/2000/svg">
@@ -2704,11 +2913,11 @@
     <section class="facility" id="facility">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-en">施設・会社情報</p>
+                <p class="section-en">ABOUT US</p>
                 <h2 class="section-title">施設・会社情報</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="facility-card">
+            <div class="facility-card fade-in">
                 <div class="facility-header">
                     <h3>鍼灸マッサージ治療院<br>ハーベスト</h3>
                 </div>
@@ -2775,7 +2984,7 @@
         <div class="cta-bg"></div>
         <div class="cta-content">
             <div class="section-header">
-                <p class="section-en">お問い合わせ</p>
+                <p class="section-en">CONTACT</p>
                 <h2 class="section-title">お問い合わせ</h2>
                 <div class="section-line"></div>
             </div>
@@ -2889,10 +3098,70 @@
             document.getElementById('mobileNav').classList.remove('active');
         }
 
-        // スクロール時にメニューを閉じる
         window.addEventListener('scroll', function() {
             closeMenu();
         });
+
+        // タブ切り替え
+        function switchTab(e, group, panel) {
+            // ボタンのアクティブ状態を切り替え
+            const buttons = e.currentTarget.closest('.tab-nav').querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+            e.currentTarget.classList.add('active');
+            e.currentTarget.setAttribute('aria-selected', 'true');
+
+            // パネルの表示を切り替え
+            const container = e.currentTarget.closest('[class*="tab-nav"]').parentElement;
+            container.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById(group + '-' + panel);
+            if (target) target.classList.add('active');
+        }
+
+        // スクロールフェードイン
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        fadeEls.forEach(el => observer.observe(el));
+
+        // ヘッダーのスクロール追従
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 60) {
+                header.style.background = 'rgba(139,105,20,0.97)';
+                header.style.backdropFilter = 'blur(8px)';
+                header.style.boxShadow = '0 2px 16px rgba(0,0,0,0.15)';
+            } else {
+                header.style.background = 'var(--color-primary)';
+                header.style.backdropFilter = '';
+                header.style.boxShadow = '';
+            }
+        });
+
+        // アクティブナビゲーション
+        const sections = document.querySelectorAll('section[id], div.mid-cta');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        const scrollSpy = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.style.color = link.getAttribute('href') === '#' + id
+                            ? 'var(--color-accent)'
+                            : '';
+                    });
+                }
+            });
+        }, { threshold: 0.4 });
+        sections.forEach(s => { if (s.id) scrollSpy.observe(s); });
     </script>
 </body>
 </html>
