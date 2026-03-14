@@ -373,6 +373,21 @@
             letter-spacing: 0.05em;
         }
 
+        .bath-photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+            margin-top: 1.2rem;
+        }
+
+        .bath-photo-grid img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: var(--radius-small);
+            border: 1px solid var(--color-border);
+        }
+
         .detail-list {
             list-style: none;
             margin-bottom: 1rem;
@@ -954,6 +969,12 @@
                         </li>
                     </ul>
                     <p class="detail-note">脳梗塞などで麻痺がある方も、職員2名でバスボードを使用して浴槽に浸かっていただけます</p>
+                    <div class="bath-photo-grid">
+                        <img src="images/bath/bath-1.jpg" alt="浴室シャワーエリア">
+                        <img src="images/bath/bath-2.jpg" alt="バスチェアと浴槽全体">
+                        <img src="images/bath/bath-3.jpg" alt="浴槽コーナーと手すり">
+                        <img src="images/bath/bath-4.jpg" alt="浴槽内部・バスボード">
+                    </div>
                 </div>
 
                 <!-- 運動・リハビリ -->
