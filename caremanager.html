@@ -386,6 +386,46 @@
             object-fit: cover;
             border-radius: var(--radius-small);
             border: 1px solid var(--color-border);
+            cursor: zoom-in;
+            transition: opacity 0.2s;
+        }
+
+        .bath-photo-grid img:hover {
+            opacity: 0.85;
+        }
+
+        /* ライトボックス（拡大表示） */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox.active {
+            display: flex;
+        }
+
+        #lightbox img {
+            max-width: 92vw;
+            max-height: 92vh;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+        }
+
+        #lightbox-close {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            color: #fff;
+            font-size: 2.2rem;
+            cursor: pointer;
+            line-height: 1;
+            user-select: none;
         }
 
         .detail-list {
@@ -1278,5 +1318,31 @@
             <p class="footer-copyright">&copy; 2026 ハーベスト All Rights Reserved.</p>
         </div>
     </footer>
+<!-- ライトボックス（拡大表示）モーダル -->
+<div id="lightbox">
+    <span id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('.bath-photo-grid img').forEach(img => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('active');
+        });
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', () => {
+        lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+</script>
 </body>
 </html>
