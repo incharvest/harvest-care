@@ -216,9 +216,12 @@
             padding-bottom: 60px;
             border: 2px solid var(--border);
             border-radius: 12px;
-            font-size: 16px;
+            font-size: 16px;    /* iOSズーム防止 */
             font-family: inherit;
             resize: none;
+            ime-mode: auto;     /* IME有効化 */
+            -webkit-user-select: text;
+            user-select: text;
         }
 
         .voice-textarea:focus {
@@ -931,20 +934,29 @@
             background: rgba(46,125,50,0.07);
             border: 1.5px dashed var(--primary);
             border-radius: 10px;
-            padding: 10px 14px;
+            padding: 12px 14px;
             margin-bottom: 8px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--primary-dark);
             min-height: 40px;
             line-height: 1.5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .interim-box::before {
-            content: '認識中… ';
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
+            content: '';
+            width: 10px; height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .interim-anim::before {
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            0%,100% { opacity: 1; }
+            50%      { opacity: 0.2; }
         }
 
         /* Hidden */
@@ -1264,79 +1276,125 @@
             localStorage.setItem(KEYS.records, JSON.stringify(records));
         }
 
-        // Voice
-        let recognition = null;
-        let isRec = false;
+        // ── Whisper 音声認識 ──────────────────────────────────────
+        let whisperPipe   = null;
+        let whisperBusy   = false;
+        let mediaRecorder = null;
+        let audioChunks   = [];
+        let isRecording   = false;
 
         function initVoice() {
-            const btn      = document.getElementById('voiceBtn');
-            const txt      = document.getElementById('content');
-            const interim  = document.getElementById('interimBox');
-            const altBox   = document.getElementById('altBox');
+            const btn     = document.getElementById('voiceBtn');
+            const interim = document.getElementById('interimBox');
 
-            if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+            if (!navigator.mediaDevices?.getUserMedia) {
                 btn.style.display = 'none';
                 return;
             }
 
-            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-            function startRec() {
-                recognition = new SR();
-                recognition.lang = 'ja-JP';
-                recognition.continuous = false;       // 文節ごとに確定 → 精度向上
-                recognition.interimResults = true;
-                recognition.maxAlternatives = 3;      // 上位3候補を取得
-
-                recognition.onstart = () => {
-                    isRec = true;
-                    btn.classList.add('recording');
-                    btn.innerHTML = '<span class="material-symbols-rounded">stop</span>';
-                    interim.textContent = '';
-                    interim.classList.remove('hidden');
-                    altBox.classList.add('hidden');
-                };
-
-                recognition.onresult = e => {
-                    const result = e.results[e.resultIndex];
-                    if (result.isFinal) {
-                        // 確定：1番目の候補を即挿入
-                        interim.classList.add('hidden');
-                        const best = result[0].transcript.trim();
-                        if (best) insertText(txt, best);
-                    } else {
-                        // 認識中（仮）テキスト表示
-                        interim.textContent = result[0].transcript;
-                    }
-                };
-
-                recognition.onend = () => {
-                    isRec = false;
-                    btn.classList.remove('recording');
-                    btn.innerHTML = '<span class="material-symbols-rounded">mic</span>';
-                    interim.classList.add('hidden');
-                };
-
-                recognition.onerror = e => {
-                    isRec = false;
-                    btn.classList.remove('recording');
-                    btn.innerHTML = '<span class="material-symbols-rounded">mic</span>';
-                    interim.classList.add('hidden');
-                    if (e.error !== 'aborted') toast('音声認識エラー: ' + e.error, 'error');
-                };
-
-                recognition.start();
-            }
-
             btn.onclick = () => {
-                if (isRec) { recognition.stop(); }
-                else { startRec(); }
+                if (isRecording) stopWhisper(btn, interim);
+                else             startWhisper(btn, interim);
             };
+        }
+
+        async function startWhisper(btn, interim) {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                audioChunks  = [];
+                // 対応フォーマットを自動選択
+                const mime = ['audio/webm;codecs=opus','audio/webm','audio/ogg','audio/mp4','']
+                    .find(t => !t || MediaRecorder.isTypeSupported(t)) || '';
+                mediaRecorder = new MediaRecorder(stream, mime ? { mimeType: mime } : {});
+                mediaRecorder.ondataavailable = e => { if (e.data.size > 0) audioChunks.push(e.data); };
+                mediaRecorder.start(200);
+                isRecording = true;
+                btn.classList.add('recording');
+                btn.innerHTML = '<span class="material-symbols-rounded">stop</span>';
+                setInterim(interim, '録音中… もう一度押すと送信します', true);
+            } catch (err) {
+                toast('マイクへのアクセスを許可してください', 'error');
+            }
+        }
+
+        async function stopWhisper(btn, interim) {
+            if (!mediaRecorder) return;
+            isRecording = false;
+            btn.classList.remove('recording');
+            btn.innerHTML = '<span class="material-symbols-rounded">mic</span>';
+
+            await new Promise(r => { mediaRecorder.onstop = r; mediaRecorder.stop(); });
+            mediaRecorder.stream.getTracks().forEach(t => t.stop());
+            mediaRecorder = null;
+
+            const blob = new Blob(audioChunks, { type: audioChunks[0]?.type || 'audio/webm' });
+            if (blob.size < 1000) { interim.classList.add('hidden'); return; }
+
+            await transcribeWithWhisper(blob, btn, interim);
+        }
+
+        async function transcribeWithWhisper(blob, btn, interim) {
+            if (whisperBusy) return;
+            whisperBusy = true;
+            btn.disabled = true;
+
+            try {
+                // モデルが未ロードなら読み込む（初回のみ約40MB）
+                if (!whisperPipe) {
+                    setInterim(interim, '初回のみモデルを読み込み中… (約40MB)');
+                    const { pipeline, env } = await import(
+                        'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2'
+                    );
+                    env.allowLocalModels = false;
+                    whisperPipe = await pipeline(
+                        'automatic-speech-recognition',
+                        'Xenova/whisper-small',   // small = 日本語に十分な精度
+                        { progress_callback: p => {
+                            if (p.status === 'progress' && p.total) {
+                                const pct = Math.round(p.loaded / p.total * 100);
+                                setInterim(interim, `読み込み中… ${pct}%`);
+                            }
+                        }}
+                    );
+                    toast('モデル読み込み完了。次回から即使えます', 'success');
+                }
+
+                setInterim(interim, '音声を認識中…');
+                const url    = URL.createObjectURL(blob);
+                const result = await whisperPipe(url, {
+                    language:          'japanese',
+                    task:              'transcribe',
+                    chunk_length_s:    30,
+                    return_timestamps: false
+                });
+                URL.revokeObjectURL(url);
+
+                const text = (result.text || '').trim();
+                if (text) {
+                    insertText(document.getElementById('content'), text);
+                    toast('認識完了', 'success');
+                } else {
+                    toast('音声を認識できませんでした', 'error');
+                }
+            } catch (err) {
+                console.error(err);
+                toast('認識エラー: ' + err.message, 'error');
+            } finally {
+                interim.classList.add('hidden');
+                btn.disabled = false;
+                whisperBusy = false;
+            }
+        }
+
+        function setInterim(el, msg, anim) {
+            el.textContent = msg;
+            el.classList.remove('hidden');
+            el.classList.toggle('interim-anim', !!anim);
         }
 
         function insertText(ta, text) {
             const cur = ta.value;
-            ta.value = cur + (cur && !cur.endsWith('\n') ? '\n' : '') + text;
+            ta.value   = cur + (cur && !cur.endsWith('\n') ? '\n' : '') + text;
         }
 
         // Vitals → Memo auto-reflect
