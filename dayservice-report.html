@@ -1309,47 +1309,59 @@
             const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (!SR) { btn.style.display = 'none'; return; }
 
-            let siriRec = null;
+            let siriRec   = null;
             let siriActive = false;
+            let collected  = '';   // 確定テキストを蓄積
 
             btn.onclick = () => {
-                if (siriActive) { siriRec?.stop(); return; }
+                if (siriActive) {
+                    // 録音中にタップ → キャンセル（abort=結果なし）
+                    siriRec?.abort();
+                    return;
+                }
 
+                collected = '';
                 siriRec = new SR();
-                siriRec.lang = 'ja-JP';
-                siriRec.continuous = false;
-                siriRec.interimResults = true;
+                siriRec.lang            = 'ja-JP';
+                siriRec.continuous      = false;
+                siriRec.interimResults  = false;  // iOS は false が安定
                 siriRec.maxAlternatives = 1;
 
                 siriRec.onstart = () => {
                     siriActive = true;
                     btn.classList.add('recording');
-                    btn.innerHTML = '<span class="material-symbols-rounded">stop</span>';
-                    setInterim(interim, '録音中…', true);
+                    btn.innerHTML = '<span class="material-symbols-rounded">cancel</span>';
+                    setInterim(interim, '話してください。しばらく間を置くと自動で変換されます', true);
                 };
+
+                // 結果は onend でまとめて挿入（途中 stop でも取得できる）
                 siriRec.onresult = e => {
-                    const r = e.results[e.resultIndex];
-                    if (r.isFinal) {
-                        const text = r[0].transcript.trim();
-                        if (text) insertText(document.getElementById('content'), text);
-                        interim.classList.add('hidden');
-                    } else {
-                        setInterim(interim, r[0].transcript, true);
+                    for (let i = e.resultIndex; i < e.results.length; i++) {
+                        if (e.results[i].isFinal) collected += e.results[i][0].transcript;
                     }
                 };
+
                 siriRec.onend = () => {
                     siriActive = false;
                     btn.classList.remove('recording');
                     btn.innerHTML = '<span class="material-symbols-rounded">mic</span>';
                     interim.classList.add('hidden');
+                    const text = collected.trim();
+                    if (text) {
+                        insertText(document.getElementById('content'), text);
+                        toast('変換完了', 'success');
+                    }
                 };
+
                 siriRec.onerror = e => {
                     siriActive = false;
                     btn.classList.remove('recording');
                     btn.innerHTML = '<span class="material-symbols-rounded">mic</span>';
                     interim.classList.add('hidden');
-                    if (e.error !== 'aborted') toast('認識エラー: ' + e.error, 'error');
+                    if      (e.error === 'no-speech') toast('音声が検出されませんでした', 'error');
+                    else if (e.error !== 'aborted')   toast('認識エラー: ' + e.error, 'error');
                 };
+
                 siriRec.start();
             };
         }
