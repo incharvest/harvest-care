@@ -394,6 +394,32 @@
             opacity: 0.85;
         }
 
+        .photo-placeholder-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+            margin-top: 1.2rem;
+        }
+
+        .photo-placeholder {
+            aspect-ratio: 4/3;
+            background: #f5f5f5;
+            border: 1.5px dashed #ccc;
+            border-radius: var(--radius-small);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 0.78rem;
+            gap: 0.3rem;
+        }
+
+        .photo-placeholder::before {
+            content: "🖼";
+            font-size: 1.4rem;
+        }
+
         /* ライトボックス（拡大表示） */
         #lightbox {
             display: none;
@@ -1040,6 +1066,12 @@
                         </li>
                     </ul>
                     <p class="detail-note">「歩きたい」「一人でトイレに行きたい」など、ご本人の目標に合わせたプログラムを提供します</p>
+                    <div class="photo-placeholder-grid">
+                        <div class="photo-placeholder">写真1</div>
+                        <div class="photo-placeholder">写真2</div>
+                        <div class="photo-placeholder">写真3</div>
+                        <div class="photo-placeholder">写真4</div>
+                    </div>
                 </div>
 
                 <!-- トイレ -->
@@ -1063,6 +1095,12 @@
                             <span class="detail-value">おむつ交換・パット交換対応</span>
                         </li>
                     </ul>
+                    <div class="photo-placeholder-grid">
+                        <div class="photo-placeholder">写真1</div>
+                        <div class="photo-placeholder">写真2</div>
+                        <div class="photo-placeholder">写真3</div>
+                        <div class="photo-placeholder">写真4</div>
+                    </div>
                 </div>
 
                 <!-- 食事・加算 -->
@@ -1097,6 +1135,12 @@
                             <span class="detail-value">（Ⅲ）</span>
                         </li>
                     </ul>
+                    <div class="photo-placeholder-grid">
+                        <div class="photo-placeholder">写真1</div>
+                        <div class="photo-placeholder">写真2</div>
+                        <div class="photo-placeholder">写真3</div>
+                        <div class="photo-placeholder">写真4</div>
+                    </div>
                 </div>
             </div>
         </div>
