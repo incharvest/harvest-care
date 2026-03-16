@@ -946,46 +946,6 @@
             display: block;
             margin-bottom: 4px;
         }
-        .alt-box {
-            margin-top: 8px;
-        }
-        .alt-label {
-            font-size: 0.78rem;
-            color: var(--text-sub);
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
-        .alt-chips {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .alt-chip {
-            padding: 12px 16px;
-            background: var(--surface);
-            border: 1.5px solid var(--border);
-            border-radius: 10px;
-            font-size: 0.95rem;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .alt-chip:active { background: var(--bg); }
-        .alt-chip-num {
-            width: 22px;
-            height: 22px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
 
         /* Hidden */
         .hidden { display: none !important; }
@@ -1088,7 +1048,6 @@
                             <textarea class="voice-textarea" id="content" placeholder="タップして入力、またはマイクボタンで音声入力..." required></textarea>
                             <button type="button" class="voice-btn" id="voiceBtn"><span class="material-symbols-rounded">mic</span></button>
                         </div>
-                        <div id="altBox" class="alt-box hidden"></div>
                     </div>
                 </div>
 
@@ -1341,16 +1300,10 @@
                 recognition.onresult = e => {
                     const result = e.results[e.resultIndex];
                     if (result.isFinal) {
-                        // 確定：候補を表示
+                        // 確定：1番目の候補を即挿入
                         interim.classList.add('hidden');
-                        const alts = Array.from({ length: result.length }, (_, i) => result[i].transcript.trim()).filter(Boolean);
-                        if (alts.length === 1) {
-                            // 候補1つのみ → 即挿入
-                            insertText(txt, alts[0]);
-                            altBox.classList.add('hidden');
-                        } else {
-                            showAlts(alts, txt, altBox);
-                        }
+                        const best = result[0].transcript.trim();
+                        if (best) insertText(txt, best);
                     } else {
                         // 認識中（仮）テキスト表示
                         interim.textContent = result[0].transcript;
@@ -1377,34 +1330,14 @@
 
             btn.onclick = () => {
                 if (isRec) { recognition.stop(); }
-                else { altBox.classList.add('hidden'); startRec(); }
+                else { startRec(); }
             };
         }
 
         function insertText(ta, text) {
             const cur = ta.value;
-            // 末尾に追記（末尾が改行/空でなければ改行を挟む）
             ta.value = cur + (cur && !cur.endsWith('\n') ? '\n' : '') + text;
         }
-
-        function showAlts(alts, ta, box) {
-            box.innerHTML = `<div class="alt-label">どれが正しいですか？</div><div class="alt-chips">`
-                + alts.map((a, i) =>
-                    `<button type="button" class="alt-chip" onclick="pickAlt(this,'${escQ(a)}')">
-                        <span class="alt-chip-num">${i + 1}</span><span>${a}</span>
-                    </button>`
-                ).join('')
-                + `</div>`;
-            box.classList.remove('hidden');
-        }
-
-        function pickAlt(btn, text) {
-            const ta = document.getElementById('content');
-            insertText(ta, text);
-            document.getElementById('altBox').classList.add('hidden');
-        }
-
-        function escQ(s) { return s.replace(/'/g, "\\'"); }
 
         // Vitals → Memo auto-reflect
         const VITAL_MARKER = '【バイタル】';
