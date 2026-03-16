@@ -10,7 +10,9 @@
     <meta name="theme-color" content="#2E7D32">
     <meta name="format-detection" content="telephone=no">
     <title>デイサービス日報</title>
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%232E7D32' width='100' height='100' rx='20'/><text x='50' y='65' text-anchor='middle' fill='white' font-size='50'>📋</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%232E7D32' width='100' height='100' rx='20'/><text x='50' y='72' text-anchor='middle' fill='white' font-size='54' font-family='serif'>日</text></svg>">
     <style>
         :root {
             --primary: #2E7D32;
@@ -926,12 +928,31 @@
 
         /* Hidden */
         .hidden { display: none !important; }
+
+        /* Material Icons */
+        .material-symbols-rounded {
+            font-size: 1.4rem;
+            vertical-align: middle;
+            user-select: none;
+        }
+        .nav-icon .material-symbols-rounded { font-size: 1.6rem; }
+        .card-title .material-symbols-rounded { font-size: 1.2rem; color: var(--primary); }
+        .vital-icon .material-symbols-rounded { font-size: 1.4rem; }
+        .voice-btn .material-symbols-rounded { font-size: 1.6rem; }
+        .header-btn .material-symbols-rounded { font-size: 1.4rem; }
+        .mood-emoji .material-symbols-rounded { font-size: 2rem; }
+        .tag .material-symbols-rounded { font-size: 1rem; vertical-align: -2px; }
+        .photo-btn .material-symbols-rounded { font-size: 1.3rem; }
+        .submit-btn .material-symbols-rounded { font-size: 1.3rem; }
+        .modal-title .material-symbols-rounded { font-size: 1.2rem; vertical-align: -2px; }
+        .modal-btn .material-symbols-rounded { font-size: 1.2rem; vertical-align: -2px; }
+        .report-btn .material-symbols-rounded { font-size: 1.1rem; vertical-align: -2px; }
     </style>
 </head>
 <body>
     <header class="header">
-        <h1>📋 デイサービス日報</h1>
-        <button class="header-btn" onclick="showSettings()">⚙️</button>
+        <h1><span class="material-symbols-rounded">assignment</span> デイサービス日報</h1>
+        <button class="header-btn" onclick="showSettings()"><span class="material-symbols-rounded">settings</span></button>
     </header>
 
     <main class="main">
@@ -939,7 +960,7 @@
         <div class="view active" id="view-input">
             <form id="form">
                 <div class="card">
-                    <div class="card-title">👤 基本情報</div>
+                    <div class="card-title"><span class="material-symbols-rounded">person</span> 基本情報</div>
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">職員</label>
@@ -957,73 +978,50 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-title">📝 活動記録</div>
+                    <div class="card-title"><span class="material-symbols-rounded">edit_note</span> 報告メモ</div>
                     <div class="form-group">
                         <div class="voice-container">
-                            <textarea class="voice-textarea" id="content" placeholder="タップして入力、または🎤で音声入力..." required></textarea>
-                            <button type="button" class="voice-btn" id="voiceBtn">🎤</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">カテゴリ</label>
-                        <div class="tags-scroll" id="tags">
-                            <span class="tag" data-tag="入浴">🛁 入浴</span>
-                            <span class="tag" data-tag="食事">🍽️ 食事</span>
-                            <span class="tag" data-tag="レク">🎯 レク</span>
-                            <span class="tag" data-tag="機能訓練">💪 訓練</span>
-                            <span class="tag" data-tag="服薬">💊 服薬</span>
-                            <span class="tag" data-tag="排泄">🚽 排泄</span>
-                            <span class="tag" data-tag="送迎">🚗 送迎</span>
+                            <textarea class="voice-textarea" id="content" placeholder="タップして入力、またはマイクボタンで音声入力..." required></textarea>
+                            <button type="button" class="voice-btn" id="voiceBtn"><span class="material-symbols-rounded">mic</span></button>
                         </div>
                     </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-title">💚 気分・状態</div>
-                    <div class="mood-grid" id="moods">
-                        <div class="mood-item" data-mood="5"><div class="mood-emoji">😄</div><div class="mood-label">とても良い</div></div>
-                        <div class="mood-item" data-mood="4"><div class="mood-emoji">🙂</div><div class="mood-label">良い</div></div>
-                        <div class="mood-item" data-mood="3"><div class="mood-emoji">😐</div><div class="mood-label">普通</div></div>
-                        <div class="mood-item" data-mood="2"><div class="mood-emoji">😔</div><div class="mood-label">やや不調</div></div>
-                        <div class="mood-item" data-mood="1"><div class="mood-emoji">😢</div><div class="mood-label">不調</div></div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-title">🩺 バイタル（任意）</div>
+                    <div class="card-title"><span class="material-symbols-rounded">vital_signs</span> バイタル（任意）</div>
                     <div class="vitals-grid">
                         <div class="vital-item">
-                            <div class="vital-icon">🌡️</div>
+                            <div class="vital-icon"><span class="material-symbols-rounded" style="color:#EF5350">device_thermostat</span></div>
                             <div class="vital-label">体温</div>
                             <input type="number" class="vital-input" id="temp" step="0.1" placeholder="36.5">
                             <div class="vital-unit">℃</div>
                         </div>
                         <div class="vital-item">
-                            <div class="vital-icon">❤️</div>
+                            <div class="vital-icon"><span class="material-symbols-rounded" style="color:#E53935">favorite</span></div>
                             <div class="vital-label">血圧上</div>
                             <input type="number" class="vital-input" id="bpH" placeholder="120">
                             <div class="vital-unit">mmHg</div>
                         </div>
                         <div class="vital-item">
-                            <div class="vital-icon">💙</div>
+                            <div class="vital-icon"><span class="material-symbols-rounded" style="color:#1E88E5">favorite</span></div>
                             <div class="vital-label">血圧下</div>
                             <input type="number" class="vital-input" id="bpL" placeholder="80">
                             <div class="vital-unit">mmHg</div>
                         </div>
                         <div class="vital-item">
-                            <div class="vital-icon">💓</div>
+                            <div class="vital-icon"><span class="material-symbols-rounded" style="color:#E91E63">monitor_heart</span></div>
                             <div class="vital-label">脈拍</div>
                             <input type="number" class="vital-input" id="pulse" placeholder="70">
                             <div class="vital-unit">回/分</div>
                         </div>
                         <div class="vital-item">
-                            <div class="vital-icon">🫁</div>
+                            <div class="vital-icon"><span class="material-symbols-rounded" style="color:#00ACC1">pulmonology</span></div>
                             <div class="vital-label">SpO2</div>
                             <input type="number" class="vital-input" id="spo2" placeholder="98">
                             <div class="vital-unit">%</div>
                         </div>
                         <div class="vital-item">
-                            <div class="vital-icon">⚖️</div>
+                            <div class="vital-icon"><span class="material-symbols-rounded" style="color:#7B1FA2">scale</span></div>
                             <div class="vital-label">体重</div>
                             <input type="number" class="vital-input" id="weight" step="0.1" placeholder="60">
                             <div class="vital-unit">kg</div>
@@ -1032,10 +1030,10 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-title">📸 写真</div>
+                    <div class="card-title"><span class="material-symbols-rounded">photo_camera</span> 写真</div>
                     <div class="photo-btns">
-                        <button type="button" class="photo-btn photo-btn-camera" onclick="takePhoto()">📷 撮影</button>
-                        <button type="button" class="photo-btn photo-btn-gallery" onclick="pickPhoto()">🖼️ 選択</button>
+                        <button type="button" class="photo-btn photo-btn-camera" onclick="takePhoto()"><span class="material-symbols-rounded">camera_alt</span> 撮影</button>
+                        <button type="button" class="photo-btn photo-btn-gallery" onclick="pickPhoto()"><span class="material-symbols-rounded">photo_library</span> 選択</button>
                     </div>
                     <div class="photo-preview" id="photoPreview"></div>
                     <input type="file" id="cameraInput" accept="image/*" capture="environment" class="hidden">
@@ -1043,7 +1041,7 @@
                 </div>
 
                 <div class="submit-section">
-                    <button type="submit" class="submit-btn">💾 保存する</button>
+                    <button type="submit" class="submit-btn"><span class="material-symbols-rounded">save</span> 保存する</button>
                 </div>
             </form>
         </div>
@@ -1065,14 +1063,14 @@
         <!-- Report View -->
         <div class="view" id="view-report">
             <div class="card">
-                <div class="card-title">📊 月次レポート</div>
+                <div class="card-title"><span class="material-symbols-rounded">bar_chart</span> 月次レポート</div>
                 <div class="report-month">
                     <input type="month" id="reportMonth">
                     <select id="reportClient"><option value="all">全員</option></select>
                 </div>
                 <div class="report-btns">
-                    <button class="report-btn primary" onclick="generateReport()">📋 生成</button>
-                    <button class="report-btn" onclick="exportExcel()">📥 Excel</button>
+                    <button class="report-btn primary" onclick="generateReport()"><span class="material-symbols-rounded">summarize</span> 生成</button>
+                    <button class="report-btn" onclick="exportExcel()"><span class="material-symbols-rounded">download</span> Excel</button>
                 </div>
             </div>
             <div id="reportStats"></div>
@@ -1083,15 +1081,15 @@
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
         <button class="nav-item active" data-view="input">
-            <span class="nav-icon">✏️</span>
+            <span class="nav-icon"><span class="material-symbols-rounded">edit_note</span></span>
             <span>記録</span>
         </button>
         <button class="nav-item" data-view="list">
-            <span class="nav-icon">📋</span>
+            <span class="nav-icon"><span class="material-symbols-rounded">list_alt</span></span>
             <span>一覧</span>
         </button>
         <button class="nav-item" data-view="report">
-            <span class="nav-icon">📊</span>
+            <span class="nav-icon"><span class="material-symbols-rounded">bar_chart</span></span>
             <span>レポート</span>
         </button>
     </nav>
@@ -1101,8 +1099,8 @@
         <div class="modal">
             <div class="modal-handle"></div>
             <div class="modal-header">
-                <span class="modal-title">⚙️ 設定</span>
-                <button class="modal-close" onclick="closeSettings()">✕</button>
+                <span class="modal-title"><span class="material-symbols-rounded">settings</span> 設定</span>
+                <button class="modal-close" onclick="closeSettings()"><span class="material-symbols-rounded">close</span></button>
             </div>
             <div class="modal-body">
                 <div class="settings-section">
@@ -1145,13 +1143,13 @@
         <div class="modal">
             <div class="modal-handle"></div>
             <div class="modal-header">
-                <span class="modal-title">📋 詳細</span>
-                <button class="modal-close" onclick="closeDetail()">✕</button>
+                <span class="modal-title"><span class="material-symbols-rounded">article</span> 詳細</span>
+                <button class="modal-close" onclick="closeDetail()"><span class="material-symbols-rounded">close</span></button>
             </div>
             <div class="modal-body" id="detailBody"></div>
             <div class="modal-actions">
-                <button class="modal-btn modal-btn-edit" onclick="editRecord()">✏️ 編集</button>
-                <button class="modal-btn modal-btn-delete" onclick="deleteRecord()">🗑️ 削除</button>
+                <button class="modal-btn modal-btn-edit" onclick="editRecord()"><span class="material-symbols-rounded">edit</span> 編集</button>
+                <button class="modal-btn modal-btn-delete" onclick="deleteRecord()"><span class="material-symbols-rounded">delete</span> 削除</button>
             </div>
         </div>
     </div>
@@ -1165,8 +1163,6 @@
         let staffList = JSON.parse(localStorage.getItem(KEYS.staff) || '["山田","佐藤","鈴木"]');
         let clientList = JSON.parse(localStorage.getItem(KEYS.clients) || '["田中様","高橋様","伊藤様"]');
         let photos = [];
-        let selectedTags = [];
-        let selectedMood = '';
         let currentId = null;
 
         // Init
@@ -1175,8 +1171,6 @@
             initForm();
             initVoice();
             initPhotos();
-            initTags();
-            initMoods();
             initFilters();
             renderSelects();
             setDateTime();
@@ -1212,8 +1206,6 @@
                     client: document.getElementById('client').value,
                     datetime: document.getElementById('datetime').value,
                     content: document.getElementById('content').value,
-                    tags: [...selectedTags],
-                    mood: selectedMood,
                     vitals: {
                         temp: document.getElementById('temp').value,
                         bpH: document.getElementById('bpH').value,
@@ -1241,11 +1233,7 @@
         function resetForm() {
             document.getElementById('form').reset();
             photos = [];
-            selectedTags = [];
-            selectedMood = '';
             document.getElementById('photoPreview').innerHTML = '';
-            document.querySelectorAll('.tag').forEach(t => t.classList.remove('selected'));
-            document.querySelectorAll('.mood-item').forEach(m => m.classList.remove('selected'));
             setDateTime();
         }
 
@@ -1267,7 +1255,7 @@
                 recognition.continuous = true;
                 recognition.interimResults = true;
                 let final = '';
-                recognition.onstart = () => { isRec = true; btn.classList.add('recording'); btn.textContent = '⏹'; toast('音声入力中...'); };
+                recognition.onstart = () => { isRec = true; btn.classList.add('recording'); btn.innerHTML = '<span class="material-symbols-rounded">stop</span>'; toast('音声入力中...'); };
                 recognition.onresult = e => {
                     let interim = '';
                     for (let i = e.resultIndex; i < e.results.length; i++) {
@@ -1276,8 +1264,8 @@
                     }
                     txt.value = final + interim;
                 };
-                recognition.onend = () => { isRec = false; btn.classList.remove('recording'); btn.textContent = '🎤'; };
-                recognition.onerror = () => { isRec = false; btn.classList.remove('recording'); btn.textContent = '🎤'; };
+                recognition.onend = () => { isRec = false; btn.classList.remove('recording'); btn.innerHTML = '<span class="material-symbols-rounded">mic</span>'; };
+                recognition.onerror = () => { isRec = false; btn.classList.remove('recording'); btn.innerHTML = '<span class="material-symbols-rounded">mic</span>'; };
                 btn.onclick = () => {
                     if (isRec) recognition.stop();
                     else { final = txt.value; recognition.start(); }
@@ -1285,6 +1273,7 @@
             } else {
                 btn.style.display = 'none';
             }
+
         }
 
         // Photos
@@ -1307,34 +1296,11 @@
 
         function renderPhotos() {
             document.getElementById('photoPreview').innerHTML = photos.map((p, i) =>
-                `<div class="photo-thumb"><img src="${p}"><button class="photo-delete" onclick="removePhoto(${i})">✕</button></div>`
+                `<div class="photo-thumb"><img src="${p}"><button class="photo-delete" onclick="removePhoto(${i})"><span class="material-symbols-rounded" style="font-size:0.8rem">close</span></button></div>`
             ).join('');
         }
 
         function removePhoto(i) { photos.splice(i, 1); renderPhotos(); }
-
-        // Tags
-        function initTags() {
-            document.querySelectorAll('.tag').forEach(t => {
-                t.onclick = () => {
-                    t.classList.toggle('selected');
-                    const v = t.dataset.tag;
-                    if (selectedTags.includes(v)) selectedTags = selectedTags.filter(x => x !== v);
-                    else selectedTags.push(v);
-                };
-            });
-        }
-
-        // Moods
-        function initMoods() {
-            document.querySelectorAll('.mood-item').forEach(m => {
-                m.onclick = () => {
-                    document.querySelectorAll('.mood-item').forEach(x => x.classList.remove('selected'));
-                    m.classList.add('selected');
-                    selectedMood = m.dataset.mood;
-                };
-            });
-        }
 
         // Selects
         function renderSelects() {
@@ -1374,17 +1340,15 @@
                 return true;
             });
             const el = document.getElementById('recordsList');
-            if (!list.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">📋</div><div>記録がありません</div></div>'; return; }
-            const moods = { '5': '😄', '4': '🙂', '3': '😐', '2': '😔', '1': '😢' };
+            if (!list.length) { el.innerHTML = '<div class="empty"><div class="empty-icon"><span class="material-symbols-rounded" style="font-size:3rem;opacity:0.4">list_alt</span></div><div>メモがありません</div></div>'; return; }
             el.innerHTML = list.map(r => {
                 const d = new Date(r.datetime);
                 const ds = `${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}`;
                 return `<div class="record-card" onclick="showDetail('${r.id}')">
                     <div class="record-header"><span class="record-client">${r.client}</span><span class="record-date">${ds}</span></div>
-                    <div class="record-staff">👤 ${r.staff}</div>
+                    <div class="record-staff"><span class="material-symbols-rounded" style="font-size:0.9rem;vertical-align:-2px;color:var(--text-sub)">person</span> ${r.staff}</div>
                     <div class="record-content">${r.content}</div>
-                    ${r.photos.length ? `<div class="record-photos">${r.photos.slice(0,3).map(p=>`<img src="${p}">`).join('')}${r.photos.length>3?`<span>+${r.photos.length-3}</span>`:''}</div>` : ''}
-                    <div class="record-meta">${r.mood ? moods[r.mood] : ''}${r.tags.map(t=>`<span>🏷${t}</span>`).join('')}</div>
+                    ${r.photos && r.photos.length ? `<div class="record-photos">${r.photos.slice(0,3).map(p=>`<img src="${p}">`).join('')}${r.photos.length>3?`<span>+${r.photos.length-3}</span>`:''}</div>` : ''}
                 </div>`;
             }).join('');
         }
@@ -1395,27 +1359,24 @@
             const r = records.find(x => x.id === id);
             if (!r) return;
             const d = new Date(r.datetime);
-            const moods = { '5': 'とても良い 😄', '4': '良い 🙂', '3': '普通 😐', '2': 'やや不調 😔', '1': '不調 😢' };
             let v = '';
-            const vt = r.vitals;
+            const vt = r.vitals || {};
             if (vt.temp || vt.bpH || vt.pulse || vt.spo2 || vt.weight) {
                 v = `<div class="detail-row"><div class="detail-label">バイタル</div><div class="vitals-grid" style="margin-top:8px">
-                    ${vt.temp ? `<div class="vital-item"><div class="vital-icon">🌡️</div><div>${vt.temp}℃</div></div>` : ''}
-                    ${vt.bpH && vt.bpL ? `<div class="vital-item"><div class="vital-icon">❤️</div><div>${vt.bpH}/${vt.bpL}</div></div>` : ''}
-                    ${vt.pulse ? `<div class="vital-item"><div class="vital-icon">💓</div><div>${vt.pulse}</div></div>` : ''}
-                    ${vt.spo2 ? `<div class="vital-item"><div class="vital-icon">🫁</div><div>${vt.spo2}%</div></div>` : ''}
-                    ${vt.weight ? `<div class="vital-item"><div class="vital-icon">⚖️</div><div>${vt.weight}kg</div></div>` : ''}
+                    ${vt.temp ? `<div class="vital-item"><div class="vital-icon"><span class="material-symbols-rounded" style="color:#EF5350">device_thermostat</span></div><div>${vt.temp}℃</div></div>` : ''}
+                    ${vt.bpH && vt.bpL ? `<div class="vital-item"><div class="vital-icon"><span class="material-symbols-rounded" style="color:#E53935">favorite</span></div><div>${vt.bpH}/${vt.bpL}</div></div>` : ''}
+                    ${vt.pulse ? `<div class="vital-item"><div class="vital-icon"><span class="material-symbols-rounded" style="color:#E91E63">monitor_heart</span></div><div>${vt.pulse}</div></div>` : ''}
+                    ${vt.spo2 ? `<div class="vital-item"><div class="vital-icon"><span class="material-symbols-rounded" style="color:#00ACC1">pulmonology</span></div><div>${vt.spo2}%</div></div>` : ''}
+                    ${vt.weight ? `<div class="vital-item"><div class="vital-icon"><span class="material-symbols-rounded" style="color:#7B1FA2">scale</span></div><div>${vt.weight}kg</div></div>` : ''}
                 </div></div>`;
             }
             document.getElementById('detailBody').innerHTML = `
                 <div class="detail-row"><div class="detail-label">利用者</div><div class="detail-value" style="font-size:1.2rem;font-weight:700">${r.client}</div></div>
                 <div class="detail-row"><div class="detail-label">記録者</div><div class="detail-value">${r.staff}</div></div>
                 <div class="detail-row"><div class="detail-label">日時</div><div class="detail-value">${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日 ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}</div></div>
-                <div class="detail-row"><div class="detail-label">内容</div><div class="detail-value" style="white-space:pre-wrap">${r.content}</div></div>
-                ${r.tags.length ? `<div class="detail-row"><div class="detail-label">カテゴリ</div><div class="tags-scroll">${r.tags.map(t=>`<span class="tag selected">${t}</span>`).join('')}</div></div>` : ''}
-                ${r.mood ? `<div class="detail-row"><div class="detail-label">気分</div><div class="detail-value">${moods[r.mood]}</div></div>` : ''}
+                <div class="detail-row"><div class="detail-label">報告メモ</div><div class="detail-value" style="white-space:pre-wrap">${r.content}</div></div>
                 ${v}
-                ${r.photos.length ? `<div class="detail-row"><div class="detail-label">写真</div><div class="detail-photos">${r.photos.map(p=>`<img src="${p}" onclick="window.open('${p}')">`).join('')}</div></div>` : ''}
+                ${r.photos && r.photos.length ? `<div class="detail-row"><div class="detail-label">写真</div><div class="detail-photos">${r.photos.map(p=>`<img src="${p}" onclick="window.open('${p}')">`).join('')}</div></div>` : ''}
             `;
             document.getElementById('detailModal').classList.add('active');
         }
@@ -1425,27 +1386,24 @@
         function editRecord() {
             const r = records.find(x => x.id === currentId);
             if (!r) return;
+            const vt = r.vitals || {};
             document.getElementById('staff').value = r.staff;
             document.getElementById('client').value = r.client;
             document.getElementById('datetime').value = r.datetime;
             document.getElementById('content').value = r.content;
-            document.getElementById('temp').value = r.vitals.temp || '';
-            document.getElementById('bpH').value = r.vitals.bpH || '';
-            document.getElementById('bpL').value = r.vitals.bpL || '';
-            document.getElementById('pulse').value = r.vitals.pulse || '';
-            document.getElementById('spo2').value = r.vitals.spo2 || '';
-            document.getElementById('weight').value = r.vitals.weight || '';
-            photos = [...r.photos]; renderPhotos();
-            selectedTags = [...r.tags];
-            document.querySelectorAll('.tag').forEach(t => t.classList.toggle('selected', selectedTags.includes(t.dataset.tag)));
-            selectedMood = r.mood;
-            document.querySelectorAll('.mood-item').forEach(m => m.classList.toggle('selected', m.dataset.mood === selectedMood));
+            document.getElementById('temp').value = vt.temp || '';
+            document.getElementById('bpH').value = vt.bpH || '';
+            document.getElementById('bpL').value = vt.bpL || '';
+            document.getElementById('pulse').value = vt.pulse || '';
+            document.getElementById('spo2').value = vt.spo2 || '';
+            document.getElementById('weight').value = vt.weight || '';
+            photos = [...(r.photos || [])]; renderPhotos();
             closeDetail();
             document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
             document.querySelector('[data-view="input"]').classList.add('active');
             document.getElementById('view-input').classList.add('active');
-            toast('編集モード');
+            toast('編集モード', 'info');
         }
 
         function deleteRecord() {
@@ -1454,7 +1412,7 @@
             save();
             closeDetail();
             renderRecords();
-            toast('削除しました');
+            toast('削除しました', 'success');
         }
 
         // Report
