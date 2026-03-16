@@ -1276,7 +1276,10 @@
             localStorage.setItem(KEYS.records, JSON.stringify(records));
         }
 
-        // ── Whisper 音声認識 ──────────────────────────────────────
+        // ── 音声認識：iOS=Siri(Web Speech API) / Android=Whisper ──
+        const IS_IOS = /iP(hone|ad|od)/.test(navigator.userAgent) ||
+                       (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
         let whisperPipe   = null;
         let whisperBusy   = false;
         let mediaRecorder = null;
@@ -1287,14 +1290,67 @@
             const btn     = document.getElementById('voiceBtn');
             const interim = document.getElementById('interimBox');
 
-            if (!navigator.mediaDevices?.getUserMedia) {
+            if (IS_IOS) {
+                // iPhoneはSiri音声認識（精度が高く軽量）
+                initSiriVoice(btn, interim);
+            } else if (navigator.mediaDevices?.getUserMedia) {
+                // AndroidはWhisper（高精度AI）
+                btn.onclick = () => {
+                    if (isRecording) stopWhisper(btn, interim);
+                    else             startWhisper(btn, interim);
+                };
+            } else {
                 btn.style.display = 'none';
-                return;
             }
+        }
+
+        // ── iOS: Siri(Web Speech API) ──────────────────────────
+        function initSiriVoice(btn, interim) {
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SR) { btn.style.display = 'none'; return; }
+
+            let siriRec = null;
+            let siriActive = false;
 
             btn.onclick = () => {
-                if (isRecording) stopWhisper(btn, interim);
-                else             startWhisper(btn, interim);
+                if (siriActive) { siriRec?.stop(); return; }
+
+                siriRec = new SR();
+                siriRec.lang = 'ja-JP';
+                siriRec.continuous = false;
+                siriRec.interimResults = true;
+                siriRec.maxAlternatives = 1;
+
+                siriRec.onstart = () => {
+                    siriActive = true;
+                    btn.classList.add('recording');
+                    btn.innerHTML = '<span class="material-symbols-rounded">stop</span>';
+                    setInterim(interim, '録音中…', true);
+                };
+                siriRec.onresult = e => {
+                    const r = e.results[e.resultIndex];
+                    if (r.isFinal) {
+                        const text = r[0].transcript.trim();
+                        if (text) insertText(document.getElementById('content'), text);
+                        interim.classList.add('hidden');
+                    } else {
+                        setInterim(interim, r[0].transcript, true);
+                    }
+                };
+                siriRec.onend = () => {
+                    siriActive = false;
+                    btn.classList.remove('recording');
+                    btn.innerHTML = '<span class="material-symbols-rounded">mic</span>';
+                    interim.classList.add('hidden');
+                };
+                siriRec.onerror = e => {
+                    siriActive = false;
+                    btn.classList.remove('recording');
+                    btn.innerHTML = '<span class="material-symbols-rounded">mic</span>';
+                    interim.classList.add('hidden');
+                    if (e.error !== 'aborted') toast('認識エラー: ' + e.error, 'error');
+                };
+                siriRec.start();
             };
         }
 
