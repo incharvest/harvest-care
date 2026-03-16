@@ -926,6 +926,67 @@
             to { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
 
+        /* Voice UI */
+        .interim-box {
+            background: rgba(46,125,50,0.07);
+            border: 1.5px dashed var(--primary);
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--primary-dark);
+            min-height: 40px;
+            line-height: 1.5;
+        }
+        .interim-box::before {
+            content: '認識中… ';
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .alt-box {
+            margin-top: 8px;
+        }
+        .alt-label {
+            font-size: 0.78rem;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .alt-chips {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .alt-chip {
+            padding: 12px 16px;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .alt-chip:active { background: var(--bg); }
+        .alt-chip-num {
+            width: 22px;
+            height: 22px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
         /* Hidden */
         .hidden { display: none !important; }
 
@@ -1023,9 +1084,11 @@
                     <div class="card-title"><span class="material-symbols-rounded">edit_note</span> 報告メモ</div>
                     <div class="form-group">
                         <div class="voice-container">
+                            <div id="interimBox" class="interim-box hidden"></div>
                             <textarea class="voice-textarea" id="content" placeholder="タップして入力、またはマイクボタンで音声入力..." required></textarea>
                             <button type="button" class="voice-btn" id="voiceBtn"><span class="material-symbols-rounded">mic</span></button>
                         </div>
+                        <div id="altBox" class="alt-box hidden"></div>
                     </div>
                 </div>
 
@@ -1247,35 +1310,101 @@
         let isRec = false;
 
         function initVoice() {
-            const btn = document.getElementById('voiceBtn');
-            const txt = document.getElementById('content');
-            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-                const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-                recognition = new SR();
-                recognition.lang = 'ja-JP';
-                recognition.continuous = true;
-                recognition.interimResults = true;
-                let final = '';
-                recognition.onstart = () => { isRec = true; btn.classList.add('recording'); btn.innerHTML = '<span class="material-symbols-rounded">stop</span>'; toast('音声入力中...'); };
-                recognition.onresult = e => {
-                    let interim = '';
-                    for (let i = e.resultIndex; i < e.results.length; i++) {
-                        if (e.results[i].isFinal) final += e.results[i][0].transcript;
-                        else interim += e.results[i][0].transcript;
-                    }
-                    txt.value = final + interim;
-                };
-                recognition.onend = () => { isRec = false; btn.classList.remove('recording'); btn.innerHTML = '<span class="material-symbols-rounded">mic</span>'; };
-                recognition.onerror = () => { isRec = false; btn.classList.remove('recording'); btn.innerHTML = '<span class="material-symbols-rounded">mic</span>'; };
-                btn.onclick = () => {
-                    if (isRec) recognition.stop();
-                    else { final = txt.value; recognition.start(); }
-                };
-            } else {
+            const btn      = document.getElementById('voiceBtn');
+            const txt      = document.getElementById('content');
+            const interim  = document.getElementById('interimBox');
+            const altBox   = document.getElementById('altBox');
+
+            if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
                 btn.style.display = 'none';
+                return;
             }
 
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            function startRec() {
+                recognition = new SR();
+                recognition.lang = 'ja-JP';
+                recognition.continuous = false;       // 文節ごとに確定 → 精度向上
+                recognition.interimResults = true;
+                recognition.maxAlternatives = 3;      // 上位3候補を取得
+
+                recognition.onstart = () => {
+                    isRec = true;
+                    btn.classList.add('recording');
+                    btn.innerHTML = '<span class="material-symbols-rounded">stop</span>';
+                    interim.textContent = '';
+                    interim.classList.remove('hidden');
+                    altBox.classList.add('hidden');
+                };
+
+                recognition.onresult = e => {
+                    const result = e.results[e.resultIndex];
+                    if (result.isFinal) {
+                        // 確定：候補を表示
+                        interim.classList.add('hidden');
+                        const alts = Array.from({ length: result.length }, (_, i) => result[i].transcript.trim()).filter(Boolean);
+                        if (alts.length === 1) {
+                            // 候補1つのみ → 即挿入
+                            insertText(txt, alts[0]);
+                            altBox.classList.add('hidden');
+                        } else {
+                            showAlts(alts, txt, altBox);
+                        }
+                    } else {
+                        // 認識中（仮）テキスト表示
+                        interim.textContent = result[0].transcript;
+                    }
+                };
+
+                recognition.onend = () => {
+                    isRec = false;
+                    btn.classList.remove('recording');
+                    btn.innerHTML = '<span class="material-symbols-rounded">mic</span>';
+                    interim.classList.add('hidden');
+                };
+
+                recognition.onerror = e => {
+                    isRec = false;
+                    btn.classList.remove('recording');
+                    btn.innerHTML = '<span class="material-symbols-rounded">mic</span>';
+                    interim.classList.add('hidden');
+                    if (e.error !== 'aborted') toast('音声認識エラー: ' + e.error, 'error');
+                };
+
+                recognition.start();
+            }
+
+            btn.onclick = () => {
+                if (isRec) { recognition.stop(); }
+                else { altBox.classList.add('hidden'); startRec(); }
+            };
         }
+
+        function insertText(ta, text) {
+            const cur = ta.value;
+            // 末尾に追記（末尾が改行/空でなければ改行を挟む）
+            ta.value = cur + (cur && !cur.endsWith('\n') ? '\n' : '') + text;
+        }
+
+        function showAlts(alts, ta, box) {
+            box.innerHTML = `<div class="alt-label">どれが正しいですか？</div><div class="alt-chips">`
+                + alts.map((a, i) =>
+                    `<button type="button" class="alt-chip" onclick="pickAlt(this,'${escQ(a)}')">
+                        <span class="alt-chip-num">${i + 1}</span><span>${a}</span>
+                    </button>`
+                ).join('')
+                + `</div>`;
+            box.classList.remove('hidden');
+        }
+
+        function pickAlt(btn, text) {
+            const ta = document.getElementById('content');
+            insertText(ta, text);
+            document.getElementById('altBox').classList.add('hidden');
+        }
+
+        function escQ(s) { return s.replace(/'/g, "\\'"); }
 
         // Vitals → Memo auto-reflect
         const VITAL_MARKER = '【バイタル】';
