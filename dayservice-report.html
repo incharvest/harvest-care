@@ -12,6 +12,9 @@
     <title>デイサービス日報</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%232E7D32' width='100' height='100' rx='20'/><text x='50' y='72' text-anchor='middle' fill='white' font-size='54' font-family='serif'>日</text></svg>">
     <style>
         :root {
@@ -959,6 +962,44 @@
             50%      { opacity: 0.2; }
         }
 
+        /* Firebase status */
+        .fb-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .fb-status-off  { background: #f5f5f5; color: var(--text-sub); }
+        .fb-status-on   { background: rgba(46,125,50,0.1); color: var(--primary); }
+        .fb-status-err  { background: rgba(229,57,53,0.1); color: var(--error); }
+        .fb-help {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* Sync badge */
+        .sync-badge {
+            position: fixed;
+            top: calc(60px + env(safe-area-inset-top,0px));
+            right: 12px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            z-index: 90;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .sync-badge.off { background: var(--text-sub); }
+
         /* Hidden */
         .hidden { display: none !important; }
 
@@ -987,6 +1028,10 @@
         <h1><span class="material-symbols-rounded">assignment</span> デイサービス日報</h1>
         <button class="header-btn" onclick="showSettings()"><span class="material-symbols-rounded">settings</span></button>
     </header>
+    <div id="syncBadge" class="sync-badge off hidden">
+        <span class="material-symbols-rounded" style="font-size:0.9rem">cloud_off</span>
+        <span id="syncText">ローカル</span>
+    </div>
 
     <main class="main">
         <!-- Input View -->
@@ -1154,6 +1199,26 @@
                     </div>
                 </div>
                 <div class="settings-section">
+                    <div class="settings-title">🔗 データ共有（Firebase）</div>
+                    <div id="fbStatus" class="fb-status fb-status-off">
+                        <span class="material-symbols-rounded">cloud_off</span>
+                        <span id="fbStatusText">未設定（端末内のみ保存）</span>
+                    </div>
+                    <div class="fb-help">
+                        FirebaseのdatabaseURLを貼り付けると、全職員でデータを共有できます。
+                    </div>
+                    <div class="settings-add" style="flex-direction:column;gap:8px">
+                        <input type="text" class="settings-input" id="fbUrl"
+                            placeholder="https://xxxxx-default-rtdb.firebaseio.com"
+                            style="font-size:13px">
+                        <div style="display:flex;gap:8px">
+                            <button class="settings-add-btn" style="flex:1" onclick="saveFirebaseConfig()">接続する</button>
+                            <button class="settings-add-btn" style="flex:1;background:var(--error)" onclick="clearFirebaseConfig()">切断</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
                     <div class="settings-title">データ管理</div>
                     <div class="settings-action">
                         <span>バックアップ</span>
@@ -1191,13 +1256,122 @@
     <input type="file" id="restoreInput" accept=".json" class="hidden">
 
     <script>
-        // Data
-        const KEYS = { records: 'ds_records', staff: 'ds_staff', clients: 'ds_clients' };
-        let records = JSON.parse(localStorage.getItem(KEYS.records) || '[]');
-        let staffList = JSON.parse(localStorage.getItem(KEYS.staff) || '["山田","佐藤","鈴木"]');
+        // ── ストレージ抽象層（Firebase or localStorage） ──────────
+        const KEYS = { records: 'ds_records', staff: 'ds_staff', clients: 'ds_clients', fbUrl: 'ds_fbUrl' };
+
+        let fbDb       = null;   // Firebase Database インスタンス
+        let fbRef      = null;   // /records のリファレンス
+        let fbListener = null;
+
+        function getFbUrl() { return localStorage.getItem(KEYS.fbUrl) || ''; }
+
+        function initFirebase(url) {
+            if (!url) { updateSyncBadge(false); return; }
+            try {
+                // 同じURLで既に初期化済みなら再利用
+                const existing = firebase.apps.find(a => a.options.databaseURL === url);
+                const app = existing || firebase.initializeApp({ databaseURL: url }, 'ds_' + Date.now());
+                fbDb  = firebase.database(app);
+                fbRef = fbDb.ref('records');
+                // リアルタイムリスナー
+                if (fbListener) fbRef.off('value', fbListener);
+                fbListener = fbRef.on('value', snap => {
+                    const val = snap.val() || {};
+                    records = Object.values(val).sort((a, b) =>
+                        new Date(b.datetime) - new Date(a.datetime));
+                    renderRecords();
+                }, err => {
+                    updateSyncBadge(false, 'エラー');
+                    toast('Firebase接続エラー: ' + err.message, 'error');
+                });
+                updateSyncBadge(true);
+                toast('クラウド共有が有効です', 'success');
+            } catch (e) {
+                updateSyncBadge(false, 'エラー');
+                toast('Firebase初期化失敗: ' + e.message, 'error');
+            }
+        }
+
+        function saveRecord(rec) {
+            if (fbRef) {
+                fbRef.child(rec.id).set(rec);   // Firebase に保存（リスナーが自動反映）
+            } else {
+                if (!records.find(r => r.id === rec.id)) records.unshift(rec);
+                else { const i = records.findIndex(r => r.id === rec.id); if (i>=0) records[i] = rec; }
+                localStorage.setItem(KEYS.records, JSON.stringify(records));
+                renderRecords();
+            }
+        }
+
+        function deleteRecordById(id) {
+            if (fbRef) {
+                fbRef.child(id).remove();
+            } else {
+                records = records.filter(r => r.id !== id);
+                localStorage.setItem(KEYS.records, JSON.stringify(records));
+                renderRecords();
+            }
+        }
+
+        function updateSyncBadge(online, label) {
+            const badge = document.getElementById('syncBadge');
+            const text  = document.getElementById('syncText');
+            if (!badge) return;
+            badge.classList.remove('hidden', 'off');
+            if (online) {
+                badge.innerHTML = '<span class="material-symbols-rounded" style="font-size:0.9rem">cloud</span><span>クラウド共有中</span>';
+                badge.style.background = 'var(--primary)';
+            } else {
+                badge.innerHTML = '<span class="material-symbols-rounded" style="font-size:0.9rem">cloud_off</span><span>' + (label || 'ローカル') + '</span>';
+                badge.style.background = 'var(--text-sub)';
+            }
+        }
+
+        function saveFirebaseConfig() {
+            const url = document.getElementById('fbUrl').value.trim();
+            if (!url || !url.includes('firebaseio.com')) {
+                toast('正しいdatabaseURLを入力してください', 'error'); return;
+            }
+            localStorage.setItem(KEYS.fbUrl, url);
+            initFirebase(url);
+            updateFbStatusUI(true);
+        }
+
+        function clearFirebaseConfig() {
+            localStorage.removeItem(KEYS.fbUrl);
+            if (fbRef && fbListener) { fbRef.off('value', fbListener); fbListener = null; }
+            fbRef = null; fbDb = null;
+            records = JSON.parse(localStorage.getItem(KEYS.records) || '[]');
+            updateSyncBadge(false);
+            updateFbStatusUI(false);
+            renderRecords();
+            toast('ローカル保存に切り替えました');
+        }
+
+        function updateFbStatusUI(online) {
+            const el   = document.getElementById('fbStatus');
+            const text = document.getElementById('fbStatusText');
+            const inp  = document.getElementById('fbUrl');
+            if (!el) return;
+            if (online) {
+                el.className = 'fb-status fb-status-on';
+                el.querySelector('span.material-symbols-rounded').textContent = 'cloud';
+                text.textContent = '接続中 — 全職員で共有中';
+                inp.value = getFbUrl();
+            } else {
+                el.className = 'fb-status fb-status-off';
+                el.querySelector('span.material-symbols-rounded').textContent = 'cloud_off';
+                text.textContent = '未設定（端末内のみ保存）';
+                inp.value = '';
+            }
+        }
+
+        // ── データ ──────────────────────────────────────────────
+        let records    = JSON.parse(localStorage.getItem(KEYS.records) || '[]');
+        let staffList  = JSON.parse(localStorage.getItem(KEYS.staff)   || '["山田","佐藤","鈴木"]');
         let clientList = JSON.parse(localStorage.getItem(KEYS.clients) || '["田中様","高橋様","伊藤様"]');
-        let photos = [];
-        let currentId = null;
+        let photos     = [];
+        let currentId  = null;
 
         // Init
         document.addEventListener('DOMContentLoaded', () => {
@@ -1209,6 +1383,10 @@
             initFilters();
             renderSelects();
             setDateTime();
+            // Firebase 設定が保存済みなら自動接続
+            const savedUrl = getFbUrl();
+            if (savedUrl) initFirebase(savedUrl);
+            else updateSyncBadge(false);
         });
 
         // Navigation
@@ -1252,14 +1430,8 @@
                     photos: [...photos],
                     created: currentId ? records.find(r => r.id === currentId)?.created : new Date().toISOString()
                 };
-                if (currentId) {
-                    const i = records.findIndex(r => r.id === currentId);
-                    if (i >= 0) records[i] = rec;
-                    currentId = null;
-                } else {
-                    records.unshift(rec);
-                }
-                save();
+                currentId = null;
+                saveRecord(rec);
                 resetForm();
                 toast('保存しました', 'success');
             };
@@ -1273,7 +1445,7 @@
         }
 
         function save() {
-            localStorage.setItem(KEYS.records, JSON.stringify(records));
+            // saveRecord() に委譲（Firebase or localStorage を自動選択）
         }
 
         // ── 音声認識：iOS=Siri(Web Speech API) / Android=Whisper ──
@@ -1638,10 +1810,9 @@
 
         function deleteRecord() {
             if (!confirm('削除しますか？')) return;
-            records = records.filter(r => r.id !== currentId);
-            save();
+            const id = currentId;
             closeDetail();
-            renderRecords();
+            deleteRecordById(id);
             toast('削除しました', 'success');
         }
 
@@ -1691,14 +1862,14 @@
             let list = records.filter(r => { const d = new Date(r.datetime); return d >= start && d <= end; });
             if (cf !== 'all') list = list.filter(r => r.client === cf);
             if (!list.length) { toast('データなし', 'error'); return; }
-            const moods = { '5': 'とても良い', '4': '良い', '3': '普通', '2': 'やや不調', '1': '不調' };
-            const headers = ['日時', '利用者', '記録者', '内容', 'カテゴリ', '気分', '体温', '血圧上', '血圧下', '脈拍', 'SpO2', '体重'];
+            const headers = ['日時', '利用者', '記録者', '報告メモ', '体温', '血圧上', '血圧下', '脈拍', 'SpO2', '体重'];
             const rows = list.map(r => {
-                const d = new Date(r.datetime);
+                const d  = new Date(r.datetime);
+                const vt = r.vitals || {};
                 return [
                     `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}`,
-                    r.client, r.staff, r.content.replace(/[\n\r]/g, ' '), r.tags.join('、'), moods[r.mood] || '',
-                    r.vitals.temp || '', r.vitals.bpH || '', r.vitals.bpL || '', r.vitals.pulse || '', r.vitals.spo2 || '', r.vitals.weight || ''
+                    r.client, r.staff, r.content.replace(/[\n\r]/g, ' '),
+                    vt.temp || '', vt.bpH || '', vt.bpL || '', vt.pulse || '', vt.spo2 || '', vt.weight || ''
                 ];
             });
             const csv = '\uFEFF' + [headers, ...rows].map(row => row.map(c => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\n');
@@ -1715,6 +1886,7 @@
         // Settings
         function showSettings() {
             renderSettingsLists();
+            updateFbStatusUI(!!getFbUrl());
             document.getElementById('settingsModal').classList.add('active');
         }
 
