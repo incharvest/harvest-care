@@ -352,7 +352,7 @@
 
         .service-details-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
 
@@ -378,6 +378,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 0.6rem;
             margin-top: 1.2rem;
+            align-items: start;
         }
 
         .bath-photo-grid img {
@@ -392,6 +393,33 @@
 
         .bath-photo-grid img:hover {
             opacity: 0.85;
+        }
+
+        .photo-placeholder-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+            margin-top: 1.2rem;
+            align-items: start;
+        }
+
+        .photo-placeholder {
+            aspect-ratio: 4/3;
+            background: #f5f5f5;
+            border: 1.5px dashed #ccc;
+            border-radius: var(--radius-small);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 0.78rem;
+            gap: 0.3rem;
+        }
+
+        .photo-placeholder::before {
+            content: "🖼";
+            font-size: 1.4rem;
         }
 
         /* ライトボックス（拡大表示） */
@@ -451,6 +479,7 @@
             color: var(--color-text-muted);
             flex-shrink: 0;
             width: 80px;
+            white-space: nowrap;
         }
 
         .detail-value {
@@ -1039,6 +1068,46 @@
                         </li>
                     </ul>
                     <p class="detail-note">「歩きたい」「一人でトイレに行きたい」など、ご本人の目標に合わせたプログラムを提供します</p>
+                    <div class="photo-placeholder-grid">
+                        <div class="photo-placeholder">写真1</div>
+                        <div class="photo-placeholder">写真2</div>
+                        <div class="photo-placeholder">写真3</div>
+                        <div class="photo-placeholder">写真4</div>
+                    </div>
+                </div>
+
+                <!-- トイレ -->
+                <div class="detail-card">
+                    <h3 class="detail-card-title">トイレについて</h3>
+                    <ul class="detail-list">
+                        <li>
+                            <span class="detail-label">トイレの種類</span>
+                            <span class="detail-value">洋式・温水洗浄便座</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">設備</span>
+                            <span class="detail-value">手すり完備・広めの個室</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">介助体制</span>
+                            <span class="detail-value highlight">職員が随時対応</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">排泄ケア</span>
+                            <span class="detail-value">おむつ交換・パット交換対応</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">台数</span>
+                            <span class="detail-value">3カ所</span>
+                        </li>
+                    </ul>
+                    <p class="detail-note">羞恥心に配慮し、できる限り同性介助を基本としています</p>
+                    <div class="photo-placeholder-grid">
+                        <div class="photo-placeholder">写真1</div>
+                        <div class="photo-placeholder">写真2</div>
+                        <div class="photo-placeholder">写真3</div>
+                        <div class="photo-placeholder">写真4</div>
+                    </div>
                 </div>
 
                 <!-- 食事・加算 -->
@@ -1073,6 +1142,12 @@
                             <span class="detail-value">（Ⅲ）</span>
                         </li>
                     </ul>
+                    <div class="photo-placeholder-grid">
+                        <div class="photo-placeholder">写真1</div>
+                        <div class="photo-placeholder">写真2</div>
+                        <div class="photo-placeholder">写真3</div>
+                        <div class="photo-placeholder">写真4</div>
+                    </div>
                 </div>
             </div>
         </div>
