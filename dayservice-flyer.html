@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>デイサービス ハーベスト チラシ</title>
+    <title>デイサービス ハーベスト チラシ（両面）</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,645 +17,702 @@
 
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background: #e8e8e8;
+            background: #ccc;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
 
-        /* ─── チラシ全体 ─── */
-        .flyer {
+        /* ══════════════════════════════
+           共通：各ページ
+        ══════════════════════════════ */
+        .page {
             width: 297mm;
             height: 210mm;
             background: #fdfcfa;
+            overflow: hidden;
+            position: relative;
+            page-break-after: always;
+        }
+
+        /* ══════════════════════════════
+           ▼ 表面（Page 1）
+        ══════════════════════════════ */
+
+        /* ─ ヘッダー ─ */
+        .p1-header {
+            background: #3d7a5a;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4mm 8mm;
+        }
+
+        .p1-logo {
+            display: flex;
+            align-items: center;
+            gap: 3mm;
+        }
+
+        .p1-logo-circle {
+            width: 13mm;
+            height: 13mm;
+            border-radius: 50%;
+            border: 0.5mm solid rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .p1-logo-text {
+            color: #fff;
+        }
+
+        .p1-logo-text .type {
+            font-size: 6.5pt;
+            opacity: 0.8;
+            letter-spacing: 0.1em;
+        }
+
+        .p1-logo-text .name {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 18pt;
+            letter-spacing: 0.15em;
+            line-height: 1.1;
+        }
+
+        .p1-logo-text .name-en {
+            font-size: 7pt;
+            opacity: 0.65;
+            letter-spacing: 0.4em;
+        }
+
+        .p1-header-right {
+            text-align: right;
+            color: rgba(255,255,255,0.85);
+            font-size: 7pt;
+            line-height: 1.8;
+            letter-spacing: 0.06em;
+        }
+
+        /* ─ 本文エリア（2カラム）─ */
+        .p1-body {
             display: grid;
-            grid-template-columns: 78mm 1fr;
+            grid-template-columns: 88mm 1fr;
+            height: calc(210mm - 22mm); /* ヘッダー高さを引く */
+        }
+
+        /* 左カラム */
+        .p1-left {
+            display: flex;
+            flex-direction: column;
+            border-right: 0.3mm solid #e5e0d8;
             overflow: hidden;
         }
 
-        /* ════════════════════════
-           左カラム
-        ════════════════════════ */
-        .sidebar {
-            background: #fdfcfa;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 9mm 7mm 8mm;
-            border-right: 0.3mm solid #e5e0d8;
+        /* ミッションボックス */
+        .p1-mission {
+            background: #3d7a5a;
+            padding: 5mm 6mm;
+            margin: 4mm 4mm 0;
+            border-radius: 2mm;
         }
 
-        /* ロゴ円 */
-        .logo-circle {
-            width: 22mm;
-            height: 22mm;
-            border-radius: 50%;
-            border: 0.4mm solid #d0ccc6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 4mm;
-            background: #fff;
-        }
-
-        .logo-circle svg {
-            width: 13mm;
-            height: 13mm;
-        }
-
-        /* サービス種別 */
-        .service-en {
-            font-size: 6.5pt;
-            color: #888;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            margin-bottom: 1.5mm;
-        }
-
-        /* 施設名 */
-        .facility-name {
+        .p1-mission p {
             font-family: 'Zen Old Mincho', serif;
-            font-size: 20pt;
-            color: #3d7a5a;
-            letter-spacing: 0.12em;
-            margin-bottom: 1mm;
-            text-align: center;
-        }
-
-        .facility-sub {
-            font-size: 6.5pt;
-            color: #888;
-            letter-spacing: 0.06em;
-            margin-bottom: 5mm;
-            text-align: center;
-        }
-
-        /* 区切り線 */
-        .divider {
-            width: 40mm;
-            height: 0.3mm;
-            background: #e0dbd4;
-            margin-bottom: 5mm;
-        }
-
-        /* キャッチコピー */
-        .catch {
-            font-family: 'Zen Old Mincho', serif;
-            font-size: 11.5pt;
-            color: #3a3a3a;
+            font-size: 10pt;
+            color: #fff;
             line-height: 2;
-            letter-spacing: 0.08em;
-            text-align: center;
-            margin-bottom: 5mm;
-        }
-
-        .catch span {
-            color: #3d7a5a;
-        }
-
-        /* 施設データ */
-        .data-list {
-            width: 100%;
-            margin-bottom: 5mm;
-        }
-
-        .data-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            padding: 1.8mm 0;
-            border-bottom: 0.2mm solid #f0ece8;
-        }
-
-        .data-row:first-child {
-            border-top: 0.2mm solid #f0ece8;
-        }
-
-        .data-label {
-            font-size: 7pt;
-            color: #999;
-            letter-spacing: 0.04em;
-        }
-
-        .data-value {
-            font-size: 8pt;
-            color: #3a3a3a;
-            font-weight: 500;
-            letter-spacing: 0.03em;
-        }
-
-        .data-value.green {
-            color: #3d7a5a;
-            font-weight: 600;
-        }
-
-        /* 体験ボックス */
-        .trial-box {
-            width: 100%;
-            border: 0.4mm solid #3d7a5a;
-            text-align: center;
-            padding: 2.5mm 3mm;
-            margin-bottom: 5mm;
-        }
-
-        .trial-box p {
-            font-size: 8pt;
-            color: #3d7a5a;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5mm;
-        }
-
-        .trial-box small {
-            font-size: 6pt;
-            color: #888;
-        }
-
-        /* 連絡先 */
-        .contact {
-            text-align: center;
-            margin-top: auto;
-        }
-
-        .contact-label {
-            font-size: 6pt;
-            color: #aaa;
-            letter-spacing: 0.12em;
-            margin-bottom: 1mm;
-        }
-
-        .contact-tel {
-            font-family: 'Zen Old Mincho', serif;
-            font-size: 16pt;
-            color: #3d7a5a;
             letter-spacing: 0.06em;
-            margin-bottom: 1.5mm;
         }
 
-        .contact-address {
-            font-size: 6pt;
-            color: #aaa;
-            line-height: 1.8;
+        /* デイサービスとは */
+        .p1-what {
+            padding: 4mm 5mm 3mm;
         }
 
-        /* ════════════════════════
-           右メインエリア
-        ════════════════════════ */
-        .main {
-            display: flex;
-            flex-direction: column;
-            padding: 7mm 7mm 7mm 6mm;
-            gap: 3.5mm;
-            background: #fdfcfa;
-        }
-
-        /* ─── 特徴カード6枚 ─── */
-        .features-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5mm;
-        }
-
-        .feature-card {
-            background: #fff;
-            border: 0.3mm solid #e5e0d8;
-            border-top: 1mm solid #3d7a5a;
-            padding: 3mm 3mm 2.5mm;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .feature-icon {
-            width: 9mm;
-            height: 9mm;
-            border-radius: 50%;
-            background: rgba(61,122,90,0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2mm;
-        }
-
-        .feature-icon svg {
-            width: 5mm;
-            height: 5mm;
-            stroke: #3d7a5a;
-            fill: none;
-        }
-
-        .feature-title {
+        .p1-what h2 {
             font-family: 'Zen Old Mincho', serif;
-            font-size: 8pt;
+            font-size: 10pt;
+            color: #3d7a5a;
+            margin-bottom: 2mm;
+            letter-spacing: 0.06em;
+        }
+
+        .p1-what h2::after {
+            content: '';
+            display: block;
+            width: 20mm;
+            height: 0.4mm;
+            background: #e8a45c;
+            margin-top: 1mm;
+        }
+
+        .p1-what p {
+            font-size: 7.5pt;
             color: #3a3a3a;
-            font-weight: 600;
-            margin-bottom: 1mm;
-            line-height: 1.5;
+            line-height: 1.9;
         }
 
-        .feature-desc {
-            font-size: 5.8pt;
-            color: #888;
-            line-height: 1.6;
-        }
-
-        /* ─── 下段 ─── */
-        .bottom-row {
+        /* 写真グリッド */
+        .p1-photos {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3.5mm;
+            gap: 1.5mm;
+            padding: 3mm 4mm 3mm;
             flex: 1;
             min-height: 0;
         }
 
-        /* 一日の流れ */
-        .flow-card {
-            background: #fff;
-            border: 0.3mm solid #e5e0d8;
-            padding: 3.5mm 4mm;
+        .p1-photo {
+            border-radius: 1.5mm;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .p1-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 右カラム */
+        .p1-right {
+            display: flex;
+            flex-direction: column;
             overflow: hidden;
         }
 
-        .card-title {
-            font-family: 'Zen Old Mincho', serif;
-            font-size: 8.5pt;
-            color: #3d7a5a;
-            border-bottom: 0.3mm solid #e5e0d8;
-            padding-bottom: 1.5mm;
-            margin-bottom: 2.5mm;
-            letter-spacing: 0.08em;
+        /* 外観写真 */
+        .p1-building {
+            flex: 0 0 52%;
+            position: relative;
+            overflow: hidden;
         }
 
-        .flow-list {
-            list-style: none;
+        .p1-building img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .p1-building-label {
+            position: absolute;
+            top: 3mm;
+            right: 3mm;
+            background: rgba(61,122,90,0.85);
+            color: #fff;
+            font-size: 6pt;
+            letter-spacing: 0.25em;
+            padding: 1mm 2.5mm;
+        }
+
+        /* リハビリ重視型とは */
+        .p1-rehab {
+            padding: 4mm 6mm;
+            flex: 1;
+            background: #f7f5f0;
+            border-top: 0.3mm solid #e5e0d8;
+        }
+
+        .p1-rehab h2 {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 10pt;
+            color: #3d7a5a;
+            margin-bottom: 2.5mm;
+            letter-spacing: 0.04em;
+        }
+
+        .p1-rehab h2::after {
+            content: '';
+            display: block;
+            width: 20mm;
+            height: 0.4mm;
+            background: #e8a45c;
+            margin-top: 1mm;
+        }
+
+        .p1-rehab p {
+            font-size: 7.5pt;
+            color: #3a3a3a;
+            line-height: 1.9;
+        }
+
+        .p1-rehab .specialist {
+            display: inline-block;
+            background: rgba(61,122,90,0.1);
+            color: #3d7a5a;
+            font-size: 7pt;
+            font-weight: 500;
+            padding: 0.8mm 2mm;
+            border-radius: 1mm;
+            margin-top: 1.5mm;
+        }
+
+        /* ══════════════════════════════
+           ▼ 裏面（Page 2）
+        ══════════════════════════════ */
+
+        /* ─ キャッチバナー ─ */
+        .p2-catch {
+            background: #fdfcfa;
+            padding: 4mm 8mm;
+            border-bottom: 0.3mm solid #e5e0d8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .p2-catch p {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 13pt;
+            color: #3a3a3a;
+            letter-spacing: 0.06em;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .p2-catch .hl {
+            background: #e8a45c;
+            color: #fff;
+            padding: 0 2mm;
+            border-radius: 1mm;
+            font-size: 14pt;
+        }
+
+        /* ─ 本文エリア（3カラム） ─ */
+        .p2-body {
+            display: grid;
+            grid-template-columns: 52mm 1fr 52mm;
+            gap: 0;
+            height: calc(210mm - 38mm - 30mm);
+        }
+
+        /* 左写真 */
+        .p2-left-photos {
             display: flex;
             flex-direction: column;
             gap: 1.5mm;
+            padding: 4mm 3mm 3mm 4mm;
         }
 
-        .flow-item {
+        .p2-photo {
+            flex: 1;
+            border-radius: 1.5mm;
+            overflow: hidden;
+        }
+
+        .p2-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 中央：一日の流れ */
+        .p2-schedule {
+            border-left: 0.3mm solid #e5e0d8;
+            border-right: 0.3mm solid #e5e0d8;
+            padding: 4mm 5mm 3mm;
+            overflow: hidden;
+        }
+
+        .p2-schedule-title {
+            background: #3d7a5a;
+            color: #fff;
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 9pt;
+            letter-spacing: 0.12em;
+            text-align: center;
+            padding: 1.5mm 3mm;
+            margin-bottom: 3mm;
+            border-radius: 1mm;
+        }
+
+        .p2-timeline {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 2mm;
+        }
+
+        .p2-tl-item {
             display: flex;
             align-items: flex-start;
             gap: 2mm;
         }
 
-        .flow-time {
-            font-size: 7pt;
-            color: #3d7a5a;
-            font-weight: 600;
-            min-width: 15mm;
-            flex-shrink: 0;
-            line-height: 1.4;
-        }
-
-        .flow-dot {
-            width: 1.8mm;
-            height: 1.8mm;
-            background: #e8a45c;
-            border-radius: 50%;
-            flex-shrink: 0;
-            margin-top: 1.5mm;
-        }
-
-        .flow-label {
-            font-size: 6.8pt;
-            color: #5a5a5a;
-            line-height: 1.5;
-        }
-
-        /* 右下2枠 */
-        .detail-card {
-            display: flex;
-            flex-direction: column;
-            gap: 3mm;
-        }
-
-        /* 対応可能 */
-        .support-box {
-            background: #fff;
-            border: 0.3mm solid #e5e0d8;
-            padding: 3mm 4mm;
-        }
-
-        .support-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1mm 2mm;
-            margin-top: 0.5mm;
-        }
-
-        .support-list li {
-            display: flex;
-            align-items: center;
-            gap: 1.5mm;
-            font-size: 6.5pt;
-            color: #3a3a3a;
-        }
-
-        .support-list li::before {
-            content: '✓';
-            color: #3d7a5a;
-            font-weight: 700;
-            font-size: 7pt;
-            flex-shrink: 0;
-        }
-
-        /* サービス内容タグ */
-        .service-box {
-            background: #f7f5f2;
-            border: 0.3mm solid #e5e0d8;
-            padding: 3mm 4mm;
-        }
-
-        .service-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5mm;
-            margin-top: 0.5mm;
-        }
-
-        .service-tag {
-            background: #fff;
-            border: 0.3mm solid #c8e0d4;
-            color: #3d7a5a;
-            font-size: 6pt;
-            padding: 0.8mm 2.5mm;
-            letter-spacing: 0.04em;
-            border-radius: 10mm;
-        }
-
-        /* CTA */
-        .cta-box {
+        .p2-tl-time {
             background: #3d7a5a;
-            padding: 3mm 4mm;
+            color: #fff;
+            font-size: 6.5pt;
+            font-weight: 600;
+            padding: 0.6mm 2mm;
+            border-radius: 0.8mm;
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-width: 14mm;
             text-align: center;
         }
 
-        .cta-main {
-            font-family: 'Zen Old Mincho', serif;
+        .p2-tl-arrow {
+            color: #e8a45c;
             font-size: 8pt;
-            color: rgba(255,255,255,0.9);
-            letter-spacing: 0.08em;
-            margin-bottom: 1mm;
+            flex-shrink: 0;
+            margin-top: -0.3mm;
         }
 
-        .cta-tel {
-            font-family: 'Zen Old Mincho', serif;
-            font-size: 13pt;
+        .p2-tl-label {
+            font-size: 7.5pt;
+            color: #3a3a3a;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .p2-tl-label small {
+            display: block;
+            font-size: 6pt;
+            color: #888;
+            margin-top: 0.3mm;
+        }
+
+        /* 右写真 */
+        .p2-right-photos {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5mm;
+            padding: 4mm 4mm 3mm 3mm;
+        }
+
+        /* ─ 下段（フロー + 問い合わせ）─ */
+        .p2-bottom {
+            display: grid;
+            grid-template-columns: 1fr 50mm;
+            border-top: 0.3mm solid #e5e0d8;
+            height: 30mm;
+        }
+
+        /* 申込みフロー */
+        .p2-flow {
+            display: flex;
+            align-items: stretch;
+            padding: 3.5mm 4mm;
+            gap: 1.5mm;
+        }
+
+        .p2-flow-step {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1mm;
+            position: relative;
+        }
+
+        .p2-flow-step:not(:last-child)::after {
+            content: '▶';
+            position: absolute;
+            right: -4mm;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #e8a45c;
+            font-size: 7pt;
+        }
+
+        .p2-flow-num {
+            width: 6mm;
+            height: 6mm;
+            border-radius: 50%;
+            background: #3d7a5a;
             color: #fff;
+            font-size: 7pt;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .p2-flow-title {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 7pt;
+            color: #3d7a5a;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+
+        .p2-flow-desc {
+            font-size: 5.5pt;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* 問い合わせ */
+        .p2-contact {
+            background: #3d7a5a;
+            padding: 3.5mm 4mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .p2-contact-label {
+            font-size: 6pt;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 0.1em;
+            margin-bottom: 1mm;
+            text-align: center;
+        }
+
+        .p2-contact-tel {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 14pt;
+            color: #fff;
+            letter-spacing: 0.06em;
+            text-align: center;
+            margin-bottom: 0.5mm;
+        }
+
+        .p2-contact-fax {
+            font-size: 7pt;
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            margin-bottom: 1.5mm;
+        }
+
+        .p2-contact-address {
+            font-size: 5.8pt;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        /* 持ち物メモ（裏面中段下部）*/
+        .p2-items {
+            background: #f0f7f3;
+            border-top: 0.3mm solid #c8ddd2;
+            padding: 2mm 4mm;
+            grid-column: 1 / 3;
+        }
+
+        .p2-items-title {
+            font-size: 6.5pt;
+            color: #3d7a5a;
+            font-weight: 600;
+            margin-bottom: 1mm;
             letter-spacing: 0.06em;
         }
 
-        .cta-note {
-            font-size: 5.8pt;
-            color: rgba(255,255,255,0.65);
-            margin-top: 0.8mm;
+        .p2-items p {
+            font-size: 6pt;
+            color: #555;
+            line-height: 1.7;
         }
 
-        /* ── 印刷 ── */
+        /* ══════════════════════════════
+           印刷設定
+        ══════════════════════════════ */
         @media print {
             body { background: none; }
-            .flyer { width: 297mm; height: 210mm; }
+            .page { page-break-after: always; }
+            .page:last-child { page-break-after: avoid; }
+        }
+
+        /* 画面プレビュー用 */
+        @media screen {
+            body { padding: 5mm; display: flex; flex-direction: column; gap: 5mm; }
         }
     </style>
 </head>
 <body>
-<div class="flyer">
 
-    <!-- ════ 左カラム ════ -->
-    <aside class="sidebar">
+<!-- ══════════════════════════════════════
+     表面（Page 1 / Front）
+══════════════════════════════════════ -->
+<div class="page">
 
-        <div class="logo-circle">
-            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                <g stroke="#3d7a5a" fill="none" stroke-linecap="round">
-                    <path d="M24 42 L24 20" stroke-width="1.2"/>
-                    <path d="M24 32 Q17 28 15 20 Q21 22 24 28" stroke-width="1"/>
-                    <path d="M24 26 Q31 22 33 14 Q27 16 24 22" stroke-width="1"/>
-                    <path d="M24 28 Q19 22 13 22 Q17 28 24 28" stroke-width="0.8" opacity="0.5"/>
-                    <path d="M18 42 L30 42" stroke-width="1.2"/>
-                    <path d="M36 16 L39 10 L42 16" stroke-width="0.8" opacity="0.4"/>
-                    <line x1="39" y1="10" x2="39" y2="22" stroke-width="0.8" opacity="0.4"/>
-                </g>
-            </svg>
+    <!-- ヘッダー -->
+    <div class="p1-header">
+        <div class="p1-logo">
+            <div class="p1-logo-circle">
+                <svg viewBox="0 0 40 40" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+                    <g stroke="#fff" fill="none" stroke-linecap="round">
+                        <path d="M20 35 L20 17" stroke-width="1.2"/>
+                        <path d="M20 27 Q14 23 12 16 Q17 18 20 23" stroke-width="1"/>
+                        <path d="M20 22 Q26 18 28 11 Q23 13 20 18" stroke-width="1"/>
+                        <path d="M14 35 L26 35" stroke-width="1.2"/>
+                    </g>
+                </svg>
+            </div>
+            <div class="p1-logo-text">
+                <div class="type">マッサージ・リハビリ重視型</div>
+                <div class="name">デイサービス　ハーベスト</div>
+                <div class="name-en">D A Y &nbsp; S E R V I C E &nbsp;&nbsp; H A R V E S T</div>
+            </div>
+        </div>
+        <div class="p1-header-right">
+            〒891-0115 鹿児島県鹿児島市東谷山2丁目40番15号<br>
+            TEL 099-296-9844　／　FAX 099-296-9843<br>
+            受付時間 8:30〜17:30（日曜・年末年始休み）
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="p1-body">
+
+        <!-- 左カラム -->
+        <div class="p1-left">
+            <div class="p1-mission">
+                <p>私どもハーベストは、日常に潤いと活気を<br>与えるお手伝いをさせて頂きたいと思います。</p>
+            </div>
+            <div class="p1-what">
+                <h2>デイサービスとは？</h2>
+                <p>送迎車にてデイサービス施設に通い、食事や入浴など日常生活上の支援や、生活機能向上のための機能訓練やレクリエーションなどを日帰りで提供するサービスです。</p>
+            </div>
+            <div class="p1-photos">
+                <div class="p1-photo"><img src="IMG_9815.jpeg" alt="施設のようす"></div>
+                <div class="p1-photo"><img src="IMG_9816.jpeg" alt="スタッフと利用者"></div>
+                <div class="p1-photo"><img src="IMG_9817.jpeg" alt="食事のようす"></div>
+                <div class="p1-photo"><img src="IMG_9818.jpeg" alt="リハビリのようす"></div>
+            </div>
         </div>
 
-        <p class="service-en">Day &nbsp; Service</p>
-        <h1 class="facility-name">ハーベスト</h1>
-        <p class="facility-sub">マッサージ・リハビリ重視型デイサービス</p>
+        <!-- 右カラム -->
+        <div class="p1-right">
+            <div class="p1-building">
+                <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&q=80" alt="ハーベスト外観">
+                <div class="p1-building-label">H A R V E S T</div>
+            </div>
+            <div class="p1-rehab">
+                <h2>マッサージ・リハビリ重視型とは？</h2>
+                <p>運動機能の維持・回復を目的として機能訓練指導員が一人一人に合った訓練を提供し、生活機能向上を促します。また慢性的な痛みに対して、国家資格をもった専門職員による施術をおこない、リラクゼーション効果や癒しを提供します。</p>
+                <span class="specialist">国家資格者：鍼灸マッサージ師 5名在籍</span>
+            </div>
+        </div>
 
-        <div class="divider"></div>
+    </div>
+</div><!-- /表面 -->
 
-        <p class="catch">
-            笑顔あふれる<br>
-            <span>みんなの</span>場所へ
+
+<!-- ══════════════════════════════════════
+     裏面（Page 2 / Back）
+══════════════════════════════════════ -->
+<div class="page">
+
+    <!-- キャッチコピー -->
+    <div class="p2-catch">
+        <p>
+            今の生活を保ち出来ない事の <span class="hl">お手伝い</span> や<br>
+            出来るようになる為の <span class="hl">支援</span> をさせていただきます。
         </p>
+    </div>
 
-        <div class="data-list">
-            <div class="data-row">
-                <span class="data-label">提供時間</span>
-                <span class="data-value green">9:00 〜 16:05</span>
-            </div>
-            <div class="data-row">
-                <span class="data-label">営業日</span>
-                <span class="data-value">月曜 〜 土曜</span>
-            </div>
-            <div class="data-row">
-                <span class="data-label">定員</span>
-                <span class="data-value">18名（少人数制）</span>
-            </div>
-            <div class="data-row">
-                <span class="data-label">専門スタッフ</span>
-                <span class="data-value green">鍼灸マッサージ師 5名</span>
-            </div>
-            <div class="data-row">
-                <span class="data-label">送迎</span>
-                <span class="data-value green">無 料</span>
-            </div>
-            <div class="data-row">
-                <span class="data-label">昼食</span>
-                <span class="data-value">700円／回</span>
-            </div>
+    <!-- 本文エリア -->
+    <div class="p2-body">
+
+        <!-- 左写真 -->
+        <div class="p2-left-photos">
+            <div class="p2-photo"><img src="images/bath/bath-1.jpg" alt="入浴設備"></div>
+            <div class="p2-photo"><img src="IMG_9815.jpeg" alt="食事のようす"></div>
         </div>
 
-        <div class="trial-box">
-            <p>体験利用 受付中</p>
-            <small>まずはお気軽にお問い合わせください</small>
+        <!-- 一日の流れ -->
+        <div class="p2-schedule">
+            <div class="p2-schedule-title">ハーベストの一日</div>
+            <ul class="p2-timeline">
+                <li class="p2-tl-item">
+                    <span class="p2-tl-time">08:00</span>
+                    <span class="p2-tl-arrow">▶</span>
+                    <span class="p2-tl-label">送 迎<small>ご希望の時間があれば出来る限り対応いたします</small></span>
+                </li>
+                <li class="p2-tl-item">
+                    <span class="p2-tl-time">09:00</span>
+                    <span class="p2-tl-arrow">▶</span>
+                    <span class="p2-tl-label">朝の挨拶・バイタルチェック・入浴・機能訓練・各種体操<small>全体体操・個別運動・マッサージ（鍼灸マッサージ師）・脳活性プログラム</small></span>
+                </li>
+                <li class="p2-tl-item">
+                    <span class="p2-tl-time">12:00</span>
+                    <span class="p2-tl-arrow">▶</span>
+                    <span class="p2-tl-label">昼食・口腔ケア・休憩<small>制限食対応可（糖尿病食・減塩食・刻み食・ソフト食）</small></span>
+                </li>
+                <li class="p2-tl-item">
+                    <span class="p2-tl-time">14:00</span>
+                    <span class="p2-tl-arrow">▶</span>
+                    <span class="p2-tl-label">レクリエーション・機能訓練・各種体操<small>カラオケ・映画鑑賞・脳トレ・屋外活動・散歩など</small></span>
+                </li>
+                <li class="p2-tl-item">
+                    <span class="p2-tl-time">15:30</span>
+                    <span class="p2-tl-arrow">▶</span>
+                    <span class="p2-tl-label">おやつ・お茶</span>
+                </li>
+                <li class="p2-tl-item">
+                    <span class="p2-tl-time">16:05</span>
+                    <span class="p2-tl-arrow">▶</span>
+                    <span class="p2-tl-label">帰りの挨拶・お送り</span>
+                </li>
+            </ul>
         </div>
 
-        <div class="contact">
-            <p class="contact-label">お 問 い 合 わ せ</p>
-            <p class="contact-tel">099-296-9844</p>
-            <p class="contact-address">
-                〒891-0115 鹿児島市東谷山2丁目40番15号<br>
-                受付 8:30〜17:30（日曜・年末年始休み）
-            </p>
+        <!-- 右写真 -->
+        <div class="p2-right-photos">
+            <div class="p2-photo"><img src="IMG_9817.jpeg" alt="マッサージ"></div>
+            <div class="p2-photo"><img src="IMG_9818.jpeg" alt="リハビリ"></div>
         </div>
 
-    </aside>
+    </div>
 
-    <!-- ════ 右メインエリア ════ -->
-    <main class="main">
-
-        <div class="features-row">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round">
-                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-                        <rect x="8" y="2" width="8" height="4" rx="1"/>
-                        <path d="M9 14l2 2 4-4"/>
-                    </svg>
-                </div>
-                <p class="feature-title">鍼灸マッサージ師<br>5名在籍</p>
-                <p class="feature-desc">国家資格者による<br>専門的なケアを毎日提供</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round">
-                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                    </svg>
-                </div>
-                <p class="feature-title">充実の<br>リハビリ機器</p>
-                <p class="feature-desc">平行棒・メドマー・<br>温熱ケア機器など完備</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                        <circle cx="9" cy="7" r="4"/>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                </div>
-                <p class="feature-title">少人数制<br>定員18名</p>
-                <p class="feature-desc">お一人おひとりに<br>目が届く環境です</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round">
-                        <rect x="3" y="4" width="18" height="18" rx="2"/>
-                        <line x1="16" y1="2" x2="16" y2="6"/>
-                        <line x1="8" y1="2" x2="8" y2="6"/>
-                        <line x1="3" y1="10" x2="21" y2="10"/>
-                    </svg>
-                </div>
-                <p class="feature-title">土曜日も<br>営業</p>
-                <p class="feature-desc">月〜土曜の週6日<br>週末も安心してご利用可</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                        <line x1="9" y1="9" x2="9.01" y2="9"/>
-                        <line x1="15" y1="9" x2="15.01" y2="9"/>
-                    </svg>
-                </div>
-                <p class="feature-title">認知症<br>対応可</p>
-                <p class="feature-desc">安心できる環境で<br>スタッフが丁寧に対応</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round">
-                        <path d="M9 18V5l12-2v13"/>
-                        <circle cx="6" cy="18" r="3"/>
-                        <circle cx="18" cy="16" r="3"/>
-                    </svg>
-                </div>
-                <p class="feature-title">楽しい<br>レクリエーション</p>
-                <p class="feature-desc">カラオケ・映画・脳トレ<br>毎日の生きがいに</p>
-            </div>
+    <!-- 下段：申込みフロー＋連絡先 -->
+    <div style="border-top: 0.3mm solid #e5e0d8;">
+        <!-- 持ち物 -->
+        <div style="background:#f0f7f3; padding: 2mm 5mm; border-bottom: 0.3mm solid #c8ddd2;">
+            <span style="font-size:6.5pt; color:#3d7a5a; font-weight:600; margin-right:2mm;">※必要なもの</span>
+            <span style="font-size:6pt; color:#555;">健康保険証・介護保険証・介護保険負担割合証・お薬（昼食後に飲む分）とお薬手帳・上着・オムツ（その日に使う分）・入浴用品（バスタオル、フェイスタオル、着替え、髭剃りなど）</span>
         </div>
 
-        <div class="bottom-row">
+        <!-- フロー＋連絡先 -->
+        <div style="display:grid; grid-template-columns: 1fr 52mm; height: 28mm;">
 
-            <div class="flow-card">
-                <p class="card-title">一日のスケジュール</p>
-                <ul class="flow-list">
-                    <li class="flow-item">
-                        <span class="flow-time">8:00〜</span>
-                        <div class="flow-dot"></div>
-                        <span class="flow-label">送迎（ご自宅の玄関先まで・車椅子対応可）</span>
-                    </li>
-                    <li class="flow-item">
-                        <span class="flow-time">9:00</span>
-                        <div class="flow-dot"></div>
-                        <span class="flow-label">バイタルチェック（体温・血圧・脈拍）</span>
-                    </li>
-                    <li class="flow-item">
-                        <span class="flow-time">9:15〜</span>
-                        <div class="flow-dot"></div>
-                        <span class="flow-label">全体体操 / 個別運動 / マッサージ / 入浴</span>
-                    </li>
-                    <li class="flow-item">
-                        <span class="flow-time">12:00</span>
-                        <div class="flow-dot"></div>
-                        <span class="flow-label">昼食・口腔ケア（制限食対応可）</span>
-                    </li>
-                    <li class="flow-item">
-                        <span class="flow-time">〜13:50</span>
-                        <div class="flow-dot"></div>
-                        <span class="flow-label">休憩・自由時間</span>
-                    </li>
-                    <li class="flow-item">
-                        <span class="flow-time">14:00</span>
-                        <div class="flow-dot"></div>
-                        <span class="flow-label">レクリエーション（カラオケ・脳トレ等）</span>
-                    </li>
-                    <li class="flow-item">
-                        <span class="flow-time">15:30</span>
-                        <div class="flow-dot"></div>
-                        <span class="flow-label">おやつの時間</span>
-                    </li>
-                    <li class="flow-item">
-                        <span class="flow-time">16:05〜</span>
-                        <div class="flow-dot"></div>
-                        <span class="flow-label">お送り（ご自宅まで無料送迎）</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="detail-card">
-                <div class="support-box">
-                    <p class="card-title">このような方へ</p>
-                    <ul class="support-list">
-                        <li>要介護1〜5の方</li>
-                        <li>脳卒中後のリハビリ</li>
-                        <li>腰痛・膝痛でお悩みの方</li>
-                        <li>認知症の方</li>
-                        <li>車椅子をご利用の方</li>
-                        <li>閉じこもり予防に</li>
-                        <li>むくみでお悩みの方</li>
-                        <li>筋力低下が気になる方</li>
-                    </ul>
+            <!-- 申込みフロー -->
+            <div class="p2-flow">
+                <div class="p2-flow-step">
+                    <div class="p2-flow-num">1</div>
+                    <div class="p2-flow-title">お申込み</div>
+                    <div class="p2-flow-desc">担当ケアマネジャーに<br>ご相談ください</div>
                 </div>
-
-                <div class="service-box">
-                    <p class="card-title">サービス内容</p>
-                    <div class="service-tags">
-                        <span class="service-tag">マッサージ</span>
-                        <span class="service-tag">機能訓練</span>
-                        <span class="service-tag">全体体操</span>
-                        <span class="service-tag">個別運動</span>
-                        <span class="service-tag">入浴介助</span>
-                        <span class="service-tag">昼食提供</span>
-                        <span class="service-tag">口腔ケア</span>
-                        <span class="service-tag">レクリエーション</span>
-                        <span class="service-tag">健康チェック</span>
-                        <span class="service-tag">無料送迎</span>
-                    </div>
+                <div class="p2-flow-step">
+                    <div class="p2-flow-num">2</div>
+                    <div class="p2-flow-title">見学・体験</div>
+                    <div class="p2-flow-desc">施設相談員が<br>丁寧にご案内します</div>
                 </div>
-
-                <div class="cta-box">
-                    <p class="cta-main">まずはお気軽にお電話ください</p>
-                    <p class="cta-tel">099-296-9844</p>
-                    <p class="cta-note">受付 8:30〜17:30（日曜・年末年始休み）　見学・体験利用 随時受付中</p>
+                <div class="p2-flow-step">
+                    <div class="p2-flow-num">3</div>
+                    <div class="p2-flow-title">ご契約</div>
+                    <div class="p2-flow-desc">サービス内容を<br>ご説明の上ご契約</div>
+                </div>
+                <div class="p2-flow-step">
+                    <div class="p2-flow-num">4</div>
+                    <div class="p2-flow-title">利用開始</div>
+                    <div class="p2-flow-desc">ご自宅まで<br>お迎えにまいります</div>
                 </div>
             </div>
 
+            <!-- 連絡先 -->
+            <div class="p2-contact">
+                <p class="p2-contact-label">お 問 い 合 わ せ は こ ち ら</p>
+                <p class="p2-contact-tel">099-296-9844</p>
+                <p class="p2-contact-fax">FAX 099-296-9843</p>
+                <p class="p2-contact-address">
+                    〒891-0115 鹿児島市東谷山2丁目40番15号<br>
+                    受付 8:30〜17:30（日曜・年末年始休み）
+                </p>
+            </div>
         </div>
-    </main>
+    </div>
 
-</div>
+</div><!-- /裏面 -->
+
 </body>
 </html>
