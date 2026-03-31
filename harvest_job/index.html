@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>夜勤専従介護スタッフ・送迎スタッフ（パート）鹿児島市｜株式会社ハーベスト</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+      color: #333;
+      background: #f5f5f5;
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ヘッダー */
+    .header {
+      background: #fff;
+      border-bottom: 3px solid #e67e22;
+      padding: 12px 20px;
+      text-align: center;
+    }
+    .header .site-name {
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* メインビジュアル */
+    .main-visual {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 求人タイトル */
+    .job-title-section {
+      background: #fff;
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid #eee;
+    }
+    .company-name {
+      font-size: 13px;
+      color: #e67e22;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+    .job-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #222;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .job-location {
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* セクション共通 */
+    .section {
+      background: #fff;
+      margin-top: 12px;
+      padding: 24px 20px;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background: #e67e22;
+      padding: 8px 14px;
+      margin: -24px -20px 20px;
+      border-radius: 0;
+    }
+
+    /* おすすめポイント */
+    .point-list {
+      list-style: none;
+      padding: 0;
+    }
+    .point-list li {
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      background: #fff8f0;
+      border-left: 4px solid #e67e22;
+      border-radius: 0 6px 6px 0;
+      font-size: 14px;
+    }
+    .point-list li strong {
+      display: block;
+      color: #e67e22;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    /* 仕事内容 */
+    .job-type-box {
+      border: 2px solid #e67e22;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .job-type-title {
+      background: #e67e22;
+      color: #fff;
+      font-weight: bold;
+      font-size: 15px;
+      padding: 10px 16px;
+    }
+    .job-type-body {
+      padding: 14px 16px;
+      font-size: 14px;
+    }
+
+    /* 給与バッジ */
+    .salary-badge {
+      display: inline-block;
+      background: #e67e22;
+      color: #fff;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 6px 16px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    /* 募集要項テーブル */
+    .requirements-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .requirements-table th {
+      background: #fef5ec;
+      color: #e67e22;
+      font-weight: bold;
+      padding: 10px 14px;
+      width: 38%;
+      border: 1px solid #f0d9c0;
+      vertical-align: top;
+    }
+    .requirements-table td {
+      padding: 10px 14px;
+      border: 1px solid #f0d9c0;
+      vertical-align: top;
+    }
+    .requirements-table tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    /* 勤務時間ボックス */
+    .time-box {
+      background: #fff8f0;
+      border: 1px solid #f0d9c0;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .time-box strong {
+      color: #e67e22;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* 会社情報 */
+    .company-photo {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      display: block;
+      margin: 0 auto 16px;
+      border-radius: 6px;
+    }
+    .company-info-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .company-info-table th {
+      background: #fef5ec;
+      color: #e67e22;
+      font-weight: bold;
+      padding: 10px 14px;
+      width: 38%;
+      border: 1px solid #f0d9c0;
+      vertical-align: top;
+    }
+    .company-info-table td {
+      padding: 10px 14px;
+      border: 1px solid #f0d9c0;
+      vertical-align: top;
+    }
+
+    /* 問い合わせ */
+    .contact-box {
+      background: #fff8f0;
+      border: 2px solid #e67e22;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    .contact-tel {
+      font-size: 28px;
+      font-weight: bold;
+      color: #e67e22;
+      letter-spacing: 2px;
+    }
+    .contact-tel a {
+      color: #e67e22;
+      text-decoration: none;
+    }
+    .contact-note {
+      font-size: 12px;
+      color: #888;
+      margin-top: 6px;
+    }
+
+    /* フッター */
+    .footer {
+      background: #555;
+      color: #ccc;
+      text-align: center;
+      font-size: 12px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 480px) {
+      .job-title { font-size: 18px; }
+      .requirements-table th { width: 42%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="site-name">鹿児島特化の求人情報</div>
+  </header>
+
+  <!-- メインビジュアル -->
+  <img src="harvest_main.jpg" alt="株式会社ハーベスト 求人メイン画像" class="main-visual">
+
+  <div class="container">
+
+    <!-- 求人タイトル -->
+    <div class="job-title-section">
+      <div class="company-name">株式会社 ハーベスト</div>
+      <h1 class="job-title">夜勤専従介護スタッフ・送迎スタッフ（パート）</h1>
+      <div class="job-location">鹿児島県鹿児島市東谷山2丁目40‐15｜谷山電停より徒歩3分</div>
+    </div>
+
+    <!-- おすすめポイント -->
+    <div class="section">
+      <div class="section-title">おすすめポイント</div>
+      <ul class="point-list">
+        <li>
+          <strong>① 未経験者歓迎</strong>
+          無資格・未経験可。年齢不問で幅広い世代が活躍中です。
+        </li>
+        <li>
+          <strong>② 落ち着いた職場環境</strong>
+          病院のようなピリピリした雰囲気が苦手な方向け。ゆったりとした雰囲気の職場です。
+        </li>
+        <li>
+          <strong>③ 小規模施設のメリット</strong>
+          入居8名の小規模ホームだからこそ、ゆとりを持って業務が行えます。
+        </li>
+        <li>
+          <strong>④ 交通アクセス良好</strong>
+          谷山電停から徒歩3分。マイカー通勤も無料駐車場完備で安心。
+        </li>
+      </ul>
+    </div>
+
+    <!-- 仕事内容 -->
+    <div class="section">
+      <div class="section-title">仕事内容</div>
+
+      <div class="job-type-box">
+        <div class="job-type-title">① 夜勤専従スタッフ</div>
+        <div class="job-type-body">
+          <p>有料老人ホーム（入居最大8名）での夜間介護業務です。</p>
+          <ul style="margin-top:10px; padding-left:18px;">
+            <li>夕食後の口腔ケア・服薬介助</li>
+            <li>就寝介助</li>
+            <li>夜間の見守り</li>
+            <li>排泄介助</li>
+            <li>起床介助・朝食介助</li>
+            <li>緊急時対応</li>
+            <li>業務日誌の作成</li>
+          </ul>
+          <div class="salary-badge">日給 14,000円</div>
+        </div>
+      </div>
+
+      <div class="job-type-box">
+        <div class="job-type-title">② 送迎専属スタッフ</div>
+        <div class="job-type-body">
+          <p>デイサービス利用者のご自宅と施設間の送迎が中心業務です。</p>
+          <ul style="margin-top:10px; padding-left:18px;">
+            <li>軽自動車・普通車での送迎</li>
+            <li>乗降時のサポート</li>
+            <li>介護業務なし（送迎のみ）</li>
+          </ul>
+          <p style="margin-top:10px; font-size:13px; color:#888;">朝の部・夕方の部どちらか一方のみでも可。週1日〜相談可能。</p>
+          <div class="salary-badge">時給 1,050円</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 勤務時間 -->
+    <div class="section">
+      <div class="section-title">勤務時間</div>
+      <div class="time-box">
+        <strong>夜勤専従スタッフ</strong>
+        17:30 〜 翌朝 8:30<br>
+        <span style="font-size:12px; color:#888;">（休憩：22:00〜2:00の3時間）</span>
+      </div>
+      <div class="time-box">
+        <strong>送迎スタッフ</strong>
+        朝の部：8:00〜9:00（1時間）<br>
+        夕方の部：16:00〜17:00（1時間）<br>
+        <span style="font-size:12px; color:#888;">どちらか一方のみでも可。週1日〜相談可能。</span>
+      </div>
+      <p style="font-size:13px; color:#666; margin-top:8px;">休日：シフト制</p>
+    </div>
+
+    <!-- 募集要項 -->
+    <div class="section">
+      <div class="section-title">募集要項</div>
+      <table class="requirements-table">
+        <tr><th>雇用形態</th><td>パート</td></tr>
+        <tr><th>雇用期間</th><td>6ヶ月間（定めあり）<br><span style="font-size:12px; color:#888;">試用期間：3ヶ月</span></td></tr>
+        <tr><th>年齢</th><td>不問</td></tr>
+        <tr><th>学歴</th><td>不問</td></tr>
+        <tr><th>経験</th><td>不問（未経験者歓迎）</td></tr>
+        <tr><th>必須資格</th><td>普通自動車運転免許（AT限定可）</td></tr>
+      </table>
+    </div>
+
+    <!-- 給与・待遇 -->
+    <div class="section">
+      <div class="section-title">給与・待遇</div>
+      <table class="requirements-table">
+        <tr><th>夜勤専従スタッフ</th><td><strong>日給 14,000円</strong></td></tr>
+        <tr><th>送迎スタッフ</th><td><strong>時給 1,050円</strong></td></tr>
+        <tr><th>通勤手当</th><td>実費支給（月額上限5,000円）</td></tr>
+        <tr><th>社会保険</th><td>社会保険完備（条件による）</td></tr>
+        <tr><th>制服</th><td>貸与あり</td></tr>
+        <tr><th>駐車場</th><td>敷地内無料駐車場あり（マイカー通勤可）</td></tr>
+      </table>
+    </div>
+
+    <!-- 会社情報 -->
+    <div class="section">
+      <div class="section-title">会社情報</div>
+      <img src="harvest_photo.jpg" alt="株式会社ハーベスト 施設写真" class="company-photo">
+      <table class="company-info-table">
+        <tr><th>会社名</th><td>株式会社 ハーベスト</td></tr>
+        <tr><th>所在地</th><td>〒891-0113<br>鹿児島県鹿児島市東谷山2丁目40‐15</td></tr>
+        <tr><th>アクセス</th><td>谷山電停より徒歩3分</td></tr>
+        <tr><th>事業内容</th><td>鍼灸マッサージ治療院・デイサービス・有料老人ホーム</td></tr>
+        <tr><th>施設規模</th><td>デイサービス最大18名、入居最大8名（小規模）</td></tr>
+        <tr><th>施設状況</th><td>移転4年目、施設が新しい</td></tr>
+      </table>
+    </div>
+
+    <!-- 問い合わせ -->
+    <div class="section">
+      <div class="section-title">お問い合わせ・応募</div>
+      <div class="contact-box">
+        <p style="font-size:14px; margin-bottom:10px;">お気軽にお電話ください</p>
+        <div class="contact-tel"><a href="tel:070-1989-6808">070-1989-6808</a></div>
+        <div class="contact-note">担当：山方 大輔</div>
+        <div class="contact-note" style="margin-top:12px;">
+          〒891-0115 鹿児島県鹿児島市東開町4-20
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+
+  <footer class="footer">
+    <p>株式会社 ハーベスト｜鹿児島県鹿児島市東谷山2丁目40‐15</p>
+  </footer>
+
+</body>
+</html>
