@@ -560,6 +560,7 @@
 
 .pricing-table td {
   text-align: right;
+  white-space: nowrap;
 }
 
 .pricing-table tr:not(.pricing-table-sub) {
