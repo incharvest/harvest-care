@@ -591,6 +591,24 @@
   }
 }
 
+@media (max-width: 480px) {
+  .pricing-table tr:not(.pricing-table-sub) {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .pricing-table th {
+    width: auto;
+    flex: 1 1 auto;
+  }
+
+  .pricing-table td {
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+}
+
 /* ========================================
  * REQUIREMENTS SECTION
  * ======================================== */
