@@ -121,9 +121,11 @@
 
 .concept-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-12);
   align-items: center;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .concept-image {
@@ -353,9 +355,11 @@
 
 .room-showcase {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-10);
   align-items: center;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .room-images {
