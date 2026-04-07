@@ -120,11 +120,8 @@
  * ======================================== */
 
 .concept-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-12);
-  align-items: center;
-  max-width: 720px;
+  display: block;
+  max-width: 760px;
   margin: 0 auto;
 }
 
@@ -721,10 +718,11 @@
  * ======================================== */
 
 .cta-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: var(--space-12);
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .cta-phone {
