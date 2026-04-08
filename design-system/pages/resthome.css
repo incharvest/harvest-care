@@ -609,6 +609,13 @@
     white-space: nowrap;
     flex: 0 0 auto;
   }
+
+  .pricing-table-sub td {
+    white-space: normal;
+    flex: none;
+    width: 100%;
+    display: block;
+  }
 }
 
 /* ========================================
@@ -795,6 +802,12 @@
   width: 100%;
   height: 100%;
   display: block;
+}
+
+@media (max-width: 600px) {
+  .map-wrapper {
+    padding-bottom: 80%; /* スマホは縦長に */
+  }
 }
 
 /* ========================================
