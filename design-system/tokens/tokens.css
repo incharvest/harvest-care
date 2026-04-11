@@ -12,33 +12,33 @@
 
 :root {
   /* ========================================
-   * COLOR TOKENS — Harvest Teal Trust v2
+   * COLOR TOKENS — Harvest Forest Green v2
    * ======================================== */
 
-  /* Primary: Calm Medical Teal */
-  --color-primary:       #1a5c78;
-  --color-primary-light: #2478a0;
-  --color-primary-dark:  #103c52;
+  /* Primary: Deep Forest Green */
+  --color-primary:       #1e5c3a;
+  --color-primary-light: #2d7a52;
+  --color-primary-dark:  #133d27;
 
   /* Secondary: Health Sage Green */
-  --color-secondary: #2d7a55;
+  --color-secondary: #4a7c59;
 
-  /* Accent: Warm Terracotta */
-  --color-accent:       #c87848;
-  --color-accent-light: #e09a6a;
-  --color-accent-dark:  #a05830;
-  --color-accent-muted: rgba(200, 120, 72, 0.1);
+  /* Accent: Warm Harvest Gold */
+  --color-accent:       #c8963c;
+  --color-accent-light: #e0b05e;
+  --color-accent-dark:  #a07830;
+  --color-accent-muted: rgba(200, 150, 60, 0.1);
 
   /* Backgrounds */
-  --color-cream:      #f2f8fc;
-  --color-cream-dark: #e6f1f8;
+  --color-cream:      #f4f8f2;
+  --color-cream-dark: #e6f0e8;
   --color-bg-warm:    #faf6f1;
   --color-bg-card:    #ffffff;
 
   /* Neutrals */
   --color-white:        #ffffff;
-  --color-border:       #c0d8ec;
-  --color-border-light: #daeaf6;
+  --color-border:       #b8d4c0;
+  --color-border-light: #d4e8da;
 
   /* Text — WCAG AAA (7:1+) */
   --color-text:            #0c1e28;
@@ -49,19 +49,19 @@
   --color-text-inverse-muted: rgba(255, 255, 255, 0.75);
 
   /* Semantic Colors */
-  --color-success: #2d7a55;
-  --color-warning: #c87848;
+  --color-success: #4a7c59;
+  --color-warning: #c8963c;
   --color-error:   #b54a4a;
-  --color-info:    #2478a0;
+  --color-info:    #2d7a52;
 
   /* ========================================
    * THEME TOKENS (Service-specific)
    * ======================================== */
 
   /* Day Service Theme — Teal Trust */
-  --theme-dayservice-primary:   #1a5c78;
-  --theme-dayservice-secondary: #2d7a55;
-  --theme-dayservice-accent:    #c87848;
+  --theme-dayservice-primary:   #1e5c3a;
+  --theme-dayservice-secondary: #4a7c59;
+  --theme-dayservice-accent:    #c8963c;
 
   /* Rest Home Theme — Warm Sage */
   --theme-resthome-primary:   #4a4035;
@@ -187,22 +187,22 @@
    * SHADOW TOKENS
    * ======================================== */
 
-  --shadow-xs:      0 1px 2px rgba(26, 92, 120, 0.04);
-  --shadow-sm:      0 2px 8px rgba(26, 92, 120, 0.06);
-  --shadow-md:      0 4px 16px rgba(26, 92, 120, 0.08);
-  --shadow-lg:      0 8px 32px rgba(26, 92, 120, 0.10);
-  --shadow-xl:      0 16px 48px rgba(26, 92, 120, 0.12);
-  --shadow-2xl:     0 24px 64px rgba(26, 92, 120, 0.14);
-  --shadow-elegant: 0 12px 48px rgba(26, 92, 120, 0.09);
-  --shadow-float:   0 20px 60px rgba(26, 92, 120, 0.13);
-  --shadow-inner:   inset 0 2px 4px rgba(26, 92, 120, 0.06);
+  --shadow-xs:      0 1px 2px rgba(30, 92, 58, 0.04);
+  --shadow-sm:      0 2px 8px rgba(30, 92, 58, 0.06);
+  --shadow-md:      0 4px 16px rgba(30, 92, 58, 0.08);
+  --shadow-lg:      0 8px 32px rgba(30, 92, 58, 0.10);
+  --shadow-xl:      0 16px 48px rgba(30, 92, 58, 0.12);
+  --shadow-2xl:     0 24px 64px rgba(30, 92, 58, 0.14);
+  --shadow-elegant: 0 12px 48px rgba(30, 92, 58, 0.09);
+  --shadow-float:   0 20px 60px rgba(30, 92, 58, 0.13);
+  --shadow-inner:   inset 0 2px 4px rgba(30, 92, 58, 0.06);
 
   /* Named aliases matching dayservice.html tokens */
-  --shadow-soft:   0 2px 16px rgba(26, 92, 120, 0.06);
-  --shadow-medium: 0 6px 28px rgba(26, 92, 120, 0.10);
+  --shadow-soft:   0 2px 16px rgba(30, 92, 58, 0.06);
+  --shadow-medium: 0 6px 28px rgba(30, 92, 58, 0.10);
 
   /* Colored Shadows */
-  --shadow-accent: 0 4px 16px rgba(200, 120, 72, 0.30);
+  --shadow-accent: 0 4px 16px rgba(200, 150, 60, 0.30);
 
   /* ========================================
    * TRANSITION TOKENS
