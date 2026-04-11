@@ -119,6 +119,11 @@
   color: var(--color-text-secondary);
 }
 
+.badge--xs {
+  font-size: 0.65rem;
+  padding: 2px 6px;
+}
+
 /* Location Badge */
 .badge-location {
   display: inline-flex;

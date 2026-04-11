@@ -1033,3 +1033,110 @@
   }
 }
 .reveal-delay-6 { transition-delay: 600ms; }
+
+/* ========================================
+ * CONTACT SECTION - CTA BOXES
+ * ======================================== */
+
+/* LINEブロック・フォームブロック共通の背景ボックス */
+.cta-box {
+  text-align: center;
+  padding: var(--space-8);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-8);
+}
+
+.cta-box:last-child {
+  margin-bottom: 0;
+}
+
+.cta-box-title {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-4);
+}
+
+.cta-box-desc {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--font-size-small);
+  margin-bottom: var(--space-6);
+}
+
+/* LINEのQRコードリンクラッパー */
+.line-qr-link {
+  display: inline-block;
+}
+
+/* LINEのQRコード画像 */
+.line-qr-image {
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  padding: 8px;
+  display: block;
+}
+
+/* LINE友だち追加ボタン下の余白 */
+.line-btn-wrap {
+  margin-top: var(--space-4);
+}
+
+/* フォームラッパー内のフォームは左揃え */
+.cta-box .form {
+  text-align: left;
+}
+
+/* LINE友だち追加ボタン */
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  background: #06C755;
+  border: 1px solid #06C755;
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.btn-line:hover {
+  background: #05b34b;
+  border-color: #05b34b;
+}
+
+/* サブセクション見出し（料金・入居条件内のh3） */
+.subsection-heading {
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-accent);
+}
+
+/* プライバシー同意チェックボックスラベル */
+.form-label--checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+.form-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* プライバシーポリシー本文 */
+.privacy-note {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 免責事項などの薄いテキスト */
+.text-muted-light {
+  opacity: 0.7;
+}
