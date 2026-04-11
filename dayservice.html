@@ -7,32 +7,84 @@
     <title>ハーベスト｜鹿児島市のマッサージリハビリ重視型デイサービス</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- ファビコン -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a3328'/%3E%3Cg transform='translate(16,17)'%3E%3Cpath d='M0-9Q2-1 0 10' fill='none' stroke='%23c9a868' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='-3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(-25-3-6)'/%3E%3Cellipse cx='-4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(-20-4-1)'/%3E%3Cellipse cx='3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(25 3-6)'/%3E%3Cellipse cx='4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(20 4-1)'/%3E%3C/g%3E%3C/svg%3E">
     <style>
         :root {
-            /* 地域密着型向け：親しみやすく温かみのある配色 */
-            --color-primary: #3d7a5a;
-            --color-secondary: #5a9a78;
-            --color-accent: #e8a45c;
-            --color-accent-light: #f5c98a;
-            --color-accent-dark: #c88a3a;
-            --color-cream: #fdfcfa;
-            --color-cream-dark: #f5f3ef;
-            --color-text: #3a3a3a;
-            --color-text-light: #5a5a5a;
-            --color-white: #ffffff;
-            --color-border: #e5e0d8;
-            /* 見出しは明朝体で上品に */
-            --font-display: 'Zen Old Mincho', serif;
-            --font-body: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'メイリオ', sans-serif;
-            --shadow-soft: 0 2px 12px rgba(61, 122, 90, 0.08);
-            --shadow-medium: 0 4px 20px rgba(61, 122, 90, 0.12);
-            --shadow-elegant: 0 8px 30px rgba(61, 122, 90, 0.1);
-            --radius-small: 6px;
-            --radius-medium: 12px;
-            --transition: all 0.3s ease;
+            /* =====================================================
+             * HARVEST DESIGN SYSTEM v2.0
+             * UI/UX Pro Max: Senior Care Optimized
+             * WCAG AAA -- 18px Base -- Calm Teal Trust Palette
+             * ===================================================== */
+
+            /* Primary: Calm Medical Teal */
+            --color-primary:      #1a5c78;
+            --color-primary-light:#2478a0;
+            --color-primary-dark: #103c52;
+
+            /* Secondary: Health Sage Green */
+            --color-secondary:    #2d7a55;
+
+            /* Accent: Warm Terracotta */
+            --color-accent:       #c87848;
+            --color-accent-light: #e09a6a;
+            --color-accent-dark:  #a05830;
+
+            /* Backgrounds */
+            --color-cream:        #f2f8fc;
+            --color-cream-dark:   #e6f1f8;
+            --color-bg-warm:      #faf6f1;
+            --color-bg-card:      #ffffff;
+
+            /* Text -- WCAG AAA (7:1+) */
+            --color-text:         #0c1e28;
+            --color-text-light:   #2a4858;
+            --color-text-muted:   #4a6e80;
+
+            --color-white:        #ffffff;
+            --color-border:       #c0d8ec;
+            --color-border-light: #daeaf6;
+
+            /* Typography */
+            --font-display: 'Shippori Mincho', 'Zen Old Mincho', serif;
+            --font-body:    'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+
+            /* Shadows */
+            --shadow-soft:    0 2px 16px rgba(26,92,120,0.06);
+            --shadow-medium:  0 6px 28px rgba(26,92,120,0.10);
+            --shadow-elegant: 0 12px 48px rgba(26,92,120,0.09);
+            --shadow-float:   0 20px 60px rgba(26,92,120,0.13);
+
+            /* Border Radius */
+            --radius-xs:    4px;
+            --radius-small: 8px;
+            --radius-medium:16px;
+            --radius-large: 24px;
+
+            /* Transitions */
+            --transition:      all 0.3s cubic-bezier(0.4,0,0.2,1);
+            --transition-slow: all 0.5s cubic-bezier(0.4,0,0.2,1);
+
+            /* Z-Index Scale */
+            --z-nav:     300;
+            --z-overlay: 200;
+            --z-modal:   400;
+        }
+
+        /* Accessibility: reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Global focus ring -- WCAG 2.5.3 */
+        :focus-visible {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 3px;
+            border-radius: 4px;
         }
 
         * {
@@ -49,6 +101,7 @@
             font-family: var(--font-body);
             color: var(--color-text);
             background-color: var(--color-cream);
+            font-size: 1.125rem;
             line-height: 1.9;
             font-weight: 400;
             letter-spacing: 0.02em;
@@ -469,6 +522,17 @@
             color: var(--color-white);
         }
 
+        @media (max-width: 900px) {
+            .hamburger-btn {
+                display: flex;
+            }
+            nav {
+                display: none !important;
+            }
+            .header-contact {
+                display: none;
+            }
+        }
         @media (max-width: 768px) {
             .mid-cta-content {
                 flex-direction: column;
@@ -2438,9 +2502,43 @@
             <div class="header-contact">
                 <a href="tel:099-296-9844" class="header-contact-btn tel">TEL</a>
                 <a href="#contact" class="header-contact-btn mail">MAIL</a>
-            </div>
+            <button class="hamburger-btn" id="hamburger-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-nav">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+
+    <!-- Mobile Nav Drawer -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-header">
+            <span class="mobile-nav-title">ハーベスト</span>
+            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="メニューを閉じる">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 2L16 16M16 2L2 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#concept">コンセプト</a></li>
+            <li><a href="#features">サービスの特徴</a></li>
+            <li><a href="#equipment">充実の設備</a></li>
+            <li><a href="#daily-flow">一日の流れ</a></li>
+            <li><a href="#pricing">料金案内</a></li>
+            <li><a href="#testimonials">お客様の声</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+            <li><a href="caremanager.html">ケアマネの方へ</a></li>
+            <li><a href="recruit.html">採用情報</a></li>
+        </ul>
+        <div class="mobile-nav-footer">
+            <a href="tel:099-296-9844" class="mobile-tel-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                099-296-9844
+            </a>
+        </div>
+    </nav>
 
     <!-- ヒーローセクション -->
     <section class="hero">
@@ -3764,5 +3862,49 @@
             </div>
         </div>
     </footer>
+    <!-- Hamburger Menu JS -->
+    <script>
+        (function() {
+            var btn    = document.getElementById('hamburger-btn');
+            var nav    = document.getElementById('mobile-nav');
+            var overlay = document.getElementById('mobile-nav-overlay');
+            var closeBtn = document.getElementById('mobile-nav-close');
+            var body   = document.body;
+
+            function openNav() {
+                nav.classList.add('open');
+                overlay.classList.add('open');
+                btn.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+                overlay.setAttribute('aria-hidden', 'false');
+                body.classList.add('nav-open');
+                closeBtn.focus();
+            }
+
+            function closeNav() {
+                nav.classList.remove('open');
+                overlay.classList.remove('open');
+                btn.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+                overlay.setAttribute('aria-hidden', 'true');
+                body.classList.remove('nav-open');
+                btn.focus();
+            }
+
+            btn.addEventListener('click', openNav);
+            closeBtn.addEventListener('click', closeNav);
+            overlay.addEventListener('click', closeNav);
+
+            // Close on nav link click
+            nav.querySelectorAll('a').forEach(function(a) {
+                a.addEventListener('click', closeNav);
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && nav.classList.contains('open')) closeNav();
+            });
+        })();
+    </script>
 </body>
 </html>
