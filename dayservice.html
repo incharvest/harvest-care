@@ -24,6 +24,7 @@
             --color-text-light: #5a5a5a;
             --color-white: #ffffff;
             --color-border: #e5e0d8;
+            --color-bg-light: #f2f7f4;
             /* 見出しは明朝体で上品に */
             --font-display: 'Zen Old Mincho', serif;
             --font-body: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'メイリオ', sans-serif;
@@ -2213,6 +2214,94 @@
             gap: 4px;
         }
 
+        /* モバイルメニューボタン */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-toggle-line {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        .nav-toggle.is-open .nav-toggle-line:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg);
+        }
+
+        .nav-toggle.is-open .nav-toggle-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.is-open .nav-toggle-line:nth-child(3) {
+            transform: translateY(-6.5px) rotate(-45deg);
+        }
+
+        /* モバイルナビオーバーレイ */
+        .nav-mobile {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--color-primary);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            overflow-y: auto;
+        }
+
+        .nav-mobile.is-open {
+            display: flex;
+        }
+
+        .nav-mobile-link {
+            font-size: 1.1rem;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-mobile-link:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-mobile-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-mobile-close {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.8rem;
+            line-height: 1;
+            transition: var(--transition);
+        }
+
+        .nav-mobile-close:hover {
+            color: var(--color-accent);
+        }
+
         /* レスポンシブ */
         @media (max-width: 1024px) {
             .concept-content {
@@ -2278,6 +2367,10 @@
 
             nav, .header-contact {
                 display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
             }
 
             .logo svg {
@@ -2401,7 +2494,7 @@
     <!-- ヘッダー -->
     <header>
         <div class="header-inner">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <!-- ロゴSVG -->
                 <svg viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
                     <!-- アイコン枠 -->
@@ -2439,8 +2532,32 @@
                 <a href="tel:099-296-9844" class="header-contact-btn tel">TEL</a>
                 <a href="#contact" class="header-contact-btn mail">MAIL</a>
             </div>
+            <button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false" id="nav-toggle">
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
         </div>
     </header>
+
+    <!-- モバイルナビゲーション -->
+    <div class="nav-mobile" id="nav-mobile" role="dialog" aria-label="モバイルメニュー">
+        <button class="nav-mobile-close" id="nav-mobile-close" aria-label="メニューを閉じる">&times;</button>
+        <a href="#concept" class="nav-mobile-link">コンセプト</a>
+        <a href="#features" class="nav-mobile-link">特徴</a>
+        <a href="#equipment" class="nav-mobile-link">設備</a>
+        <a href="#daily-flow" class="nav-mobile-link">一日の流れ</a>
+        <a href="#service-details" class="nav-mobile-link">サービス詳細</a>
+        <a href="#pricing" class="nav-mobile-link">料金</a>
+        <a href="#testimonials" class="nav-mobile-link">お客様の声</a>
+        <a href="#faq" class="nav-mobile-link">よくある質問</a>
+        <a href="caremanager.html" class="nav-mobile-link">ケアマネの方へ</a>
+        <a href="recruit.html" class="nav-mobile-link">採用情報</a>
+        <div class="nav-mobile-actions">
+            <a href="tel:099-296-9844" class="header-contact-btn tel">TEL</a>
+            <a href="#contact" class="header-contact-btn mail">MAIL</a>
+        </div>
+    </div>
 
     <!-- ヒーローセクション -->
     <section class="hero">
@@ -2453,6 +2570,21 @@
                 マッサージとリハビリで心も体もリフレッシュ。<br>
                 スタッフ一同、笑顔でお待ちしております。
             </p>
+            <div class="hero-cta">
+                <a href="#contact" class="hero-btn hero-btn-primary">
+                    <span class="btn-badge">無料</span>
+                    見学・体験を申し込む
+                </a>
+                <a href="tel:099-296-9844" class="hero-btn hero-btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    電話で問い合わせる
+                </a>
+            </div>
+            <div class="hero-benefits">
+                <span>✓ 送迎無料</span>
+                <span>✓ 体験利用可</span>
+                <span>✓ 月〜土営業</span>
+            </div>
             <div class="hero-line"></div>
         </div>
     </section>
@@ -3218,7 +3350,7 @@
                     </div>
                     <div class="faq-answer">
                         <span class="faq-a">A</span>
-                        <p>（準備中）</p>
+                        <p>お着替え用の衣類（上下1セット）、タオル2枚、フェイスタオル、内服薬（服用されている方）、介護保険証・負担割合証をお持ちください。入浴をご利用の場合は、シャンプー・ボディソープは施設でご用意しております。詳しくはお問い合わせください。</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -3351,6 +3483,64 @@
         </div>
     </section>
 
+    <!-- スタッフ紹介 -->
+    <section class="staff" id="staff">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">STAFF</p>
+                <h2 class="section-title">スタッフ紹介</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="#e8f4ed"/>
+                            <circle cx="100" cy="72" r="30" fill="#5a9a78" opacity="0.6"/>
+                            <path d="M50 160 Q50 120 100 120 Q150 120 150 160" fill="#5a9a78" opacity="0.6"/>
+                            <circle cx="100" cy="72" r="28" fill="none" stroke="#3d7a5a" stroke-width="1.5" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="staff-info">
+                        <span class="staff-role">管理者 / 鍼灸マッサージ師</span>
+                        <h3 class="staff-name">スタッフ一同</h3>
+                        <p class="staff-message">ご利用者様お一人おひとりに寄り添い、「今日も来てよかった」と思っていただけるサービスを心がけています。</p>
+                    </div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="#fdf5ec"/>
+                            <circle cx="100" cy="72" r="30" fill="#e8a45c" opacity="0.6"/>
+                            <path d="M50 160 Q50 120 100 120 Q150 120 150 160" fill="#e8a45c" opacity="0.6"/>
+                            <circle cx="100" cy="72" r="28" fill="none" stroke="#c88a3a" stroke-width="1.5" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="staff-info">
+                        <span class="staff-role">鍼灸マッサージ師</span>
+                        <h3 class="staff-name">国家資格スタッフ</h3>
+                        <p class="staff-message">鍼灸マッサージ師が5名在籍。肩こり・腰痛・むくみなど、お体の悩みに合わせた専門的なケアをご提供しています。</p>
+                    </div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="#edf4f8"/>
+                            <circle cx="100" cy="72" r="30" fill="#6a9eb8" opacity="0.6"/>
+                            <path d="M50 160 Q50 120 100 120 Q150 120 150 160" fill="#6a9eb8" opacity="0.6"/>
+                            <circle cx="100" cy="72" r="28" fill="none" stroke="#4a7e98" stroke-width="1.5" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="staff-info">
+                        <span class="staff-role">介護職員</span>
+                        <h3 class="staff-name">介護・生活支援スタッフ</h3>
+                        <p class="staff-message">入浴・食事・レクリエーションのサポートを担当しています。笑顔で楽しい時間をお過ごしいただけるよう努めます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 施設情報 -->
     <section class="facility" id="facility">
         <div class="section-inner">
@@ -3432,7 +3622,8 @@
                     src="https://maps.google.com/maps?q=マッサージ・リハビリ重視型デイサービス+ハーベスト+鹿児島&output=embed&hl=ja&z=17"
                     allowfullscreen=""
                     loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="マッサージリハビリ重視型デイサービス ハーベスト 地図">
                 </iframe>
             </div>
         </div>
@@ -3490,6 +3681,38 @@
             </div>
         </div>
     </section>
+
+    <script>
+        // モバイルメニュー
+        (function() {
+            const toggle = document.getElementById('nav-toggle');
+            const mobileNav = document.getElementById('nav-mobile');
+            const closeBtn = document.getElementById('nav-mobile-close');
+
+            toggle.addEventListener('click', () => {
+                const isOpen = mobileNav.classList.toggle('is-open');
+                toggle.classList.toggle('is-open', isOpen);
+                toggle.setAttribute('aria-expanded', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            closeBtn.addEventListener('click', () => {
+                mobileNav.classList.remove('is-open');
+                toggle.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+
+            mobileNav.querySelectorAll('.nav-mobile-link, .header-contact-btn').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('is-open');
+                    toggle.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                });
+            });
+        })();
+    </script>
 
     <script>
         (function() {
@@ -3745,7 +3968,7 @@
                 </div>
                 <div class="footer-nav">
                     <ul>
-                        <li><a href="#">トップ</a></li>
+                        <li><a href="index.html">トップ</a></li>
                         <li><a href="#concept">コンセプト</a></li>
                         <li><a href="#features">特徴</a></li>
                         <li><a href="#equipment">設備</a></li>
