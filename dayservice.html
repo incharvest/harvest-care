@@ -2210,8 +2210,8 @@
 
         .testimonial-badge {
             position: absolute;
-            top: -12px;
-            left: 20px;
+            top: 1rem;
+            right: 1rem;
             background: var(--color-accent);
             color: var(--color-white);
             font-size: 0.7rem;
@@ -2326,34 +2326,41 @@
         /* モバイルメニューボタン */
         .nav-toggle {
             display: none;
+        }
+
+        .hamburger-btn {
+            display: none;
             flex-direction: column;
+            align-items: center;
             justify-content: center;
-            gap: 5px;
+            gap: 6px;
             background: none;
             border: none;
             cursor: pointer;
-            padding: 4px;
+            padding: 8px;
+            width: 44px;
+            height: 44px;
         }
 
-        .nav-toggle-line {
+        .hamburger-btn .bar {
             display: block;
             width: 22px;
-            height: 1.5px;
-            background: rgba(255, 255, 255, 0.8);
+            height: 2px;
+            background: rgba(255, 255, 255, 0.9);
             transition: var(--transition);
             transform-origin: center;
         }
 
-        .nav-toggle.is-open .nav-toggle-line:nth-child(1) {
-            transform: translateY(6.5px) rotate(45deg);
+        .hamburger-btn.open .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
         }
 
-        .nav-toggle.is-open .nav-toggle-line:nth-child(2) {
+        .hamburger-btn.open .bar:nth-child(2) {
             opacity: 0;
         }
 
-        .nav-toggle.is-open .nav-toggle-line:nth-child(3) {
-            transform: translateY(-6.5px) rotate(-45deg);
+        .hamburger-btn.open .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
         }
 
         /* モバイルナビオーバーレイ */
@@ -3372,7 +3379,7 @@
             <div class="pricing-simulation">
                 <h3 class="pricing-simulation-title">
                     <span class="simulation-icon">💡</span>
-                    月額料金シミュレーション（1割負担の場合）
+                    月額料金シミュレーション<br>（1割負担の場合）
                 </h3>
                 <p class="pricing-simulation-subtitle">週2回（月8回）ご利用の場合の目安</p>
                 <div class="simulation-cards">
@@ -3772,7 +3779,7 @@
             </div>
             <div class="facility-card">
                 <div class="facility-header">
-                    <h3>マッサージリハビリ重視型デイサービス ハーベスト</h3>
+                    <h3>マッサージリハビリ重視型<br>デイサービス ハーベスト</h3>
                 </div>
                 <div class="facility-body">
                     <div class="facility-row">
@@ -3902,38 +3909,6 @@
             </div>
         </div>
     </section>
-
-    <script>
-        // モバイルメニュー
-        (function() {
-            const toggle = document.getElementById('nav-toggle');
-            const mobileNav = document.getElementById('nav-mobile');
-            const closeBtn = document.getElementById('nav-mobile-close');
-
-            toggle.addEventListener('click', () => {
-                const isOpen = mobileNav.classList.toggle('is-open');
-                toggle.classList.toggle('is-open', isOpen);
-                toggle.setAttribute('aria-expanded', isOpen);
-                document.body.style.overflow = isOpen ? 'hidden' : '';
-            });
-
-            closeBtn.addEventListener('click', () => {
-                mobileNav.classList.remove('is-open');
-                toggle.classList.remove('is-open');
-                toggle.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            });
-
-            mobileNav.querySelectorAll('.nav-mobile-link, .header-contact-btn').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileNav.classList.remove('is-open');
-                    toggle.classList.remove('is-open');
-                    toggle.setAttribute('aria-expanded', 'false');
-                    document.body.style.overflow = '';
-                });
-            });
-        })();
-    </script>
 
     <script>
         (function() {
