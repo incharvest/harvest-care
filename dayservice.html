@@ -585,6 +585,9 @@
 
             .mid-cta-btn {
                 justify-content: center;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 14px 20px;
             }
         }
 
@@ -2299,13 +2302,15 @@
         }
 
         .btn-badge {
+            display: inline-block;
+            flex-shrink: 0;
             background: #fff;
             color: var(--color-primary);
             font-size: 0.7rem;
             font-weight: 600;
             padding: 3px 8px;
             border-radius: 3px;
-            margin-right: 8px;
+            white-space: nowrap;
         }
 
         .hero-benefits {
