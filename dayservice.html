@@ -36,6 +36,7 @@
             --color-cream-dark:   #e6f0e8;
             --color-bg-warm:      #faf8f2;
             --color-bg-card:      #ffffff;
+            --color-bg-light:     #f2f7f4;
 
             /* Text -- WCAG AAA (7:1+) */
             --color-text:         #0e1f16;
@@ -93,8 +94,14 @@
             box-sizing: border-box;
         }
 
+        /* ================================================================
+           横スクロール完全封鎖
+           - overflow-x: clip は hidden より強力（iOS SafariではclipがiOS15.4+）
+           - hidden はそれ以前のブラウザ向けフォールバック
+           ================================================================ */
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
@@ -105,6 +112,38 @@
             line-height: 1.9;
             font-weight: 400;
             letter-spacing: 0.02em;
+            overflow-x: hidden;
+            max-width: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        /* 全セクション・親要素への横はみ出しガード */
+        header,
+        footer,
+        section,
+        main,
+        .section-inner,
+        .hero-content,
+        .hero-overlay,
+        .concept-content,
+        .features-grid,
+        .equipment-grid,
+        .flow-timeline,
+        .details-grid,
+        .pricing-simulation,
+        .start-flow-steps,
+        .faq-list,
+        .testimonials-grid,
+        .facility-card,
+        .staff-grid,
+        .contact-methods,
+        .cta-content,
+        .gallery-login,
+        .footer-inner {
+            overflow-x: hidden;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         /* ヘッダー */
@@ -2277,6 +2316,94 @@
             gap: 4px;
         }
 
+        /* モバイルメニューボタン */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-toggle-line {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        .nav-toggle.is-open .nav-toggle-line:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg);
+        }
+
+        .nav-toggle.is-open .nav-toggle-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.is-open .nav-toggle-line:nth-child(3) {
+            transform: translateY(-6.5px) rotate(-45deg);
+        }
+
+        /* モバイルナビオーバーレイ */
+        .nav-mobile {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--color-primary);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            overflow-y: auto;
+        }
+
+        .nav-mobile.is-open {
+            display: flex;
+        }
+
+        .nav-mobile-link {
+            font-size: 1.1rem;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-mobile-link:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-mobile-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-mobile-close {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.8rem;
+            line-height: 1;
+            transition: var(--transition);
+        }
+
+        .nav-mobile-close:hover {
+            color: var(--color-accent);
+        }
+
         /* レスポンシブ */
         @media (max-width: 1024px) {
             .concept-content {
@@ -2299,8 +2426,13 @@
                 grid-template-columns: 1fr;
             }
 
+            /* バグ修正: repeat(3) はスマホで横にはみ出るため repeat(2) に */
             .pricing-cards {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .simulation-cards {
+                grid-template-columns: 1fr;
             }
 
             .pricing-addon-grid {
@@ -2337,27 +2469,76 @@
 
         @media (max-width: 768px) {
             header {
-                padding: 0.8rem 1rem;
+                padding: 0.75rem 1.25rem;
             }
 
             nav, .header-contact {
                 display: none;
             }
 
+            .nav-toggle {
+                display: flex;
+            }
+
             .logo svg {
-                height: 40px;
+                height: 36px;
+                max-width: 180px;
+                width: auto;
             }
 
+            /* ヒーロー：ダブルパディング解消・文字サイズ・letter-spacing修正 */
+            .hero-content {
+                padding: 0;
+                width: 100%;
+                overflow-x: hidden;
+            }
+
+            /* letter-spacing を大幅に縮小して横はみ出しを確実に防止 */
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+                letter-spacing: 0;        /* スマホでは間隔なし */
+                line-height: 1.5;
+                word-break: keep-all;
+                overflow-wrap: break-word;
             }
 
+            .hero-badge {
+                letter-spacing: 0.1em;
+            }
+
+            .hero-description {
+                font-size: 0.9rem;
+                line-height: 1.9;
+                letter-spacing: 0.01em;
+            }
+
+            .hero-benefits {
+                flex-wrap: wrap;
+                gap: 0.8rem;
+                font-size: 0.82rem;
+                letter-spacing: 0;
+            }
+
+            /* セクション全体：左右の余白を適切に確保 */
             section {
-                padding: 80px 1rem;
+                padding: 64px 1.25rem;
+                overflow-x: hidden;   /* 各 section 単体でも封鎖 */
+            }
+
+            /* 全見出しのletter-spacingをモバイル向けに縮小 */
+            h1, h2, h3, h4, h5 {
+                overflow-wrap: break-word;
+                word-break: keep-all;
             }
 
             .section-title {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
+                letter-spacing: 0.03em;   /* 0.06em → 0.03em */
+            }
+
+            .section-en {
+                font-size: 0.68rem;
+                letter-spacing: 0.1em;
             }
 
             .flow-timeline::before {
@@ -2455,8 +2636,80 @@
 
             .hero-btn {
                 width: 100%;
-                max-width: 280px;
+                max-width: 300px;
                 justify-content: center;
+                font-size: 0.92rem;
+                padding: 14px 24px;
+            }
+
+            /* コンセプト：h2のletter-spacingを縮小 */
+            .concept-text h2 {
+                font-size: 1.25rem;
+                letter-spacing: 0.05em;
+            }
+
+            .concept-text p {
+                font-size: 0.9rem;
+                line-height: 1.9;
+            }
+
+            /* 料金表：スマホでは横スクロール可能に */
+            .pricing-table {
+                font-size: 0.85rem;
+            }
+
+            .pricing-table-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* お問い合わせセクション：CTAボタン幅100% */
+            .cta-phone {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            /* ギャラリーパスワード入力エリア */
+            .gallery-password-form {
+                flex-direction: column;
+            }
+
+            .gallery-password-form input,
+            .gallery-submit-btn {
+                width: 100%;
+            }
+
+            /* 施設情報テーブル */
+            .facility-label,
+            .facility-value {
+                font-size: 0.85rem;
+                padding: 0.8rem 0.75rem;
+            }
+
+            /* スタッフグリッド：1列表示 */
+            .staff-grid {
+                gap: 1.25rem;
+            }
+
+            /* フッター */
+            footer {
+                padding: 48px 1.25rem 24px;
+            }
+        }
+
+        /* 375px以下の極小スマホ向け追加調整 */
+        @media (max-width: 375px) {
+            .hero h1 {
+                font-size: 1.45rem;
+            }
+
+            section {
+                padding: 56px 1rem;
+            }
+
+            .header-inner {
+                padding: 0 0.25rem;
             }
         }
     </style>
@@ -2465,7 +2718,7 @@
     <!-- ヘッダー -->
     <header>
         <div class="header-inner">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <!-- ロゴSVG -->
                 <svg viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
                     <!-- アイコン枠 -->
@@ -2502,6 +2755,7 @@
             <div class="header-contact">
                 <a href="tel:099-296-9844" class="header-contact-btn tel">TEL</a>
                 <a href="#contact" class="header-contact-btn mail">MAIL</a>
+            </div>
             <button class="hamburger-btn" id="hamburger-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-nav">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -2551,6 +2805,21 @@
                 マッサージとリハビリで心も体もリフレッシュ。<br>
                 スタッフ一同、笑顔でお待ちしております。
             </p>
+            <div class="hero-cta">
+                <a href="#contact" class="hero-btn hero-btn-primary">
+                    <span class="btn-badge">無料</span>
+                    見学・体験を申し込む
+                </a>
+                <a href="tel:099-296-9844" class="hero-btn hero-btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    電話で問い合わせる
+                </a>
+            </div>
+            <div class="hero-benefits">
+                <span>✓ 送迎無料</span>
+                <span>✓ 体験利用可</span>
+                <span>✓ 月〜土営業</span>
+            </div>
             <div class="hero-line"></div>
         </div>
     </section>
@@ -3147,6 +3416,7 @@
             <!-- 料金表 -->
             <div class="pricing-section">
                 <h3 class="pricing-section-title">ご利用料金（1割負担の場合）</h3>
+                <div class="pricing-table-wrap">
                 <table class="pricing-table">
                     <thead>
                         <tr>
@@ -3183,6 +3453,8 @@
                         </tr>
                     </tbody>
                 </table>
+                </table>
+                </div>
                 <p class="pricing-table-note">※加算込み目安は入浴介助加算（40単位）・個別機能訓練加算（56単位）を含みます</p>
             </div>
 
@@ -3316,7 +3588,7 @@
                     </div>
                     <div class="faq-answer">
                         <span class="faq-a">A</span>
-                        <p>（準備中）</p>
+                        <p>お着替え用の衣類（上下1セット）、タオル2枚、フェイスタオル、内服薬（服用されている方）、介護保険証・負担割合証をお持ちください。入浴をご利用の場合は、シャンプー・ボディソープは施設でご用意しております。詳しくはお問い合わせください。</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -3449,6 +3721,64 @@
         </div>
     </section>
 
+    <!-- スタッフ紹介 -->
+    <section class="staff" id="staff">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">STAFF</p>
+                <h2 class="section-title">スタッフ紹介</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="#e8f4ed"/>
+                            <circle cx="100" cy="72" r="30" fill="#5a9a78" opacity="0.6"/>
+                            <path d="M50 160 Q50 120 100 120 Q150 120 150 160" fill="#5a9a78" opacity="0.6"/>
+                            <circle cx="100" cy="72" r="28" fill="none" stroke="#3d7a5a" stroke-width="1.5" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="staff-info">
+                        <span class="staff-role">管理者 / 鍼灸マッサージ師</span>
+                        <h3 class="staff-name">スタッフ一同</h3>
+                        <p class="staff-message">ご利用者様お一人おひとりに寄り添い、「今日も来てよかった」と思っていただけるサービスを心がけています。</p>
+                    </div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="#fdf5ec"/>
+                            <circle cx="100" cy="72" r="30" fill="#e8a45c" opacity="0.6"/>
+                            <path d="M50 160 Q50 120 100 120 Q150 120 150 160" fill="#e8a45c" opacity="0.6"/>
+                            <circle cx="100" cy="72" r="28" fill="none" stroke="#c88a3a" stroke-width="1.5" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="staff-info">
+                        <span class="staff-role">鍼灸マッサージ師</span>
+                        <h3 class="staff-name">国家資格スタッフ</h3>
+                        <p class="staff-message">鍼灸マッサージ師が5名在籍。肩こり・腰痛・むくみなど、お体の悩みに合わせた専門的なケアをご提供しています。</p>
+                    </div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-image">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="#edf4f8"/>
+                            <circle cx="100" cy="72" r="30" fill="#6a9eb8" opacity="0.6"/>
+                            <path d="M50 160 Q50 120 100 120 Q150 120 150 160" fill="#6a9eb8" opacity="0.6"/>
+                            <circle cx="100" cy="72" r="28" fill="none" stroke="#4a7e98" stroke-width="1.5" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="staff-info">
+                        <span class="staff-role">介護職員</span>
+                        <h3 class="staff-name">介護・生活支援スタッフ</h3>
+                        <p class="staff-message">入浴・食事・レクリエーションのサポートを担当しています。笑顔で楽しい時間をお過ごしいただけるよう努めます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 施設情報 -->
     <section class="facility" id="facility">
         <div class="section-inner">
@@ -3530,7 +3860,8 @@
                     src="https://maps.google.com/maps?q=マッサージ・リハビリ重視型デイサービス+ハーベスト+鹿児島&output=embed&hl=ja&z=17"
                     allowfullscreen=""
                     loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="マッサージリハビリ重視型デイサービス ハーベスト 地図">
                 </iframe>
             </div>
         </div>
@@ -3588,6 +3919,38 @@
             </div>
         </div>
     </section>
+
+    <script>
+        // モバイルメニュー
+        (function() {
+            const toggle = document.getElementById('nav-toggle');
+            const mobileNav = document.getElementById('nav-mobile');
+            const closeBtn = document.getElementById('nav-mobile-close');
+
+            toggle.addEventListener('click', () => {
+                const isOpen = mobileNav.classList.toggle('is-open');
+                toggle.classList.toggle('is-open', isOpen);
+                toggle.setAttribute('aria-expanded', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            closeBtn.addEventListener('click', () => {
+                mobileNav.classList.remove('is-open');
+                toggle.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+
+            mobileNav.querySelectorAll('.nav-mobile-link, .header-contact-btn').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('is-open');
+                    toggle.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                });
+            });
+        })();
+    </script>
 
     <script>
         (function() {
@@ -3843,7 +4206,7 @@
                 </div>
                 <div class="footer-nav">
                     <ul>
-                        <li><a href="#">トップ</a></li>
+                        <li><a href="index.html">トップ</a></li>
                         <li><a href="#concept">コンセプト</a></li>
                         <li><a href="#features">特徴</a></li>
                         <li><a href="#equipment">設備</a></li>
