@@ -44,6 +44,7 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
@@ -53,6 +54,8 @@
             line-height: 1.9;
             font-weight: 400;
             letter-spacing: 0.02em;
+            overflow-x: hidden;
+            max-width: 100%;
         }
 
         /* ヘッダー */
@@ -2324,8 +2327,13 @@
                 grid-template-columns: 1fr;
             }
 
+            /* バグ修正: repeat(3) はスマホで横にはみ出るため repeat(2) に */
             .pricing-cards {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .simulation-cards {
+                grid-template-columns: 1fr;
             }
 
             .pricing-addon-grid {
@@ -2362,7 +2370,7 @@
 
         @media (max-width: 768px) {
             header {
-                padding: 0.8rem 1rem;
+                padding: 0.75rem 1.25rem;
             }
 
             nav, .header-contact {
@@ -2374,19 +2382,46 @@
             }
 
             .logo svg {
-                height: 40px;
+                height: 36px;
+                max-width: 180px;
+                width: auto;
+            }
+
+            /* ヒーロー：ダブルパディング解消・文字サイズ・letter-spacing修正 */
+            .hero-content {
+                padding: 0 0;
+                width: 100%;
             }
 
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 1.65rem;
+                letter-spacing: 0.04em;
+                line-height: 1.55;
             }
 
+            .hero-description {
+                font-size: 0.9rem;
+                line-height: 1.9;
+            }
+
+            .hero-benefits {
+                flex-wrap: wrap;
+                gap: 0.8rem;
+                font-size: 0.82rem;
+            }
+
+            /* セクション全体：左右の余白を適切に確保 */
             section {
-                padding: 80px 1rem;
+                padding: 64px 1.25rem;
             }
 
             .section-title {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
+                letter-spacing: 0.06em;
+            }
+
+            .section-en {
+                font-size: 0.68rem;
             }
 
             .flow-timeline::before {
@@ -2484,8 +2519,80 @@
 
             .hero-btn {
                 width: 100%;
-                max-width: 280px;
+                max-width: 300px;
                 justify-content: center;
+                font-size: 0.92rem;
+                padding: 14px 24px;
+            }
+
+            /* コンセプト：h2のletter-spacingを縮小 */
+            .concept-text h2 {
+                font-size: 1.25rem;
+                letter-spacing: 0.05em;
+            }
+
+            .concept-text p {
+                font-size: 0.9rem;
+                line-height: 1.9;
+            }
+
+            /* 料金表：スマホでは横スクロール可能に */
+            .pricing-table {
+                font-size: 0.85rem;
+            }
+
+            .pricing-table-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* お問い合わせセクション：CTAボタン幅100% */
+            .cta-phone {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            /* ギャラリーパスワード入力エリア */
+            .gallery-password-form {
+                flex-direction: column;
+            }
+
+            .gallery-password-form input,
+            .gallery-submit-btn {
+                width: 100%;
+            }
+
+            /* 施設情報テーブル */
+            .facility-label,
+            .facility-value {
+                font-size: 0.85rem;
+                padding: 0.8rem 0.75rem;
+            }
+
+            /* スタッフグリッド：1列表示 */
+            .staff-grid {
+                gap: 1.25rem;
+            }
+
+            /* フッター */
+            footer {
+                padding: 48px 1.25rem 24px;
+            }
+        }
+
+        /* 375px以下の極小スマホ向け追加調整 */
+        @media (max-width: 375px) {
+            .hero h1 {
+                font-size: 1.45rem;
+            }
+
+            section {
+                padding: 56px 1rem;
+            }
+
+            .header-inner {
+                padding: 0 0.25rem;
             }
         }
     </style>
@@ -3181,6 +3288,7 @@
             <!-- 料金表 -->
             <div class="pricing-section">
                 <h3 class="pricing-section-title">ご利用料金（1割負担の場合）</h3>
+                <div class="pricing-table-wrap">
                 <table class="pricing-table">
                     <thead>
                         <tr>
@@ -3217,6 +3325,8 @@
                         </tr>
                     </tbody>
                 </table>
+                </table>
+                </div>
                 <p class="pricing-table-note">※加算込み目安は入浴介助加算（40単位）・個別機能訓練加算（56単位）を含みます</p>
             </div>
 
