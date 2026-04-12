@@ -523,8 +523,9 @@
         }
 
         .mid-cta-btn {
-            display: inline-flex;
+            display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             padding: 14px 28px;
             font-size: 0.9rem;
@@ -562,9 +563,6 @@
         }
 
         @media (max-width: 900px) {
-            .hamburger-btn {
-                display: flex;
-            }
             nav {
                 display: none !important;
             }
@@ -2368,6 +2366,13 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
+        /* モバイルで表示（900px以下）— base の display:none より後に書くことで正しく上書き */
+        @media (max-width: 900px) {
+            .hamburger-btn {
+                display: flex;
+            }
+        }
+
         /* モバイルナビオーバーレイ */
         .nav-mobile {
             display: none;
@@ -2917,11 +2922,6 @@
                 マッサージとリハビリで心も体もリフレッシュ。<br>
                 スタッフ一同、笑顔でお待ちしております。
             </p>
-            <div class="hero-benefits">
-                <span>✓ 送迎無料</span>
-                <span>✓ 体験利用可</span>
-                <span>✓ 月〜土営業</span>
-            </div>
             <div class="hero-line"></div>
         </div>
     </section>
