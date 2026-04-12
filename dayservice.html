@@ -1013,9 +1013,12 @@
             text-align: center;
             margin-bottom: 0.5rem;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.3rem;
+            word-break: keep-all;
+            overflow-wrap: anywhere;
         }
 
         .simulation-icon {
@@ -1472,8 +1475,10 @@
         .facility-header h3 {
             font-family: var(--font-display);
             font-size: 1.2rem;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.03em;
             font-weight: 500;
+            word-break: keep-all;
+            overflow-wrap: anywhere;
         }
 
         .facility-body {
@@ -2189,6 +2194,8 @@
             font-weight: 600;
             color: var(--color-text);
             font-size: 0.95rem;
+            word-break: keep-all;
+            overflow-wrap: anywhere;
         }
 
         .testimonial-relation {
@@ -3731,14 +3738,6 @@
             </div>
             <div class="staff-grid">
                 <div class="staff-card">
-                    <div class="staff-image">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="200" height="200" fill="#e8f4ed"/>
-                            <circle cx="100" cy="72" r="30" fill="#5a9a78" opacity="0.6"/>
-                            <path d="M50 160 Q50 120 100 120 Q150 120 150 160" fill="#5a9a78" opacity="0.6"/>
-                            <circle cx="100" cy="72" r="28" fill="none" stroke="#3d7a5a" stroke-width="1.5" opacity="0.3"/>
-                        </svg>
-                    </div>
                     <div class="staff-info">
                         <span class="staff-role">管理者 / 鍼灸マッサージ師</span>
                         <h3 class="staff-name">スタッフ一同</h3>
@@ -3746,14 +3745,6 @@
                     </div>
                 </div>
                 <div class="staff-card">
-                    <div class="staff-image">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="200" height="200" fill="#fdf5ec"/>
-                            <circle cx="100" cy="72" r="30" fill="#e8a45c" opacity="0.6"/>
-                            <path d="M50 160 Q50 120 100 120 Q150 120 150 160" fill="#e8a45c" opacity="0.6"/>
-                            <circle cx="100" cy="72" r="28" fill="none" stroke="#c88a3a" stroke-width="1.5" opacity="0.3"/>
-                        </svg>
-                    </div>
                     <div class="staff-info">
                         <span class="staff-role">鍼灸マッサージ師</span>
                         <h3 class="staff-name">国家資格スタッフ</h3>
@@ -3761,14 +3752,6 @@
                     </div>
                 </div>
                 <div class="staff-card">
-                    <div class="staff-image">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="200" height="200" fill="#edf4f8"/>
-                            <circle cx="100" cy="72" r="30" fill="#6a9eb8" opacity="0.6"/>
-                            <path d="M50 160 Q50 120 100 120 Q150 120 150 160" fill="#6a9eb8" opacity="0.6"/>
-                            <circle cx="100" cy="72" r="28" fill="none" stroke="#4a7e98" stroke-width="1.5" opacity="0.3"/>
-                        </svg>
-                    </div>
                     <div class="staff-info">
                         <span class="staff-role">介護職員</span>
                         <h3 class="staff-name">介護・生活支援スタッフ</h3>
