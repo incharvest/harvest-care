@@ -42,6 +42,11 @@
             box-sizing: border-box;
         }
 
+        /* ================================================================
+           横スクロール完全封鎖
+           - overflow-x: clip は hidden より強力（iOS SafariではclipがiOS15.4+）
+           - hidden はそれ以前のブラウザ向けフォールバック
+           ================================================================ */
         html {
             scroll-behavior: smooth;
             overflow-x: hidden;
@@ -56,6 +61,36 @@
             letter-spacing: 0.02em;
             overflow-x: hidden;
             max-width: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        /* 全セクション・親要素への横はみ出しガード */
+        header,
+        footer,
+        section,
+        main,
+        .section-inner,
+        .hero-content,
+        .hero-overlay,
+        .concept-content,
+        .features-grid,
+        .equipment-grid,
+        .flow-timeline,
+        .details-grid,
+        .pricing-simulation,
+        .start-flow-steps,
+        .faq-list,
+        .testimonials-grid,
+        .facility-card,
+        .staff-grid,
+        .contact-methods,
+        .cta-content,
+        .gallery-login,
+        .footer-inner {
+            overflow-x: hidden;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         /* ヘッダー */
@@ -2389,39 +2424,57 @@
 
             /* ヒーロー：ダブルパディング解消・文字サイズ・letter-spacing修正 */
             .hero-content {
-                padding: 0 0;
+                padding: 0;
                 width: 100%;
+                overflow-x: hidden;
             }
 
+            /* letter-spacing を大幅に縮小して横はみ出しを確実に防止 */
             .hero h1 {
-                font-size: 1.65rem;
-                letter-spacing: 0.04em;
-                line-height: 1.55;
+                font-size: 1.6rem;
+                letter-spacing: 0;        /* スマホでは間隔なし */
+                line-height: 1.5;
+                word-break: keep-all;
+                overflow-wrap: break-word;
+            }
+
+            .hero-badge {
+                letter-spacing: 0.1em;
             }
 
             .hero-description {
                 font-size: 0.9rem;
                 line-height: 1.9;
+                letter-spacing: 0.01em;
             }
 
             .hero-benefits {
                 flex-wrap: wrap;
                 gap: 0.8rem;
                 font-size: 0.82rem;
+                letter-spacing: 0;
             }
 
             /* セクション全体：左右の余白を適切に確保 */
             section {
                 padding: 64px 1.25rem;
+                overflow-x: hidden;   /* 各 section 単体でも封鎖 */
+            }
+
+            /* 全見出しのletter-spacingをモバイル向けに縮小 */
+            h1, h2, h3, h4, h5 {
+                overflow-wrap: break-word;
+                word-break: keep-all;
             }
 
             .section-title {
                 font-size: 1.3rem;
-                letter-spacing: 0.06em;
+                letter-spacing: 0.03em;   /* 0.06em → 0.03em */
             }
 
             .section-en {
                 font-size: 0.68rem;
+                letter-spacing: 0.1em;
             }
 
             .flow-timeline::before {
