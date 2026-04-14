@@ -576,6 +576,12 @@
     max-width: 400px;
   }
 
+  /* モバイルでボックスの内側余白を縮小 */
+  .pricing-breakdown,
+  .pricing-extra {
+    padding: var(--space-5);
+  }
+
   .pricing-table th {
     width: 110px;
   }
@@ -603,6 +609,8 @@
   .pricing-table th {
     width: auto;
     flex: 1 1 auto;
+    /* 長いテキストを折り返せるように */
+    white-space: normal;
   }
 
   .pricing-table td {
