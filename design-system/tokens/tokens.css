@@ -1,6 +1,10 @@
 /**
  * Harvest Design System - Design Tokens
- * Version: 1.0.0
+ * Version: 2.0.0
+ *
+ * HARVEST DESIGN SYSTEM v2.0 — Teal Trust Palette
+ * UI/UX Pro Max: Senior Care Optimized
+ * WCAG AAA — 18px Base — Calm Teal Trust
  *
  * This file contains all design tokens as CSS custom properties.
  * Import this file first in your stylesheet.
@@ -8,74 +12,84 @@
 
 :root {
   /* ========================================
-   * COLOR TOKENS
+   * COLOR TOKENS — Harvest Forest Green v2
    * ======================================== */
 
-  /* Primary Colors - Forest Green */
-  --color-primary: #1a3328;
-  --color-primary-light: #264d3a;
-  --color-primary-dark: #0f1e18;
+  /* Primary: Deep Forest Green */
+  --color-primary:       #1e5c3a;
+  --color-primary-light: #2d7a52;
+  --color-primary-dark:  #133d27;
 
-  /* Accent Colors - Harvest Gold */
-  --color-accent: #c9a868;
-  --color-accent-light: #dfc48a;
-  --color-accent-dark: #a88a4a;
-  --color-accent-muted: rgba(201, 168, 104, 0.1);
+  /* Secondary: Health Sage Green */
+  --color-secondary: #4a7c59;
 
-  /* Neutral Colors */
-  --color-white: #ffffff;
-  --color-cream: #faf8f5;
-  --color-cream-dark: #f0ebe3;
-  --color-border: #e0ddd5;
-  --color-border-light: #ebe8e2;
+  /* Accent: Warm Harvest Gold */
+  --color-accent:       #c8963c;
+  --color-accent-light: #e0b05e;
+  --color-accent-dark:  #a07830;
+  --color-accent-muted: rgba(200, 150, 60, 0.1);
 
-  /* Text Colors */
-  --color-text: #333333;
-  --color-text-secondary: #666666;
-  --color-text-muted: #999999;
-  --color-text-inverse: #ffffff;
-  --color-text-inverse-muted: rgba(255, 255, 255, 0.7);
+  /* Backgrounds */
+  --color-cream:      #f4f8f2;
+  --color-cream-dark: #e6f0e8;
+  --color-bg-warm:    #faf6f1;
+  --color-bg-card:    #ffffff;
+
+  /* Neutrals */
+  --color-white:        #ffffff;
+  --color-border:       #b8d4c0;
+  --color-border-light: #d4e8da;
+
+  /* Text — WCAG AAA (7:1+) */
+  --color-text:            #0c1e28;
+  --color-text-light:      #2a4858;
+  --color-text-muted:      #4a6e80;
+  --color-text-secondary:  #4a6e80;
+  --color-text-inverse:    #ffffff;
+  --color-text-inverse-muted: rgba(255, 255, 255, 0.75);
 
   /* Semantic Colors */
-  --color-success: #2e7d5a;
-  --color-warning: #c9a868;
-  --color-error: #b54a4a;
-  --color-info: #4a7eb5;
+  --color-success: #4a7c59;
+  --color-warning: #c8963c;
+  --color-error:   #b54a4a;
+  --color-info:    #2d7a52;
 
   /* ========================================
    * THEME TOKENS (Service-specific)
    * ======================================== */
 
-  /* Day Service Theme */
-  --theme-dayservice-primary: #1a3328;
-  --theme-dayservice-secondary: #264d3a;
-  --theme-dayservice-accent: #c9a868;
+  /* Day Service Theme — Teal Trust */
+  --theme-dayservice-primary:   #1e5c3a;
+  --theme-dayservice-secondary: #4a7c59;
+  --theme-dayservice-accent:    #c8963c;
 
-  /* Rest Home Theme */
-  --theme-resthome-primary: #4a4035;
+  /* Rest Home Theme — Warm Sage */
+  --theme-resthome-primary:   #4a4035;
   --theme-resthome-secondary: #6b5d4d;
-  --theme-resthome-accent: #b8956e;
+  --theme-resthome-accent:    #b8956e;
 
   /* ========================================
    * TYPOGRAPHY TOKENS
    * ======================================== */
 
   /* Font Families */
-  --font-heading: 'Shippori Mincho', serif;
-  --font-body: 'Noto Serif JP', serif;
+  --font-display: 'Shippori Mincho', 'Zen Old Mincho', serif;
+  --font-heading: 'Shippori Mincho', 'Zen Old Mincho', serif;
+  --font-body:    'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
   --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
 
-  /* Font Sizes - Fluid Typography */
-  --font-size-hero: clamp(2rem, 5vw, 3rem);
-  --font-size-h1: clamp(1.5rem, 3vw, 2rem);
-  --font-size-h2: clamp(1.25rem, 2.5vw, 1.8rem);
-  --font-size-h3: clamp(1rem, 2vw, 1.3rem);
-  --font-size-h4: clamp(0.95rem, 1.8vw, 1.1rem);
-  --font-size-body: clamp(0.875rem, 1.5vw, 1rem);
-  --font-size-body-sm: clamp(0.8rem, 1.3vw, 0.9rem);
-  --font-size-small: clamp(0.75rem, 1.2vw, 0.85rem);
-  --font-size-caption: 0.7rem;
-  --font-size-label: 0.65rem;
+  /* Font Sizes - Fluid Typography (Senior Care: 18px base) */
+  --font-size-base: 1.125rem;             /* 18px — WCAG senior care minimum */
+  --font-size-hero: clamp(2.2rem, 5vw, 3.2rem);
+  --font-size-h1: clamp(1.75rem, 3.5vw, 2.4rem);
+  --font-size-h2: clamp(1.4rem, 2.8vw, 2rem);
+  --font-size-h3: clamp(1.15rem, 2.2vw, 1.45rem);
+  --font-size-h4: clamp(1.05rem, 1.9vw, 1.2rem);
+  --font-size-body: clamp(1rem, 1.8vw, 1.125rem);  /* min 16px, target 18px */
+  --font-size-body-sm: clamp(0.9rem, 1.5vw, 1rem);
+  --font-size-small: clamp(0.85rem, 1.3vw, 0.95rem);
+  --font-size-caption: 0.8rem;
+  --font-size-label: 0.75rem;
 
   /* Font Weights */
   --font-weight-light: 300;
@@ -173,17 +187,22 @@
    * SHADOW TOKENS
    * ======================================== */
 
-  --shadow-xs: 0 1px 2px rgba(26, 51, 40, 0.04);
-  --shadow-sm: 0 2px 8px rgba(26, 51, 40, 0.06);
-  --shadow-md: 0 4px 16px rgba(26, 51, 40, 0.08);
-  --shadow-lg: 0 8px 32px rgba(26, 51, 40, 0.10);
-  --shadow-xl: 0 16px 48px rgba(26, 51, 40, 0.12);
-  --shadow-2xl: 0 24px 64px rgba(26, 51, 40, 0.14);
-  --shadow-elegant: 0 20px 60px rgba(26, 51, 40, 0.15);
-  --shadow-inner: inset 0 2px 4px rgba(26, 51, 40, 0.06);
+  --shadow-xs:      0 1px 2px rgba(30, 92, 58, 0.04);
+  --shadow-sm:      0 2px 8px rgba(30, 92, 58, 0.06);
+  --shadow-md:      0 4px 16px rgba(30, 92, 58, 0.08);
+  --shadow-lg:      0 8px 32px rgba(30, 92, 58, 0.10);
+  --shadow-xl:      0 16px 48px rgba(30, 92, 58, 0.12);
+  --shadow-2xl:     0 24px 64px rgba(30, 92, 58, 0.14);
+  --shadow-elegant: 0 12px 48px rgba(30, 92, 58, 0.09);
+  --shadow-float:   0 20px 60px rgba(30, 92, 58, 0.13);
+  --shadow-inner:   inset 0 2px 4px rgba(30, 92, 58, 0.06);
+
+  /* Named aliases matching dayservice.html tokens */
+  --shadow-soft:   0 2px 16px rgba(30, 92, 58, 0.06);
+  --shadow-medium: 0 6px 28px rgba(30, 92, 58, 0.10);
 
   /* Colored Shadows */
-  --shadow-accent: 0 4px 16px rgba(201, 168, 104, 0.3);
+  --shadow-accent: 0 4px 16px rgba(200, 150, 60, 0.30);
 
   /* ========================================
    * TRANSITION TOKENS
