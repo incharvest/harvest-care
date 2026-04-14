@@ -844,6 +844,7 @@
 }
 
 .cta-phone-hours {
+  display: block;
   font-size: var(--font-size-small);
   color: rgba(255, 255, 255, 0.5);
 }
@@ -858,9 +859,8 @@
 }
 
 @media (max-width: 768px) {
-  .cta-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
+  .requirements-card {
+    padding: var(--space-5);
   }
 }
 
