@@ -198,25 +198,8 @@
         .message { background: var(--color-bg); }
 
         .message-content {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .message-image { position: relative; }
-
-        .message-image::before {
-            content: '';
-            position: absolute;
-            top: -16px; left: -16px; right: 16px; bottom: 16px;
-            border: 1px solid var(--color-border);
-        }
-
-        .message-image img {
-            width: 100%; height: 350px;
-            object-fit: cover;
-            position: relative; z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .message-text h2 {
@@ -226,6 +209,7 @@
             margin-bottom: 2rem;
             letter-spacing: 0.06em;
             line-height: 1.8;
+            text-align: center;
         }
 
         .message-text p {
@@ -626,8 +610,6 @@
         }
 
         @media (max-width: 1024px) {
-            .message-content { grid-template-columns: 1fr; gap: 2rem; }
-            .message-image::before { display: none; }
             .numbers-grid { grid-template-columns: repeat(2, 1fr); }
             .appeal-grid { grid-template-columns: 1fr; }
             .voice-grid { grid-template-columns: 1fr; }
@@ -690,9 +672,6 @@
     <section class="message" id="message">
         <div class="section-inner">
             <div class="message-content">
-                <div class="message-image">
-                    <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=600&q=80" alt="スタッフイメージ">
-                </div>
                 <div class="message-text">
                     <h2>「ありがとう」の言葉が<br>やりがいになる仕事</h2>
                     <p>ハーベストは、マッサージとリハビリを重視したデイサービスです。鍼灸マッサージ師が5名在籍し、専門性の高いケアを提供しています。</p>
