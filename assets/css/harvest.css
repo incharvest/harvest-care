@@ -228,13 +228,18 @@ body[data-theme="care"] .hero-v2::before {
   z-index: 0;
 }
 
-body[data-theme="care"] .hero__title .gradient,
-body[data-theme="care"] .hero__title .scribble-under {
+body[data-theme="care"] .hero__title .gradient {
   background: linear-gradient(90deg, var(--brown) 0%, var(--accent-deep) 60%, var(--accent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
+}
+body[data-theme="care"] .hero__title .scribble-under {
+  color: var(--accent-deep);
+}
+body[data-theme="care"] .hero__title .scribble-under .split-char {
+  color: var(--accent-deep);
 }
 
 body[data-theme="care"] .scribble-under::after {
@@ -487,6 +492,9 @@ body[data-theme="care"] .quick-contact-item:hover {
   line-break: strict;
   word-break: normal;
   overflow-wrap: normal;
+}
+.hero__title .title-line {
+  display: block;
 }
 
 .hero__title .accent {
@@ -783,7 +791,8 @@ body[data-theme="care"] .quick-contact-item:hover {
   .hero .doodle--star-mid,
   .hero .doodle--swirl-bl { display: none; }
 
-  .hero__title { font-size: clamp(1.55rem, 6.1vw, 2.1rem); line-height: 1.55; letter-spacing: 0.03em; }
+  .hero__title { font-size: clamp(1.25rem, 5.1vw, 1.85rem); line-height: 1.55; letter-spacing: 0.01em; }
+  .hero__title .scribble-under { display: inline-block; }
   .hero__lead  { font-size: 0.9rem; line-height: 1.95; }
   .hero__scroll { display: none; }
 
