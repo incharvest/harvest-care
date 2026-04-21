@@ -630,10 +630,10 @@ body[data-theme="care"] .quick-contact-item:hover {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  /* 有機的ブロブ形（少し縦長） */
-  border-radius: 62% 38% 58% 42% / 48% 56% 44% 52%;
+  /* ゆるやかな楕円（ブロブ形は控えめに） */
+  border-radius: 50% 50% 48% 52% / 52% 48% 52% 48%;
   box-shadow: var(--shadow-deep);
-  transform: rotate(-3deg);
+  transform: rotate(-1deg);
   background: var(--stone-warm);
   isolation: isolate;
 }

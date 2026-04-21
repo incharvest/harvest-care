@@ -12,14 +12,15 @@
   }
   gsap.registerPlugin(ScrollTrigger);
 
-  /* 1. Lenis 慣性スムーズスクロール */
+  /* 1. Lenis 慣性スムーズスクロール（マウス操作の軽快さ優先） */
   let lenis = null;
   if (window.Lenis && !REDUCED) {
     lenis = new window.Lenis({
-      duration: 1.15,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 0.7,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
       smoothTouch: false,
+      wheelMultiplier: 1.15,
     });
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
