@@ -157,6 +157,41 @@ body[data-theme="rest"] .hero-v2 {
     var(--stone);
 }
 
+/* 採用用：控えめなゴールデンウォッシュ + グリッドパターン（ドゥードルなし） */
+body[data-theme="recruit"] .hero-v2 {
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(184, 133, 108, 0.03) 100%),
+    radial-gradient(ellipse 50% 45% at 85% 25%, rgba(184, 133, 108, 0.10), transparent 65%),
+    radial-gradient(ellipse 60% 50% at 10% 80%, rgba(132, 118, 105, 0.06), transparent 65%),
+    var(--stone);
+}
+
+body[data-theme="recruit"] .hero-v2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--stone-deep) 1px, transparent 1px),
+    linear-gradient(90deg, var(--stone-deep) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: 0 0;
+  opacity: 0.35;
+  mask-image: radial-gradient(ellipse at 50% 100%, black, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 100%, black, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 採用用：数字バッジ（ヒーローの印章として活用） */
+body[data-theme="recruit"] .hero__seal {
+  background: var(--ink);
+  color: var(--washi);
+  border-color: var(--ink);
+}
+body[data-theme="recruit"] .hero__seal .num {
+  color: var(--accent-soft);
+}
+
 /* -- フォトストリップ（装飾的写真帯） -------------------------------- */
 .photo-strip {
   position: relative;

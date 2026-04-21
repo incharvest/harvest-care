@@ -6,7 +6,12 @@
     <title>採用情報｜ハーベスト｜鹿児島市の介護サービス</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/harvest.css">
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="assets/js/harvest.js" defer></script>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23847669'/%3E%3Cg transform='translate(16,17)'%3E%3Cpath d='M0-9Q2-1 0 10' fill='none' stroke='%23f0e8df' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='-3' cy='-6' rx='2' ry='4' fill='%23f0e8df' transform='rotate(-25-3-6)'/%3E%3Cellipse cx='-4' cy='-1' rx='2' ry='3' fill='%23f0e8df' transform='rotate(-20-4-1)'/%3E%3Cellipse cx='3' cy='-6' rx='2' ry='4' fill='%23f0e8df' transform='rotate(25 3-6)'/%3E%3Cellipse cx='4' cy='-1' rx='2' ry='3' fill='%23f0e8df' transform='rotate(20 4-1)'/%3E%3C/g%3E%3C/svg%3E">
     <style>
         :root {
@@ -637,7 +642,7 @@
         }
     </style>
 </head>
-<body>
+<body data-theme="recruit">
     <header>
         <div class="header-inner">
             <a href="index.html" class="logo">
@@ -660,12 +665,61 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-badge">RECRUIT</div>
-            <h1>あなたの「やさしさ」を<br>活かせる職場です</h1>
-            <p class="hero-description">私たちハーベストでは、利用者様の笑顔のために<br>一緒に働く仲間を募集しています。</p>
+    <section class="hero-v2" aria-label="ヒーロー">
+        <div class="hero__inner">
+            <div class="hero__copy">
+                <p class="hero__kicker">
+                    <span>Recruit</span>
+                    <span class="ja">スタッフ募集</span>
+                </p>
+                <h1 class="hero__title" data-split>あなたの<br><span class="scribble-under">やさしさ</span>を、<br>活かせる職場です。</h1>
+                <p class="hero__lead">
+                    私たちハーベストでは、利用者様の笑顔のために<br>
+                    一緒に働く仲間を募集しています。
+                </p>
+                <div class="hero__actions">
+                    <a href="#apply" class="btn btn--primary" data-magnetic="0.25">
+                        <span>応募する</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="tel:099-296-9844" class="btn btn--ghost" data-magnetic="0.18">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>099-296-9844</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero__visual">
+                <div class="hero__photo">
+                    <img src="assets/photos/photo-staff-portrait.png" alt="ハーベストで働くスタッフ">
+                </div>
+                <div class="hero__seal">
+                    <span class="num">5</span>
+                    鍼灸マッサージ師<br>在籍
+                </div>
+            </div>
+        </div>
+
+        <span class="hero__scroll">SCROLL</span>
+    </section>
+
+    <!-- Photo Strip (採用用：職場の雰囲気) -->
+    <section class="photo-strip" aria-hidden="true">
+        <div class="photo-strip__inner">
+            <div class="photo-strip__item photo-strip__item--1">
+                <img src="assets/photos/photo-walk-support.png" alt="" loading="lazy">
+            </div>
+            <div class="photo-strip__item photo-strip__item--2">
+                <img src="assets/photos/photo-recreation.png" alt="" loading="lazy">
+            </div>
+            <div class="photo-strip__item photo-strip__item--3">
+                <img src="assets/photos/photo-hero-smile.png" alt="" loading="lazy">
+            </div>
+            <p class="photo-strip__caption">Our Workplace</p>
         </div>
     </section>
 
@@ -689,13 +743,13 @@
                 <h2 class="section-title">数字で見るハーベスト</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="numbers-grid">
+            <div class="numbers-grid" data-rise-group>
                 <div class="number-card">
-                    <p class="number-value">20<span class="number-unit">名</span></p>
+                    <p class="number-value"><span data-count="20">20</span><span class="number-unit">名</span></p>
                     <p class="number-label">スタッフ在籍<br>（男性5名・女性15名）</p>
                 </div>
                 <div class="number-card">
-                    <p class="number-value">5<span class="number-unit">名</span></p>
+                    <p class="number-value"><span data-count="5">5</span><span class="number-unit">名</span></p>
                     <p class="number-label">鍼灸マッサージ師<br>在籍</p>
                 </div>
                 <div class="number-card">
@@ -703,7 +757,7 @@
                     <p class="number-label">シフト内で所定時間勤務</p>
                 </div>
                 <div class="number-card">
-                    <p class="number-value">365<span class="number-unit">日</span></p>
+                    <p class="number-value"><span data-count="365">365</span><span class="number-unit">日</span></p>
                     <p class="number-label">年中無休で営業</p>
                 </div>
             </div>
@@ -717,7 +771,7 @@
                 <h2 class="section-title">ハーベストで働く魅力</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="appeal-grid">
+            <div class="appeal-grid" data-rise-group>
                 <div class="appeal-card">
                     <svg class="appeal-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                         <g stroke="#847669" fill="none" stroke-width="1.2" stroke-linecap="round">
@@ -777,7 +831,7 @@
                 <h2 class="section-title">スタッフの声</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="voice-grid">
+            <div class="voice-grid" data-rise-group>
                 <div class="voice-card">
                     <div class="voice-header">
                         <div class="voice-avatar">
