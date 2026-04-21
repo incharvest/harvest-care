@@ -1,0 +1,462 @@
+/* ==========================================================================
+   harvest.css — ハーベスト ブランドリニューアル
+   - 既存サイトの全テキスト・全情報は不変
+   - デザインのみ刷新：温かい・手仕事感・静かな上品さ
+   - MS1: ヒーローおよび共通基盤（ヘッダー・ドゥードル・カーソル等）
+   ========================================================================== */
+
+/* -- 1. デザイントークン -------------------------------------------------- */
+:root {
+  /* ベース：ウォームストーン */
+  --stone:        #f7f4f0;
+  --stone-warm:   #f0ebe4;
+  --stone-deep:   #e8e0d8;
+  --washi:        #fdfcf9;
+
+  /* ブラウン階調（プライマリ） */
+  --brown:        #847669;
+  --brown-light:  #a89b8e;
+  --brown-pale:   #c8bdb2;
+
+  /* テラコッタアクセント */
+  --accent:       #b8856c;
+  --accent-soft:  #d4a88e;
+  --accent-deep:  #9c6b53;
+
+  /* サービス別差し色 */
+  --day:          #6b8f7b;
+  --day-light:    #8ba99a;
+  --rest:         #b8a07a;
+  --rest-light:   #d0ba95;
+
+  /* 墨 */
+  --ink:          #3a3330;
+  --ink-soft:     #4a4240;
+  --ink-muted:    #7a7270;
+  --ink-pale:     #a09898;
+
+  /* フォント */
+  --font-display: 'Zen Old Mincho', 'Noto Serif JP', serif;
+  --font-body:    'Noto Sans JP', system-ui, -apple-system, sans-serif;
+  --font-italic:  'Cormorant Garamond', 'Zen Old Mincho', serif;
+
+  /* シャドウ（柔らかく） */
+  --shadow-soft:  0 2px 12px rgba(132, 118, 105, 0.06);
+  --shadow-paper: 0 4px 24px rgba(132, 118, 105, 0.10);
+  --shadow-deep:  0 16px 48px rgba(132, 118, 105, 0.18);
+
+  /* イージング */
+  --ease:         cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-smooth:  cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* -- 2. ベース上書き ------------------------------------------------------ */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--stone);
+  /* 微細な和紙ノイズ */
+  background-image:
+    radial-gradient(rgba(132, 118, 105, 0.014) 1px, transparent 1px),
+    radial-gradient(rgba(132, 118, 105, 0.010) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1px 2px;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--accent-soft); color: var(--ink); }
+
+/* -- 3. ヘッダー（既存を上書き） ----------------------------------------- */
+header.site-header,
+body > header {
+  background: rgba(247, 244, 240, 0.72);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  border-bottom: 1px solid transparent;
+  transition: background 0.4s var(--ease), border-color 0.4s var(--ease), padding 0.4s var(--ease);
+}
+
+body > header.is-scrolled {
+  background: rgba(247, 244, 240, 0.92);
+  border-bottom-color: var(--stone-deep);
+}
+
+/* -- 4. ヒーロー（MS1 メイン） ------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 7.5rem 2rem 5rem;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 70% 60% at 12% 18%, rgba(107, 143, 123, 0.07), transparent 60%),
+    radial-gradient(ellipse 60% 60% at 88% 82%, rgba(184, 160, 122, 0.09), transparent 65%),
+    var(--stone);
+}
+
+.hero__inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* 左：コピー */
+.hero__copy { position: relative; }
+
+.hero__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+}
+
+.hero__kicker::before {
+  content: '';
+  display: block;
+  width: 36px; height: 1px;
+  background: var(--accent);
+}
+
+.hero__kicker .ja {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: var(--ink-muted);
+  text-transform: none;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.85rem, 3.6vw, 2.95rem);
+  line-height: 1.55;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  margin: 0 0 1.8rem;
+}
+
+.hero__title .accent {
+  color: var(--accent-deep);
+  position: relative;
+}
+
+/* 手描きアンダーライン（やすらぎ） */
+.scribble-under {
+  position: relative;
+  display: inline-block;
+  padding: 0 0.05em;
+}
+.scribble-under::after {
+  content: '';
+  position: absolute;
+  left: -4%; right: -4%;
+  bottom: -0.16em;
+  height: 0.42em;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' fill='none'><path d='M2 14 Q40 4 80 12 T160 10 Q180 8 198 14' stroke='%23b8856c' stroke-width='3' stroke-linecap='round' fill='none' opacity='0.85'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+  transform: translateY(2px);
+}
+
+.hero__lead {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 2.1;
+  color: var(--ink-soft);
+  margin-bottom: 2.4rem;
+  max-width: 36ch;
+  font-weight: 400;
+}
+
+/* CTA */
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  letter-spacing: 0.14em;
+  padding: 1.05rem 2.1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  will-change: transform;
+}
+
+.btn--primary {
+  background: var(--ink);
+  color: var(--washi);
+  box-shadow: 0 6px 24px rgba(58, 51, 48, 0.18);
+}
+.btn--primary:hover {
+  background: var(--accent-deep);
+  box-shadow: 0 10px 32px rgba(156, 107, 83, 0.32);
+}
+.btn--primary svg { transition: transform 0.4s var(--ease); }
+.btn--primary:hover svg { transform: translateX(4px); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--brown-pale);
+}
+.btn--ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.6;
+}
+
+/* スクロール案内 */
+.hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 0.78rem;
+  letter-spacing: 0.34em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  z-index: 3;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.hero__scroll::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--brown-pale), transparent);
+  animation: scrollPulse 2.4s var(--ease) infinite;
+}
+@keyframes scrollPulse {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* 右：写真コンポジット */
+.hero__visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  max-width: 520px;
+  margin-left: auto;
+}
+
+.hero__photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* 有機的ブロブ形（少し縦長） */
+  border-radius: 62% 38% 58% 42% / 48% 56% 44% 52%;
+  box-shadow: var(--shadow-deep);
+  transform: rotate(-3deg);
+  background: var(--stone-warm);
+  isolation: isolate;
+}
+
+.hero__photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transform: scale(1.08);
+  will-change: transform;
+}
+
+/* 写真にほんのりウォームトーン */
+.hero__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(165deg, rgba(184, 133, 108, 0.06), rgba(132, 118, 105, 0.10));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* 写真の下に小さな印章ラベル */
+.hero__seal {
+  position: absolute;
+  right: -1.2rem;
+  bottom: -1.2rem;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: var(--washi);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  line-height: 1.6;
+  box-shadow: var(--shadow-paper);
+  border: 1px solid var(--stone-deep);
+  transform: rotate(8deg);
+  z-index: 3;
+}
+.hero__seal .num {
+  display: block;
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--accent-deep);
+  letter-spacing: 0;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+/* -- 5. 浮遊ドゥードル ---------------------------------------------------- */
+.doodle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  will-change: transform;
+}
+
+.doodle img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.doodle--xs { width: 60px; }
+.doodle--sm { width: 90px; }
+.doodle--md { width: 130px; }
+.doodle--lg { width: 180px; }
+.doodle--xl { width: 230px; }
+
+/* ヒーロー内の配置 */
+.hero .doodle--flowers-tl  { top: 8%;  left: -2%; transform: rotate(-12deg); }
+.hero .doodle--leaves-br   { right: -3%; bottom: 6%; transform: rotate(18deg); }
+.hero .doodle--teacup-tr   { right: 8%; top: 12%; transform: rotate(8deg); }
+.hero .doodle--star-mid    { left: 38%; top: 12%; transform: rotate(-6deg); }
+.hero .doodle--swirl-bl    { left: -3%; bottom: 14%; transform: rotate(12deg); }
+
+/* -- 6. 波形セクションディバイダ ---------------------------------------- */
+.section-divider {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  line-height: 0;
+  pointer-events: none;
+}
+.section-divider svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* -- 7. カーソルフォロワー ---------------------------------------------- */
+.cursor-follow {
+  position: fixed;
+  top: 0; left: 0;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+  transition: width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s var(--ease);
+  transform: translate(-50%, -50%);
+}
+.cursor-follow.is-hover {
+  width: 56px;
+  height: 56px;
+  background: rgba(184, 133, 108, 0.12);
+}
+@media (max-width: 900px) { .cursor-follow { display: none; } }
+
+/* -- 8. SplitText 用文字スパン ----------------------------------------- */
+.split-char {
+  display: inline-block;
+  will-change: transform, opacity;
+  white-space: pre;
+}
+
+/* -- 9. レスポンシブ ---------------------------------------------------- */
+@media (max-width: 960px) {
+  .hero {
+    padding: 6rem 1.25rem 4.5rem;
+    min-height: auto;
+  }
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .hero__visual {
+    order: -1;
+    max-width: 360px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+  }
+  .hero__seal {
+    width: 86px;
+    height: 86px;
+    font-size: 0.62rem;
+    right: -0.6rem;
+    bottom: -0.6rem;
+  }
+  .hero__seal .num { font-size: 1.3rem; }
+
+  .hero .doodle--xl,
+  .hero .doodle--lg { width: 110px; }
+  .hero .doodle--md { width: 80px; }
+  .hero .doodle--star-mid,
+  .hero .doodle--swirl-bl { display: none; }
+
+  .hero__title { font-size: clamp(1.75rem, 7vw, 2.4rem); line-height: 1.55; }
+  .hero__lead  { font-size: 0.9rem; line-height: 1.95; }
+  .hero__scroll { display: none; }
+
+  .btn { padding: 0.95rem 1.6rem; font-size: 0.85rem; }
+}
+
+@media (max-width: 480px) {
+  .hero__inner { gap: 2rem; }
+  .hero__visual { max-width: 300px; }
+  .hero__actions { gap: 0.8rem; }
+  .hero__actions .btn { width: 100%; justify-content: center; }
+}

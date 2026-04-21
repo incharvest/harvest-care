@@ -31,7 +31,12 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/harvest.css">
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="assets/js/harvest.js" defer></script>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23847669'/%3E%3Cg transform='translate(16,17)'%3E%3Cpath d='M0-9Q2-1 0 10' fill='none' stroke='%23f0e8df' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='-3' cy='-6' rx='2' ry='4' fill='%23f0e8df' transform='rotate(-25-3-6)'/%3E%3Cellipse cx='-4' cy='-1' rx='2' ry='3' fill='%23f0e8df' transform='rotate(-20-4-1)'/%3E%3Cellipse cx='3' cy='-6' rx='2' ry='4' fill='%23f0e8df' transform='rotate(25 3-6)'/%3E%3Cellipse cx='4' cy='-1' rx='2' ry='3' fill='%23f0e8df' transform='rotate(20 4-1)'/%3E%3C/g%3E%3C/svg%3E">
     <style>
         :root {
@@ -1033,29 +1038,68 @@
     </div>
 
     <main>
-        <div class="main-content">
-            <!-- 稲穂ロゴマーク -->
-            <div class="main-logo-mark">
-                <svg width="60" height="70" viewBox="0 0 60 70" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(30, 35)" opacity="0.6">
-                        <path d="M0 -28 Q4 -5 0 28" fill="none" stroke="#5a4d42" stroke-width="1.5" stroke-linecap="round"/>
-                        <ellipse cx="-7" cy="-20" rx="4" ry="7" fill="none" stroke="#5a4d42" stroke-width="1" transform="rotate(-28 -7 -20)"/>
-                        <ellipse cx="-9" cy="-8" rx="4" ry="7" fill="none" stroke="#5a4d42" stroke-width="1" transform="rotate(-22 -9 -8)"/>
-                        <ellipse cx="-7" cy="4" rx="3" ry="6" fill="none" stroke="#5a4d42" stroke-width="1" transform="rotate(-18 -7 4)"/>
-                        <ellipse cx="7" cy="-20" rx="4" ry="7" fill="none" stroke="#5a4d42" stroke-width="1" transform="rotate(28 7 -20)"/>
-                        <ellipse cx="9" cy="-8" rx="4" ry="7" fill="none" stroke="#5a4d42" stroke-width="1" transform="rotate(22 9 -8)"/>
-                        <ellipse cx="7" cy="4" rx="3" ry="6" fill="none" stroke="#5a4d42" stroke-width="1" transform="rotate(18 7 4)"/>
-                    </g>
-                </svg>
+        <!-- ============ MS1: 新ヒーロー ============ -->
+        <section class="hero">
+            <!-- 浮遊ドゥードル -->
+            <div class="doodle doodle--md doodle--flowers-tl" data-scroll="0.5">
+                <img src="assets/doodles/doodle-flowers.png" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--lg doodle--leaves-br" data-scroll="0.6">
+                <img src="assets/doodles/doodle-leaves.png" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--sm doodle--teacup-tr" data-scroll="0.4">
+                <img src="assets/doodles/doodle-teacup.png" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--xs doodle--star-mid" data-scroll="0.3">
+                <img src="assets/doodles/doodle-star.png" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--sm doodle--swirl-bl" data-scroll="0.5">
+                <img src="assets/doodles/doodle-swirl.png" alt="" loading="eager">
             </div>
 
-            <p class="main-badge">鹿児島市東谷山</p>
-            <h1 class="main-title">心と体に<span>やすらぎ</span>を<br>上質なケアをあなたに</h1>
-            <p class="main-description">
-                ハーベストは、一人ひとりに寄り添う丁寧なケアで<br>
-                ご利用者様の暮らしをサポートいたします
-            </p>
+            <div class="hero__inner">
+                <div class="hero__copy">
+                    <p class="hero__kicker">
+                        <span>Harvest</span>
+                        <span class="ja">鹿児島市東谷山</span>
+                    </p>
+                    <h1 class="hero__title" data-split>心と体に<br><span class="scribble-under">やすらぎ</span>を、<br>上質なケアを、<br>あなたに。</h1>
+                    <p class="hero__lead">
+                        ハーベストは、一人ひとりに寄り添う丁寧なケアで<br>
+                        ご利用者様の暮らしをサポートいたします。
+                    </p>
+                    <div class="hero__actions">
+                        <a href="#service" class="btn btn--primary" data-magnetic="0.25">
+                            <span>サービスを見る</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="tel:099-296-9844" class="btn btn--ghost" data-magnetic="0.18">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <span>099-296-9844</span>
+                        </a>
+                    </div>
+                </div>
 
+                <div class="hero__visual">
+                    <div class="hero__photo">
+                        <img src="assets/photos/photo-hero-smile.png" alt="ハーベストでくつろぐご利用者様の笑顔">
+                    </div>
+                    <div class="hero__seal">
+                        <span class="num">8</span>
+                        少人数制<br>住宅型ホーム
+                    </div>
+                </div>
+            </div>
+
+            <span class="hero__scroll">SCROLL</span>
+        </section>
+
+        <!-- ============ 旧ヒーロー以下のコンテンツ（MS2/3で再設計予定） ============ -->
+        <div class="main-content" id="service" style="display:none">
             <div class="service-cards">
                 <a href="dayservice.html" class="service-card dayservice">
                     <!-- デイサービス：手のひらと葉のモチーフ -->
