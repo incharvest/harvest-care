@@ -7,7 +7,7 @@
 
 /* -- 1. デザイントークン -------------------------------------------------- */
 :root {
-  /* ベース：ウォームストーン */
+  /* ベース：ウォームストーン（index 用） */
   --stone:        #f7f4f0;
   --stone-warm:   #f0ebe4;
   --stone-deep:   #e8e0d8;
@@ -24,8 +24,13 @@
   --accent-deep:  #9c6b53;
 
   /* サービス別差し色 */
-  --day:          #6b8f7b;
-  --day-light:    #8ba99a;
+  --day:          #1e5c3a;
+  --day-light:    #4a7c59;
+  --day-pale:     #b8d4c0;
+  --day-accent:   #c8963c;
+  --day-accent-light: #e0b05e;
+  --day-cream:    #f4f8f2;
+  --day-cream-warm: #faf8f2;
   --rest:         #b8a07a;
   --rest-light:   #d0ba95;
 
@@ -36,7 +41,7 @@
   --ink-pale:     #a09898;
 
   /* フォント */
-  --font-display: 'Zen Old Mincho', 'Noto Serif JP', serif;
+  --font-display: 'Zen Old Mincho', 'Shippori Mincho', 'Noto Serif JP', serif;
   --font-body:    'Noto Sans JP', system-ui, -apple-system, sans-serif;
   --font-italic:  'Cormorant Garamond', 'Zen Old Mincho', serif;
 
@@ -48,6 +53,24 @@
   /* イージング */
   --ease:         cubic-bezier(0.4, 0, 0.2, 1);
   --ease-smooth:  cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* -- デイサービスのテーマ（深緑＋ゴールド） -- */
+body[data-theme="day"] {
+  --stone:       var(--day-cream);
+  --stone-warm:  var(--day-cream-warm);
+  --stone-deep:  var(--day-pale);
+  --brown:       var(--day);
+  --brown-light: var(--day-light);
+  --brown-pale:  var(--day-pale);
+  --accent:      var(--day-accent);
+  --accent-soft: var(--day-accent-light);
+  --accent-deep: #a07830;
+  --ink:         #0e1f16;
+  --ink-soft:    #2a4a35;
+  --ink-muted:   #4a6e55;
+  --shadow-deep: 0 16px 48px rgba(30, 92, 58, 0.18);
+  --shadow-paper: 0 4px 24px rgba(30, 92, 58, 0.10);
 }
 
 /* -- 2. ベース上書き ------------------------------------------------------ */
@@ -69,9 +92,8 @@ body {
 
 ::selection { background: var(--accent-soft); color: var(--ink); }
 
-/* -- 3. ヘッダー（既存を上書き） ----------------------------------------- */
-header.site-header,
-body > header {
+/* -- 3. ヘッダー（index のみ上書き） ------------------------------------- */
+body:not([data-theme]) > header {
   background: rgba(247, 244, 240, 0.72);
   backdrop-filter: blur(14px) saturate(1.1);
   -webkit-backdrop-filter: blur(14px) saturate(1.1);
@@ -79,13 +101,14 @@ body > header {
   transition: background 0.4s var(--ease), border-color 0.4s var(--ease), padding 0.4s var(--ease);
 }
 
-body > header.is-scrolled {
+body:not([data-theme]) > header.is-scrolled {
   background: rgba(247, 244, 240, 0.92);
   border-bottom-color: var(--stone-deep);
 }
 
 /* -- 4. ヒーロー（MS1 メイン） ------------------------------------------- */
-.hero {
+.hero,
+.hero-v2 {
   position: relative;
   min-height: 100vh;
   padding: 7.5rem 2rem 5rem;
@@ -96,6 +119,14 @@ body > header.is-scrolled {
   background:
     radial-gradient(ellipse 70% 60% at 12% 18%, rgba(107, 143, 123, 0.07), transparent 60%),
     radial-gradient(ellipse 60% 60% at 88% 82%, rgba(184, 160, 122, 0.09), transparent 65%),
+    var(--stone);
+}
+
+/* デイサービス用：緑のグラデーションウォッシュ */
+body[data-theme="day"] .hero-v2 {
+  background:
+    radial-gradient(ellipse 70% 60% at 12% 18%, rgba(30, 92, 58, 0.09), transparent 60%),
+    radial-gradient(ellipse 60% 60% at 88% 82%, rgba(200, 150, 60, 0.09), transparent 65%),
     var(--stone);
 }
 
