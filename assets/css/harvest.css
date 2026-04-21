@@ -73,6 +73,25 @@ body[data-theme="day"] {
   --shadow-paper: 0 4px 24px rgba(30, 92, 58, 0.10);
 }
 
+/* -- 有料老人ホームのテーマ（ダークブラウン＋タン） -- */
+body[data-theme="rest"] {
+  --stone:       #f5f1ec;
+  --stone-warm:  #ede6dd;
+  --stone-deep:  #dcd1c2;
+  --washi:       #fdfaf5;
+  --brown:       #4a4035;
+  --brown-light: #5d5347;
+  --brown-pale:  #b8a896;
+  --accent:      #b8956e;
+  --accent-soft: #c9a578;
+  --accent-deep: #9a7a56;
+  --ink:         #2a2420;
+  --ink-soft:    #3a322c;
+  --ink-muted:   #6b5f55;
+  --shadow-deep: 0 16px 48px rgba(74, 64, 53, 0.22);
+  --shadow-paper: 0 4px 24px rgba(74, 64, 53, 0.12);
+}
+
 /* -- 2. ベース上書き ------------------------------------------------------ */
 html {
   -webkit-text-size-adjust: 100%;
@@ -128,6 +147,97 @@ body[data-theme="day"] .hero-v2 {
     radial-gradient(ellipse 70% 60% at 12% 18%, rgba(30, 92, 58, 0.09), transparent 60%),
     radial-gradient(ellipse 60% 60% at 88% 82%, rgba(200, 150, 60, 0.09), transparent 65%),
     var(--stone);
+}
+
+/* 有料老人ホーム用：タンのグラデーションウォッシュ */
+body[data-theme="rest"] .hero-v2 {
+  background:
+    radial-gradient(ellipse 70% 60% at 12% 18%, rgba(184, 149, 110, 0.09), transparent 60%),
+    radial-gradient(ellipse 60% 60% at 88% 82%, rgba(74, 64, 53, 0.07), transparent 65%),
+    var(--stone);
+}
+
+/* -- フォトストリップ（装飾的写真帯） -------------------------------- */
+.photo-strip {
+  position: relative;
+  padding: clamp(3rem, 6vw, 5rem) 2rem;
+  background: var(--stone-warm);
+  overflow: hidden;
+}
+
+.photo-strip__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.photo-strip__item {
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-paper);
+  background: var(--stone);
+  transition: transform 0.6s var(--ease);
+}
+
+.photo-strip__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+
+.photo-strip__item:hover img { transform: scale(1.06); }
+
+.photo-strip__item--1 {
+  grid-column: 1 / span 4;
+  aspect-ratio: 3 / 4;
+  border-radius: 62% 38% 58% 42% / 48% 56% 44% 52%;
+  transform: rotate(-2deg);
+}
+.photo-strip__item--2 {
+  grid-column: 5 / span 4;
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  margin-top: 2rem;
+}
+.photo-strip__item--3 {
+  grid-column: 9 / span 4;
+  aspect-ratio: 3 / 4;
+  border-radius: 42% 58% 38% 62% / 56% 44% 52% 48%;
+  transform: rotate(2deg);
+  margin-top: -1.5rem;
+}
+
+.photo-strip__caption {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 2rem;
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 0.85rem;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.photo-strip__caption::before,
+.photo-strip__caption::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin: 0 1rem;
+}
+
+@media (max-width: 900px) {
+  .photo-strip__inner { grid-template-columns: repeat(6, 1fr); gap: 0.8rem; }
+  .photo-strip__item--1 { grid-column: 1 / span 3; }
+  .photo-strip__item--2 { grid-column: 4 / span 3; margin-top: 0; }
+  .photo-strip__item--3 { grid-column: 2 / span 4; margin-top: 0.5rem; }
 }
 
 .hero__inner {
