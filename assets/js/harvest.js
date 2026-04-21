@@ -171,6 +171,27 @@
     update();
   }
 
+  /* 10-a. スクロール進捗バー（存在する場合のみ） */
+  const sp = document.querySelector('.scroll-progress__bar');
+  if (sp) {
+    const updateSP = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const p = h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0;
+      sp.style.width = p + '%';
+    };
+    window.addEventListener('scroll', updateSP, { passive: true });
+    updateSP();
+  }
+
+  /* 10-b. stat-bar（スクロールで幅アニメ） */
+  document.querySelectorAll('.stat-bar').forEach((el) => {
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 85%',
+      onEnter: () => el.classList.add('is-active'),
+    });
+  });
+
   /* 10. 数字カウントアップ（後続MS用に既設） */
   document.querySelectorAll('[data-count]').forEach((el) => {
     const target = parseFloat(el.dataset.count);
