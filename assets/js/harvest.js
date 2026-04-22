@@ -12,22 +12,7 @@
   }
   gsap.registerPlugin(ScrollTrigger);
 
-  /* 1. Lenis 慣性スムーズスクロール（マウス操作の軽快さ優先） */
-  let lenis = null;
-  if (window.Lenis && !REDUCED) {
-    lenis = new window.Lenis({
-      duration: 0.7,
-      easing: (t) => 1 - Math.pow(1 - t, 3),
-      smoothWheel: true,
-      smoothTouch: false,
-      wheelMultiplier: 1.15,
-    });
-    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => lenis.raf(time * 1000));
-    gsap.ticker.lagSmoothing(0);
-  }
+  /* 1. スクロールはブラウザ標準を使用（Lenisは無効化） */
 
   /* 2. 文字単位分割 */
   function splitChars(el) {
