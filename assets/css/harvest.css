@@ -138,6 +138,21 @@ body:not([data-theme]) > header.is-scrolled {
   background: var(--stone);
 }
 
+/* index（テーマ無し）: 全体に温かいウォッシュとワイドなレイアウト */
+body:not([data-theme]) .hero {
+  background: linear-gradient(168deg, #f9f3e8 0%, #f7f4f0 48%, #f4ecdf 100%);
+}
+body:not([data-theme]) .hero__inner {
+  max-width: 1440px;
+}
+body:not([data-theme]) .hero__visual {
+  max-width: 620px;
+}
+body:not([data-theme]) .hero .doodle--md { width: 160px; }
+body:not([data-theme]) .hero .doodle--lg { width: 220px; }
+body:not([data-theme]) .hero .doodle--sm { width: 120px; }
+body:not([data-theme]) .hero .doodle--xs { width: 80px; }
+
 /* デイサービス用：緑のグラデーションウォッシュ */
 body[data-theme="day"] .hero-v2 {
   background:
