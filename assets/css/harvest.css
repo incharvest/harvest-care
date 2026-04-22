@@ -689,6 +689,14 @@ body[data-theme="care"] .quick-contact-item:hover {
   border: 1px solid var(--stone-deep);
   transform: rotate(8deg);
   z-index: 3;
+  animation: seal-breathe 4.2s ease-in-out infinite;
+}
+@keyframes seal-breathe {
+  0%, 100% { transform: rotate(6deg) scale(1); }
+  50%      { transform: rotate(10deg) scale(1.04); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__seal { animation: none; }
 }
 .hero__seal .num {
   display: block;
