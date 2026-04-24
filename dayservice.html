@@ -366,6 +366,82 @@
             margin: 1.5rem auto 0;
         }
 
+        /* 施設の様子ショーケース */
+        .facility-glimpse {
+            position: relative;
+            padding: clamp(3rem, 6vw, 5rem) 2rem;
+            background: var(--color-cream);
+            overflow: hidden;
+        }
+
+        .facility-glimpse__inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .facility-glimpse__figure {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 30px 60px rgba(60, 40, 10, 0.12);
+            aspect-ratio: 21 / 9;
+            max-height: 520px;
+            margin: 0;
+        }
+
+        .facility-glimpse__figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 1.6s cubic-bezier(.25,.8,.25,1);
+        }
+
+        .facility-glimpse__figure:hover img {
+            transform: scale(1.04);
+        }
+
+        .facility-glimpse__caption {
+            margin: 1.8rem 0 0;
+            font-style: italic;
+            font-size: 0.85rem;
+            letter-spacing: 0.28em;
+            color: var(--color-accent-dark);
+            text-transform: uppercase;
+        }
+
+        .facility-glimpse__caption::before,
+        .facility-glimpse__caption::after {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 1px;
+            background: var(--color-accent-dark);
+            vertical-align: middle;
+            margin: 0 1rem;
+        }
+
+        @media (max-width: 720px) {
+            .facility-glimpse {
+                padding: clamp(2rem, 5vw, 3rem) 1rem;
+            }
+            .facility-glimpse__figure {
+                aspect-ratio: 4 / 5;
+                max-height: none;
+                border-radius: 14px;
+            }
+            .facility-glimpse__caption {
+                font-size: 0.75rem;
+                letter-spacing: 0.22em;
+            }
+            .facility-glimpse__caption::before,
+            .facility-glimpse__caption::after {
+                width: 24px;
+                margin: 0 0.6rem;
+            }
+        }
+
         /* コンセプトセクション */
         .concept {
             background: var(--color-cream);
@@ -2964,7 +3040,7 @@
 
             <div class="hero__visual">
                 <div class="hero__photo">
-                    <img src="assets/photos/photo-recreation.png" alt="デイサービスでのレクリエーションの様子">
+                    <img src="assets/photos/real-dayservice-hero.png" alt="スタッフが利用者にお茶を提供する、ハーベストデイサービスの和やかな一コマ">
                 </div>
                 <div class="hero__seal">
                     <span class="num">9:00</span>
@@ -2974,6 +3050,16 @@
         </div>
 
         <span class="hero__scroll">SCROLL</span>
+    </section>
+
+    <!-- 施設の様子 -->
+    <section class="facility-glimpse" aria-label="施設の様子">
+        <div class="facility-glimpse__inner">
+            <figure class="facility-glimpse__figure">
+                <img src="assets/photos/real-dayservice-room.png" alt="ハーベストデイサービスの広々とした多目的ルーム" loading="lazy">
+            </figure>
+            <p class="facility-glimpse__caption">Everyday Moments</p>
+        </div>
     </section>
 
     <!-- コンセプトセクション -->
