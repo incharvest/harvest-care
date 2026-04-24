@@ -732,13 +732,20 @@ body[data-theme="care"] .quick-contact-item:hover {
 .doodle--xl { width: 230px; }
 
 /* ヒーロー内の配置 */
-.hero .doodle--flowers-tl  { top: 8%;  left: -2%; transform: rotate(-12deg); }
-.hero .doodle--leaves-br   { right: -3%; bottom: 6%; transform: rotate(18deg); }
-.hero .doodle--teacup-tr   { right: 8%; top: 12%; transform: rotate(8deg); }
-.hero .doodle--star-mid    { left: 38%; top: 12%; transform: rotate(-6deg); }
-.hero .doodle--swirl-bl    { left: -3%; bottom: 14%; transform: rotate(12deg); }
-.hero .doodle--wheat-ml    { left: 2%; top: 52%; transform: rotate(-10deg); }
-.hero .doodle--wheat-tr    { right: 22%; top: 4%; transform: rotate(14deg); }
+.hero .doodle--flowers-tl,
+.hero-v2 .doodle--flowers-tl  { top: 8%;  left: -2%; transform: rotate(-12deg); }
+.hero .doodle--leaves-br,
+.hero-v2 .doodle--leaves-br   { right: -3%; bottom: 6%; transform: rotate(18deg); }
+.hero .doodle--teacup-tr,
+.hero-v2 .doodle--teacup-tr   { right: 8%; top: 12%; transform: rotate(8deg); }
+.hero .doodle--star-mid,
+.hero-v2 .doodle--star-mid    { left: 38%; top: 12%; transform: rotate(-6deg); }
+.hero .doodle--swirl-bl,
+.hero-v2 .doodle--swirl-bl    { left: -3%; bottom: 14%; transform: rotate(12deg); }
+.hero .doodle--wheat-ml,
+.hero-v2 .doodle--wheat-ml    { left: 2%; top: 52%; transform: rotate(-10deg); }
+.hero .doodle--wheat-tr,
+.hero-v2 .doodle--wheat-tr    { right: 22%; top: 4%; transform: rotate(14deg); }
 
 /* -- 6. 波形セクションディバイダ ---------------------------------------- */
 .section-divider {
@@ -808,10 +815,17 @@ body[data-theme="care"] .quick-contact-item:hover {
   .hero__seal .num { font-size: 1.3rem; }
 
   .hero .doodle--xl,
-  .hero .doodle--lg { width: 110px; }
-  .hero .doodle--md { width: 80px; }
+  .hero .doodle--lg,
+  .hero-v2 .doodle--xl,
+  .hero-v2 .doodle--lg { width: 110px; }
+  .hero .doodle--md,
+  .hero-v2 .doodle--md { width: 80px; }
   .hero .doodle--star-mid,
-  .hero .doodle--swirl-bl { display: none; }
+  .hero .doodle--swirl-bl,
+  .hero-v2 .doodle--star-mid,
+  .hero-v2 .doodle--swirl-bl,
+  .hero .doodle--wheat-ml,
+  .hero-v2 .doodle--wheat-ml { display: none; }
 
   .hero__title { font-size: clamp(1.25rem, 5.1vw, 1.85rem); line-height: 1.55; letter-spacing: 0.01em; }
   .hero__title .scribble-under { display: inline-block; }
