@@ -737,6 +737,8 @@ body[data-theme="care"] .quick-contact-item:hover {
 .hero .doodle--teacup-tr   { right: 8%; top: 12%; transform: rotate(8deg); }
 .hero .doodle--star-mid    { left: 38%; top: 12%; transform: rotate(-6deg); }
 .hero .doodle--swirl-bl    { left: -3%; bottom: 14%; transform: rotate(12deg); }
+.hero .doodle--wheat-ml    { left: 2%; top: 52%; transform: rotate(-10deg); }
+.hero .doodle--wheat-tr    { right: 22%; top: 4%; transform: rotate(14deg); }
 
 /* -- 6. 波形セクションディバイダ ---------------------------------------- */
 .section-divider {

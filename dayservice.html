@@ -366,28 +366,114 @@
             margin: 1.5rem auto 0;
         }
 
-        /* 施設の様子ショーケース */
+        /* 施設の様子ショーケース（エディトリアル） */
         .facility-glimpse {
             position: relative;
-            padding: clamp(3rem, 6vw, 5rem) 2rem;
-            background: var(--color-cream);
+            padding: clamp(4rem, 8vw, 7rem) 2rem;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(232, 196, 138, 0.22) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 85% 85%, rgba(232, 164, 92, 0.18) 0%, transparent 55%),
+                radial-gradient(ellipse 40% 40% at 50% 95%, rgba(200, 153, 104, 0.12) 0%, transparent 60%),
+                var(--color-cream);
             overflow: hidden;
         }
 
+        /* 背景の柔らかい紙質テクスチャ */
+        .facility-glimpse::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(200, 153, 104, 0.08) 0, transparent 2px),
+                radial-gradient(circle at 60% 70%, rgba(200, 153, 104, 0.06) 0, transparent 2px),
+                radial-gradient(circle at 80% 20%, rgba(200, 153, 104, 0.07) 0, transparent 2px);
+            background-size: 120px 120px, 90px 90px, 160px 160px;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
         .facility-glimpse__inner {
-            max-width: 1280px;
+            max-width: 1080px;
             margin: 0 auto;
+            position: relative;
             text-align: center;
+            z-index: 3;
+        }
+
+        .facility-glimpse__kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-style: italic;
+            font-size: 0.82rem;
+            letter-spacing: 0.3em;
+            color: var(--color-accent-dark);
+            text-transform: uppercase;
+            margin: 0 0 0.8rem;
+        }
+
+        .facility-glimpse__kicker::before,
+        .facility-glimpse__kicker::after {
+            content: '';
+            display: inline-block;
+            width: 28px;
+            height: 1px;
+            background: var(--color-accent-dark);
+            opacity: 0.6;
+        }
+
+        .facility-glimpse__heading {
+            font-family: var(--font-display);
+            font-size: clamp(1.45rem, 3vw, 2rem);
+            color: var(--color-primary);
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            max-width: 720px;
+        }
+
+        .facility-glimpse__stage {
+            position: relative;
+            display: inline-block;
+            padding: 1.2rem;
+            margin: 0 auto;
+        }
+
+        /* 有機的なぼんやり光輪（写真の背後） */
+        .facility-glimpse__stage::before {
+            content: '';
+            position: absolute;
+            inset: -6%;
+            background: radial-gradient(ellipse, rgba(255, 232, 190, 0.55) 0%, transparent 65%);
+            filter: blur(28px);
+            z-index: 0;
         }
 
         .facility-glimpse__figure {
             position: relative;
+            margin: 0 auto;
+            max-width: 820px;
+            aspect-ratio: 16 / 10;
+            border-radius: 58% 42% 55% 45% / 48% 55% 45% 52%;
             overflow: hidden;
-            border-radius: 18px;
-            box-shadow: 0 30px 60px rgba(60, 40, 10, 0.12);
-            aspect-ratio: 21 / 9;
-            max-height: 520px;
-            margin: 0;
+            box-shadow:
+                0 30px 60px rgba(80, 55, 20, 0.22),
+                0 10px 25px rgba(200, 153, 104, 0.18),
+                inset 0 0 0 8px rgba(255, 255, 255, 0.4);
+            transform: rotate(-1.2deg);
+            z-index: 1;
+            transition: transform 1s cubic-bezier(.25,.8,.25,1);
+        }
+
+        .facility-glimpse__figure::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to bottom, transparent 55%, rgba(60, 35, 10, 0.18) 100%),
+                linear-gradient(135deg, rgba(255, 240, 210, 0.08) 0%, transparent 40%);
+            pointer-events: none;
         }
 
         .facility-glimpse__figure img {
@@ -395,51 +481,69 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 1.6s cubic-bezier(.25,.8,.25,1);
+            transition: transform 2s cubic-bezier(.25,.8,.25,1);
+            filter: saturate(0.95) contrast(1.02);
+        }
+
+        .facility-glimpse__figure:hover {
+            transform: rotate(0deg);
         }
 
         .facility-glimpse__figure:hover img {
-            transform: scale(1.04);
+            transform: scale(1.05);
         }
 
+        /* 写真下の手書き風キャプション */
         .facility-glimpse__caption {
-            margin: 1.8rem 0 0;
+            display: inline-block;
+            margin: 2.2rem 0 0;
             font-style: italic;
-            font-size: 0.85rem;
-            letter-spacing: 0.28em;
-            color: var(--color-accent-dark);
-            text-transform: uppercase;
+            font-size: 1rem;
+            color: var(--color-text-light);
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            position: relative;
+            z-index: 2;
         }
 
-        .facility-glimpse__caption::before,
-        .facility-glimpse__caption::after {
-            content: '';
-            display: inline-block;
-            width: 40px;
-            height: 1px;
-            background: var(--color-accent-dark);
-            vertical-align: middle;
-            margin: 0 1rem;
+        /* セクション内ドゥードル配置 */
+        .facility-glimpse .doodle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 2;
+            mix-blend-mode: multiply;
+            opacity: 0.82;
         }
+        .facility-glimpse .doodle img { width: 100%; height: auto; display: block; }
+
+        .facility-glimpse .doodle--wheat-tl  { width: 110px; top: 6%;  left: 4%;  transform: rotate(-22deg); }
+        .facility-glimpse .doodle--wheat-br  { width: 130px; bottom: 8%; right: 3%; transform: rotate(22deg); }
+        .facility-glimpse .doodle--sun-tr    { width: 75px; top: 12%; right: 12%; }
+        .facility-glimpse .doodle--leaves-bl { width: 140px; bottom: 4%; left: -1%; transform: rotate(-8deg); }
+        .facility-glimpse .doodle--flowers-mr{ width: 90px; top: 42%; right: 2%; transform: rotate(16deg); opacity: 0.7; }
+        .facility-glimpse .doodle--swirl-bm  { width: 70px; bottom: 30%; left: 46%; transform: rotate(12deg); opacity: 0.5; }
 
         @media (max-width: 720px) {
-            .facility-glimpse {
-                padding: clamp(2rem, 5vw, 3rem) 1rem;
-            }
+            .facility-glimpse { padding: clamp(2.8rem, 7vw, 4rem) 1rem; }
+            .facility-glimpse__stage { padding: 0.6rem; }
             .facility-glimpse__figure {
                 aspect-ratio: 4 / 5;
-                max-height: none;
-                border-radius: 14px;
+                border-radius: 54% 46% 58% 42% / 46% 58% 42% 54%;
+                box-shadow:
+                    0 18px 36px rgba(80, 55, 20, 0.2),
+                    inset 0 0 0 5px rgba(255, 255, 255, 0.4);
             }
-            .facility-glimpse__caption {
-                font-size: 0.75rem;
-                letter-spacing: 0.22em;
-            }
-            .facility-glimpse__caption::before,
-            .facility-glimpse__caption::after {
-                width: 24px;
-                margin: 0 0.6rem;
-            }
+            .facility-glimpse__heading { margin-bottom: 1.8rem; }
+            .facility-glimpse .doodle--wheat-tl  { width: 62px; top: 3%; left: 2%; }
+            .facility-glimpse .doodle--wheat-br  { width: 70px; bottom: 5%; right: 0%; }
+            .facility-glimpse .doodle--sun-tr    { width: 46px; top: 6%; right: 5%; }
+            .facility-glimpse .doodle--leaves-bl { width: 78px; bottom: 2%; left: -3%; }
+            .facility-glimpse .doodle--flowers-mr{ display: none; }
+            .facility-glimpse .doodle--swirl-bm  { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .facility-glimpse__figure { transform: none; }
         }
 
         /* コンセプトセクション */
@@ -3010,6 +3114,12 @@
         <div class="doodle doodle--sm doodle--swirl-bl" data-scroll="0.5">
             <img src="assets/doodles/doodle-swirl.png" alt="" loading="eager">
         </div>
+        <div class="doodle doodle--sm doodle--wheat-ml" data-scroll="0.45">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
+        </div>
+        <div class="doodle doodle--xs doodle--wheat-tr" data-scroll="0.35">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
+        </div>
 
         <div class="hero__inner">
             <div class="hero__copy">
@@ -3054,11 +3164,34 @@
 
     <!-- 施設の様子 -->
     <section class="facility-glimpse" aria-label="施設の様子">
+        <div class="doodle doodle--wheat-tl" data-scroll="0.35">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--wheat-br" data-scroll="0.45">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--sun-tr" data-scroll="0.3">
+            <img src="assets/doodles/doodle-sun.png" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--leaves-bl" data-scroll="0.5">
+            <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--flowers-mr" data-scroll="0.4">
+            <img src="assets/doodles/doodle-flowers.png" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--swirl-bm" data-scroll="0.55">
+            <img src="assets/doodles/doodle-swirl.png" alt="" loading="lazy">
+        </div>
+
         <div class="facility-glimpse__inner">
-            <figure class="facility-glimpse__figure">
-                <img src="assets/photos/real-dayservice-room.png" alt="ハーベストデイサービスの広々とした多目的ルーム" loading="lazy">
-            </figure>
-            <p class="facility-glimpse__caption">Everyday Moments</p>
+            <p class="facility-glimpse__kicker">Everyday at Harvest</p>
+            <h2 class="facility-glimpse__heading">光と木のぬくもりに包まれた、<br>私たちの居場所。</h2>
+            <div class="facility-glimpse__stage">
+                <figure class="facility-glimpse__figure">
+                    <img src="assets/photos/real-dayservice-room.png" alt="ハーベストデイサービスの広々とした多目的ルーム" loading="lazy">
+                </figure>
+            </div>
+            <p class="facility-glimpse__caption">〜 ハーベストが育てる、穏やかな日常 〜</p>
         </div>
     </section>
 
