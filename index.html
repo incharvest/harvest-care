@@ -1018,6 +1018,72 @@
                 height: 300px;
             }
         }
+
+        /* ============================================================
+         * ヒーローを写真背景型に（index専用オーバーライド）
+         * 正面玄関の写真を全体に敷き、左に温かいウォッシュで文字可読性を確保
+         * ============================================================ */
+        body:not([data-theme]) .hero {
+            background:
+                linear-gradient(95deg,
+                    rgba(252, 246, 234, 0.95) 0%,
+                    rgba(252, 246, 234, 0.82) 32%,
+                    rgba(252, 246, 234, 0.45) 60%,
+                    rgba(252, 246, 234, 0.20) 100%),
+                url('assets/photos/real-harvest-entrance.jpg') center/cover no-repeat;
+        }
+
+        /* 単一カラム化：文字を主役に、写真は全幅背景に */
+        body:not([data-theme]) .hero__inner {
+            grid-template-columns: minmax(0, 1fr);
+            max-width: 1280px;
+        }
+
+        /* 左側コピーの上限幅を制限し、右側に写真の見せ場を残す */
+        body:not([data-theme]) .hero__copy {
+            max-width: 640px;
+        }
+
+        /* 既存の右カラム写真は背景に統合したため非表示。シールは浮かせて維持 */
+        body:not([data-theme]) .hero__photo { display: none; }
+        body:not([data-theme]) .hero__visual {
+            position: absolute;
+            top: 7.5rem;
+            right: 2rem;
+            width: auto;
+            max-width: none;
+            z-index: 3;
+        }
+        body:not([data-theme]) .hero__seal {
+            position: static;
+        }
+
+        /* 文字に薄い影を入れて、写真側に寄ったときも読みやすく */
+        body:not([data-theme]) .hero__title,
+        body:not([data-theme]) .hero__lead,
+        body:not([data-theme]) .hero__kicker {
+            text-shadow: 0 1px 2px rgba(252, 246, 234, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            /* スマホは縦方向のグラデーションに切り替え（文字を上、写真を下） */
+            body:not([data-theme]) .hero {
+                background:
+                    linear-gradient(180deg,
+                        rgba(252, 246, 234, 0.94) 0%,
+                        rgba(252, 246, 234, 0.78) 45%,
+                        rgba(252, 246, 234, 0.42) 80%,
+                        rgba(252, 246, 234, 0.25) 100%),
+                    url('assets/photos/real-harvest-entrance.jpg') center bottom/cover no-repeat;
+            }
+            body:not([data-theme]) .hero__copy { max-width: 100%; }
+            body:not([data-theme]) .hero__visual {
+                position: absolute;
+                top: auto;
+                bottom: 1.5rem;
+                right: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
