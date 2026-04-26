@@ -1024,13 +1024,16 @@
          * 正面玄関の写真を全体に敷き、左に温かいウォッシュで文字可読性を確保
          * ============================================================ */
         body:not([data-theme]) .hero {
-            background:
+            background-color: #f5ecdc;
+            background-image:
                 linear-gradient(95deg,
-                    rgba(252, 246, 234, 0.95) 0%,
-                    rgba(252, 246, 234, 0.82) 32%,
-                    rgba(252, 246, 234, 0.45) 60%,
-                    rgba(252, 246, 234, 0.20) 100%),
-                url('assets/photos/real-harvest-entrance.jpg') center/cover no-repeat;
+                    rgba(252, 246, 234, 0.55) 0%,
+                    rgba(252, 246, 234, 0.22) 38%,
+                    rgba(252, 246, 234, 0.00) 75%),
+                url('assets/photos/real-harvest-entrance.jpg');
+            background-size: auto, contain;
+            background-position: center, center;
+            background-repeat: no-repeat, no-repeat;
         }
 
         /* 単一カラム化：文字を主役に、写真は全幅背景に */
@@ -1068,13 +1071,17 @@
         @media (max-width: 768px) {
             /* スマホは縦方向のグラデーションに切り替え（文字を上、写真を下） */
             body:not([data-theme]) .hero {
-                background:
+                background-color: #f5ecdc;
+                background-image:
                     linear-gradient(180deg,
-                        rgba(252, 246, 234, 0.94) 0%,
-                        rgba(252, 246, 234, 0.78) 45%,
-                        rgba(252, 246, 234, 0.42) 80%,
-                        rgba(252, 246, 234, 0.25) 100%),
-                    url('assets/photos/real-harvest-entrance.jpg') center bottom/cover no-repeat;
+                        rgba(252, 246, 234, 0.85) 0%,
+                        rgba(252, 246, 234, 0.45) 40%,
+                        rgba(252, 246, 234, 0.10) 75%,
+                        rgba(252, 246, 234, 0.00) 100%),
+                    url('assets/photos/real-harvest-entrance.jpg');
+                background-size: auto, contain;
+                background-position: center, center bottom;
+                background-repeat: no-repeat, no-repeat;
             }
             body:not([data-theme]) .hero__copy { max-width: 100%; }
             body:not([data-theme]) .hero__visual {
