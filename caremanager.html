@@ -378,7 +378,8 @@
         }
 
         .bath-photo-grid,
-        .toilet-photo-grid {
+        .toilet-photo-grid,
+        .rehab-photo-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0.6rem;
@@ -387,7 +388,8 @@
         }
 
         .bath-photo-grid img,
-        .toilet-photo-grid img {
+        .toilet-photo-grid img,
+        .rehab-photo-grid img {
             width: 100%;
             aspect-ratio: 4/3;
             object-fit: cover;
@@ -398,7 +400,8 @@
         }
 
         .bath-photo-grid img:hover,
-        .toilet-photo-grid img:hover {
+        .toilet-photo-grid img:hover,
+        .rehab-photo-grid img:hover {
             opacity: 0.85;
         }
 
@@ -1137,11 +1140,11 @@
                         </li>
                     </ul>
                     <p class="detail-note">「歩きたい」「一人でトイレに行きたい」など、ご本人の目標に合わせたプログラムを提供します</p>
-                    <div class="photo-placeholder-grid">
-                        <div class="photo-placeholder">写真1</div>
-                        <div class="photo-placeholder">写真2</div>
-                        <div class="photo-placeholder">写真3</div>
-                        <div class="photo-placeholder">写真4</div>
+                    <div class="rehab-photo-grid">
+                        <img src="images/rehab/rehab-1.jpg" alt="温熱・圧迫アタッチメントによる機能訓練" loading="lazy">
+                        <img src="images/rehab/rehab-2.jpg" alt="首・肩への経穴（ツボ）刺激ケアの様子" loading="lazy">
+                        <img src="images/rehab/rehab-3.jpg" alt="ドクターメドマー（足全体エアマッサージ）使用シーン" loading="lazy">
+                        <img src="images/rehab/rehab-4.jpg" alt="フットマッサージャーによる足裏ケア" loading="lazy">
                     </div>
                 </div>
 
@@ -1474,7 +1477,7 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
 
-    document.querySelectorAll('.bath-photo-grid img, .toilet-photo-grid img').forEach(img => {
+    document.querySelectorAll('.bath-photo-grid img, .toilet-photo-grid img, .rehab-photo-grid img').forEach(img => {
         img.addEventListener('click', () => {
             lightboxImg.src = img.src;
             lightboxImg.alt = img.alt;
