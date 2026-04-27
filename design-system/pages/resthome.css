@@ -1204,6 +1204,31 @@
 }
 
 /* ================================================================
+ * Brand Marks Decorative Layer（背景の薄いロゴ装飾）
+ * ============================================================= */
+.brand-marks-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.brand-marks-layer .mark {
+  position: absolute;
+  opacity: 0.10;
+}
+.brand-marks-layer .mark img { width: 100%; height: auto; display: block; }
+.brand-marks-layer .mark--xs { width: 30px; }
+.brand-marks-layer .mark--sm { width: 42px; }
+.brand-marks-layer .mark--md { width: 56px; }
+.brand-marks-layer .mark--lg { width: 72px; }
+@media (max-width: 720px) {
+  .brand-marks-layer .mark--lg { width: 48px; }
+  .brand-marks-layer .mark--md { width: 36px; }
+  .brand-marks-layer .mark--sm { width: 26px; }
+  .brand-marks-layer .mark--xs { display: none; }
+}
+
+/* ================================================================
  * Care Detail Section（設備のおしゃれショーケース）
  * ============================================================= */
 #care-detail {

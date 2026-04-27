@@ -783,6 +783,33 @@
             overflow: hidden;
         }
 
+        /* ブランドマーク装飾レイヤー */
+        .brand-marks-layer {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .brand-marks-layer .mark {
+            position: absolute;
+            opacity: 0.10;
+        }
+        .brand-marks-layer .mark img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .brand-marks-layer .mark--xs { width: 30px; }
+        .brand-marks-layer .mark--sm { width: 42px; }
+        .brand-marks-layer .mark--md { width: 56px; }
+        .brand-marks-layer .mark--lg { width: 72px; }
+        @media (max-width: 720px) {
+            .brand-marks-layer .mark--lg { width: 48px; }
+            .brand-marks-layer .mark--md { width: 36px; }
+            .brand-marks-layer .mark--sm { width: 26px; }
+            .brand-marks-layer .mark--xs { display: none; }
+        }
+
         .section-concept .doodle {
             position: absolute;
             pointer-events: none;
@@ -1302,6 +1329,14 @@
 
     <!-- コンセプトセクション -->
     <section class="section-concept">
+        <div class="brand-marks-layer" aria-hidden="true">
+            <div class="mark mark--md" style="top: 18%; left: 8%; transform: rotate(-10deg);"><img src="assets/logos/04-wheat-emblem.svg" alt=""></div>
+            <div class="mark mark--sm" style="top: 28%; right: 12%; transform: rotate(15deg);"><img src="assets/logos/01-wheat-geometric.svg" alt=""></div>
+            <div class="mark mark--xs" style="top: 56%; left: 18%; transform: rotate(-18deg);"><img src="assets/logos/13-leaf-pair.svg" alt=""></div>
+            <div class="mark mark--md" style="bottom: 18%; right: 6%; transform: rotate(8deg);"><img src="assets/logos/17-monogram-harvest.svg" alt=""></div>
+            <div class="mark mark--sm" style="bottom: 30%; left: 5%; transform: rotate(20deg);"><img src="assets/logos/18-wheat-cluster.svg" alt=""></div>
+            <div class="mark mark--xs" style="top: 42%; right: 22%; transform: rotate(-10deg);"><img src="assets/logos/06-monogram-h.svg" alt=""></div>
+        </div>
         <div class="doodle doodle--wheat-tl" data-scroll="0.3">
             <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
         </div>
