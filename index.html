@@ -1051,12 +1051,12 @@
          * 正面玄関の写真を全体に敷き、左に温かいウォッシュで文字可読性を確保
          * ============================================================ */
         body:not([data-theme]) .hero {
-            background-color: #f5ecdc;
+            background-color: var(--color-bg);
             background-image:
                 linear-gradient(95deg,
-                    rgba(252, 246, 234, 0.55) 0%,
-                    rgba(252, 246, 234, 0.22) 38%,
-                    rgba(252, 246, 234, 0.00) 75%),
+                    rgba(247, 244, 240, 0.55) 0%,
+                    rgba(247, 244, 240, 0.22) 38%,
+                    rgba(247, 244, 240, 0.00) 75%),
                 url('assets/photos/hero-entrance-v3.jpg');
             background-size: auto, cover;
             background-position: center, center;
@@ -1097,19 +1097,19 @@
         body:not([data-theme]) .hero__title,
         body:not([data-theme]) .hero__lead,
         body:not([data-theme]) .hero__kicker {
-            text-shadow: 0 1px 2px rgba(252, 246, 234, 0.6);
+            text-shadow: 0 1px 2px rgba(247, 244, 240, 0.6);
         }
 
         @media (max-width: 768px) {
             /* スマホは縦方向のグラデーションに切り替え（文字を上、写真を下） */
             body:not([data-theme]) .hero {
-                background-color: #f5ecdc;
+                background-color: var(--color-bg);
                 background-image:
                     linear-gradient(180deg,
-                        rgba(252, 246, 234, 0.85) 0%,
-                        rgba(252, 246, 234, 0.45) 40%,
-                        rgba(252, 246, 234, 0.10) 75%,
-                        rgba(252, 246, 234, 0.00) 100%),
+                        rgba(247, 244, 240, 0.85) 0%,
+                        rgba(247, 244, 240, 0.45) 40%,
+                        rgba(247, 244, 240, 0.10) 75%,
+                        rgba(247, 244, 240, 0.00) 100%),
                     url('assets/photos/real-harvest-entrance.jpg');
                 background-size: auto, contain;
                 background-position: center, center;
