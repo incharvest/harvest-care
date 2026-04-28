@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice">
+  <rect width="300" height="220" fill="#F4E4C1"/>
+  <!-- 円卓 -->
+  <ellipse cx="150" cy="160" rx="105" ry="32" fill="#C38D5E" opacity="0.5"/>
+  <!-- 折り紙やお茶 -->
+  <polygon points="100,140 115,120 130,140 115,155" fill="#85C1A3"/>
+  <polygon points="170,142 185,122 200,142 185,157" fill="#E8A87C"/>
+  <circle cx="150" cy="148" r="10" fill="#FBF9F4"/>
+  <circle cx="150" cy="148" r="6" fill="#C38D5E" opacity="0.7"/>
+  <!-- 人物 -->
+  <circle cx="80"  cy="92" r="14" fill="#85C1A3"/>
+  <circle cx="220" cy="92" r="14" fill="#E8A87C"/>
+  <text x="150" y="65" text-anchor="middle" font-family="'Noto Sans JP', sans-serif" font-size="13" fill="#3D3128" letter-spacing="2">写真がここに入ります</text>
+</svg>

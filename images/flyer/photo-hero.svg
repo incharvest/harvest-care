@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="heroBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4E4C1"/>
+      <stop offset="100%" stop-color="#E8A87C" stop-opacity="0.65"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="600" fill="url(#heroBg)"/>
+  <!-- 窓辺の柔らかい光 -->
+  <rect x="40" y="50" width="120" height="170" rx="6" fill="#FBF9F4" opacity="0.55"/>
+  <line x1="100" y1="50" x2="100" y2="220" stroke="#C38D5E" stroke-width="1" opacity="0.4"/>
+  <line x1="40" y1="135" x2="160" y2="135" stroke="#C38D5E" stroke-width="1" opacity="0.4"/>
+  <!-- 人物のシルエット 3人 -->
+  <g opacity="0.85">
+    <circle cx="140" cy="380" r="34" fill="#C38D5E"/>
+    <path d="M 90 470 Q 140 420 190 470 L 190 540 L 90 540 Z" fill="#C38D5E"/>
+    <circle cx="220" cy="370" r="30" fill="#85C1A3"/>
+    <path d="M 175 450 Q 220 410 265 450 L 265 540 L 175 540 Z" fill="#85C1A3"/>
+    <circle cx="300" cy="385" r="32" fill="#E8A87C"/>
+    <path d="M 250 470 Q 300 425 350 470 L 350 540 L 250 540 Z" fill="#E8A87C"/>
+  </g>
+  <!-- ラベル -->
+  <rect x="120" y="270" width="160" height="36" rx="18" fill="#FBF9F4" opacity="0.85"/>
+  <text x="200" y="293" text-anchor="middle" font-family="'Noto Sans JP', sans-serif" font-size="13" fill="#3D3128" letter-spacing="2">写真がここに入ります</text>
+</svg>

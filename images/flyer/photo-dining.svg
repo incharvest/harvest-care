@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice">
+  <rect width="300" height="220" fill="#F4E4C1"/>
+  <rect x="40" y="120" width="220" height="60" rx="3" fill="#C38D5E" opacity="0.55"/>
+  <circle cx="90"  cy="110" r="22" fill="#FBF9F4"/>
+  <circle cx="150" cy="110" r="22" fill="#FBF9F4"/>
+  <circle cx="210" cy="110" r="22" fill="#FBF9F4"/>
+  <circle cx="90"  cy="110" r="14" fill="#85C1A3" opacity="0.55"/>
+  <circle cx="150" cy="110" r="14" fill="#E8A87C" opacity="0.55"/>
+  <circle cx="210" cy="110" r="14" fill="#C38D5E" opacity="0.45"/>
+  <text x="150" y="60" text-anchor="middle" font-family="'Noto Sans JP', sans-serif" font-size="13" fill="#3D3128" letter-spacing="2">写真がここに入ります</text>
+</svg>
