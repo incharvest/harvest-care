@@ -624,7 +624,7 @@
 
         @media (max-width: 768px) {
             header { padding: 0.7rem 1rem; }
-            nav, .header-tel { display: none; }
+            header nav, .header-tel { display: none; }
             .logo-text { font-size: 1.1rem; }
             .hero { min-height: 45vh; }
             .hero h1 { font-size: 1.6rem; }
@@ -638,6 +638,113 @@
             .job-table td { display: block; padding: 0 1rem 0.8rem; }
             .apply-phone { font-size: 1.4rem; }
             .footer-nav a { display: inline-block; margin: 0.3rem 0.6rem; }
+        }
+
+        /* ============================================================
+         * ハンバーガーメニュー（モバイル）
+         * ============================================================ */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-toggle-line {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-white);
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        .nav-toggle.is-open .nav-toggle-line:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-toggle.is-open .nav-toggle-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.is-open .nav-toggle-line:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .nav-mobile {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--color-primary);
+            z-index: 1200;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.8rem;
+            padding: 2rem;
+        }
+
+        .nav-mobile.is-open {
+            display: flex;
+        }
+
+        .nav-mobile-link {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            letter-spacing: 0.12em;
+            color: var(--color-white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-mobile-link:hover {
+            color: var(--color-accent-light);
+        }
+
+        .nav-mobile-tel {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-accent-light);
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            width: 220px;
+            justify-content: center;
+        }
+
+        .nav-mobile-close {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 2rem;
+            line-height: 1;
+            transition: var(--transition);
+            padding: 4px 10px;
+        }
+
+        .nav-mobile-close:hover {
+            color: var(--color-accent-light);
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
         }
     </style>
 </head>
@@ -661,8 +768,27 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 099-296-9844
             </a>
+            <button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false" id="nav-toggle">
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
         </div>
     </header>
+
+    <!-- モバイルナビゲーション -->
+    <div class="nav-mobile" id="nav-mobile" role="dialog" aria-label="モバイルメニュー">
+        <button class="nav-mobile-close" id="nav-mobile-close" aria-label="メニューを閉じる">&times;</button>
+        <a href="index.html" class="nav-mobile-link">ホーム</a>
+        <a href="dayservice.html" class="nav-mobile-link">デイサービス</a>
+        <a href="resthome.html" class="nav-mobile-link">有料老人ホーム</a>
+        <a href="caremanager.html" class="nav-mobile-link">ケアマネの方へ</a>
+        <a href="recruit.html" class="nav-mobile-link">採用情報</a>
+        <a href="tel:099-296-9844" class="nav-mobile-tel">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            099-296-9844
+        </a>
+    </div>
 
     <section class="hero-v2" aria-label="ヒーロー">
         <div class="hero__inner">
@@ -1102,5 +1228,45 @@
         </div>
         <p class="footer-copyright">&copy; 2025 ハーベスト All Rights Reserved.</p>
     </footer>
+
+    <script>
+        /* ハンバーガーメニュー */
+        (function() {
+            function init() {
+                var toggle = document.getElementById('nav-toggle');
+                var mobileNav = document.getElementById('nav-mobile');
+                var closeBtn = document.getElementById('nav-mobile-close');
+                if (!toggle || !mobileNav || !closeBtn) return;
+
+                function open() {
+                    mobileNav.classList.add('is-open');
+                    toggle.classList.add('is-open');
+                    toggle.setAttribute('aria-expanded', 'true');
+                    document.body.style.overflow = 'hidden';
+                }
+                function close() {
+                    mobileNav.classList.remove('is-open');
+                    toggle.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+                toggle.addEventListener('click', function() {
+                    mobileNav.classList.contains('is-open') ? close() : open();
+                });
+                closeBtn.addEventListener('click', close);
+                mobileNav.querySelectorAll('a').forEach(function(a) {
+                    a.addEventListener('click', close);
+                });
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) close();
+                });
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
 </body>
 </html>
