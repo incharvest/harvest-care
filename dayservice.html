@@ -2412,7 +2412,7 @@
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.5);
-            z-index: 998;
+            z-index: 1100;
         }
 
         .mobile-nav-overlay.open {
@@ -2425,11 +2425,13 @@
             top: 0;
             right: 0;
             width: min(320px, 85vw);
-            height: 100%;
+            height: 100vh;
+            height: 100dvh;
             background: var(--color-primary);
-            z-index: 999;
+            z-index: 1200;
             flex-direction: column;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .mobile-nav.open {
@@ -4178,45 +4180,59 @@
     <!-- Hamburger Menu JS -->
     <script>
         (function() {
-            var btn    = document.getElementById('hamburger-btn');
-            var nav    = document.getElementById('mobile-nav');
-            var overlay = document.getElementById('mobile-nav-overlay');
-            var closeBtn = document.getElementById('mobile-nav-close');
-            var body   = document.body;
+            function init() {
+                var btn    = document.getElementById('hamburger-btn');
+                var nav    = document.getElementById('mobile-nav');
+                var overlay = document.getElementById('mobile-nav-overlay');
+                var closeBtn = document.getElementById('mobile-nav-close');
+                var body   = document.body;
 
-            function openNav() {
-                nav.classList.add('open');
-                overlay.classList.add('open');
-                btn.classList.add('open');
-                btn.setAttribute('aria-expanded', 'true');
-                overlay.setAttribute('aria-hidden', 'false');
-                body.classList.add('nav-open');
-                closeBtn.focus();
+                if (!btn || !nav || !overlay || !closeBtn) {
+                    console.warn('[hamburger] 必要な要素が見つかりません', { btn: !!btn, nav: !!nav, overlay: !!overlay, closeBtn: !!closeBtn });
+                    return;
+                }
+
+                function openNav(e) {
+                    if (e) { e.preventDefault(); e.stopPropagation(); }
+                    nav.classList.add('open');
+                    overlay.classList.add('open');
+                    btn.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
+                    overlay.setAttribute('aria-hidden', 'false');
+                    body.classList.add('nav-open');
+                    closeBtn.focus();
+                }
+
+                function closeNav() {
+                    nav.classList.remove('open');
+                    overlay.classList.remove('open');
+                    btn.classList.remove('open');
+                    btn.setAttribute('aria-expanded', 'false');
+                    overlay.setAttribute('aria-hidden', 'true');
+                    body.classList.remove('nav-open');
+                    btn.focus();
+                }
+
+                btn.addEventListener('click', openNav);
+                closeBtn.addEventListener('click', closeNav);
+                overlay.addEventListener('click', closeNav);
+
+                // Close on nav link click
+                nav.querySelectorAll('a').forEach(function(a) {
+                    a.addEventListener('click', closeNav);
+                });
+
+                // Close on Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && nav.classList.contains('open')) closeNav();
+                });
             }
 
-            function closeNav() {
-                nav.classList.remove('open');
-                overlay.classList.remove('open');
-                btn.classList.remove('open');
-                btn.setAttribute('aria-expanded', 'false');
-                overlay.setAttribute('aria-hidden', 'true');
-                body.classList.remove('nav-open');
-                btn.focus();
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
             }
-
-            btn.addEventListener('click', openNav);
-            closeBtn.addEventListener('click', closeNav);
-            overlay.addEventListener('click', closeNav);
-
-            // Close on nav link click
-            nav.querySelectorAll('a').forEach(function(a) {
-                a.addEventListener('click', closeNav);
-            });
-
-            // Close on Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && nav.classList.contains('open')) closeNav();
-            });
         })();
     </script>
 </body>
