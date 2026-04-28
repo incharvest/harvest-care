@@ -1061,6 +1061,11 @@
             background-size: auto, cover;
             background-position: center, center;
             background-repeat: no-repeat, no-repeat;
+            /* main の align-items:center / padding に巻き込まれず全幅まで広げる */
+            align-self: stretch;
+            width: calc(100% + 4rem);
+            margin-left: -2rem;
+            margin-right: -2rem;
         }
 
         /* 単一カラム化：文字を主役に、写真は全幅背景に */
