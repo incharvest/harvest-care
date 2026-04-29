@@ -2371,6 +2371,10 @@
             padding: 8px;
             width: 44px;
             height: 44px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+            z-index: 1001;
         }
 
         .hamburger-btn .bar {
@@ -2415,10 +2419,6 @@
             z-index: 1100;
         }
 
-        .mobile-nav-overlay.open {
-            display: block;
-        }
-
         .mobile-nav {
             display: none;
             position: fixed;
@@ -2435,7 +2435,10 @@
         }
 
         .mobile-nav.open {
-            display: flex;
+            display: flex !important;
+        }
+        .mobile-nav-overlay.open {
+            display: block !important;
         }
 
         .mobile-nav-header {
@@ -4197,23 +4200,30 @@
                     nav.classList.add('open');
                     overlay.classList.add('open');
                     btn.classList.add('open');
+                    // CSS が効かない場合のフォールバックとしてインラインスタイルも適用
+                    nav.style.display = 'flex';
+                    overlay.style.display = 'block';
                     btn.setAttribute('aria-expanded', 'true');
                     overlay.setAttribute('aria-hidden', 'false');
                     body.classList.add('nav-open');
-                    closeBtn.focus();
+                    try { closeBtn.focus(); } catch (_) {}
                 }
 
                 function closeNav() {
                     nav.classList.remove('open');
                     overlay.classList.remove('open');
                     btn.classList.remove('open');
+                    nav.style.display = '';
+                    overlay.style.display = '';
                     btn.setAttribute('aria-expanded', 'false');
                     overlay.setAttribute('aria-hidden', 'true');
                     body.classList.remove('nav-open');
-                    btn.focus();
+                    try { btn.focus(); } catch (_) {}
                 }
 
                 btn.addEventListener('click', openNav);
+                // iOS Safari でクリックイベントが発火しないケースに備えてタッチもバインド
+                btn.addEventListener('touchend', function(e) { e.preventDefault(); openNav(e); }, { passive: false });
                 closeBtn.addEventListener('click', closeNav);
                 overlay.addEventListener('click', closeNav);
 
