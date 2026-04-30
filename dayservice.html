@@ -2856,9 +2856,170 @@
                 padding: 0 0.25rem;
             }
         }
+
+        /* ============================================================
+         * HBM = Hamburger Menu (新実装 / checkbox-hack / JS不要で動作)
+         * 旧 .mobile-nav 系統と一切干渉しないよう新クラス名で構築。
+         * Safari のキャッシュを確実に破壊するためにも別名を採用。
+         * ============================================================ */
+        .hbm-state {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .hbm-trigger {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            width: 44px;
+            height: 44px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+            z-index: 1001;
+        }
+        .hbm-trigger .bar {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.92);
+            transition: transform 0.25s ease, opacity 0.2s ease;
+            transform-origin: center;
+        }
+        @media (max-width: 900px) {
+            .hbm-trigger { display: flex; }
+        }
+        /* チェック時はバーをXに変形 */
+        .hbm-state:checked ~ header .hbm-trigger .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .hbm-state:checked ~ header .hbm-trigger .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .hbm-state:checked ~ header .hbm-trigger .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .hbm-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+            cursor: pointer;
+        }
+        .hbm-state:checked ~ .hbm-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .hbm-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: min(320px, 85vw);
+            height: 100vh;
+            height: 100dvh;
+            background: var(--color-primary);
+            z-index: 1200;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: -8px 0 24px rgba(0, 0, 0, 0.18);
+        }
+        .hbm-state:checked ~ .hbm-drawer {
+            transform: translateX(0);
+        }
+
+        .hbm-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .hbm-title {
+            font-family: var(--font-display);
+            color: var(--color-white);
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+        }
+        .hbm-close {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            color: rgba(255, 255, 255, 0.85);
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1.4rem;
+            line-height: 1;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hbm-close:hover { color: var(--color-accent); }
+
+        .hbm-links {
+            list-style: none;
+            padding: 1rem 0;
+            margin: 0;
+            flex: 1;
+        }
+        .hbm-links li a {
+            display: block;
+            padding: 0.95rem 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hbm-links li a:hover {
+            color: var(--color-accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .hbm-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .hbm-tel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        /* 開いている間はページスクロールロック（JS が body.hbm-open を付与） */
+        body.hbm-open {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body data-theme="day">
+    <!-- HBM checkbox state — JS不要のメニュー開閉トグル状態 -->
+    <input type="checkbox" id="hbm-toggle" class="hbm-state" aria-hidden="true">
+
     <!-- ヘッダー -->
     <header>
         <div class="header-inner">
@@ -2900,26 +3061,26 @@
                 <a href="tel:099-296-9844" class="header-contact-btn tel">TEL</a>
                 <a href="#contact" class="header-contact-btn mail">MAIL</a>
             </div>
-            <button class="hamburger-btn" id="hamburger-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-nav">
+            <label for="hbm-toggle" class="hbm-trigger" id="hamburger-btn" role="button" aria-label="メニューを開く" tabindex="0">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </button>
+            </label>
         </div>
     </header>
 
-    <!-- Mobile Nav Overlay -->
-    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <!-- HBM オーバーレイ（タップで閉じる label） -->
+    <label for="hbm-toggle" class="hbm-overlay" aria-hidden="true"></label>
 
-    <!-- Mobile Nav Drawer (div ベース: <nav> セレクタ衝突を回避) -->
-    <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="モバイルメニュー">
-        <div class="mobile-nav-header">
-            <span class="mobile-nav-title">ハーベスト</span>
-            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="メニューを閉じる">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 2L16 16M16 2L2 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </button>
+    <!-- HBM ドロワー本体 -->
+    <aside class="hbm-drawer" id="mobile-nav" role="dialog" aria-modal="true" aria-label="モバイルメニュー">
+        <div class="hbm-header">
+            <span class="hbm-title">ハーベスト</span>
+            <label for="hbm-toggle" class="hbm-close" role="button" aria-label="メニューを閉じる" tabindex="0">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 2L16 16M16 2L2 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </label>
         </div>
-        <ul class="mobile-nav-links">
+        <ul class="hbm-links">
             <li><a href="#concept">コンセプト</a></li>
             <li><a href="#features">サービスの特徴</a></li>
             <li><a href="#equipment">充実の設備</a></li>
@@ -2930,13 +3091,13 @@
             <li><a href="caremanager.html">ケアマネの方へ</a></li>
             <li><a href="recruit.html">採用情報</a></li>
         </ul>
-        <div class="mobile-nav-footer">
-            <a href="tel:099-296-9844" class="mobile-tel-link">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div class="hbm-footer">
+            <a href="tel:099-296-9844" class="hbm-tel">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 099-296-9844
             </a>
         </div>
-    </div>
+    </aside>
 
     <!-- ヒーローセクション -->
     <section class="hero-v2">
@@ -4192,57 +4353,42 @@
             </div>
         </div>
     </footer>
-    <!-- Hamburger Menu JS -->
+    <!-- HBM (Hamburger Menu) のJS強化: チェックボックス連動の補助 -->
+    <!-- ※基本動作は HTML+CSS だけで完結。以下はリンクタップで閉じる等の体験向上のみ。 -->
     <script>
         (function() {
             function init() {
-                var btn    = document.getElementById('hamburger-btn');
-                var nav    = document.getElementById('mobile-nav');
-                var overlay = document.getElementById('mobile-nav-overlay');
-                var closeBtn = document.getElementById('mobile-nav-close');
-                var body   = document.body;
+                var toggle = document.getElementById('hbm-toggle');
+                var drawer = document.getElementById('mobile-nav');
+                if (!toggle || !drawer) return;
 
-                if (!btn || !nav || !overlay || !closeBtn) {
-                    console.warn('[hamburger] 必要な要素が見つかりません', { btn: !!btn, nav: !!nav, overlay: !!overlay, closeBtn: !!closeBtn });
-                    return;
-                }
-
-                function openNav(e) {
-                    if (e) { e.preventDefault(); e.stopPropagation(); }
-                    nav.classList.add('open');
-                    overlay.classList.add('open');
-                    btn.classList.add('open');
-                    btn.setAttribute('aria-expanded', 'true');
-                    overlay.setAttribute('aria-hidden', 'false');
-                    body.classList.add('nav-open');
-                    try { closeBtn.focus(); } catch (_) {}
-                }
-
-                function closeNav() {
-                    nav.classList.remove('open');
-                    overlay.classList.remove('open');
-                    btn.classList.remove('open');
-                    btn.setAttribute('aria-expanded', 'false');
-                    overlay.setAttribute('aria-hidden', 'true');
-                    body.classList.remove('nav-open');
-                    try { btn.focus(); } catch (_) {}
-                }
-
-                btn.addEventListener('click', openNav);
-                // iOS Safari でクリックイベントが発火しないケースに備えてタッチもバインド
-                btn.addEventListener('touchend', function(e) { e.preventDefault(); openNav(e); }, { passive: false });
-                closeBtn.addEventListener('click', closeNav);
-                overlay.addEventListener('click', closeNav);
-
-                // Close on nav link click
-                nav.querySelectorAll('a').forEach(function(a) {
-                    a.addEventListener('click', closeNav);
+                // メニュー内のリンクをタップしたら自動で閉じる
+                drawer.querySelectorAll('a').forEach(function(a) {
+                    a.addEventListener('click', function() {
+                        toggle.checked = false;
+                    });
                 });
 
-                // Close on Escape key
+                // Escape キーで閉じる
                 document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && nav.classList.contains('open')) closeNav();
+                    if (e.key === 'Escape' && toggle.checked) {
+                        toggle.checked = false;
+                    }
                 });
+
+                // チェック状態の変化に応じて trigger の aria-label と body のスクロールロックを更新
+                function syncState() {
+                    var trigger = document.getElementById('hamburger-btn');
+                    if (toggle.checked) {
+                        document.body.classList.add('hbm-open');
+                        if (trigger) trigger.setAttribute('aria-label', 'メニューを閉じる');
+                    } else {
+                        document.body.classList.remove('hbm-open');
+                        if (trigger) trigger.setAttribute('aria-label', 'メニューを開く');
+                    }
+                }
+                toggle.addEventListener('change', syncState);
+                syncState();
             }
 
             if (document.readyState === 'loading') {
