@@ -2899,8 +2899,8 @@
     <!-- Mobile Nav Overlay -->
     <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
 
-    <!-- Mobile Nav Drawer -->
-    <nav class="mobile-nav" id="mobile-nav">
+    <!-- Mobile Nav Drawer (div ベース: <nav> セレクタ衝突を回避) -->
+    <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="モバイルメニュー">
         <div class="mobile-nav-header">
             <span class="mobile-nav-title">ハーベスト</span>
             <button class="mobile-nav-close" id="mobile-nav-close" aria-label="メニューを閉じる">
@@ -2924,7 +2924,7 @@
                 099-296-9844
             </a>
         </div>
-    </nav>
+    </div>
 
     <!-- ヒーローセクション -->
     <section class="hero-v2">
