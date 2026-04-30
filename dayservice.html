@@ -2410,17 +2410,28 @@
             display: none;
         }
 
-        /* mobile-nav ドロワー（kkDEB ハンバーガーメニュー） */
+        /* ============================================================
+         * モバイルメニュー（transform ベース・iOS Safari完全対応）
+         * 常にレンダリング → 画面外に translateX で逃しておき、
+         * .open で translateX(0) で滑り込む方式。
+         * display:none/flex に頼らないので、どんな衝突にも壊れない。
+         * ============================================================ */
         .mobile-nav-overlay {
-            display: none;
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.5);
             z-index: 1100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .mobile-nav-overlay.open {
+            opacity: 1;
+            visibility: visible;
         }
 
         .mobile-nav {
-            display: none;
             position: fixed;
             top: 0;
             right: 0;
@@ -2429,16 +2440,17 @@
             height: 100dvh;
             background: var(--color-primary);
             z-index: 1200;
+            display: flex;
             flex-direction: column;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15);
         }
 
         .mobile-nav.open {
-            display: flex !important;
-        }
-        .mobile-nav-overlay.open {
-            display: block !important;
+            transform: translateX(0);
         }
 
         .mobile-nav-header {
@@ -4200,9 +4212,6 @@
                     nav.classList.add('open');
                     overlay.classList.add('open');
                     btn.classList.add('open');
-                    // CSS が効かない場合のフォールバックとしてインラインスタイルも適用
-                    nav.style.display = 'flex';
-                    overlay.style.display = 'block';
                     btn.setAttribute('aria-expanded', 'true');
                     overlay.setAttribute('aria-hidden', 'false');
                     body.classList.add('nav-open');
@@ -4213,8 +4222,6 @@
                     nav.classList.remove('open');
                     overlay.classList.remove('open');
                     btn.classList.remove('open');
-                    nav.style.display = '';
-                    overlay.style.display = '';
                     btn.setAttribute('aria-expanded', 'false');
                     overlay.setAttribute('aria-hidden', 'true');
                     body.classList.remove('nav-open');
