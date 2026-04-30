@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- iPhone Safari の積極的キャッシュ対策 -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>ハーベスト｜鹿児島市のマッサージリハビリ重視型デイサービス</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2895,6 +2899,7 @@
             background: rgba(255, 255, 255, 0.92);
             transition: transform 0.25s ease, opacity 0.2s ease;
             transform-origin: center;
+            pointer-events: none; /* タップが label に届くように */
         }
         @media (max-width: 900px) {
             .hbm-trigger { display: flex; }
@@ -2972,8 +2977,10 @@
             line-height: 1;
             user-select: none;
             -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
         .hbm-close:hover { color: var(--color-accent); }
+        .hbm-close svg { pointer-events: none; }
 
         .hbm-links {
             list-style: none;
@@ -3061,7 +3068,7 @@
                 <a href="tel:099-296-9844" class="header-contact-btn tel">TEL</a>
                 <a href="#contact" class="header-contact-btn mail">MAIL</a>
             </div>
-            <label for="hbm-toggle" class="hbm-trigger" id="hamburger-btn" role="button" aria-label="メニューを開く" tabindex="0">
+            <label for="hbm-toggle" class="hbm-trigger" id="hamburger-btn" role="button" aria-label="メニューを開く" tabindex="0" onclick="">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -3070,13 +3077,13 @@
     </header>
 
     <!-- HBM オーバーレイ（タップで閉じる label） -->
-    <label for="hbm-toggle" class="hbm-overlay" aria-hidden="true"></label>
+    <label for="hbm-toggle" class="hbm-overlay" aria-hidden="true" onclick=""></label>
 
     <!-- HBM ドロワー本体 -->
     <aside class="hbm-drawer" id="mobile-nav" role="dialog" aria-modal="true" aria-label="モバイルメニュー">
         <div class="hbm-header">
             <span class="hbm-title">ハーベスト</span>
-            <label for="hbm-toggle" class="hbm-close" role="button" aria-label="メニューを閉じる" tabindex="0">
+            <label for="hbm-toggle" class="hbm-close" role="button" aria-label="メニューを閉じる" tabindex="0" onclick="">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 2L16 16M16 2L2 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </label>
         </div>
@@ -4353,8 +4360,7 @@
             </div>
         </div>
     </footer>
-    <!-- HBM (Hamburger Menu) のJS強化: チェックボックス連動の補助 -->
-    <!-- ※基本動作は HTML+CSS だけで完結。以下はリンクタップで閉じる等の体験向上のみ。 -->
+    <!-- HBM (Hamburger Menu) JS：iOS Safari で確実に動かすための明示的フォールバック -->
     <script>
         (function() {
             function init() {
@@ -4362,23 +4368,24 @@
                 var drawer = document.getElementById('mobile-nav');
                 if (!toggle || !drawer) return;
 
-                // メニュー内のリンクをタップしたら自動で閉じる
-                drawer.querySelectorAll('a').forEach(function(a) {
-                    a.addEventListener('click', function() {
-                        toggle.checked = false;
-                    });
-                });
+                var trigger   = document.getElementById('hamburger-btn');
+                var overlay   = document.querySelector('.hbm-overlay');
+                var closeBtn  = document.querySelector('.hbm-close');
 
-                // Escape キーで閉じる
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && toggle.checked) {
-                        toggle.checked = false;
-                    }
-                });
+                function openDrawer() {
+                    toggle.checked = true;
+                    syncState();
+                }
+                function closeDrawer() {
+                    toggle.checked = false;
+                    syncState();
+                }
+                function toggleDrawer() {
+                    toggle.checked = !toggle.checked;
+                    syncState();
+                }
 
-                // チェック状態の変化に応じて trigger の aria-label と body のスクロールロックを更新
                 function syncState() {
-                    var trigger = document.getElementById('hamburger-btn');
                     if (toggle.checked) {
                         document.body.classList.add('hbm-open');
                         if (trigger) trigger.setAttribute('aria-label', 'メニューを閉じる');
@@ -4387,6 +4394,36 @@
                         if (trigger) trigger.setAttribute('aria-label', 'メニューを開く');
                     }
                 }
+
+                // ネイティブ label の動作を尊重しつつ、iOS Safari で発火しない場合のための保険：
+                // click をフックして、もし checkbox 状態が想定と違っていたら明示的に修正する。
+                if (trigger) {
+                    trigger.addEventListener('click', function(e) {
+                        // ネイティブ label が toggle してくれるはずだが、念のため直後に同期
+                        setTimeout(syncState, 0);
+                    });
+                }
+                if (overlay) {
+                    overlay.addEventListener('click', function(e) {
+                        setTimeout(closeDrawer, 0);
+                    });
+                }
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        setTimeout(closeDrawer, 0);
+                    });
+                }
+
+                // メニュー内のリンクタップで閉じる
+                drawer.querySelectorAll('a').forEach(function(a) {
+                    a.addEventListener('click', closeDrawer);
+                });
+
+                // Escape キーで閉じる
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && toggle.checked) closeDrawer();
+                });
+
                 toggle.addEventListener('change', syncState);
                 syncState();
             }
