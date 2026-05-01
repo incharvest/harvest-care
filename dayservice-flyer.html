@@ -3,26 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>株式会社ハーベスト デイサービス | 地域密着型通所介護</title>
+  <title>マッサージリハビリ重視型デイサービス ハーベスト ｜ 鹿児島市</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;900&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     /* ======================================================
-     * カラーパレット
+     * カラーパレット — ホームページと完全統一
      * ====================================================== */
     :root {
-      --c-main:    #E8A87C;
-      --c-sage:    #85C1A3;
-      --c-cream:   #F4E4C1;
-      --c-accent:  #C38D5E;
-      --c-base:    #FBF9F4;
-      --c-text:    #3D3128;
-      --c-text-mute: #7a685c;
+      --c-primary:      #1e5c3a;  /* Deep Forest Green */
+      --c-primary-dark: #133d27;
+      --c-primary-light:#2d7a52;
+      --c-accent:       #c8963c;  /* Gold */
+      --c-accent-light: #e0b05e;
+      --c-orange:       #e8a45c;  /* Warm orange (homepage的なアクセント) */
+      --c-cream:        #f4f8f2;  /* 紙の温かみ */
+      --c-cream-2:      #e6f0e8;
+      --c-base:         #fbfcf9;  /* オフホワイト */
+      --c-text:         #0e1f16;  /* Dark Forest */
+      --c-text-mute:    #4a5e51;
     }
 
     /* ======================================================
-     * 印刷設定（A4 横 / 余白ゼロ / 色を確実に印刷）
+     * 印刷設定 — A4 横（landscape）/ 余白ゼロ / 色を確実に印刷
      * ====================================================== */
     @page {
       size: A4 landscape;
@@ -43,7 +47,7 @@
       background: #ddd;
       font-size: 9.5pt;
       line-height: 1.65;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -69,7 +73,7 @@
         align-items: center;
         gap: 24px;
       }
-      .page { box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
+      .page { box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
     }
     @media print {
       body { background: #fff; padding: 0; gap: 0; }
@@ -78,65 +82,62 @@
 
     .mincho { font-family: 'Shippori Mincho', serif; }
 
-    .section-heading {
-      font-family: 'Shippori Mincho', serif;
-      font-weight: 700;
-      color: var(--c-text);
-      letter-spacing: 0.08em;
-      display: inline-flex;
-      align-items: center;
-      gap: 4mm;
-    }
-    .section-heading::before,
-    .section-heading::after {
-      content: '';
-      width: 12mm;
-      height: 1px;
-      background: var(--c-accent);
-    }
-
     /* ======================================================
-     * ▼ 表面 PAGE 1 (297mm × 210mm) ▼
-     *   - ヘッダー帯: 22mm
-     *   - ヒーロー帯: 96mm（左コピー / 右写真）
-     *   - 特徴帯:    45mm（3カラム）
-     *   - フッター帯: 47mm（タイムライン + 連絡先）
+     * ▼ PAGE 1 表面 (297×210mm) ▼
+     *   - ヘッダー帯:  20mm
+     *   - キービジュアル: 88mm（左コピー / 右写真）
+     *   - 4つの特徴:    50mm（4カラム）
+     *   - フッター帯:  52mm（タイムライン + 連絡先）
      * ====================================================== */
 
     /* ヘッダー帯 */
     .p1-header {
-      height: 22mm;
-      padding: 0 16mm;
+      height: 20mm;
+      padding: 0 14mm;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: var(--c-base);
-      border-bottom: 1px solid var(--c-accent);
+      background: var(--c-primary);
+      color: #fff;
+      position: relative;
     }
-    .logo { display: flex; align-items: center; gap: 4mm; }
+    .p1-header::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--c-accent), transparent);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 4mm;
+    }
     .logo-mark {
-      width: 12mm; height: 12mm;
-      border-radius: 50%;
-      background: var(--c-main);
+      width: 11mm; height: 11mm;
+      border: 1.5px solid var(--c-accent);
       display: flex; align-items: center; justify-content: center;
-      color: var(--c-base);
       font-family: 'Shippori Mincho', serif;
       font-weight: 700;
       font-size: 13pt;
+      color: var(--c-accent);
+    }
+    .logo-text {
+      display: flex; flex-direction: column;
     }
     .logo-text-main {
       font-family: 'Shippori Mincho', serif;
       font-weight: 700;
       font-size: 13pt;
-      letter-spacing: 0.1em;
-      color: var(--c-text);
+      letter-spacing: 0.12em;
       line-height: 1.1;
+      color: #fff;
     }
     .logo-text-sub {
       font-size: 7.5pt;
-      color: var(--c-text-mute);
+      color: var(--c-accent);
       letter-spacing: 0.12em;
-      margin-top: 1mm;
+      margin-top: 0.5mm;
     }
     .header-tag {
       display: inline-flex;
@@ -144,153 +145,219 @@
       gap: 2mm;
       padding: 1.6mm 5mm;
       border: 1px solid var(--c-accent);
-      border-radius: 100px;
       font-size: 8pt;
       letter-spacing: 0.18em;
       color: var(--c-accent);
       font-weight: 500;
     }
     .header-tag::before {
-      content: '';
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--c-main);
+      content: '◆';
+      color: var(--c-accent);
+      font-size: 6pt;
     }
 
-    /* ヒーロー帯 */
+    /* キービジュアル */
     .p1-hero {
-      height: 96mm;
-      padding: 8mm 16mm;
+      height: 88mm;
+      padding: 9mm 14mm 6mm;
       display: grid;
-      grid-template-columns: 1.45fr 1fr;
+      grid-template-columns: 1.4fr 1fr;
       gap: 10mm;
-      background: linear-gradient(180deg, var(--c-base) 0%, var(--c-cream) 100%);
+      background:
+        linear-gradient(180deg, var(--c-base) 0%, var(--c-cream) 100%);
+      position: relative;
     }
-    .hero-copy { display: flex; flex-direction: column; justify-content: center; }
+    /* 装飾の和柄ライン */
+    .p1-hero::before {
+      content: '';
+      position: absolute;
+      top: 9mm; left: 14mm;
+      width: 16mm; height: 1px;
+      background: var(--c-accent);
+    }
+    .hero-copy {
+      display: flex; flex-direction: column;
+      justify-content: center;
+    }
     .hero-kicker {
-      font-size: 8.5pt;
+      font-size: 8pt;
       letter-spacing: 0.32em;
       color: var(--c-accent);
       margin-bottom: 4mm;
-    }
-    .hero-kicker::before {
-      content: '— ';
-      color: var(--c-accent);
+      padding-left: 18mm;
+      position: relative;
     }
     .hero-title {
       font-family: 'Shippori Mincho', serif;
       font-weight: 700;
-      font-size: 32pt;
-      line-height: 1.4;
-      letter-spacing: 0.04em;
-      color: var(--c-text);
+      font-size: 30pt;
+      line-height: 1.45;
+      letter-spacing: 0.05em;
+      color: var(--c-primary);
     }
     .hero-title em {
       font-style: normal;
-      background: linear-gradient(transparent 60%, rgba(232,168,124,0.45) 60%);
-      padding: 0 0.1em;
+      position: relative;
+      display: inline-block;
     }
-    .hero-sub {
-      font-size: 10pt;
-      letter-spacing: 0.12em;
-      color: var(--c-text-mute);
-      margin-top: 6mm;
-      padding-top: 4mm;
+    .hero-title em::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 1mm;
+      height: 4mm;
+      background: rgba(232,164,92,0.25);
+      z-index: -1;
+    }
+    .hero-subtitle {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 12pt;
+      letter-spacing: 0.1em;
+      color: var(--c-text);
+      margin-top: 5mm;
+      padding-top: 3mm;
       border-top: 1px solid var(--c-accent);
       max-width: 130mm;
     }
     .hero-facility {
       font-family: 'Shippori Mincho', serif;
       font-weight: 700;
-      font-size: 18pt;
+      font-size: 16pt;
       letter-spacing: 0.06em;
-      color: var(--c-text);
-      margin-top: 4mm;
+      color: var(--c-primary);
+      margin-top: 3mm;
+    }
+    .hero-facility small {
+      display: block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 400;
+      font-size: 9pt;
+      color: var(--c-text-mute);
+      letter-spacing: 0.08em;
+      margin-top: 1.5mm;
     }
     .hero-photo {
       border-radius: 4mm;
       overflow: hidden;
       background: var(--c-cream);
-      box-shadow: 0 4mm 8mm rgba(195,141,94,0.18);
+      box-shadow: 0 4mm 10mm rgba(30,92,58,0.18);
       position: relative;
     }
     .hero-photo img {
       width: 100%; height: 100%;
       object-fit: cover; display: block;
     }
-    .hero-photo::after {
-      content: '';
-      position: absolute; inset: 0;
-      border: 1px solid rgba(255,255,255,0.5);
-      border-radius: 4mm;
-      pointer-events: none;
+    .hero-photo-seal {
+      position: absolute;
+      bottom: 4mm; right: -6mm;
+      width: 28mm; height: 28mm;
+      border-radius: 50%;
+      background: var(--c-accent);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Shippori Mincho', serif;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      box-shadow: 0 2mm 6mm rgba(0,0,0,0.18);
+    }
+    .hero-photo-seal .num {
+      font-size: 22pt;
+      line-height: 1;
+    }
+    .hero-photo-seal .label {
+      font-size: 6.5pt;
+      margin-top: 1.5mm;
+      letter-spacing: 0.18em;
     }
 
-    /* 特徴帯 */
+    /* 4つの特徴 */
     .p1-features {
-      height: 45mm;
-      padding: 5mm 16mm;
+      height: 50mm;
+      padding: 6mm 14mm;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10mm;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6mm;
       background: var(--c-base);
     }
     .feature {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 4mm;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5mm;
+      padding: 3mm 0;
+    }
+    .feature-head {
+      display: flex;
       align-items: center;
+      gap: 3mm;
+      margin-bottom: 1mm;
     }
     .feature-icon {
-      width: 16mm; height: 16mm;
+      width: 12mm; height: 12mm;
       border-radius: 50%;
-      background: var(--c-sage);
+      background: var(--c-cream);
+      border: 1.5px solid var(--c-accent);
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2mm 4mm rgba(133,193,163,0.25);
       flex-shrink: 0;
     }
-    .feature-icon img { width: 10mm; height: 10mm; }
+    .feature-icon svg {
+      width: 7mm; height: 7mm;
+      color: var(--c-primary);
+    }
     .feature-num {
       font-family: 'Shippori Mincho', serif;
       font-weight: 600;
-      font-size: 8pt;
+      font-size: 10pt;
       color: var(--c-accent);
-      letter-spacing: 0.3em;
-      margin-bottom: 0.5mm;
+      letter-spacing: 0.2em;
     }
     .feature-title {
       font-family: 'Shippori Mincho', serif;
       font-weight: 700;
       font-size: 11pt;
-      color: var(--c-text);
+      color: var(--c-primary);
       letter-spacing: 0.04em;
-      margin-bottom: 1mm;
+      line-height: 1.35;
     }
     .feature-desc {
       font-size: 7.5pt;
-      line-height: 1.55;
+      line-height: 1.6;
       color: var(--c-text-mute);
       letter-spacing: 0.02em;
     }
 
     /* フッター帯（タイムライン + 連絡先） */
     .p1-footer {
-      height: 47mm;
-      padding: 6mm 16mm;
+      height: 52mm;
+      padding: 7mm 14mm;
       background: var(--c-cream);
       display: grid;
-      grid-template-columns: 1.45fr 1fr;
+      grid-template-columns: 1.55fr 1fr;
       gap: 10mm;
       align-items: center;
+      position: relative;
+      border-top: 1px solid var(--c-accent);
     }
     .timeline-wrap {
       display: flex;
       flex-direction: column;
     }
     .timeline-heading {
+      font-family: 'Shippori Mincho', serif;
+      font-weight: 700;
       font-size: 11pt;
-      align-self: flex-start;
+      letter-spacing: 0.1em;
+      color: var(--c-primary);
       margin-bottom: 4mm;
+      display: inline-flex;
+      align-items: center;
+      gap: 3mm;
+    }
+    .timeline-heading::before {
+      content: '';
+      width: 12mm; height: 1px;
+      background: var(--c-accent);
     }
     .timeline {
       display: grid;
@@ -301,7 +368,7 @@
     .timeline::before {
       content: '';
       position: absolute;
-      top: 6mm;
+      top: 5.5mm;
       left: 4%; right: 4%;
       border-top: 1.5px dotted var(--c-accent);
     }
@@ -311,26 +378,26 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.2mm;
+      gap: 1mm;
     }
     .tl-dot {
-      width: 4.5mm; height: 4.5mm;
+      width: 4mm; height: 4mm;
       border-radius: 50%;
       background: var(--c-base);
       border: 1.5px solid var(--c-accent);
       position: relative;
       z-index: 1;
-      margin-top: 3.7mm;
+      margin-top: 3.5mm;
     }
     .tl-dot.is-active {
-      background: var(--c-main);
-      border-color: var(--c-main);
+      background: var(--c-primary);
+      border-color: var(--c-primary);
     }
     .tl-time {
       font-family: 'Shippori Mincho', serif;
       font-weight: 700;
       font-size: 11pt;
-      color: var(--c-accent);
+      color: var(--c-primary);
       letter-spacing: 0.04em;
       margin-top: 1mm;
     }
@@ -340,133 +407,179 @@
       letter-spacing: 0.04em;
       line-height: 1.45;
     }
+
     .footer-contact {
+      background: var(--c-primary);
+      color: #fff;
+      padding: 5mm;
+      border-radius: 2mm;
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 5mm;
+      gap: 4mm;
       align-items: center;
-      background: var(--c-base);
-      padding: 5mm;
-      border-radius: 3mm;
-      box-shadow: 0 1mm 4mm rgba(195,141,94,0.12);
+      position: relative;
+    }
+    .footer-contact::before {
+      content: '';
+      position: absolute;
+      top: 2mm; right: 2mm; bottom: 2mm; left: 2mm;
+      border: 1px solid rgba(200,150,60,0.35);
+      pointer-events: none;
     }
     .invite-tag {
       display: inline-block;
-      background: var(--c-main);
-      color: var(--c-base);
-      padding: 1mm 3mm;
-      border-radius: 100px;
-      font-size: 7pt;
+      background: var(--c-accent);
+      color: #fff;
+      padding: 0.7mm 3mm;
+      font-size: 6.5pt;
       letter-spacing: 0.2em;
       margin-bottom: 2mm;
+      font-weight: 500;
     }
     .contact-tel-label {
-      font-size: 7pt;
+      font-size: 6.5pt;
       letter-spacing: 0.3em;
-      color: var(--c-text-mute);
+      color: var(--c-accent);
       margin-bottom: 0.5mm;
     }
     .contact-tel {
       font-family: 'Shippori Mincho', serif;
       font-weight: 700;
       font-size: 19pt;
-      color: var(--c-text);
       letter-spacing: 0.02em;
       line-height: 1;
+      color: #fff;
     }
     .contact-addr {
       font-size: 7pt;
-      color: var(--c-text-mute);
+      color: rgba(255,255,255,0.85);
       margin-top: 1.5mm;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       line-height: 1.5;
     }
     .qr {
-      width: 20mm; height: 20mm;
-      border: 1px solid var(--c-cream);
-      padding: 0.8mm;
-      background: var(--c-base);
+      width: 22mm; height: 22mm;
+      padding: 1mm;
+      background: #fff;
+      border-radius: 1mm;
     }
     .qr img { width: 100%; height: 100%; display: block; }
     .qr-label {
       font-size: 6.5pt;
-      color: var(--c-text-mute);
+      color: rgba(255,255,255,0.85);
       letter-spacing: 0.1em;
       text-align: center;
       margin-top: 1mm;
     }
 
     /* ======================================================
-     * ▼ 裏面 PAGE 2 (297mm × 210mm) ▼
-     *   - 理念帯:       50mm
-     *   - サービス+ギャラリー: 110mm
-     *   - 利用案内+アクセス+問い合わせ: 38mm
-     *   - 最下部:       12mm
+     * ▼ PAGE 2 裏面 (297×210mm) ▼
+     *   - 理念帯:        47mm
+     *   - サービス+ギャラリー: 100mm
+     *   - 案内+アクセス+問合せ: 50mm
+     *   - 最下部:        13mm
      * ====================================================== */
 
     .p2-philosophy {
-      height: 50mm;
-      padding: 7mm 16mm 5mm;
+      height: 47mm;
+      padding: 8mm 14mm 5mm;
       background: var(--c-base);
       display: flex;
       flex-direction: column;
+      position: relative;
+    }
+    .p2-philosophy::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 14mm; right: 14mm;
+      height: 1px;
+      background: linear-gradient(90deg, var(--c-accent), transparent 60%);
     }
     .philosophy-heading {
-      font-size: 13pt;
+      font-family: 'Shippori Mincho', serif;
+      font-weight: 700;
+      font-size: 14pt;
+      letter-spacing: 0.1em;
+      color: var(--c-primary);
+      margin-bottom: 4mm;
+      display: inline-flex;
+      align-items: center;
+      gap: 3mm;
       align-self: flex-start;
-      margin-bottom: 3mm;
+    }
+    .philosophy-heading::before {
+      content: '';
+      width: 14mm; height: 1px;
+      background: var(--c-accent);
     }
     .philosophy-body {
-      font-size: 8.5pt;
-      line-height: 1.85;
+      font-size: 9pt;
+      line-height: 1.95;
       color: var(--c-text);
       letter-spacing: 0.04em;
-      max-width: 240mm;
+      max-width: 250mm;
     }
     .philosophy-body p { margin-bottom: 1.5mm; }
+    .philosophy-body strong {
+      color: var(--c-primary);
+      font-weight: 600;
+      background: linear-gradient(transparent 65%, rgba(232,164,92,0.25) 65%);
+    }
     .philosophy-sign {
       align-self: flex-end;
       margin-top: 2mm;
       font-size: 8pt;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       color: var(--c-text-mute);
     }
     .philosophy-sign .name {
       font-family: 'Shippori Mincho', serif;
       font-weight: 700;
       font-size: 10pt;
-      color: var(--c-text);
+      color: var(--c-primary);
       margin-left: 2mm;
     }
 
     /* サービス + ギャラリー */
     .p2-services {
-      height: 110mm;
-      padding: 7mm 16mm;
+      height: 100mm;
+      padding: 7mm 14mm;
       background: var(--c-cream);
       display: grid;
       grid-template-columns: 0.85fr 1.15fr;
-      gap: 10mm;
+      gap: 9mm;
     }
     .services-list { display: flex; flex-direction: column; }
     .services-heading {
+      font-family: 'Shippori Mincho', serif;
+      font-weight: 700;
       font-size: 12pt;
-      align-self: flex-start;
+      letter-spacing: 0.1em;
+      color: var(--c-primary);
       margin-bottom: 5mm;
+      display: inline-flex;
+      align-items: center;
+      gap: 3mm;
+      align-self: flex-start;
+    }
+    .services-heading::before {
+      content: '';
+      width: 12mm; height: 1px;
+      background: var(--c-accent);
     }
     .service-item {
       display: grid;
       grid-template-columns: 7mm 1fr;
       gap: 3mm;
       align-items: flex-start;
-      padding: 3mm 0;
-      border-bottom: 1px dotted rgba(195,141,94,0.4);
+      padding: 2.8mm 0;
+      border-bottom: 1px dotted rgba(200,150,60,0.4);
     }
     .service-item:last-child { border-bottom: none; }
     .service-check {
-      width: 5.5mm; height: 5.5mm;
+      width: 5mm; height: 5mm;
       border-radius: 50%;
-      background: var(--c-sage);
+      background: var(--c-primary);
       display: flex; align-items: center; justify-content: center;
       margin-top: 0.6mm;
     }
@@ -482,7 +595,7 @@
       font-family: 'Shippori Mincho', serif;
       font-weight: 700;
       font-size: 10pt;
-      color: var(--c-text);
+      color: var(--c-primary);
       letter-spacing: 0.04em;
       line-height: 1.4;
     }
@@ -496,17 +609,25 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.2fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 5mm;
+      gap: 4mm;
+      grid-template-areas:
+        "main top1 top2"
+        "main bot1 bot2";
     }
     .gallery-item {
       position: relative;
       border-radius: 3mm;
       overflow: hidden;
       background: var(--c-base);
-      box-shadow: 0 1mm 3mm rgba(195,141,94,0.18);
+      box-shadow: 0 1mm 4mm rgba(30,92,58,0.18);
     }
+    .gallery-item.main { grid-area: main; }
+    .gallery-item.top1 { grid-area: top1; }
+    .gallery-item.top2 { grid-area: top2; }
+    .gallery-item.bot1 { grid-area: bot1; }
+    .gallery-item.bot2 { grid-area: bot2; }
     .gallery-item img {
       width: 100%; height: 100%;
       object-fit: cover; display: block;
@@ -515,29 +636,29 @@
       position: absolute;
       left: 2mm; bottom: 2mm;
       padding: 1mm 2.5mm;
-      background: rgba(251,249,244,0.92);
+      background: rgba(30,92,58,0.92);
+      color: #fff;
       border-radius: 1mm;
-      font-size: 7.5pt;
-      letter-spacing: 0.08em;
-      color: var(--c-text);
+      font-size: 7pt;
+      letter-spacing: 0.1em;
       font-weight: 500;
     }
 
-    /* 下部 案内+アクセス+問い合わせ（横3列） */
+    /* 下部 案内 + アクセス + 問合せ（横3列） */
     .p2-info {
-      height: 38mm;
-      padding: 5mm 16mm;
+      height: 50mm;
+      padding: 6mm 14mm 4mm;
       background: var(--c-base);
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr 1.15fr;
+      grid-template-columns: 0.95fr 0.95fr 1.15fr;
       gap: 7mm;
     }
     .info-block h3 {
       font-family: 'Shippori Mincho', serif;
       font-weight: 700;
-      font-size: 10pt;
-      letter-spacing: 0.08em;
-      color: var(--c-text);
+      font-size: 10.5pt;
+      letter-spacing: 0.1em;
+      color: var(--c-primary);
       padding-bottom: 1.5mm;
       margin-bottom: 2.5mm;
       border-bottom: 1px solid var(--c-accent);
@@ -550,9 +671,9 @@
     }
     .info-rows .row {
       display: grid;
-      grid-template-columns: 17mm 1fr;
+      grid-template-columns: 18mm 1fr;
       gap: 2mm;
-      padding: 0.8mm 0;
+      padding: 0.6mm 0;
     }
     .info-rows .key {
       font-family: 'Shippori Mincho', serif;
@@ -564,7 +685,7 @@
 
     .access-bottom {
       display: grid;
-      grid-template-columns: 1fr 30mm;
+      grid-template-columns: 1fr 32mm;
       gap: 3mm;
       align-items: stretch;
     }
@@ -588,12 +709,11 @@
     }
     .access-map {
       width: 100%;
-      height: 100%;
-      min-height: 22mm;
+      min-height: 24mm;
       border-radius: 2mm;
       overflow: hidden;
       background: var(--c-cream);
-      border: 1px solid var(--c-cream);
+      border: 1px solid var(--c-accent);
     }
     .access-map img {
       width: 100%; height: 100%;
@@ -601,16 +721,25 @@
     }
 
     .contact-tel-block {
-      background: linear-gradient(135deg, var(--c-main) 0%, var(--c-accent) 100%);
+      background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-primary-dark) 100%);
       border-radius: 2.5mm;
       padding: 3mm 4mm;
-      color: var(--c-base);
+      color: #fff;
       margin-bottom: 2.5mm;
+      position: relative;
+    }
+    .contact-tel-block::before {
+      content: '';
+      position: absolute;
+      inset: 1.2mm;
+      border: 1px solid rgba(200,150,60,0.4);
+      pointer-events: none;
+      border-radius: 1.5mm;
     }
     .contact-tel-block .tel-kicker {
       font-size: 6.5pt;
       letter-spacing: 0.3em;
-      opacity: 0.92;
+      color: var(--c-accent);
       margin-bottom: 0.3mm;
     }
     .contact-tel-block .tel-num {
@@ -624,7 +753,7 @@
       font-size: 6.5pt;
       letter-spacing: 0.06em;
       margin-top: 0.5mm;
-      opacity: 0.92;
+      opacity: 0.9;
     }
     .contact-grid {
       display: grid;
@@ -632,25 +761,27 @@
       gap: 3mm;
     }
     .contact-card {
-      border: 1px solid var(--c-cream);
+      border: 1px solid var(--c-accent);
       border-radius: 2mm;
       padding: 2mm;
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 2.5mm;
       align-items: center;
+      background: var(--c-cream);
     }
     .contact-card .qr-mini {
       width: 14mm; height: 14mm;
-      background: var(--c-base);
+      background: #fff;
       padding: 0.5mm;
+      border-radius: 0.5mm;
     }
     .contact-card .qr-mini img { width: 100%; height: 100%; display: block; }
     .cc-title {
       font-family: 'Shippori Mincho', serif;
       font-weight: 700;
       font-size: 8pt;
-      color: var(--c-text);
+      color: var(--c-primary);
       letter-spacing: 0.06em;
     }
     .cc-detail {
@@ -664,30 +795,32 @@
 
     /* 最下部 他事業 + コピーライト */
     .p2-bottom {
-      height: 12mm;
-      padding: 0 16mm;
-      background: var(--c-text);
-      color: var(--c-base);
+      height: 13mm;
+      padding: 0 14mm;
+      background: var(--c-primary-dark);
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-size: 7.5pt;
       letter-spacing: 0.1em;
+      border-top: 1px solid var(--c-accent);
     }
     .p2-bottom .other-biz {
       display: flex;
       gap: 4mm;
       align-items: center;
+      flex-wrap: wrap;
     }
     .p2-bottom .biz-tag {
       padding: 1mm 3mm;
-      border: 1px solid rgba(251,249,244,0.4);
-      border-radius: 100px;
+      border: 1px solid rgba(200,150,60,0.5);
       font-size: 7pt;
       letter-spacing: 0.16em;
+      color: var(--c-accent);
     }
     .p2-bottom .copy {
-      opacity: 0.65;
+      opacity: 0.7;
       font-size: 7pt;
     }
   </style>
@@ -700,78 +833,125 @@
     <header class="p1-header">
       <div class="logo">
         <div class="logo-mark">穂</div>
-        <div>
-          <div class="logo-text-main">株式会社ハーベスト</div>
+        <div class="logo-text">
+          <div class="logo-text-main">ハーベスト</div>
           <div class="logo-text-sub">HARVEST CARE SERVICE</div>
         </div>
       </div>
-      <div class="header-tag">地域密着型通所介護</div>
+      <div class="header-tag">マッサージリハビリ重視型 デイサービス</div>
     </header>
 
     <section class="p1-hero">
       <div class="hero-copy">
         <p class="hero-kicker">DAY SERVICE IN KAGOSHIMA</p>
         <h1 class="hero-title">
-          <em>その人らしい毎日を、</em><br>
-          <em>この場所から。</em>
+          笑顔あふれる<em>毎日</em>を、<br>
+          みんなで一緒に。
         </h1>
-        <p class="hero-sub">鹿児島市の地域密着型デイサービス</p>
-        <p class="hero-facility">[施設名]</p>
+        <p class="hero-subtitle">国家資格を持つ鍼灸マッサージ師が5名在籍。<br>マッサージとリハビリで心も体もリフレッシュ。</p>
+        <p class="hero-facility">
+          デイサービス ハーベスト
+          <small>鹿児島市東谷山 ／ 地域密着型通所介護</small>
+        </p>
       </div>
       <div class="hero-photo">
-        <img src="images/flyer/photo-hero.svg" alt="利用者と職員が笑顔で過ごす様子">
+        <img src="assets/photos/real-dayservice-hero.png" alt="ハーベストでスタッフと利用者が過ごす様子">
+        <div class="hero-photo-seal">
+          <span class="num">5</span>
+          <span class="label">国家資格者</span>
+        </div>
       </div>
     </section>
 
     <section class="p1-features">
       <div class="feature">
-        <div class="feature-icon"><img src="images/flyer/icon-warmth.svg" alt=""></div>
-        <div>
-          <div class="feature-num">01</div>
-          <div class="feature-title">少人数制のあたたかさ</div>
-          <p class="feature-desc">一人ひとりに目が届く、家庭的な雰囲気の中でゆったり過ごせます</p>
+        <div class="feature-head">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 12c0-4 3-7 8-7s8 3 8 7c0 5-4 7-8 7s-8-2-8-7z"/>
+              <path d="M9 11h.01M15 11h.01M9 15c1 1 2 1 3 1s2 0 3-1"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-num">01</div>
+            <div class="feature-title">気持ちいい<br>マッサージ</div>
+          </div>
         </div>
+        <p class="feature-desc">国家資格を持つ鍼灸マッサージ師が5名在籍。肩こり・腰痛・むくみなど、お体の状態に合わせて丁寧にマッサージいたします。</p>
       </div>
       <div class="feature">
-        <div class="feature-icon"><img src="images/flyer/icon-care.svg" alt=""></div>
-        <div>
-          <div class="feature-num">02</div>
-          <div class="feature-title">専門的なケア</div>
-          <p class="feature-desc">経験豊富な介護スタッフと機能訓練で、心と身体の健康をサポート</p>
+        <div class="feature-head">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="13" cy="5" r="2"/>
+              <path d="M13 8 L11 16 L8 22"/>
+              <path d="M11 16 L15 19 L16 23"/>
+              <path d="M13 11 L18 10 L21 14"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-num">02</div>
+            <div class="feature-title">無理のない<br>リハビリ</div>
+          </div>
         </div>
+        <p class="feature-desc">「歩きたい」「トイレに一人で行きたい」など、ご希望に合わせた無理のないリハビリを行います。</p>
       </div>
       <div class="feature">
-        <div class="feature-icon"><img src="images/flyer/icon-community.svg" alt=""></div>
-        <div>
-          <div class="feature-num">03</div>
-          <div class="feature-title">地域とのつながり</div>
-          <p class="feature-desc">鹿児島の四季を感じる行事や地域交流で、毎日に彩りを</p>
+        <div class="feature-head">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12 L12 4 L21 12"/>
+              <path d="M5 12 L5 20 L19 20 L19 12"/>
+              <circle cx="12" cy="14" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-num">03</div>
+            <div class="feature-title">アットホームな<br>雰囲気</div>
+          </div>
         </div>
+        <p class="feature-desc">少人数制でスタッフとの距離が近く、まるで家にいるようなくつろげる空間です。</p>
+      </div>
+      <div class="feature">
+        <div class="feature-head">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="7" cy="18" rx="3" ry="2"/>
+              <path d="M10 18 L10 5 L20 4 L20 16"/>
+              <ellipse cx="17" cy="16" rx="3" ry="2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-num">04</div>
+            <div class="feature-title">楽しい<br>レクリエーション</div>
+          </div>
+        </div>
+        <p class="feature-desc">カラオケや映画鑑賞、懐かしの音楽PV鑑賞など、午後は楽しい時間をご用意しています。</p>
       </div>
     </section>
 
     <footer class="p1-footer">
       <div class="timeline-wrap">
-        <h2 class="section-heading timeline-heading">一日の流れ</h2>
+        <h2 class="timeline-heading">一日のスケジュール</h2>
         <div class="timeline">
-          <div class="tl-step"><div class="tl-dot is-active"></div><div class="tl-time">9:00</div><div class="tl-label">お迎え<br>健康チェック</div></div>
-          <div class="tl-step"><div class="tl-dot"></div><div class="tl-time">10:00</div><div class="tl-label">入浴<br>機能訓練</div></div>
-          <div class="tl-step"><div class="tl-dot"></div><div class="tl-time">12:00</div><div class="tl-label">昼食<br>口腔ケア</div></div>
-          <div class="tl-step"><div class="tl-dot"></div><div class="tl-time">13:30</div><div class="tl-label">レク<br>交流</div></div>
-          <div class="tl-step"><div class="tl-dot"></div><div class="tl-time">15:00</div><div class="tl-label">おやつ<br>お茶</div></div>
+          <div class="tl-step"><div class="tl-dot is-active"></div><div class="tl-time">9:00</div><div class="tl-label">送迎・<br>健康チェック</div></div>
+          <div class="tl-step"><div class="tl-dot"></div><div class="tl-time">10:00</div><div class="tl-label">入浴・<br>機能訓練</div></div>
+          <div class="tl-step"><div class="tl-dot"></div><div class="tl-time">12:00</div><div class="tl-label">昼食・<br>口腔ケア</div></div>
+          <div class="tl-step"><div class="tl-dot"></div><div class="tl-time">13:30</div><div class="tl-label">マッサージ・<br>レク</div></div>
+          <div class="tl-step"><div class="tl-dot"></div><div class="tl-time">15:00</div><div class="tl-label">おやつ・<br>お茶</div></div>
           <div class="tl-step"><div class="tl-dot is-active"></div><div class="tl-time">16:00</div><div class="tl-label">お送り</div></div>
         </div>
       </div>
       <div class="footer-contact">
         <div>
           <span class="invite-tag">VISIT &amp; EXPERIENCE</span>
-          <p class="contact-tel-label">TEL</p>
-          <p class="contact-tel">[電話番号]</p>
-          <p class="contact-addr">〒[郵便番号]<br>鹿児島県鹿児島市[住所]</p>
+          <p class="contact-tel-label">ご見学・体験随時受付中</p>
+          <p class="contact-tel">099-296-9844</p>
+          <p class="contact-addr">〒891-0113<br>鹿児島県鹿児島市東谷山2丁目40番15号</p>
         </div>
         <div>
-          <div class="qr"><img src="images/flyer/qr-web.svg" alt="ホームページQRコード"></div>
-          <p class="qr-label">公式サイト</p>
+          <div class="qr"><img src="https://qr-official.line.me/gs/M_856izjct_GW.png?oat_content=qr" alt="LINE友だち追加QRコード"></div>
+          <p class="qr-label">LINE 友だち追加</p>
         </div>
       </div>
     </footer>
@@ -783,24 +963,20 @@
   <section class="page page-2">
 
     <section class="p2-philosophy">
-      <h2 class="section-heading philosophy-heading">私たちが大切にしていること</h2>
+      <h2 class="philosophy-heading">私たちが大切にしていること</h2>
       <div class="philosophy-body">
-        <p>歳を重ねても、「今日も一日いいことがあった」と感じられる場所でありたい。私たちハーベストは、そんな想いから鹿児島の地でデイサービスを始めました。食事を共にする時間、お風呂で身体をあたためる時間、誰かと言葉を交わす時間——一見ささやかな日々の積み重ねこそが、その人らしさを支えると考えています。</p>
-        <p>地域に根を張った小さな施設だからこそできる、丁寧で温かいケア。ご家族と一緒に歩む伴走者として、心と身体の健やかな毎日を支えてまいります。</p>
+        <p>歳を重ねても、<strong>「今日も一日いいことがあった」</strong>と感じられる場所でありたい。私たちハーベストは、そんな想いから鹿児島の地でデイサービスを始めました。国家資格を持つ鍼灸マッサージ師による施術と機能訓練で、心も体もリフレッシュ。少人数だからこそできる、温かく丁寧なケアを大切にしています。</p>
+        <p>食事を共にする時間、お風呂で身体をあたためる時間、誰かと言葉を交わす時間——一見ささやかな日々の積み重ねこそが、その人らしさを支えると信じています。ご家族と一緒に歩む伴走者として、健やかな毎日をお手伝いいたします。</p>
       </div>
       <p class="philosophy-sign">株式会社ハーベスト 代表 <span class="name">[代表者氏名]</span></p>
     </section>
 
     <section class="p2-services">
       <div class="services-list">
-        <h2 class="section-heading services-heading">提供サービス</h2>
+        <h2 class="services-heading">提供サービス</h2>
         <div class="service-item">
           <div class="service-check"><svg viewBox="0 0 24 24"><path d="M5 12 L10 17 L19 7"/></svg></div>
-          <div><div class="service-title">食事提供</div><div class="service-note">管理栄養士監修の献立</div></div>
-        </div>
-        <div class="service-item">
-          <div class="service-check"><svg viewBox="0 0 24 24"><path d="M5 12 L10 17 L19 7"/></svg></div>
-          <div><div class="service-title">入浴介助</div><div class="service-note">個浴対応で安心・くつろぎ</div></div>
+          <div><div class="service-title">マッサージ施術</div><div class="service-note">国家資格者による個別マッサージ</div></div>
         </div>
         <div class="service-item">
           <div class="service-check"><svg viewBox="0 0 24 24"><path d="M5 12 L10 17 L19 7"/></svg></div>
@@ -808,11 +984,19 @@
         </div>
         <div class="service-item">
           <div class="service-check"><svg viewBox="0 0 24 24"><path d="M5 12 L10 17 L19 7"/></svg></div>
-          <div><div class="service-title">レクリエーション</div><div class="service-note">季節の行事・脳トレ・創作活動</div></div>
+          <div><div class="service-title">入浴介助</div><div class="service-note">個浴対応で安心・くつろぎ</div></div>
         </div>
         <div class="service-item">
           <div class="service-check"><svg viewBox="0 0 24 24"><path d="M5 12 L10 17 L19 7"/></svg></div>
-          <div><div class="service-title">送迎サービス</div><div class="service-note">ご自宅と施設を安全にお送り</div></div>
+          <div><div class="service-title">食事提供</div><div class="service-note">栄養バランスを考えた献立</div></div>
+        </div>
+        <div class="service-item">
+          <div class="service-check"><svg viewBox="0 0 24 24"><path d="M5 12 L10 17 L19 7"/></svg></div>
+          <div><div class="service-title">レクリエーション</div><div class="service-note">カラオケ・映画・脳トレ</div></div>
+        </div>
+        <div class="service-item">
+          <div class="service-check"><svg viewBox="0 0 24 24"><path d="M5 12 L10 17 L19 7"/></svg></div>
+          <div><div class="service-title">無料送迎サービス</div><div class="service-note">鹿児島市内（松元・桜島地区を除く）</div></div>
         </div>
         <div class="service-item">
           <div class="service-check"><svg viewBox="0 0 24 24"><path d="M5 12 L10 17 L19 7"/></svg></div>
@@ -820,10 +1004,11 @@
         </div>
       </div>
       <div class="gallery">
-        <div class="gallery-item"><img src="images/flyer/photo-dining.svg" alt="食堂"><span class="gallery-cap">食堂</span></div>
-        <div class="gallery-item"><img src="images/flyer/photo-bath.svg" alt="お風呂"><span class="gallery-cap">お風呂</span></div>
-        <div class="gallery-item"><img src="images/flyer/photo-rehab.svg" alt="機能訓練室"><span class="gallery-cap">機能訓練室</span></div>
-        <div class="gallery-item"><img src="images/flyer/photo-rec.svg" alt="レクリエーションスペース"><span class="gallery-cap">レクスペース</span></div>
+        <div class="gallery-item main"><img src="assets/photos/real-dayservice-room.png" alt="施設内"><span class="gallery-cap">明るく開放的な施設</span></div>
+        <div class="gallery-item top1"><img src="assets/photos/real-dayservice-handwash.jpg" alt="清潔な手洗い"><span class="gallery-cap">清潔な手洗い場</span></div>
+        <div class="gallery-item top2"><img src="assets/photos/photo-meal.png" alt="お食事"><span class="gallery-cap">お食事</span></div>
+        <div class="gallery-item bot1"><img src="assets/photos/photo-recreation.png" alt="レクリエーション"><span class="gallery-cap">レクの時間</span></div>
+        <div class="gallery-item bot2"><img src="assets/photos/photo-walk-support.png" alt="リハビリ・歩行訓練"><span class="gallery-cap">歩行訓練</span></div>
       </div>
     </section>
 
@@ -832,37 +1017,46 @@
         <h3>ご利用案内</h3>
         <div class="info-rows">
           <div class="row"><span class="key">営業日</span><span>月〜土曜日（日祝休）</span></div>
-          <div class="row"><span class="key">営業時間</span><span>9:00〜17:00</span></div>
-          <div class="row"><span class="key">対象</span><span>要支援1〜要介護5</span></div>
-          <div class="row"><span class="key">定員</span><span>[定員人数]名</span></div>
-          <div class="row"><span class="key">利用料金</span><span>介護保険適用 + 食費・おやつ代</span></div>
+          <div class="row"><span class="key">サービス時間</span><span>9:00〜16:05（7時間5分）</span></div>
+          <div class="row"><span class="key">営業時間</span><span>8:30〜17:30</span></div>
+          <div class="row"><span class="key">対象</span><span>要支援1〜要介護5の認定の方</span></div>
+          <div class="row"><span class="key">利用料金</span><span>介護保険適用＋食費・おやつ代</span></div>
         </div>
       </div>
       <div class="info-block">
-        <h3>アクセス</h3>
+        <h3>アクセス・送迎</h3>
         <div class="access-bottom">
           <div class="access-meta">
-            <div class="row"><span class="key">住所</span><span>鹿児島県<br>鹿児島市[住所]</span></div>
-            <div class="row"><span class="key">駐車場</span><span>有り（[台数]台）</span></div>
+            <div class="row"><span class="key">住所</span><span>鹿児島県鹿児島市東谷山2丁目40番15号</span></div>
+            <div class="row"><span class="key">送迎</span><span>無料（鹿児島市内、松元・桜島地区を除く）</span></div>
+            <div class="row"><span class="key">駐車場</span><span>あり（施設敷地内）</span></div>
+            <div class="row"><span class="key">FAX</span><span>099-296-9843</span></div>
           </div>
-          <div class="access-map"><img src="images/flyer/map.svg" alt="簡易マップ"></div>
+          <div class="access-map">
+            <iframe
+              src="https://maps.google.com/maps?q=鹿児島県鹿児島市東谷山2丁目40番15号&output=embed&hl=ja&z=16"
+              style="width:100%;height:100%;border:0;display:block;"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="ハーベスト 地図"></iframe>
+          </div>
         </div>
       </div>
       <div class="info-block">
         <h3>お問い合わせ</h3>
         <div class="contact-tel-block">
           <p class="tel-kicker">TEL</p>
-          <p class="tel-num">[電話番号]</p>
-          <p class="tel-hours">受付 9:00〜17:00（日祝除く）</p>
+          <p class="tel-num">099-296-9844</p>
+          <p class="tel-hours">受付 8:30〜17:30（日祝除く）</p>
         </div>
         <div class="contact-grid">
           <div class="contact-card">
-            <div class="qr-mini"><img src="images/flyer/qr-web.svg" alt=""></div>
-            <div><div class="cc-title">公式サイト</div><div class="cc-detail">[ホームページURL]</div></div>
+            <div class="qr-mini"><img src="https://qr-official.line.me/gs/M_856izjct_GW.png?oat_content=qr" alt="LINE友だち追加"></div>
+            <div><div class="cc-title">LINE</div><div class="cc-detail">友だち追加で<br>気軽にご相談</div></div>
           </div>
           <div class="contact-card">
-            <div class="qr-mini"><img src="images/flyer/qr-line.svg" alt=""></div>
-            <div><div class="cc-title">LINE</div><div class="cc-detail">気軽にご相談</div></div>
+            <div class="qr-mini"><img src="images/flyer/qr-web.svg" alt="公式サイトQR"></div>
+            <div><div class="cc-title">公式サイト</div><div class="cc-detail">incharvest.<br>github.io/<br>harvest-care</div></div>
           </div>
         </div>
       </div>
@@ -870,9 +1064,9 @@
 
     <footer class="p2-bottom">
       <div class="other-biz">
-        <span>株式会社ハーベスト 他事業:</span>
+        <span style="opacity:0.85;">株式会社ハーベスト 他事業:</span>
         <span class="biz-tag">住宅型有料老人ホーム</span>
-        <span class="biz-tag">はり灸マッサージ訪問施術</span>
+        <span class="biz-tag">訪問鍼灸マッサージ</span>
       </div>
       <div class="copy">&copy; 株式会社ハーベスト All Rights Reserved.</div>
     </footer>
