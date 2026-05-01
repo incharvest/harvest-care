@@ -25,19 +25,21 @@
 
 ```
 dayservice-flyer.html               ← 単一HTML（CSS内包・A4横）
-assets/photos/                      ← ホームページと共通の実写真を使用
-  ├── real-dayservice-hero.png      ← 表面メインビジュアル
-  ├── real-dayservice-room.png      ← 裏面ギャラリー（メイン）
-  ├── real-dayservice-handwash.jpg  ← 裏面ギャラリー（手洗い）
-  ├── photo-meal.png                ← 裏面ギャラリー（食事）
-  ├── photo-recreation.png          ← 裏面ギャラリー（レク）
-  └── photo-walk-support.png        ← 裏面ギャラリー（歩行訓練）
-images/flyer/qr-web.svg             ← 公式サイトQR（プレースホルダー）
+assets/photos/                      ← ホームページと共通の実写真
+  ├── real-dayservice-hero.png      ← 表面メインビジュアル（実写真）
+  ├── real-dayservice-room.png      ← 裏面ギャラリー メイン（実写真）
+  └── real-dayservice-handwash.jpg  ← 裏面ギャラリー（実写真）
+images/bath/                        ← 浴室の実写真
+  ├── bath-1.jpg                    ← 裏面ギャラリー（浴室）
+  └── bath-2.jpg                    ← 裏面ギャラリー（入浴設備）
+images/rehab/                       ← 機能訓練の実写真
+  └── rehab-1.jpg                   ← 裏面ギャラリー（機能訓練）
+images/flyer/qr-web.svg             ← 公式サイトQR（プレースホルダー／要差し替え）
 
-LINE QRは https://qr-official.line.me/gs/M_856izjct_GW.png を直接参照
+LINE QRは https://qr-official.line.me/gs/M_856izjct_GW.png を直接参照（実画像）
 ```
 
-実写真の差し替えは `assets/photos/` 内のファイルを上書きすると、ホームページと同時に反映されます。
+**全ての写真がハーベストの実写真**です。ストック画像は使用していません。実写真の差し替えは元ファイルを上書きすると、ホームページと同時に反映されます。
 
 ---
 
