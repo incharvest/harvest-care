@@ -109,7 +109,10 @@
            ================================================================ */
         html {
             scroll-behavior: smooth;
-            overflow-x: hidden;
+            overflow-x: clip;       /* iOS 15.4+ で確実に横スクロール封鎖 */
+        }
+        @supports not (overflow-x: clip) {
+            html { overflow-x: hidden; }  /* 古い Safari 用フォールバック */
         }
 
         body {
@@ -120,10 +123,13 @@
             line-height: 1.9;
             font-weight: 400;
             letter-spacing: 0.02em;
-            overflow-x: hidden;
+            overflow-x: clip;
             max-width: 100%;
             width: 100%;
             position: relative;
+        }
+        @supports not (overflow-x: clip) {
+            body { overflow-x: hidden; }
         }
 
         /* 全セクション・親要素への横はみ出しガード */
@@ -2867,10 +2873,17 @@
          * Safari のキャッシュを確実に破壊するためにも別名を採用。
          * ============================================================ */
         .hbm-state {
+            /* visually-hidden: 横スクロール誘発を避けるため left:-9999px は使わない */
             position: absolute;
-            left: -9999px;
             width: 1px;
             height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            clip-path: inset(50%);
+            white-space: nowrap;
+            border: 0;
             opacity: 0;
             pointer-events: none;
         }
