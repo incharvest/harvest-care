@@ -2872,22 +2872,7 @@
          * 旧 .mobile-nav 系統と一切干渉しないよう新クラス名で構築。
          * Safari のキャッシュを確実に破壊するためにも別名を採用。
          * ============================================================ */
-        .hbm-state {
-            /* visually-hidden: 横スクロール誘発を避けるため left:-9999px は使わない */
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            margin: -1px;
-            padding: 0;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            clip-path: inset(50%);
-            white-space: nowrap;
-            border: 0;
-            opacity: 0;
-            pointer-events: none;
-        }
-
+        /* ハンバーガーボタン（モバイル時に表示） */
         .hbm-trigger {
             display: none;
             flex-direction: column;
@@ -2912,19 +2897,19 @@
             background: rgba(255, 255, 255, 0.92);
             transition: transform 0.25s ease, opacity 0.2s ease;
             transform-origin: center;
-            pointer-events: none; /* タップが label に届くように */
+            pointer-events: none;
         }
         @media (max-width: 900px) {
             .hbm-trigger { display: flex; }
         }
-        /* チェック時はバーをXに変形 */
-        .hbm-state:checked ~ header .hbm-trigger .bar:nth-child(1) {
+        /* 開いている時はバーをXに変形 */
+        body.hbm-open .hbm-trigger .bar:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
         }
-        .hbm-state:checked ~ header .hbm-trigger .bar:nth-child(2) {
+        body.hbm-open .hbm-trigger .bar:nth-child(2) {
             opacity: 0;
         }
-        .hbm-state:checked ~ header .hbm-trigger .bar:nth-child(3) {
+        body.hbm-open .hbm-trigger .bar:nth-child(3) {
             transform: translateY(-8px) rotate(-45deg);
         }
 
@@ -2938,7 +2923,7 @@
             transition: opacity 0.25s ease, visibility 0.25s ease;
             cursor: pointer;
         }
-        .hbm-state:checked ~ .hbm-overlay {
+        body.hbm-open .hbm-overlay {
             opacity: 1;
             visibility: visible;
         }
@@ -2960,7 +2945,7 @@
             transition: transform 0.3s ease;
             box-shadow: -8px 0 24px rgba(0, 0, 0, 0.18);
         }
-        .hbm-state:checked ~ .hbm-drawer {
+        body.hbm-open .hbm-drawer {
             transform: translateX(0);
         }
 
@@ -3037,9 +3022,6 @@
     </style>
 </head>
 <body data-theme="day">
-    <!-- HBM checkbox state — JS不要のメニュー開閉トグル状態 -->
-    <input type="checkbox" id="hbm-toggle" class="hbm-state" aria-hidden="true">
-
     <!-- ヘッダー -->
     <header>
         <div class="header-inner">
@@ -3081,24 +3063,24 @@
                 <a href="tel:099-296-9844" class="header-contact-btn tel">TEL</a>
                 <a href="#contact" class="header-contact-btn mail">MAIL</a>
             </div>
-            <label for="hbm-toggle" class="hbm-trigger" id="hamburger-btn" role="button" aria-label="メニューを開く" tabindex="0" onclick="">
+            <button type="button" class="hbm-trigger" id="hamburger-btn" aria-label="メニューを開く" onclick="document.body.classList.toggle('hbm-open');this.setAttribute('aria-label',document.body.classList.contains('hbm-open')?'メニューを閉じる':'メニューを開く');">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </label>
+            </button>
         </div>
     </header>
 
-    <!-- HBM オーバーレイ（タップで閉じる label） -->
-    <label for="hbm-toggle" class="hbm-overlay" aria-hidden="true" onclick=""></label>
+    <!-- HBM オーバーレイ（タップで閉じる） -->
+    <div class="hbm-overlay" aria-hidden="true" onclick="document.body.classList.remove('hbm-open');document.getElementById('hamburger-btn').setAttribute('aria-label','メニューを開く');"></div>
 
     <!-- HBM ドロワー本体 -->
     <aside class="hbm-drawer" id="mobile-nav" role="dialog" aria-modal="true" aria-label="モバイルメニュー">
         <div class="hbm-header">
             <span class="hbm-title">ハーベスト</span>
-            <label for="hbm-toggle" class="hbm-close" role="button" aria-label="メニューを閉じる" tabindex="0" onclick="">
+            <button type="button" class="hbm-close" aria-label="メニューを閉じる" onclick="document.body.classList.remove('hbm-open');document.getElementById('hamburger-btn').setAttribute('aria-label','メニューを開く');">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 2L16 16M16 2L2 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </label>
+            </button>
         </div>
         <ul class="hbm-links">
             <li><a href="#concept">コンセプト</a></li>
@@ -4373,58 +4355,18 @@
             </div>
         </div>
     </footer>
-    <!-- HBM (Hamburger Menu) JS：iOS Safari で確実に動かすための明示的フォールバック -->
+    <!-- HBM (Hamburger Menu) JS：補助動作（リンクタップで閉じる / Escapeで閉じる） -->
+    <!-- 開閉の主動作は HTML の onclick 属性で完結。以下は体験向上のための追加処理のみ。 -->
     <script>
         (function() {
             function init() {
-                var toggle = document.getElementById('hbm-toggle');
                 var drawer = document.getElementById('mobile-nav');
-                if (!toggle || !drawer) return;
+                var trigger = document.getElementById('hamburger-btn');
+                if (!drawer) return;
 
-                var trigger   = document.getElementById('hamburger-btn');
-                var overlay   = document.querySelector('.hbm-overlay');
-                var closeBtn  = document.querySelector('.hbm-close');
-
-                function openDrawer() {
-                    toggle.checked = true;
-                    syncState();
-                }
                 function closeDrawer() {
-                    toggle.checked = false;
-                    syncState();
-                }
-                function toggleDrawer() {
-                    toggle.checked = !toggle.checked;
-                    syncState();
-                }
-
-                function syncState() {
-                    if (toggle.checked) {
-                        document.body.classList.add('hbm-open');
-                        if (trigger) trigger.setAttribute('aria-label', 'メニューを閉じる');
-                    } else {
-                        document.body.classList.remove('hbm-open');
-                        if (trigger) trigger.setAttribute('aria-label', 'メニューを開く');
-                    }
-                }
-
-                // ネイティブ label の動作を尊重しつつ、iOS Safari で発火しない場合のための保険：
-                // click をフックして、もし checkbox 状態が想定と違っていたら明示的に修正する。
-                if (trigger) {
-                    trigger.addEventListener('click', function(e) {
-                        // ネイティブ label が toggle してくれるはずだが、念のため直後に同期
-                        setTimeout(syncState, 0);
-                    });
-                }
-                if (overlay) {
-                    overlay.addEventListener('click', function(e) {
-                        setTimeout(closeDrawer, 0);
-                    });
-                }
-                if (closeBtn) {
-                    closeBtn.addEventListener('click', function(e) {
-                        setTimeout(closeDrawer, 0);
-                    });
+                    document.body.classList.remove('hbm-open');
+                    if (trigger) trigger.setAttribute('aria-label', 'メニューを開く');
                 }
 
                 // メニュー内のリンクタップで閉じる
@@ -4434,11 +4376,10 @@
 
                 // Escape キーで閉じる
                 document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && toggle.checked) closeDrawer();
+                    if (e.key === 'Escape' && document.body.classList.contains('hbm-open')) {
+                        closeDrawer();
+                    }
                 });
-
-                toggle.addEventListener('change', syncState);
-                syncState();
             }
 
             if (document.readyState === 'loading') {

@@ -1100,6 +1100,43 @@
             text-shadow: 0 1px 2px rgba(247, 244, 240, 0.6);
         }
 
+        /* ヒーローのCTAボタンを写真の上でも視認性高く・上品に
+           — フロステッドガラス調で背景になじませつつコントラストを確保 */
+        body:not([data-theme]) .hero__actions .btn {
+            backdrop-filter: blur(14px) saturate(120%);
+            -webkit-backdrop-filter: blur(14px) saturate(120%);
+            font-weight: 500;
+            transition: background 0.4s var(--ease), color 0.4s var(--ease),
+                        border-color 0.4s var(--ease), box-shadow 0.4s var(--ease),
+                        transform 0.4s var(--ease);
+        }
+        body:not([data-theme]) .hero__actions .btn--primary {
+            background: var(--ink);
+            color: var(--washi);
+            box-shadow:
+                0 6px 22px rgba(58, 51, 48, 0.32),
+                0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+        }
+        body:not([data-theme]) .hero__actions .btn--primary:hover {
+            background: var(--accent-deep);
+            box-shadow:
+                0 10px 30px rgba(156, 107, 83, 0.38),
+                0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+        }
+        body:not([data-theme]) .hero__actions .btn--ghost {
+            background: rgba(255, 255, 255, 0.78);
+            color: var(--ink);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            box-shadow:
+                0 6px 22px rgba(58, 51, 48, 0.18),
+                0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+        }
+        body:not([data-theme]) .hero__actions .btn--ghost:hover {
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--accent);
+            border-color: rgba(255, 255, 255, 1);
+        }
+
         @media (max-width: 768px) {
             /* スマホは縦方向のグラデーションに切り替え（文字を上、写真を下） */
             body:not([data-theme]) .hero {
