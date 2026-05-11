@@ -785,6 +785,21 @@
             line-height: 2;
         }
 
+        /* フッター内のリンク（TEL/FAX等）— ブラウザ標準の青を撤去しブランド色に */
+        .footer-info a,
+        footer .footer-info p a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            border-bottom: 1px solid rgba(232, 164, 92, 0.35);
+            transition: var(--transition);
+        }
+        .footer-info a:hover {
+            color: var(--color-accent-light);
+            border-bottom-color: var(--color-accent-light);
+        }
+
         .footer-nav ul {
             list-style: none;
             display: flex;
