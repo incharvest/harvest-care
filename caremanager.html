@@ -379,7 +379,8 @@
 
         .bath-photo-grid,
         .toilet-photo-grid,
-        .rehab-photo-grid {
+        .rehab-photo-grid,
+        .meal-photo-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0.6rem;
@@ -389,7 +390,8 @@
 
         .bath-photo-grid img,
         .toilet-photo-grid img,
-        .rehab-photo-grid img {
+        .rehab-photo-grid img,
+        .meal-photo-grid img {
             width: 100%;
             aspect-ratio: 4/3;
             object-fit: cover;
@@ -401,7 +403,8 @@
 
         .bath-photo-grid img:hover,
         .toilet-photo-grid img:hover,
-        .rehab-photo-grid img:hover {
+        .rehab-photo-grid img:hover,
+        .meal-photo-grid img:hover {
             opacity: 0.85;
         }
 
@@ -1358,6 +1361,13 @@
                             <span class="detail-value">（Ⅲ）</span>
                         </li>
                     </ul>
+                    <p class="detail-note" style="margin-top:1.2rem;">実際のお食事の一例です（タップで拡大）</p>
+                    <div class="meal-photo-grid">
+                        <img src="images/meal/meal-1.jpg" alt="煮魚・卵焼き・サラダのお食事" loading="lazy">
+                        <img src="images/meal/meal-3.jpg" alt="鶏五目ご飯と冬瓜の煮物・素麺" loading="lazy">
+                        <img src="images/meal/meal-5.jpg" alt="焼き肉と茶碗蒸しの定食" loading="lazy">
+                        <img src="images/meal/meal-7.jpg" alt="豚と大根の煮物・オレンジ添え" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
@@ -1597,7 +1607,7 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
 
-    document.querySelectorAll('.bath-photo-grid img, .toilet-photo-grid img, .rehab-photo-grid img').forEach(img => {
+    document.querySelectorAll('.bath-photo-grid img, .toilet-photo-grid img, .rehab-photo-grid img, .meal-photo-grid img').forEach(img => {
         img.addEventListener('click', () => {
             lightboxImg.src = img.src;
             lightboxImg.alt = img.alt;
