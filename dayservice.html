@@ -952,6 +952,62 @@
             border-radius: var(--radius-medium);
         }
 
+        /* なぜレクが大事か（活動セクション末尾） */
+        .activities-why {
+            margin: 5rem auto 0;
+            max-width: 1100px;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            border-radius: var(--radius-medium);
+            color: var(--color-white);
+            text-align: center;
+        }
+        .activities-why-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.2rem;
+            color: var(--color-accent-light);
+        }
+        .activities-why-lead {
+            font-size: 0.95rem;
+            line-height: 2;
+            max-width: 640px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.92);
+        }
+        .activities-why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            text-align: left;
+        }
+        .activities-why-item {
+            padding: 1.4rem 1.2rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(232, 164, 92, 0.3);
+            border-radius: var(--radius-small);
+        }
+        .activities-why-item .why-num {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            margin-bottom: 0.4rem;
+        }
+        .activities-why-item h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            color: var(--color-white);
+            letter-spacing: 0.06em;
+            margin-bottom: 0.6rem;
+        }
+        .activities-why-item p {
+            font-size: 0.82rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
         /* 設備紹介 */
         .equipment {
             background: var(--color-cream);
@@ -3561,6 +3617,37 @@
                 ※ プログラムは日替わりです。当日の体調や気分に合わせて、ご無理のない範囲でご参加いただけます。<br>
                 「歌うのは聞いているだけがいい」「今日は静かに過ごしたい」——そんな日も大歓迎です。
             </p>
+
+            <!-- なぜレクが大事か -->
+            <div class="activities-why">
+                <h3 class="activities-why-title">楽しい時間が、健やかさをつくる</h3>
+                <p class="activities-why-lead">
+                    ハーベストのレクリエーションは「ただ楽しい」だけではありません。<br>
+                    日々の積み重ねが、心と体の健やかさにつながると考えています。
+                </p>
+                <div class="activities-why-grid">
+                    <div class="activities-why-item">
+                        <div class="why-num">01</div>
+                        <h4>脳の活性化</h4>
+                        <p>歌う・笑う・考える時間は、認知症予防に効果があるといわれています。</p>
+                    </div>
+                    <div class="activities-why-item">
+                        <div class="why-num">02</div>
+                        <h4>孤独感の解消</h4>
+                        <p>仲間との会話やふれあいは、家にこもりがちな日々に彩りを生みます。</p>
+                    </div>
+                    <div class="activities-why-item">
+                        <div class="why-num">03</div>
+                        <h4>達成感・自信</h4>
+                        <p>手芸や創作の作品づくりは、「できた」という小さな喜びを毎日に。</p>
+                    </div>
+                    <div class="activities-why-item">
+                        <div class="why-num">04</div>
+                        <h4>笑顔が体を整える</h4>
+                        <p>笑い・歌は免疫力を高めるという研究も。マッサージとあわせて健やかに。</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
