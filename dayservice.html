@@ -844,6 +844,114 @@
             }
         }
 
+        /* ============================================================
+         * お楽しみの引き出し（レクリエーション詳細セクション）
+         * ============================================================ */
+        .activities {
+            background: var(--color-white);
+            padding: 80px 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .activities .activities-intro {
+            max-width: 720px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            font-size: 1.0rem;
+            line-height: 2;
+            color: var(--color-text-light);
+        }
+        .activities-intro strong {
+            color: var(--color-primary);
+            font-weight: 600;
+            background: linear-gradient(transparent 65%, rgba(232,164,92,0.22) 65%);
+            padding: 0 0.1em;
+        }
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .activity-card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-medium);
+            padding: 2rem 1.6rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .activity-card:hover {
+            border-color: var(--color-accent);
+            box-shadow: var(--shadow-soft);
+        }
+        .activity-card-head {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px dashed var(--color-border);
+        }
+        .activity-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--color-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .activity-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-primary);
+        }
+        .activity-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+        .activity-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .activity-card li {
+            font-size: 0.85rem;
+            color: var(--color-text);
+            line-height: 1.7;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .activity-card li::before {
+            content: '◆';
+            color: var(--color-accent);
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+            font-size: 0.55rem;
+        }
+        .activities-note {
+            max-width: 720px;
+            margin: 3rem auto 0;
+            text-align: center;
+            font-size: 0.88rem;
+            line-height: 1.95;
+            color: var(--color-text-light);
+            background: var(--color-cream);
+            padding: 1.5rem 2rem;
+            border-radius: var(--radius-medium);
+        }
+
         /* 設備紹介 */
         .equipment {
             background: var(--color-cream);
@@ -3345,6 +3453,114 @@
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- お楽しみの引き出し（レクリエーション詳細） -->
+    <section class="activities" id="activities">
+        <div class="section-inner">
+            <div class="section-header">
+                <p class="section-en">DAILY ACTIVITIES</p>
+                <h2 class="section-title">毎日が違う、お楽しみの引き出し</h2>
+                <div class="section-line"></div>
+            </div>
+            <p class="activities-intro">
+                午前は運動、午後はレクリエーション。<br>
+                <strong>「今日は何かしら？」と楽しみに来ていただける</strong>よう、その日のスタッフがプログラムを工夫してご用意しています。<br>
+                皆様のその日の体調・気分・季節に合わせて、私たちが持つたくさんの引き出しから、ご自分のペースで参加できる内容をお選びします。
+            </p>
+
+            <div class="activities-grid">
+                <!-- 音楽の引き出し -->
+                <div class="activity-card">
+                    <div class="activity-card-head">
+                        <div class="activity-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l12-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                        </div>
+                        <h3>音楽の引き出し</h3>
+                    </div>
+                    <ul>
+                        <li>カラオケ</li>
+                        <li>合唱・歌の時間</li>
+                        <li>歌謡曲鑑賞</li>
+                        <li>音楽PV鑑賞</li>
+                        <li>懐メロ歌詞集めぐり</li>
+                    </ul>
+                </div>
+
+                <!-- 頭の体操の引き出し -->
+                <div class="activity-card">
+                    <div class="activity-card-head">
+                        <div class="activity-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+                        </div>
+                        <h3>頭の体操の引き出し</h3>
+                    </div>
+                    <ul>
+                        <li>計算ドリル</li>
+                        <li>漢字・書き取り</li>
+                        <li>回想法</li>
+                        <li>間違い探し</li>
+                        <li>脳活クイズ</li>
+                    </ul>
+                </div>
+
+                <!-- 創作の引き出し -->
+                <div class="activity-card">
+                    <div class="activity-card-head">
+                        <div class="activity-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                        </div>
+                        <h3>創作の引き出し</h3>
+                    </div>
+                    <ul>
+                        <li>手芸・編み物</li>
+                        <li>書道・絵手紙</li>
+                        <li>折り紙・貼り絵</li>
+                        <li>塗り絵</li>
+                        <li>季節の壁面作り</li>
+                    </ul>
+                </div>
+
+                <!-- 季節を感じる引き出し -->
+                <div class="activity-card">
+                    <div class="activity-card-head">
+                        <div class="activity-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg>
+                        </div>
+                        <h3>季節を感じる引き出し</h3>
+                    </div>
+                    <ul>
+                        <li>お花見</li>
+                        <li>敬老会</li>
+                        <li>クリスマス会</li>
+                        <li>節分</li>
+                        <li>ひな祭り</li>
+                    </ul>
+                </div>
+
+                <!-- ほっと一息の引き出し -->
+                <div class="activity-card">
+                    <div class="activity-card-head">
+                        <div class="activity-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+                        </div>
+                        <h3>ほっと一息の引き出し</h3>
+                    </div>
+                    <ul>
+                        <li>お茶会</li>
+                        <li>お誕生日会</li>
+                        <li>季節の和菓子</li>
+                        <li>おしゃべりタイム</li>
+                        <li>新聞・読書の時間</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="activities-note">
+                ※ プログラムは日替わりです。当日の体調や気分に合わせて、ご無理のない範囲でご参加いただけます。<br>
+                「歌うのは聞いているだけがいい」「今日は静かに過ごしたい」——そんな日も大歓迎です。
+            </p>
         </div>
     </section>
 
