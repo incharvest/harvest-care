@@ -1138,8 +1138,12 @@
         }
 
         @media (max-width: 768px) {
-            /* スマホは縦方向のグラデーションに切り替え（文字を上、写真を下） */
+            /* スマホでは width:calc(100%+4rem) / margin:-2rem の拡張を解除し、
+               main の padding 内に収める（横はみ出し防止） */
             body:not([data-theme]) .hero {
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
                 background-color: var(--color-bg);
                 background-image:
                     linear-gradient(180deg,
