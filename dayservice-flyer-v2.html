@@ -6,24 +6,27 @@
   <title>マッサージ・リハビリ重視型デイサービス ハーベスト｜鹿児島市東谷山 チラシ (v2 叩き台)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
     /* ============================================================
-     * カラーパレット（HPと統一・コントラスト強化版）
+     * カラーパレット（リセット版）
+     * 暖かみ・薄めのペーパートーン中心。モスグリーンは撤去。
      * ============================================================ */
     :root {
-      --c-cream:        #fdf9ef;  /* 主背景（より白寄りで清潔感）*/
-      --c-cream-soft:   #efe1c4;  /* 帯背景（見分けが付くよう深めに）*/
-      --c-beige:        #e0d0ab;  /* 中間調（強めに）*/
-      --c-warm-gray:    #a89771;  /* ライン用（濃くして視認性UP）*/
-      --c-gold:         #9c6f24;  /* 暖かいゴールド（読みやすく）*/
-      --c-gold-deep:    #6d4e10;  /* 深ゴールド */
-      --c-forest:       #1e5c3a;  /* HP統一の深緑 */
-      --c-forest-deep:  #0f3520;  /* さらに深く */
-      --c-text:         #1a0f05;  /* ほぼ黒に近いダークブラウン */
-      --c-text-mute:    #4a3820;  /* 読みやすい抑えめブラウン */
-      --c-orange:       #c86520;  /* 強アクセント（濃色化）*/
-      --c-orange-light: #e88a3a;  /* 明るいオレンジ（背景装飾用）*/
+      --c-paper:        #fef8ee;  /* 主背景 温かみのある紙色 */
+      --c-cream:        #f9ecd6;  /* セクション帯 薄いピーチクリーム */
+      --c-cream-soft:   #f4e0c2;  /* 中間調 */
+      --c-line:         #d9b98a;  /* ライン用 やわらかタン */
+
+      --c-terra:        #b85a2d;  /* 主アクセント 温かいテラコッタ */
+      --c-terra-deep:   #8a3d1a;  /* 深テラコッタ 見出し用 */
+      --c-amber:        #d99248;  /* アンバー サブアクセント */
+      --c-amber-light:  #f2c793;  /* 薄アンバー 装飾/背景用 */
+
+      --c-brown:        #2a1608;  /* 本文 深いコーヒーブラウン */
+      --c-brown-mute:   #63432a;  /* 抑え本文 温かみブラウン */
+
+      --c-white:        #ffffff;
     }
 
     /* 印刷設定 A4 横 両面 */
@@ -31,8 +34,8 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
     html, body {
-      font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', sans-serif;
-      color: var(--c-text);
+      font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+      color: var(--c-brown);
       background: #ddd;
       font-size: 9.5pt;
       font-weight: 500;
@@ -44,7 +47,7 @@
     .page {
       width: 297mm;
       height: 210mm;
-      background: var(--c-cream);
+      background: var(--c-paper);
       position: relative;
       overflow: hidden;
       page-break-after: always;
@@ -65,12 +68,12 @@
     .p1-header {
       height: 15mm; padding: 0 16mm;
       display: flex; align-items: center; justify-content: space-between;
-      background: var(--c-forest); color: var(--c-cream);
+      background: var(--c-terra-deep); color: var(--c-paper);
       position: relative;
     }
     .p1-header::before {
       content: ''; position: absolute; left: 16mm; right: 16mm; bottom: 3mm;
-      height: 1px; background: rgba(184,138,62,0.4);
+      height: 1px; background: rgba(217,146,72,0.5);
     }
     .p1-header .brand {
       display: flex; align-items: baseline; gap: 4mm;
@@ -80,12 +83,12 @@
     }
     .p1-header .name-en {
       font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: 8pt; letter-spacing: 0.32em; color: var(--c-gold); opacity: 0.9;
+      font-size: 8pt; letter-spacing: 0.32em; color: var(--c-terra); opacity: 0.9;
     }
     .p1-header .tag {
       font-size: 7.5pt; letter-spacing: 0.24em;
-      padding: 1.2mm 4mm; border: 1px solid rgba(184,138,62,0.5);
-      color: var(--c-gold);
+      padding: 1.2mm 4mm; border: 1px solid rgba(217,146,72,0.6);
+      color: var(--c-terra);
     }
 
     /* HERO */
@@ -95,7 +98,7 @@
       grid-template-columns: 1fr 1.1fr;
       gap: 11mm;
       align-items: center;
-      background: linear-gradient(180deg, var(--c-cream) 0%, var(--c-cream-soft) 100%);
+      background: linear-gradient(180deg, var(--c-paper) 0%, var(--c-paper) 100%);
       position: relative;
     }
     .hero-photo {
@@ -110,18 +113,18 @@
     }
     .hero-photo::before {
       top: -3mm; left: -3mm;
-      border-top: 1.2px solid var(--c-gold);
-      border-left: 1.2px solid var(--c-gold);
+      border-top: 1.2px solid var(--c-terra);
+      border-left: 1.2px solid var(--c-terra);
     }
     .hero-photo::after {
       bottom: -3mm; right: -3mm;
-      border-bottom: 1.2px solid var(--c-gold);
-      border-right: 1.2px solid var(--c-gold);
+      border-bottom: 1.2px solid var(--c-terra);
+      border-right: 1.2px solid var(--c-terra);
     }
     .hero-stamp {
       position: absolute; top: 4mm; right: 4mm; z-index: 3;
       width: 30mm; height: 30mm; border-radius: 50%;
-      background: var(--c-orange); color: var(--c-cream);
+      background: var(--c-terra); color: var(--c-paper);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       box-shadow: 0 2mm 6mm rgba(0,0,0,0.22);
       transform: rotate(-8deg);
@@ -145,21 +148,21 @@
       display: inline-flex; align-items: center; gap: 3mm;
       font-family: 'Cormorant Garamond', serif; font-style: italic;
       font-weight: 500; font-size: 8pt;
-      color: var(--c-gold);
+      color: var(--c-terra);
       letter-spacing: 0.28em;
       margin-bottom: 4mm;
     }
     .hero-tagline::before {
-      content: ''; width: 12mm; height: 1px; background: var(--c-gold);
+      content: ''; width: 12mm; height: 1px; background: var(--c-terra);
     }
     .hero-headline {
       font-weight: 700; font-size: 21pt;
       line-height: 1.45; letter-spacing: 0.06em;
-      color: var(--c-forest-deep);
+      color: var(--c-terra-deep);
       margin-bottom: 5mm;
     }
     .hero-headline .em {
-      color: var(--c-orange);
+      color: var(--c-terra);
       position: relative;
       display: inline-block;
       font-weight: 900;
@@ -167,30 +170,30 @@
     .hero-headline .em::after {
       content: '';
       position: absolute; left: 0; right: 0; bottom: 0.6mm;
-      height: 3.5mm; background: rgba(232,138,58,0.28); z-index: -1;
+      height: 3.5mm; background: rgba(242,199,147,0.65); z-index: -1;
     }
     .hero-subhead {
       font-size: 9.5pt; line-height: 1.95;
-      color: var(--c-text);
+      color: var(--c-brown);
       margin-bottom: 5mm;
       max-width: 130mm;
       font-weight: 500;
     }
     .hero-subhead strong {
-      color: var(--c-orange); font-weight: 900;
-      background: linear-gradient(transparent 65%, rgba(232,138,58,0.22) 65%);
+      color: var(--c-terra); font-weight: 900;
+      background: linear-gradient(transparent 65%, rgba(242,199,147,0.6) 65%);
       padding: 0 0.15em;
     }
     .hero-brand-line {
       display: flex; align-items: baseline; gap: 4mm;
-      padding-top: 4mm; border-top: 1px solid var(--c-warm-gray);
+      padding-top: 4mm; border-top: 1px solid var(--c-line);
     }
     .hero-brand-line .ja {
-      font-weight: 700; font-size: 12pt; letter-spacing: 0.08em; color: var(--c-forest);
+      font-weight: 700; font-size: 12pt; letter-spacing: 0.08em; color: var(--c-terra-deep);
     }
     .hero-brand-line .en {
       font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: 8pt; letter-spacing: 0.28em; color: var(--c-gold);
+      font-size: 8pt; letter-spacing: 0.28em; color: var(--c-terra);
     }
 
     /* 3 つの強み */
@@ -198,37 +201,37 @@
       height: 45mm; padding: 0 16mm;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      background: var(--c-forest);
-      color: var(--c-cream);
-      border-top: 2px solid var(--c-gold);
-      border-bottom: 2px solid var(--c-gold);
+      background: var(--c-terra-deep);
+      color: var(--c-paper);
+      border-top: 2px solid var(--c-terra);
+      border-bottom: 2px solid var(--c-terra);
     }
     .strength {
-      padding: 6mm 6mm; border-right: 1px dashed rgba(232,196,120,0.35);
+      padding: 6mm 6mm; border-right: 1px dashed rgba(242,199,147,0.4);
       display: flex; flex-direction: column; justify-content: center;
     }
     .strength:last-child { border-right: none; }
     .strength-num {
       font-family: 'Cormorant Garamond', serif; font-style: italic;
       font-weight: 500; font-size: 18pt;
-      color: var(--c-orange-light);
+      color: var(--c-amber);
       line-height: 1; margin-bottom: 2.5mm;
     }
     .strength-title {
       font-weight: 700; font-size: 12pt;
-      color: var(--c-cream);
+      color: var(--c-paper);
       letter-spacing: 0.06em; line-height: 1.45;
       margin-bottom: 3mm;
     }
     .strength-title .highlight {
-      background: var(--c-orange);
-      color: var(--c-cream);
+      background: var(--c-terra);
+      color: var(--c-paper);
       padding: 0.3mm 1.5mm;
       font-weight: 900;
     }
     .strength-desc {
       font-size: 8.5pt; line-height: 1.8;
-      color: rgba(253,249,239,0.92);
+      color: rgba(254,248,238,0.95);
       letter-spacing: 0.02em; font-weight: 400;
     }
 
@@ -238,7 +241,7 @@
       display: grid;
       grid-template-columns: 1.55fr 1fr;
       gap: 10mm;
-      background: var(--c-cream);
+      background: var(--c-paper);
       align-items: center;
     }
     .schedule-head {
@@ -247,11 +250,11 @@
     }
     .schedule-head .ja {
       font-weight: 700; font-size: 10.5pt;
-      letter-spacing: 0.14em; color: var(--c-forest);
+      letter-spacing: 0.14em; color: var(--c-terra-deep);
     }
     .schedule-head .en {
       font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: 7pt; letter-spacing: 0.32em; color: var(--c-gold);
+      font-size: 7pt; letter-spacing: 0.32em; color: var(--c-terra);
     }
     .schedule-list {
       display: grid; grid-template-columns: repeat(6, 1fr);
@@ -259,42 +262,42 @@
     }
     .schedule-list::before {
       content: ''; position: absolute; top: 5mm; left: 4%; right: 4%;
-      border-top: 1px dashed var(--c-gold);
+      border-top: 1px dashed var(--c-terra);
     }
     .sl-item {
       text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.2mm;
     }
     .sl-dot {
       width: 3.5mm; height: 3.5mm; border-radius: 50%;
-      background: var(--c-cream); border: 1.3px solid var(--c-gold);
+      background: var(--c-paper); border: 1.3px solid var(--c-terra);
       margin-top: 3.3mm; position: relative; z-index: 1;
     }
-    .sl-dot.key { background: var(--c-orange); border-color: var(--c-orange); }
+    .sl-dot.key { background: var(--c-terra); border-color: var(--c-terra); }
     .sl-time {
       font-family: 'Cormorant Garamond', serif; font-weight: 500;
-      font-size: 11pt; color: var(--c-forest); letter-spacing: 0.04em;
+      font-size: 11pt; color: var(--c-terra-deep); letter-spacing: 0.04em;
       margin-top: 0.5mm;
     }
     .sl-label {
-      font-size: 6.5pt; line-height: 1.4; color: var(--c-text); letter-spacing: 0.04em;
+      font-size: 6.5pt; line-height: 1.4; color: var(--c-brown); letter-spacing: 0.04em;
     }
 
     .contact-card {
-      background: var(--c-forest); color: var(--c-cream);
+      background: var(--c-terra-deep); color: var(--c-paper);
       padding: 5mm 6mm; position: relative;
       display: flex; flex-direction: column; justify-content: center;
     }
     .contact-card::before {
       content: ''; position: absolute; inset: 1.5mm;
-      border: 1px solid rgba(184,138,62,0.4); pointer-events: none;
+      border: 1px solid rgba(217,146,72,0.5); pointer-events: none;
     }
     .cc-invite {
-      display: inline-block; background: var(--c-orange); color: var(--c-cream);
+      display: inline-block; background: var(--c-terra); color: var(--c-paper);
       padding: 0.8mm 3mm; font-size: 6.5pt; letter-spacing: 0.24em;
       margin-bottom: 2.5mm; font-weight: 500; align-self: flex-start;
     }
     .cc-lead {
-      font-size: 7pt; letter-spacing: 0.16em; color: var(--c-gold); margin-bottom: 0.5mm;
+      font-size: 7pt; letter-spacing: 0.16em; color: var(--c-terra); margin-bottom: 0.5mm;
     }
     .cc-tel {
       font-family: 'Cormorant Garamond', serif; font-weight: 500;
@@ -306,11 +309,11 @@
       margin-bottom: 2mm;
     }
     .cc-divider {
-      height: 1px; background: rgba(184,138,62,0.35); margin: 1.5mm 0;
+      height: 1px; background: rgba(217,146,72,0.5); margin: 1.5mm 0;
     }
     .cc-addr {
       font-size: 6.5pt; line-height: 1.55; letter-spacing: 0.04em;
-      color: rgba(250,246,237,0.92);
+      color: rgba(254,248,238,0.95);
     }
 
     /* ============================================================
@@ -321,7 +324,7 @@
     /* 私たちの想い + レスパイト訴求 */
     .p2-philosophy {
       height: 40mm; padding: 7mm 16mm;
-      background: var(--c-cream);
+      background: var(--c-paper);
       display: grid;
       grid-template-columns: 60mm 1fr;
       gap: 10mm;
@@ -330,83 +333,83 @@
     .ph-head { display: flex; flex-direction: column; }
     .ph-en {
       font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: 10pt; letter-spacing: 0.18em; color: var(--c-gold);
+      font-size: 10pt; letter-spacing: 0.18em; color: var(--c-terra);
       margin-bottom: 1.5mm;
     }
     .ph-ja {
       font-weight: 700; font-size: 15pt; letter-spacing: 0.1em;
-      color: var(--c-forest); line-height: 1.4;
+      color: var(--c-terra-deep); line-height: 1.4;
     }
     .ph-ja-line {
-      width: 14mm; height: 1px; background: var(--c-gold); margin-top: 3mm;
+      width: 14mm; height: 1px; background: var(--c-terra); margin-top: 3mm;
     }
     .ph-body {
       font-size: 8.5pt; line-height: 1.9;
-      color: var(--c-text); letter-spacing: 0.04em;
+      color: var(--c-brown); letter-spacing: 0.04em;
     }
     .ph-body p { margin-bottom: 1.5mm; }
     .ph-body p:last-child { margin-bottom: 0; }
     .ph-body strong {
-      color: var(--c-orange); font-weight: 700;
-      background: linear-gradient(transparent 65%, rgba(210,125,58,0.18) 65%);
+      color: var(--c-terra); font-weight: 700;
+      background: linear-gradient(transparent 65%, rgba(242,199,147,0.55) 65%);
     }
 
     /* 5つのお楽しみ */
     .p2-drawers {
       height: 50mm; padding: 6mm 16mm;
-      background: var(--c-cream-soft);
-      border-top: 2px solid var(--c-gold);
-      border-bottom: 2px solid var(--c-gold);
+      background: var(--c-paper);
+      border-top: 2px solid var(--c-terra);
+      border-bottom: 2px solid var(--c-terra);
     }
     .drawers-head {
       display: flex; align-items: baseline; gap: 4mm;
       margin-bottom: 4mm;
     }
     .drawers-head .ja {
-      font-weight: 700; font-size: 11pt; letter-spacing: 0.14em; color: var(--c-forest);
+      font-weight: 700; font-size: 11pt; letter-spacing: 0.14em; color: var(--c-terra-deep);
     }
     .drawers-head .en {
       font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: 7pt; letter-spacing: 0.32em; color: var(--c-gold);
+      font-size: 7pt; letter-spacing: 0.32em; color: var(--c-terra);
     }
     .drawers-lead {
-      font-size: 7.5pt; color: var(--c-text-mute); letter-spacing: 0.04em;
+      font-size: 7.5pt; color: var(--c-brown-mute); letter-spacing: 0.04em;
       margin-left: auto;
     }
     .drawers-grid {
       display: grid; grid-template-columns: repeat(5, 1fr); gap: 3mm;
     }
     .drawer {
-      background: var(--c-cream);
+      background: var(--c-paper);
       padding: 3.5mm 3.5mm;
-      border-top: 3px solid var(--c-forest);
-      box-shadow: 0 1mm 3mm rgba(15,53,32,0.08);
+      border-top: 3px solid var(--c-terra-deep);
+      box-shadow: 0 1mm 3mm rgba(138,61,26,0.10);
     }
     .drawer h4 {
       font-weight: 700; font-size: 9pt;
-      color: var(--c-forest-deep); letter-spacing: 0.06em;
+      color: var(--c-terra-deep); letter-spacing: 0.06em;
       margin-bottom: 2.5mm;
     }
     .drawer h4 .en {
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500;
-      font-size: 6.5pt; letter-spacing: 0.28em; color: var(--c-orange); display: block; margin-bottom: 0.6mm;
+      font-size: 6.5pt; letter-spacing: 0.28em; color: var(--c-terra); display: block; margin-bottom: 0.6mm;
     }
     .drawer ul {
       list-style: none; display: flex; flex-direction: column; gap: 0.8mm;
     }
     .drawer li {
-      font-size: 7.5pt; color: var(--c-text); line-height: 1.6; letter-spacing: 0.02em;
+      font-size: 7.5pt; color: var(--c-brown); line-height: 1.6; letter-spacing: 0.02em;
       padding-left: 3mm; position: relative; font-weight: 500;
     }
     .drawer li::before {
       content: '◆'; position: absolute; left: 0; top: 0.6mm;
-      font-size: 4.5pt; color: var(--c-orange);
+      font-size: 4.5pt; color: var(--c-terra);
     }
 
     /* Gallery + Info */
     .p2-body {
       height: 105mm; padding: 7mm 16mm;
-      background: var(--c-cream);
+      background: var(--c-paper);
       display: grid;
       grid-template-columns: 100mm 1fr;
       gap: 8mm;
@@ -420,7 +423,7 @@
     }
     .gallery-item {
       position: relative; overflow: hidden;
-      border: 1px solid var(--c-warm-gray);
+      border: 1px solid var(--c-line);
     }
     .gallery-item.main { grid-row: 1 / span 2; grid-column: 1 / span 2; }
     .gallery-item img {
@@ -430,7 +433,7 @@
     .gallery-cap {
       position: absolute; left: 2mm; bottom: 2mm;
       padding: 0.8mm 2mm;
-      background: rgba(30,92,58,0.9); color: var(--c-cream);
+      background: rgba(138,61,26,0.9); color: var(--c-paper);
       font-size: 6pt; letter-spacing: 0.12em; font-weight: 500;
     }
 
@@ -441,24 +444,24 @@
     }
     .info-block h3 {
       font-weight: 700; font-size: 10pt; letter-spacing: 0.14em;
-      color: var(--c-forest);
+      color: var(--c-terra-deep);
       padding-bottom: 1.5mm; margin-bottom: 3mm;
-      border-bottom: 1px solid var(--c-gold);
+      border-bottom: 1px solid var(--c-terra);
       display: flex; align-items: baseline; gap: 3mm;
     }
     .info-block h3 .en {
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
-      font-size: 6.5pt; letter-spacing: 0.28em; color: var(--c-gold);
+      font-size: 6.5pt; letter-spacing: 0.28em; color: var(--c-terra);
     }
     .rows { font-size: 7.8pt; line-height: 1.7; letter-spacing: 0.03em; font-weight: 500; }
     .rows .row {
       display: grid; grid-template-columns: 21mm 1fr; gap: 2mm;
       padding: 0.8mm 0;
-      border-bottom: 1px dotted rgba(168,151,113,0.4);
+      border-bottom: 1px dotted rgba(217,185,138,0.5);
     }
     .rows .row:last-child { border-bottom: none; }
     .rows .k {
-      font-weight: 700; color: var(--c-forest-deep); letter-spacing: 0.08em;
+      font-weight: 700; color: var(--c-terra-deep); letter-spacing: 0.08em;
     }
 
     /* 料金カード */
@@ -467,28 +470,28 @@
     }
     .price-cell {
       padding: 2mm 0;
-      border-bottom: 1px dotted rgba(205,191,166,0.6);
+      border-bottom: 1px dotted rgba(217,185,138,0.5);
     }
     .price-cell .lbl {
-      font-size: 6.5pt; color: var(--c-text-mute); letter-spacing: 0.06em; margin-bottom: 0.3mm;
+      font-size: 6.5pt; color: var(--c-brown-mute); letter-spacing: 0.06em; margin-bottom: 0.3mm;
     }
     .price-cell .val {
       font-family: 'Cormorant Garamond', serif; font-weight: 500;
-      font-size: 13pt; color: var(--c-forest); letter-spacing: 0.02em; line-height: 1;
+      font-size: 13pt; color: var(--c-terra-deep); letter-spacing: 0.02em; line-height: 1;
     }
     .price-cell .val small {
-      font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 6.5pt;
-      color: var(--c-text-mute); margin-left: 1mm; letter-spacing: 0.04em;
+      font-family: 'Noto Sans JP', sans-serif; font-size: 6.5pt;
+      color: var(--c-brown-mute); margin-left: 1mm; letter-spacing: 0.04em;
     }
     .price-note {
-      font-size: 6.5pt; color: var(--c-text-mute); letter-spacing: 0.03em;
+      font-size: 6.5pt; color: var(--c-brown-mute); letter-spacing: 0.03em;
       margin-top: 1.5mm; line-height: 1.5;
     }
 
     /* お問い合わせQR */
     .cta-card {
-      background: linear-gradient(135deg, var(--c-forest) 0%, var(--c-forest-deep) 100%);
-      color: var(--c-cream);
+      background: linear-gradient(135deg, var(--c-terra-deep) 0%, var(--c-terra-deep) 100%);
+      color: var(--c-paper);
       border-radius: 1.5mm;
       padding: 3mm 4mm;
       display: grid;
@@ -499,10 +502,10 @@
     }
     .cta-card::before {
       content: ''; position: absolute; inset: 1mm;
-      border: 1px solid rgba(184,138,62,0.4);
+      border: 1px solid rgba(217,146,72,0.5);
       pointer-events: none; border-radius: 1mm;
     }
-    .cta-lead { font-size: 6.5pt; letter-spacing: 0.24em; color: var(--c-gold); margin-bottom: 0.3mm; }
+    .cta-lead { font-size: 6.5pt; letter-spacing: 0.24em; color: var(--c-terra); margin-bottom: 0.3mm; }
     .cta-tel {
       font-family: 'Cormorant Garamond', serif; font-weight: 500;
       font-size: 16pt; letter-spacing: 0.02em; line-height: 1.05;
@@ -516,29 +519,29 @@
     /* 最下部 */
     .p2-bottom {
       height: 15mm; padding: 0 16mm;
-      background: var(--c-forest-deep);
-      color: var(--c-cream);
+      background: var(--c-terra-deep);
+      color: var(--c-paper);
       display: flex; align-items: center; justify-content: space-between;
       font-size: 7pt; letter-spacing: 0.1em;
-      border-top: 1px solid var(--c-gold);
+      border-top: 1px solid var(--c-terra);
     }
     .p2-bottom .biz {
       display: flex; gap: 5mm; align-items: center; flex-wrap: wrap;
     }
     .p2-bottom .biz-tag {
       padding-left: 5mm; font-size: 7pt; letter-spacing: 0.16em;
-      color: var(--c-gold); position: relative;
+      color: var(--c-terra); position: relative;
     }
     .p2-bottom .biz-tag::before {
       content: ''; position: absolute; left: 0; top: 50%;
-      width: 3mm; height: 1px; background: var(--c-gold);
+      width: 3mm; height: 1px; background: var(--c-terra);
     }
     .p2-bottom .copy { opacity: 0.65; font-size: 6.5pt; }
 
     /* 「叩き台」バッジ（画面のみ表示） */
     .draft-badge {
       position: fixed; top: 10px; right: 10px;
-      background: var(--c-orange); color: #fff;
+      background: var(--c-terra); color: #fff;
       padding: 6px 12px; border-radius: 4px;
       font-size: 11px; letter-spacing: 0.1em; font-weight: 700;
       z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
