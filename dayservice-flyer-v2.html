@@ -9,20 +9,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
     /* ============================================================
-     * カラーパレット（HPと統一）
+     * カラーパレット（HPと統一・コントラスト強化版）
      * ============================================================ */
     :root {
-      --c-cream:        #faf6ed;
-      --c-cream-soft:   #f3ebd9;
-      --c-beige:        #e8dcc4;
-      --c-warm-gray:    #cdbfa6;
-      --c-gold:         #b88a3e;
-      --c-gold-deep:    #8a6526;
-      --c-forest:       #1e5c3a;
-      --c-forest-deep:  #133d27;
-      --c-text:         #2b1e12;
-      --c-text-mute:    #6b5a48;
-      --c-orange:       #d27d3a;
+      --c-cream:        #fdf9ef;  /* 主背景（より白寄りで清潔感）*/
+      --c-cream-soft:   #efe1c4;  /* 帯背景（見分けが付くよう深めに）*/
+      --c-beige:        #e0d0ab;  /* 中間調（強めに）*/
+      --c-warm-gray:    #a89771;  /* ライン用（濃くして視認性UP）*/
+      --c-gold:         #9c6f24;  /* 暖かいゴールド（読みやすく）*/
+      --c-gold-deep:    #6d4e10;  /* 深ゴールド */
+      --c-forest:       #1e5c3a;  /* HP統一の深緑 */
+      --c-forest-deep:  #0f3520;  /* さらに深く */
+      --c-text:         #1a0f05;  /* ほぼ黒に近いダークブラウン */
+      --c-text-mute:    #4a3820;  /* 読みやすい抑えめブラウン */
+      --c-orange:       #c86520;  /* 強アクセント（濃色化）*/
+      --c-orange-light: #e88a3a;  /* 明るいオレンジ（背景装飾用）*/
     }
 
     /* 印刷設定 A4 横 両面 */
@@ -33,9 +34,9 @@
       font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', sans-serif;
       color: var(--c-text);
       background: #ddd;
-      font-size: 9pt;
-      font-weight: 400;
-      line-height: 1.65;
+      font-size: 9.5pt;
+      font-weight: 500;
+      line-height: 1.7;
       letter-spacing: 0.03em;
       -webkit-font-smoothing: antialiased;
     }
@@ -152,29 +153,33 @@
       content: ''; width: 12mm; height: 1px; background: var(--c-gold);
     }
     .hero-headline {
-      font-weight: 700; font-size: 20pt;
+      font-weight: 700; font-size: 21pt;
       line-height: 1.45; letter-spacing: 0.06em;
-      color: var(--c-forest);
+      color: var(--c-forest-deep);
       margin-bottom: 5mm;
     }
     .hero-headline .em {
       color: var(--c-orange);
       position: relative;
       display: inline-block;
+      font-weight: 900;
     }
     .hero-headline .em::after {
       content: '';
       position: absolute; left: 0; right: 0; bottom: 0.6mm;
-      height: 3mm; background: rgba(210,125,58,0.18); z-index: -1;
+      height: 3.5mm; background: rgba(232,138,58,0.28); z-index: -1;
     }
     .hero-subhead {
-      font-size: 9pt; line-height: 1.9;
+      font-size: 9.5pt; line-height: 1.95;
       color: var(--c-text);
       margin-bottom: 5mm;
       max-width: 130mm;
+      font-weight: 500;
     }
     .hero-subhead strong {
-      color: var(--c-gold-deep); font-weight: 700;
+      color: var(--c-orange); font-weight: 900;
+      background: linear-gradient(transparent 65%, rgba(232,138,58,0.22) 65%);
+      padding: 0 0.15em;
     }
     .hero-brand-line {
       display: flex; align-items: baseline; gap: 4mm;
@@ -193,33 +198,38 @@
       height: 45mm; padding: 0 16mm;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      background: var(--c-beige);
-      border-top: 1px solid var(--c-warm-gray);
-      border-bottom: 1px solid var(--c-warm-gray);
+      background: var(--c-forest);
+      color: var(--c-cream);
+      border-top: 2px solid var(--c-gold);
+      border-bottom: 2px solid var(--c-gold);
     }
     .strength {
-      padding: 6mm 6mm; border-right: 1px dashed rgba(184,138,62,0.5);
+      padding: 6mm 6mm; border-right: 1px dashed rgba(232,196,120,0.35);
       display: flex; flex-direction: column; justify-content: center;
     }
     .strength:last-child { border-right: none; }
     .strength-num {
       font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-weight: 400; font-size: 16pt; color: var(--c-gold);
+      font-weight: 500; font-size: 18pt;
+      color: var(--c-orange-light);
       line-height: 1; margin-bottom: 2.5mm;
     }
     .strength-title {
-      font-weight: 700; font-size: 11pt;
-      color: var(--c-forest);
-      letter-spacing: 0.06em; line-height: 1.4;
-      margin-bottom: 2.5mm;
+      font-weight: 700; font-size: 12pt;
+      color: var(--c-cream);
+      letter-spacing: 0.06em; line-height: 1.45;
+      margin-bottom: 3mm;
     }
     .strength-title .highlight {
-      background: rgba(210,125,58,0.18);
-      padding: 0 0.15em;
+      background: var(--c-orange);
+      color: var(--c-cream);
+      padding: 0.3mm 1.5mm;
+      font-weight: 900;
     }
     .strength-desc {
-      font-size: 7.5pt; line-height: 1.75; color: var(--c-text-mute);
-      letter-spacing: 0.02em;
+      font-size: 8.5pt; line-height: 1.8;
+      color: rgba(253,249,239,0.92);
+      letter-spacing: 0.02em; font-weight: 400;
     }
 
     /* 下部：一日の流れ + 連絡先 */
@@ -345,8 +355,8 @@
     .p2-drawers {
       height: 50mm; padding: 6mm 16mm;
       background: var(--c-cream-soft);
-      border-top: 1px solid var(--c-warm-gray);
-      border-bottom: 1px solid var(--c-warm-gray);
+      border-top: 2px solid var(--c-gold);
+      border-bottom: 2px solid var(--c-gold);
     }
     .drawers-head {
       display: flex; align-items: baseline; gap: 4mm;
@@ -368,28 +378,29 @@
     }
     .drawer {
       background: var(--c-cream);
-      padding: 3mm 3mm;
-      border-top: 2px solid var(--c-gold);
+      padding: 3.5mm 3.5mm;
+      border-top: 3px solid var(--c-forest);
+      box-shadow: 0 1mm 3mm rgba(15,53,32,0.08);
     }
     .drawer h4 {
-      font-weight: 700; font-size: 8.5pt;
-      color: var(--c-forest); letter-spacing: 0.04em;
-      margin-bottom: 2mm;
+      font-weight: 700; font-size: 9pt;
+      color: var(--c-forest-deep); letter-spacing: 0.06em;
+      margin-bottom: 2.5mm;
     }
     .drawer h4 .en {
-      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
-      font-size: 6pt; letter-spacing: 0.24em; color: var(--c-gold); display: block; margin-bottom: 0.5mm;
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500;
+      font-size: 6.5pt; letter-spacing: 0.28em; color: var(--c-orange); display: block; margin-bottom: 0.6mm;
     }
     .drawer ul {
-      list-style: none; display: flex; flex-direction: column; gap: 0.6mm;
+      list-style: none; display: flex; flex-direction: column; gap: 0.8mm;
     }
     .drawer li {
-      font-size: 6.5pt; color: var(--c-text); line-height: 1.55; letter-spacing: 0.02em;
-      padding-left: 3mm; position: relative;
+      font-size: 7.5pt; color: var(--c-text); line-height: 1.6; letter-spacing: 0.02em;
+      padding-left: 3mm; position: relative; font-weight: 500;
     }
     .drawer li::before {
-      content: '◆'; position: absolute; left: 0; top: 0.4mm;
-      font-size: 4pt; color: var(--c-gold);
+      content: '◆'; position: absolute; left: 0; top: 0.6mm;
+      font-size: 4.5pt; color: var(--c-orange);
     }
 
     /* Gallery + Info */
@@ -439,13 +450,15 @@
       font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
       font-size: 6.5pt; letter-spacing: 0.28em; color: var(--c-gold);
     }
-    .rows { font-size: 7pt; line-height: 1.55; letter-spacing: 0.03em; }
+    .rows { font-size: 7.8pt; line-height: 1.7; letter-spacing: 0.03em; font-weight: 500; }
     .rows .row {
       display: grid; grid-template-columns: 21mm 1fr; gap: 2mm;
-      padding: 0.6mm 0;
+      padding: 0.8mm 0;
+      border-bottom: 1px dotted rgba(168,151,113,0.4);
     }
+    .rows .row:last-child { border-bottom: none; }
     .rows .k {
-      font-weight: 700; color: var(--c-gold-deep); letter-spacing: 0.06em;
+      font-weight: 700; color: var(--c-forest-deep); letter-spacing: 0.08em;
     }
 
     /* 料金カード */
