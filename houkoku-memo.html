@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>報告メモ | ハーベストケア（職員用）</title>
+<style>
+  :root {
+    --brown: #5a4d42;
+    --beige: #b8a07a;
+    --green: #6b8f7b;
+    --light: #f7f4f0;
+    --sand: #f0ebe4;
+    --line: #e8e0d8;
+    --red: #c0564f;
+    --white: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { font-size: 16px; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+    background: var(--light);
+    color: var(--brown);
+    line-height: 1.6;
+    padding-bottom: 76px; /* 下タブの高さぶん */
+  }
+
+  /* ===== ヘッダー ===== */
+  header {
+    background: var(--brown);
+    color: var(--white);
+    padding: 12px 16px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  header h1 { font-size: 1.05rem; font-weight: 600; letter-spacing: .05em; }
+  header .sub { font-size: .7rem; opacity: .8; }
+
+  main { max-width: 640px; margin: 0 auto; padding: 14px 14px 20px; }
+
+  /* ===== タブ切替（下部） ===== */
+  nav.tabs {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    border-top: 1px solid var(--line);
+    display: flex;
+    z-index: 20;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  nav.tabs button {
+    flex: 1;
+    border: none;
+    background: none;
+    padding: 10px 0 8px;
+    font-size: .75rem;
+    color: #a09383;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  nav.tabs button .icon { display: block; font-size: 1.35rem; line-height: 1.3; }
+  nav.tabs button.active { color: var(--green); font-weight: 700; }
+
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ===== カード・フォーム ===== */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  label.field-label {
+    display: block;
+    font-size: .85rem;
+    font-weight: 700;
+    margin: 14px 0 5px;
+  }
+  label.field-label:first-child { margin-top: 0; }
+  label.field-label .req { color: var(--red); font-size: .75rem; margin-left: 4px; }
+  input[type="text"], input[type="date"], input[type="time"], textarea, select {
+    width: 100%;
+    font-size: 1rem;
+    font-family: inherit;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--light);
+    color: var(--brown);
+    -webkit-appearance: none;
+  }
+  textarea { min-height: 120px; resize: vertical; }
+  input:focus, textarea:focus { outline: 2px solid var(--green); background: var(--white); }
+
+  .row2 { display: flex; gap: 10px; }
+  .row2 > div { flex: 1; }
+
+  /* 分類チップ */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips button {
+    border: 1.5px solid var(--line);
+    background: var(--white);
+    color: var(--brown);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: .9rem;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .chips button.selected {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  /* 重要トグル */
+  .imp-toggle {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 14px;
+    padding: 12px;
+    background: var(--sand);
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .imp-toggle input { width: 22px; height: 22px; accent-color: var(--red); }
+  .imp-toggle span { font-weight: 700; }
+
+  /* 音声入力ボタン */
+  .voice-row { display: flex; gap: 10px; margin-top: 8px; }
+  .btn-voice {
+    flex: 1;
+    border: 1.5px solid var(--green);
+    background: var(--white);
+    color: var(--green);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .btn-voice.recording {
+    background: var(--red);
+    border-color: var(--red);
+    color: var(--white);
+    animation: pulse 1.2s infinite;
+  }
+  @keyframes pulse { 50% { opacity: .65; } }
+
+  /* 汎用ボタン */
+  .btn {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: center;
+  }
+  .btn-primary { background: var(--green); color: var(--white); }
+  .btn-secondary { background: var(--white); color: var(--brown); border: 1.5px solid var(--beige); }
+  .btn-danger-text { background: none; color: var(--red); font-size: .9rem; padding: 10px; }
+  .btn + .btn { margin-top: 10px; }
+  .btn:active { opacity: .8; }
+
+  /* ===== 日付ナビ ===== */
+  .date-nav {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 8px;
+    margin-bottom: 14px;
+  }
+  .date-nav button {
+    border: none; background: var(--sand); color: var(--brown);
+    border-radius: 8px; width: 44px; height: 44px;
+    font-size: 1.2rem; cursor: pointer; flex-shrink: 0; font-family: inherit;
+  }
+  .date-nav input[type="date"] { flex: 1; text-align: center; font-weight: 700; border: none; background: none; padding: 8px 0; }
+  .date-nav .today-btn { width: auto; padding: 0 12px; font-size: .85rem; font-weight: 700; }
+
+  /* ===== 一覧 ===== */
+  .entry {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 13px 14px;
+    margin-bottom: 10px;
+  }
+  .entry.important { border-left: 5px solid var(--red); }
+  .entry .top {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 6px;
+    font-size: .85rem; margin-bottom: 6px;
+  }
+  .entry .time { font-weight: 700; }
+  .entry .resident { font-weight: 700; font-size: 1rem; }
+  .entry .badge {
+    background: var(--sand); color: var(--brown);
+    border-radius: 6px; padding: 1px 8px; font-size: .75rem;
+  }
+  .entry .star { color: var(--red); font-weight: 700; font-size: .8rem; }
+  .entry .staff { color: #a09383; font-size: .78rem; margin-left: auto; }
+  .entry .text { white-space: pre-wrap; font-size: .95rem; }
+  .entry .actions { display: flex; gap: 14px; margin-top: 8px; }
+  .entry .actions button {
+    border: none; background: none; font-family: inherit;
+    font-size: .82rem; cursor: pointer; padding: 4px 2px;
+  }
+  .entry .actions .edit { color: var(--green); font-weight: 700; }
+  .entry .actions .del { color: var(--red); }
+
+  .empty {
+    text-align: center; color: #a09383; padding: 36px 10px; font-size: .92rem;
+  }
+
+  .summary-bar {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    font-size: .82rem; color: #847669; margin-bottom: 12px; padding: 0 4px;
+  }
+
+  select.filter { margin-bottom: 12px; }
+
+  /* ===== まとめ画面 ===== */
+  .step-title {
+    display: flex; align-items: center; gap: 8px;
+    font-size: .95rem; font-weight: 700; margin-bottom: 8px;
+  }
+  .step-title .num {
+    background: var(--beige); color: var(--white);
+    width: 24px; height: 24px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: .85rem; flex-shrink: 0;
+  }
+  .hint { font-size: .8rem; color: #847669; margin-bottom: 10px; }
+  .report-preview {
+    background: var(--light);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: .85rem;
+    white-space: pre-wrap;
+    max-height: 320px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    word-break: break-all;
+  }
+
+  details.help { margin-top: 4px; }
+  details.help summary { font-size: .9rem; font-weight: 700; cursor: pointer; padding: 6px 0; color: var(--green); }
+  details.help .card { font-size: .88rem; }
+  details.help ol { padding-left: 20px; }
+  details.help li { margin-bottom: 8px; }
+
+  /* トースト（画面下の通知） */
+  #toast {
+    position: fixed;
+    bottom: 90px; left: 50%; transform: translateX(-50%);
+    background: var(--brown); color: var(--white);
+    padding: 10px 20px; border-radius: 999px;
+    font-size: .9rem; z-index: 99;
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s;
+    white-space: nowrap;
+  }
+  #toast.show { opacity: 1; }
+
+  /* ===== 印刷 ===== */
+  #printArea { display: none; }
+  @media print {
+    body { padding: 0; background: var(--white); }
+    header, main, nav.tabs, #toast { display: none !important; }
+    #printArea {
+      display: block;
+      font-size: 11pt;
+      white-space: pre-wrap;
+      color: #000;
+      padding: 10mm;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>報告メモ</h1>
+  <div class="sub">ハーベストケア 職員用</div>
+</header>
+
+<main>
+
+  <!-- ============ 入力画面 ============ -->
+  <section id="screen-input" class="screen active">
+    <div class="card">
+      <div class="row2">
+        <div>
+          <label class="field-label">日付</label>
+          <input type="date" id="in-date">
+        </div>
+        <div>
+          <label class="field-label">時刻</label>
+          <input type="time" id="in-time">
+        </div>
+      </div>
+
+      <label class="field-label">対応職員<span class="req">必須</span></label>
+      <input type="text" id="in-staff" list="staff-list" placeholder="例：佐藤" autocomplete="off">
+      <datalist id="staff-list"></datalist>
+
+      <label class="field-label">利用者名<span class="req">必須</span></label>
+      <input type="text" id="in-resident" list="resident-list" placeholder="例：山田様" autocomplete="off">
+      <datalist id="resident-list"></datalist>
+
+      <label class="field-label">分類</label>
+      <div class="chips" id="in-category"></div>
+
+      <label class="imp-toggle">
+        <input type="checkbox" id="in-important">
+        <span>★ 重要（必ず全員に申し送り）</span>
+      </label>
+
+      <label class="field-label">内容<span class="req">必須</span></label>
+      <textarea id="in-text" placeholder="様子・対応した内容などを入力"></textarea>
+      <div class="voice-row">
+        <button class="btn-voice" id="btn-voice" type="button">🎤 音声入力（タップして話す）</button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" id="btn-save">この内容で保存する</button>
+    <button class="btn btn-danger-text" id="btn-cancel-edit" style="display:none">編集をやめる（新規入力に戻る）</button>
+  </section>
+
+  <!-- ============ 一覧画面 ============ -->
+  <section id="screen-list" class="screen">
+    <div class="date-nav">
+      <button id="list-prev">◀</button>
+      <input type="date" id="list-date">
+      <button id="list-next">▶</button>
+      <button class="today-btn" id="list-today">今日</button>
+    </div>
+    <select class="filter" id="list-filter">
+      <option value="">すべての利用者</option>
+    </select>
+    <div class="summary-bar" id="list-summary"></div>
+    <div id="list-entries"></div>
+  </section>
+
+  <!-- ============ まとめ画面 ============ -->
+  <section id="screen-merge" class="screen">
+    <div class="date-nav">
+      <button id="merge-prev">◀</button>
+      <input type="date" id="merge-date">
+      <button id="merge-next">▶</button>
+      <button class="today-btn" id="merge-today">今日</button>
+    </div>
+
+    <div class="card">
+      <div class="step-title"><span class="num">1</span>自分のメモを他の職員に送る</div>
+      <p class="hint">この日の自分のメモを「共有テキスト」にします。LINEなどに貼り付けて送ってください。</p>
+      <button class="btn btn-secondary" id="btn-share-mine">📤 共有テキストを作って送る</button>
+    </div>
+
+    <div class="card">
+      <div class="step-title"><span class="num">2</span>他の職員のメモを取り込む</div>
+      <p class="hint">受け取った共有テキストを下の欄にそのまま貼り付けて、「取り込む」を押してください。同じメモは二重に登録されません。</p>
+      <textarea id="merge-paste" placeholder="ここに貼り付け" style="min-height:90px"></textarea>
+      <button class="btn btn-primary" id="btn-import" style="margin-top:10px">⬇ 取り込む（ひとつにまとめる）</button>
+    </div>
+
+    <div class="card">
+      <div class="step-title"><span class="num">3</span>この日の日報を出力する</div>
+      <p class="hint">取り込んだ全員分のメモを、時系列と利用者ごとに整理した日報にします。</p>
+      <div class="report-preview" id="report-preview">（この日のメモがまだありません）</div>
+      <button class="btn btn-primary" id="btn-copy-report">📋 日報をコピーする</button>
+      <button class="btn btn-secondary" id="btn-share-report">📤 日報を共有する</button>
+      <button class="btn btn-secondary" id="btn-print-report">🖨 日報を印刷する</button>
+    </div>
+
+    <details class="help">
+      <summary>❓ 使い方・よくある質問</summary>
+      <div class="card">
+        <ol>
+          <li><b>メモはこのスマホの中に保存されます。</b>他の職員のスマホには自動では送られません。</li>
+          <li>共有するときは「①共有テキストを送る」→ 受け取った人が「②取り込む」の順です。まとめ役の職員が全員分を取り込むと、その人のスマホで完全な日報が作れます。</li>
+          <li>共有テキストの最後にある「HCMEMO1:」から始まる英数字の行が取り込み用のデータです。<b>消さずにそのまま</b>送ってください。</li>
+          <li>音声入力はスマホのマイク許可が必要です。動かない場合はキーボードのマイクボタンでも入力できます。</li>
+          <li>ブラウザの履歴やデータを削除するとメモも消えます。大事な日報は毎日コピーして残してください。</li>
+        </ol>
+        <button class="btn btn-secondary" id="btn-backup" style="margin-top:6px">💾 全データのバックアップを作る</button>
+        <button class="btn btn-danger-text" id="btn-clear-old">🗑 90日より前の古いメモを削除する</button>
+      </div>
+    </details>
+  </section>
+
+</main>
+
+<!-- 下部タブ -->
+<nav class="tabs">
+  <button data-screen="screen-input" class="active"><span class="icon">✏️</span>入力</button>
+  <button data-screen="screen-list"><span class="icon">📋</span>一覧</button>
+  <button data-screen="screen-merge"><span class="icon">📤</span>まとめ・共有</button>
+</nav>
+
+<div id="toast"></div>
+<div id="printArea"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  var STORE_KEY = 'hc_memo_entries';
+  var STAFF_KEY = 'hc_memo_laststaff';
+  var CATEGORIES = ['体調・様子', '事故・ヒヤリ', '食事・水分', '排泄', '入浴', '服薬', '家族連絡', 'その他'];
+  var DATA_MARK = 'HCMEMO1:';
+
+  // ---------- データの読み書き ----------
+  function loadEntries() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY)) || []; }
+    catch (e) { return []; }
+  }
+  function saveEntries(list) {
+    localStorage.setItem(STORE_KEY, JSON.stringify(list));
+  }
+  function uid() {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  }
+
+  // 日本語をふくむ文字列 ⇔ base64（共有テキスト用の変換）
+  function toB64(str) {
+    var bytes = new TextEncoder().encode(str);
+    var bin = '';
+    for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin);
+  }
+  function fromB64(b64) {
+    var bin = atob(b64);
+    var bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
+  }
+
+  // ---------- 便利関数 ----------
+  function $(id) { return document.getElementById(id); }
+  function todayStr() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  function nowTimeStr() {
+    var d = new Date();
+    return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+  }
+  function fmtDateJa(dateStr) {
+    var p = dateStr.split('-');
+    var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    var w = ['日', '月', '火', '水', '木', '金', '土'][d.getDay()];
+    return p[0] + '年' + (+p[1]) + '月' + (+p[2]) + '日（' + w + '）';
+  }
+  function shiftDate(dateStr, days) {
+    var p = dateStr.split('-');
+    var d = new Date(+p[0], +p[1] - 1, +p[2] + days);
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  var toastTimer;
+  function toast(msg) {
+    var t = $('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove('show'); }, 2200);
+  }
+  function copyText(text, doneMsg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { toast(doneMsg); },
+        function () { fallbackCopy(text, doneMsg); });
+    } else {
+      fallbackCopy(text, doneMsg);
+    }
+  }
+  function fallbackCopy(text, doneMsg) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); toast(doneMsg); }
+    catch (e) { toast('コピーできませんでした'); }
+    document.body.removeChild(ta);
+  }
+  function shareText(text, title) {
+    if (navigator.share) {
+      navigator.share({ title: title, text: text }).catch(function () {});
+    } else {
+      copyText(text, 'コピーしました。LINEなどに貼り付けてください');
+    }
+  }
+
+  // ---------- タブ切替 ----------
+  var tabs = document.querySelectorAll('nav.tabs button');
+  tabs.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      tabs.forEach(function (b) { b.classList.remove('active'); });
+      document.querySelectorAll('.screen').forEach(function (s) { s.classList.remove('active'); });
+      btn.classList.add('active');
+      $(btn.dataset.screen).classList.add('active');
+      if (btn.dataset.screen === 'screen-list') renderList();
+      if (btn.dataset.screen === 'screen-merge') renderMerge();
+      window.scrollTo(0, 0);
+    });
+  });
+  function gotoTab(screenId) {
+    document.querySelector('nav.tabs button[data-screen="' + screenId + '"]').click();
+  }
+
+  // ---------- 入力画面 ----------
+  var selectedCategory = CATEGORIES[0];
+  var editingId = null;
+
+  var catBox = $('in-category');
+  CATEGORIES.forEach(function (c) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = c;
+    if (c === selectedCategory) b.classList.add('selected');
+    b.addEventListener('click', function () {
+      selectedCategory = c;
+      catBox.querySelectorAll('button').forEach(function (x) { x.classList.remove('selected'); });
+      b.classList.add('selected');
+    });
+    catBox.appendChild(b);
+  });
+
+  function resetForm() {
+    editingId = null;
+    $('in-date').value = todayStr();
+    $('in-time').value = nowTimeStr();
+    $('in-staff').value = localStorage.getItem(STAFF_KEY) || '';
+    $('in-resident').value = '';
+    $('in-important').checked = false;
+    $('in-text').value = '';
+    selectedCategory = CATEGORIES[0];
+    catBox.querySelectorAll('button').forEach(function (x, i) {
+      x.classList.toggle('selected', i === 0);
+    });
+    $('btn-cancel-edit').style.display = 'none';
+    $('btn-save').textContent = 'この内容で保存する';
+    refreshDatalists();
+  }
+
+  function refreshDatalists() {
+    var entries = loadEntries();
+    var staffSet = [], residentSet = [];
+    entries.slice().reverse().forEach(function (e) {
+      if (e.staff && staffSet.indexOf(e.staff) < 0) staffSet.push(e.staff);
+      if (e.resident && residentSet.indexOf(e.resident) < 0) residentSet.push(e.resident);
+    });
+    $('staff-list').innerHTML = staffSet.map(function (s) { return '<option value="' + escapeHtml(s) + '">'; }).join('');
+    $('resident-list').innerHTML = residentSet.map(function (s) { return '<option value="' + escapeHtml(s) + '">'; }).join('');
+  }
+
+  $('btn-save').addEventListener('click', function () {
+    var staff = $('in-staff').value.trim();
+    var resident = $('in-resident').value.trim();
+    var text = $('in-text').value.trim();
+    if (!staff) { toast('対応職員を入力してください'); $('in-staff').focus(); return; }
+    if (!resident) { toast('利用者名を入力してください'); $('in-resident').focus(); return; }
+    if (!text) { toast('内容を入力してください'); $('in-text').focus(); return; }
+
+    var entries = loadEntries();
+    var entry = {
+      id: editingId || uid(),
+      date: $('in-date').value || todayStr(),
+      time: $('in-time').value || nowTimeStr(),
+      staff: staff,
+      resident: resident,
+      category: selectedCategory,
+      important: $('in-important').checked,
+      text: text,
+      updatedAt: Date.now()
+    };
+    if (editingId) {
+      entries = entries.map(function (e) { return e.id === editingId ? entry : e; });
+      toast('メモを修正しました');
+    } else {
+      entries.push(entry);
+      toast('保存しました');
+    }
+    saveEntries(entries);
+    localStorage.setItem(STAFF_KEY, staff);
+    var savedDate = entry.date;
+    resetForm();
+    $('list-date').value = savedDate;
+    $('merge-date').value = savedDate;
+    gotoTab('screen-list');
+  });
+
+  $('btn-cancel-edit').addEventListener('click', resetForm);
+
+  // ---------- 音声入力 ----------
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var recognition = null;
+  var recognizing = false;
+  var baseText = '';
+
+  $('btn-voice').addEventListener('click', function () {
+    if (!SR) {
+      alert('このブラウザでは音声入力ボタンが使えません。\nキーボードのマイクボタン🎤から音声入力してください。');
+      return;
+    }
+    if (recognizing) { recognition.stop(); return; }
+
+    recognition = new SR();
+    recognition.lang = 'ja-JP';
+    recognition.interimResults = true;
+    recognition.continuous = true;
+    baseText = $('in-text').value;
+
+    recognition.onstart = function () {
+      recognizing = true;
+      $('btn-voice').classList.add('recording');
+      $('btn-voice').textContent = '⏹ 録音中… タップで停止';
+    };
+    recognition.onresult = function (ev) {
+      var finalText = '', interim = '';
+      for (var i = 0; i < ev.results.length; i++) {
+        if (ev.results[i].isFinal) finalText += ev.results[i][0].transcript;
+        else interim += ev.results[i][0].transcript;
+      }
+      var joint = baseText && (finalText || interim) ? '\n' : '';
+      $('in-text').value = baseText + joint + finalText + interim;
+    };
+    recognition.onerror = function (ev) {
+      if (ev.error === 'not-allowed' || ev.error === 'service-not-allowed') {
+        alert('マイクの使用が許可されていません。\nスマホの設定でこのサイトのマイクを許可してください。');
+      }
+    };
+    recognition.onend = function () {
+      recognizing = false;
+      $('btn-voice').classList.remove('recording');
+      $('btn-voice').textContent = '🎤 音声入力（タップして話す）';
+    };
+    recognition.start();
+  });
+
+  // ---------- 一覧画面 ----------
+  function entriesOf(dateStr) {
+    return loadEntries()
+      .filter(function (e) { return e.date === dateStr; })
+      .sort(function (a, b) { return (a.time || '').localeCompare(b.time || ''); });
+  }
+
+  function renderList() {
+    var date = $('list-date').value || todayStr();
+    $('list-date').value = date;
+    var all = entriesOf(date);
+
+    // 利用者フィルタ（絞り込み）の選択肢
+    var filterSel = $('list-filter');
+    var current = filterSel.value;
+    var names = [];
+    all.forEach(function (e) { if (names.indexOf(e.resident) < 0) names.push(e.resident); });
+    filterSel.innerHTML = '<option value="">すべての利用者（' + all.length + '件）</option>' +
+      names.map(function (n) { return '<option value="' + escapeHtml(n) + '">' + escapeHtml(n) + '</option>'; }).join('');
+    if (names.indexOf(current) >= 0) filterSel.value = current;
+
+    var list = filterSel.value ? all.filter(function (e) { return e.resident === filterSel.value; }) : all;
+
+    var staffNames = [];
+    all.forEach(function (e) { if (staffNames.indexOf(e.staff) < 0) staffNames.push(e.staff); });
+    var impCount = all.filter(function (e) { return e.important; }).length;
+    $('list-summary').innerHTML = all.length
+      ? '<span>' + fmtDateJa(date) + '</span><span>記入：' + escapeHtml(staffNames.join('、')) + '</span>' +
+        (impCount ? '<span style="color:var(--red);font-weight:700">★重要 ' + impCount + '件</span>' : '')
+      : '';
+
+    var box = $('list-entries');
+    if (!list.length) {
+      box.innerHTML = '<div class="empty">この日のメモはまだありません。<br>「入力」タブから追加してください。</div>';
+      return;
+    }
+    box.innerHTML = list.map(function (e) {
+      return '<div class="entry' + (e.important ? ' important' : '') + '">' +
+        '<div class="top">' +
+          '<span class="time">' + escapeHtml(e.time) + '</span>' +
+          '<span class="resident">' + escapeHtml(e.resident) + '</span>' +
+          '<span class="badge">' + escapeHtml(e.category) + '</span>' +
+          (e.important ? '<span class="star">★重要</span>' : '') +
+          '<span class="staff">対応：' + escapeHtml(e.staff) + '</span>' +
+        '</div>' +
+        '<div class="text">' + escapeHtml(e.text) + '</div>' +
+        '<div class="actions">' +
+          '<button class="edit" data-id="' + e.id + '">✏ 修正</button>' +
+          '<button class="del" data-id="' + e.id + '">削除</button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    box.querySelectorAll('.edit').forEach(function (b) {
+      b.addEventListener('click', function () { startEdit(b.dataset.id); });
+    });
+    box.querySelectorAll('.del').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (!confirm('このメモを削除しますか？')) return;
+        saveEntries(loadEntries().filter(function (e) { return e.id !== b.dataset.id; }));
+        toast('削除しました');
+        renderList();
+      });
+    });
+  }
+
+  function startEdit(id) {
+    var e = loadEntries().find(function (x) { return x.id === id; });
+    if (!e) return;
+    editingId = id;
+    $('in-date').value = e.date;
+    $('in-time').value = e.time;
+    $('in-staff').value = e.staff;
+    $('in-resident').value = e.resident;
+    $('in-important').checked = !!e.important;
+    $('in-text').value = e.text;
+    selectedCategory = e.category;
+    catBox.querySelectorAll('button').forEach(function (x) {
+      x.classList.toggle('selected', x.textContent === e.category);
+    });
+    $('btn-cancel-edit').style.display = 'block';
+    $('btn-save').textContent = 'この内容に修正する';
+    gotoTab('screen-input');
+  }
+
+  $('list-prev').addEventListener('click', function () { $('list-date').value = shiftDate($('list-date').value, -1); renderList(); });
+  $('list-next').addEventListener('click', function () { $('list-date').value = shiftDate($('list-date').value, 1); renderList(); });
+  $('list-today').addEventListener('click', function () { $('list-date').value = todayStr(); renderList(); });
+  $('list-date').addEventListener('change', renderList);
+  $('list-filter').addEventListener('change', renderList);
+
+  // ---------- まとめ・共有画面 ----------
+  function buildShareText(dateStr) {
+    var list = entriesOf(dateStr);
+    if (!list.length) return null;
+    var lines = ['【報告メモ共有】' + fmtDateJa(dateStr) + '（' + list.length + '件）'];
+    list.forEach(function (e) {
+      lines.push('・' + e.time + ' ' + e.resident + '［' + e.category + '］' + (e.important ? '★重要 ' : '') + '（' + e.staff + '）');
+    });
+    lines.push('');
+    lines.push('▼下の行は取り込み用データです。消さずにそのまま送ってください▼');
+    lines.push(DATA_MARK + toB64(JSON.stringify(list)));
+    return lines.join('\n');
+  }
+
+  function buildDailyReport(dateStr) {
+    var list = entriesOf(dateStr);
+    if (!list.length) return null;
+
+    var staffNames = [];
+    list.forEach(function (e) { if (staffNames.indexOf(e.staff) < 0) staffNames.push(e.staff); });
+
+    var lines = [];
+    lines.push('━━━━━━━━━━━━━━━━━━');
+    lines.push('ハーベストケア　報告メモ日報');
+    lines.push(fmtDateJa(dateStr));
+    lines.push('記入職員：' + staffNames.join('、') + '　（全' + list.length + '件）');
+    lines.push('━━━━━━━━━━━━━━━━━━');
+
+    var imps = list.filter(function (e) { return e.important; });
+    if (imps.length) {
+      lines.push('');
+      lines.push('◆★重要（必ず確認）');
+      imps.forEach(function (e) {
+        lines.push('・' + e.time + '　' + e.resident + '［' + e.category + '］（' + e.staff + '）');
+        lines.push('　' + e.text.replace(/\n/g, '\n　'));
+      });
+    }
+
+    var residents = [];
+    list.forEach(function (e) { if (residents.indexOf(e.resident) < 0) residents.push(e.resident); });
+    residents.forEach(function (name) {
+      lines.push('');
+      lines.push('◆' + name);
+      list.filter(function (e) { return e.resident === name; }).forEach(function (e) {
+        lines.push('・' + e.time + '［' + e.category + '］' + (e.important ? '★重要' : '') + '（' + e.staff + '）');
+        lines.push('　' + e.text.replace(/\n/g, '\n　'));
+      });
+    });
+
+    lines.push('');
+    lines.push('━━━━━━━━━━━━━━━━━━');
+    return lines.join('\n');
+  }
+
+  function renderMerge() {
+    var date = $('merge-date').value || todayStr();
+    $('merge-date').value = date;
+    var report = buildDailyReport(date);
+    $('report-preview').textContent = report || '（この日のメモがまだありません）';
+  }
+
+  $('merge-prev').addEventListener('click', function () { $('merge-date').value = shiftDate($('merge-date').value, -1); renderMerge(); });
+  $('merge-next').addEventListener('click', function () { $('merge-date').value = shiftDate($('merge-date').value, 1); renderMerge(); });
+  $('merge-today').addEventListener('click', function () { $('merge-date').value = todayStr(); renderMerge(); });
+  $('merge-date').addEventListener('change', renderMerge);
+
+  $('btn-share-mine').addEventListener('click', function () {
+    var text = buildShareText($('merge-date').value);
+    if (!text) { toast('この日のメモがありません'); return; }
+    shareText(text, '報告メモ共有');
+  });
+
+  // 共有テキスト（またはバックアップ）を取り込んでひとつにまとめる
+  function importFromText(raw) {
+    var m = raw.match(/HCMEMO1:([A-Za-z0-9+/=\s]+)/);
+    if (!m) return null;
+    var b64 = m[1].replace(/\s/g, '');
+    var incoming;
+    try { incoming = JSON.parse(fromB64(b64)); }
+    catch (e) { return null; }
+    if (!Array.isArray(incoming)) return null;
+
+    var entries = loadEntries();
+    var byId = {};
+    entries.forEach(function (e) { byId[e.id] = e; });
+    var added = 0, updated = 0, skipped = 0;
+    incoming.forEach(function (e) {
+      if (!e || !e.id || !e.date) return;
+      var cur = byId[e.id];
+      if (!cur) { entries.push(e); byId[e.id] = e; added++; }
+      else if ((e.updatedAt || 0) > (cur.updatedAt || 0)) {
+        entries = entries.map(function (x) { return x.id === e.id ? e : x; });
+        byId[e.id] = e; updated++;
+      } else { skipped++; }
+    });
+    saveEntries(entries);
+    return { added: added, updated: updated, skipped: skipped };
+  }
+
+  $('btn-import').addEventListener('click', function () {
+    var raw = $('merge-paste').value;
+    if (!raw.trim()) { toast('共有テキストを貼り付けてください'); return; }
+    var r = importFromText(raw);
+    if (!r) { toast('取り込み用データが見つかりませんでした'); return; }
+    $('merge-paste').value = '';
+    toast('取り込み完了：新規' + r.added + '件・更新' + r.updated + '件・重複' + r.skipped + '件');
+    renderMerge();
+    refreshDatalists();
+  });
+
+  $('btn-copy-report').addEventListener('click', function () {
+    var report = buildDailyReport($('merge-date').value);
+    if (!report) { toast('この日のメモがありません'); return; }
+    copyText(report, '日報をコピーしました');
+  });
+  $('btn-share-report').addEventListener('click', function () {
+    var report = buildDailyReport($('merge-date').value);
+    if (!report) { toast('この日のメモがありません'); return; }
+    shareText(report, '報告メモ日報');
+  });
+  $('btn-print-report').addEventListener('click', function () {
+    var report = buildDailyReport($('merge-date').value);
+    if (!report) { toast('この日のメモがありません'); return; }
+    $('printArea').textContent = report;
+    window.print();
+  });
+
+  // ---------- バックアップ・古いデータの削除 ----------
+  $('btn-backup').addEventListener('click', function () {
+    var entries = loadEntries();
+    if (!entries.length) { toast('保存されているメモがありません'); return; }
+    var text = '【報告メモ 全データバックアップ】' + fmtDateJa(todayStr()) + '（全' + entries.length + '件）\n' +
+      '▼復元するときは、まとめ画面の「取り込む」欄にこの全文を貼り付けてください▼\n' +
+      DATA_MARK + toB64(JSON.stringify(entries));
+    shareText(text, '報告メモ バックアップ');
+  });
+
+  $('btn-clear-old').addEventListener('click', function () {
+    var limit = shiftDate(todayStr(), -90);
+    var entries = loadEntries();
+    var keep = entries.filter(function (e) { return e.date >= limit; });
+    var n = entries.length - keep.length;
+    if (!n) { toast('90日より前のメモはありません'); return; }
+    if (!confirm(limit + ' より前のメモ ' + n + '件を削除します。よろしいですか？\n（必要ならば先にバックアップを作ってください）')) return;
+    saveEntries(keep);
+    toast(n + '件を削除しました');
+    renderMerge();
+  });
+
+  // ---------- 初期化 ----------
+  resetForm();
+  $('list-date').value = todayStr();
+  $('merge-date').value = todayStr();
+})();
+</script>
+</body>
+</html>
