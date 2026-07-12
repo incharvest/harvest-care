@@ -1160,6 +1160,117 @@
                 right: 1rem;
             }
         }
+
+        /* ==================================================================
+         * 住宅型有料老人ホーム 空室情報バー（トップページ用・控えめトーン）
+         * ================================================================== */
+        .home-vacancy-notice {
+            background: linear-gradient(180deg, #f7f1e8 0%, #f2ebde 100%);
+            border-top: 1px solid rgba(184, 160, 122, 0.3);
+            border-bottom: 1px solid rgba(184, 160, 122, 0.3);
+            padding: 0.85rem 1.5rem;
+        }
+        .home-vacancy-notice__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .home-vacancy-notice__lead {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .home-vacancy-notice__tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--color-resthome);
+            color: var(--color-white);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            border-radius: 2px;
+            white-space: nowrap;
+        }
+        .home-vacancy-notice__dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #c96b45;
+            box-shadow: 0 0 0 3px rgba(201, 107, 69, 0.2);
+            animation: homeVacancyPulse 2.2s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+        @keyframes homeVacancyPulse {
+            0%, 100% { box-shadow: 0 0 0 3px rgba(201, 107, 69, 0.2); }
+            50%      { box-shadow: 0 0 0 7px rgba(201, 107, 69, 0.02); }
+        }
+        .home-vacancy-notice__text {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--color-text);
+            letter-spacing: 0.03em;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .home-vacancy-notice__text time {
+            color: var(--color-text-light);
+            font-size: 0.85em;
+        }
+        .home-vacancy-notice__text strong {
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: #a15234;
+            letter-spacing: 0.04em;
+        }
+        .home-vacancy-notice__cap {
+            color: var(--color-text-muted);
+            font-size: 0.82em;
+            letter-spacing: 0.03em;
+        }
+        .home-vacancy-notice__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            color: var(--color-resthome);
+            text-decoration: none;
+            border: 1px solid var(--color-resthome);
+            border-radius: 20px;
+            font-size: 0.82rem;
+            letter-spacing: 0.05em;
+            background: transparent;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .home-vacancy-notice__link:hover {
+            background: var(--color-resthome);
+            color: var(--color-white);
+        }
+        .home-vacancy-notice__link svg {
+            transition: transform 0.25s ease;
+        }
+        .home-vacancy-notice__link:hover svg {
+            transform: translateX(2px);
+        }
+        @media (max-width: 720px) {
+            .home-vacancy-notice {
+                padding: 0.7rem 1rem;
+            }
+            .home-vacancy-notice__inner { gap: 0.75rem; }
+            .home-vacancy-notice__lead  { gap: 0.5rem; }
+            .home-vacancy-notice__text  { font-size: 0.82rem; }
+            .home-vacancy-notice__text strong { font-size: 0.95rem; }
+            .home-vacancy-notice__link  { font-size: 0.75rem; padding: 5px 12px; }
+        }
     </style>
 </head>
 <body>
@@ -1270,6 +1381,25 @@
 
             <span class="hero__scroll">SCROLL</span>
         </section>
+
+        <!-- 住宅型有料老人ホーム 空室情報バー -->
+        <aside class="home-vacancy-notice" aria-label="住宅型有料老人ホームの空室情報">
+            <div class="home-vacancy-notice__inner">
+                <div class="home-vacancy-notice__lead">
+                    <span class="home-vacancy-notice__tag">住宅型有料老人ホーム</span>
+                    <span class="home-vacancy-notice__dot" aria-hidden="true"></span>
+                    <p class="home-vacancy-notice__text">
+                        <time datetime="2026-07">2026年7月現在</time>
+                        <strong>空室 1室</strong>
+                        <span class="home-vacancy-notice__cap">／ 定員8名</span>
+                    </p>
+                </div>
+                <a href="resthome.html#contact" class="home-vacancy-notice__link" aria-label="住宅型有料老人ホームの詳細と空室状況を見る">
+                    <span>詳しくはこちら</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="16" height="16" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </aside>
 
         <!-- ============ 旧ヒーロー以下のコンテンツ（MS2/3で再設計予定） ============ -->
         <div class="main-content" id="service">
