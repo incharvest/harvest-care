@@ -1207,7 +1207,9 @@
 }
 
 .vacancy-bar__badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 5px 12px;
   background: var(--color-primary);
   color: var(--color-white);
@@ -1217,6 +1219,69 @@
   border-radius: 2px;
   white-space: nowrap;
   flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.vacancy-bar__badge--live {
+  background: #a1533b;
+  position: relative;
+}
+
+.vacancy-bar__badge--live::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffd4a1;
+  box-shadow: 0 0 0 3px rgba(255, 212, 161, 0.35);
+  animation: vacancyPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes vacancyPulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(255, 212, 161, 0.35); }
+  50%      { box-shadow: 0 0 0 6px rgba(255, 212, 161, 0.05); }
+}
+
+.vacancy-bar__status {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.vacancy-bar__status-main {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  line-height: 1.15;
+}
+
+.vacancy-bar__status-count {
+  font-family: 'Cormorant Garamond', 'Noto Serif JP', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #8b3f28;
+  letter-spacing: 0.02em;
+}
+
+.vacancy-bar__status-cap {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.vacancy-bar__status-sub {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--color-primary);
+  line-height: 1.55;
+}
+
+.vacancy-bar__status-sub time {
+  color: var(--color-accent-dark);
+  font-weight: var(--font-weight-medium);
+  margin-right: 2px;
 }
 
 .vacancy-bar__text {
@@ -1297,6 +1362,8 @@
   .vacancy-bar__text {
     font-size: 0.82rem;
   }
+  .vacancy-bar__status-count { font-size: 1.15rem; }
+  .vacancy-bar__status-sub { font-size: 0.78rem; }
   .vacancy-bar__br { display: inline; }
   .vacancy-bar__cta {
     justify-content: center;
@@ -1329,6 +1396,21 @@
   color: var(--color-accent-light);
   font-weight: var(--font-weight-medium);
   letter-spacing: 0.05em;
+}
+
+.vacancy-callout__text time {
+  color: var(--color-white);
+  opacity: 0.75;
+  font-size: 0.9em;
+  margin: 0 2px;
+}
+
+.vacancy-callout__count {
+  font-family: 'Cormorant Garamond', 'Noto Serif JP', serif;
+  font-size: 1.15em;
+  color: #ffb98a !important;
+  letter-spacing: 0.02em;
+  margin: 0 1px;
 }
 
 .vacancy-callout__link {
