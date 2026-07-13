@@ -4,10 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- iPhone Safari の積極的キャッシュ対策 -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>ハーベスト｜鹿児島市のマッサージリハビリ重視型デイサービス</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/harvest.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="assets/js/harvest.js" defer></script>
     <!-- ファビコン -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a3328'/%3E%3Cg transform='translate(16,17)'%3E%3Cpath d='M0-9Q2-1 0 10' fill='none' stroke='%23c9a868' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='-3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(-25-3-6)'/%3E%3Cellipse cx='-4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(-20-4-1)'/%3E%3Cellipse cx='3' cy='-6' rx='2' ry='4' fill='%23c9a868' transform='rotate(25 3-6)'/%3E%3Cellipse cx='4' cy='-1' rx='2' ry='3' fill='%23c9a868' transform='rotate(20 4-1)'/%3E%3C/g%3E%3C/svg%3E">
     <style>
@@ -101,7 +109,10 @@
            ================================================================ */
         html {
             scroll-behavior: smooth;
-            overflow-x: hidden;
+            overflow-x: clip;       /* iOS 15.4+ で確実に横スクロール封鎖 */
+        }
+        @supports not (overflow-x: clip) {
+            html { overflow-x: hidden; }  /* 古い Safari 用フォールバック */
         }
 
         body {
@@ -112,10 +123,13 @@
             line-height: 1.9;
             font-weight: 400;
             letter-spacing: 0.02em;
-            overflow-x: hidden;
+            overflow-x: clip;
             max-width: 100%;
             width: 100%;
             position: relative;
+        }
+        @supports not (overflow-x: clip) {
+            body { overflow-x: hidden; }
         }
 
         /* 全セクション・親要素への横はみ出しガード */
@@ -139,7 +153,6 @@
         .staff-grid,
         .contact-methods,
         .cta-content,
-        .gallery-login,
         .footer-inner {
             overflow-x: hidden;
             max-width: 100%;
@@ -175,13 +188,13 @@
             width: auto;
         }
 
-        nav ul {
+        header nav ul {
             display: flex;
             list-style: none;
             gap: 1.2rem;
         }
 
-        nav a {
+        header nav a {
             text-decoration: none;
             color: rgba(255, 255, 255, 0.8);
             font-weight: 400;
@@ -192,7 +205,7 @@
             transition: var(--transition);
         }
 
-        nav a::after {
+        header nav a::after {
             content: '';
             position: absolute;
             bottom: -6px;
@@ -203,11 +216,11 @@
             transition: var(--transition);
         }
 
-        nav a:hover {
+        header nav a:hover {
             color: var(--color-accent);
         }
 
-        nav a:hover::after {
+        header nav a:hover::after {
             width: 100%;
         }
 
@@ -362,10 +375,252 @@
             margin: 1.5rem auto 0;
         }
 
+        /* 施設の様子ショーケース（エディトリアル） */
+        .facility-glimpse {
+            position: relative;
+            padding: clamp(4rem, 8vw, 7rem) 2rem;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(232, 196, 138, 0.22) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 85% 85%, rgba(232, 164, 92, 0.18) 0%, transparent 55%),
+                radial-gradient(ellipse 40% 40% at 50% 95%, rgba(200, 153, 104, 0.12) 0%, transparent 60%),
+                var(--color-cream);
+            overflow: hidden;
+        }
+
+        /* 背景の柔らかい紙質テクスチャ */
+        .facility-glimpse::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(200, 153, 104, 0.08) 0, transparent 2px),
+                radial-gradient(circle at 60% 70%, rgba(200, 153, 104, 0.06) 0, transparent 2px),
+                radial-gradient(circle at 80% 20%, rgba(200, 153, 104, 0.07) 0, transparent 2px);
+            background-size: 120px 120px, 90px 90px, 160px 160px;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .facility-glimpse__inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+            z-index: 3;
+        }
+
+        .facility-glimpse__kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-style: italic;
+            font-size: 0.82rem;
+            letter-spacing: 0.3em;
+            color: var(--color-accent-dark);
+            text-transform: uppercase;
+            margin: 0 0 0.8rem;
+        }
+
+        .facility-glimpse__kicker::before,
+        .facility-glimpse__kicker::after {
+            content: '';
+            display: inline-block;
+            width: 28px;
+            height: 1px;
+            background: var(--color-accent-dark);
+            opacity: 0.6;
+        }
+
+        .facility-glimpse__heading {
+            font-family: var(--font-display);
+            font-size: clamp(1.45rem, 3vw, 2rem);
+            color: var(--color-primary);
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            max-width: 720px;
+        }
+
+        .facility-glimpse__stage {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            padding: 1.2rem;
+            margin: 0 auto;
+            max-width: 1080px;
+        }
+
+        /* 有機的なぼんやり光輪（写真の背後） */
+        .facility-glimpse__stage::before {
+            content: '';
+            position: absolute;
+            inset: -6%;
+            background: radial-gradient(ellipse, rgba(255, 232, 190, 0.55) 0%, transparent 65%);
+            filter: blur(28px);
+            z-index: 0;
+        }
+
+        .facility-glimpse__figure {
+            position: relative;
+            margin: 0;
+            aspect-ratio: 16 / 10;
+            border-radius: 58% 42% 55% 45% / 48% 55% 45% 52%;
+            overflow: hidden;
+            box-shadow:
+                0 30px 60px rgba(80, 55, 20, 0.22),
+                0 10px 25px rgba(200, 153, 104, 0.18),
+                inset 0 0 0 8px rgba(255, 255, 255, 0.4);
+            transform: rotate(-1.2deg);
+            z-index: 1;
+            transition: transform 1s cubic-bezier(.25,.8,.25,1);
+        }
+
+        /* メイン（広いスペース寄り）と アクセント（手洗い場）の差別化 */
+        .facility-glimpse__figure--main {
+            aspect-ratio: 4 / 3;
+        }
+
+        .facility-glimpse__figure--accent {
+            aspect-ratio: 4 / 5;
+            border-radius: 42% 58% 45% 55% / 55% 45% 58% 42%;
+            transform: rotate(2deg) translateY(1.2rem);
+            box-shadow:
+                0 24px 50px rgba(80, 55, 20, 0.22),
+                inset 0 0 0 6px rgba(255, 255, 255, 0.4);
+        }
+
+        .facility-glimpse__figure::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to bottom, transparent 55%, rgba(60, 35, 10, 0.18) 100%),
+                linear-gradient(135deg, rgba(255, 240, 210, 0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .facility-glimpse__figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 2s cubic-bezier(.25,.8,.25,1);
+            filter: saturate(0.95) contrast(1.02);
+        }
+
+        .facility-glimpse__figure:hover {
+            transform: rotate(0deg);
+        }
+
+        .facility-glimpse__figure:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 写真下の手書き風キャプション */
+        .facility-glimpse__caption {
+            display: inline-block;
+            margin: 2.2rem 0 0;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--color-text-light);
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* セクション内ドゥードル配置 */
+        .facility-glimpse .doodle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 2;
+            mix-blend-mode: multiply;
+            opacity: 0.82;
+        }
+        .facility-glimpse .doodle img { width: 100%; height: auto; display: block; }
+
+        .facility-glimpse .doodle--wheat-tl  { width: 110px; top: 6%;  left: 4%;  transform: rotate(-22deg); }
+        .facility-glimpse .doodle--wheat-br  { width: 130px; bottom: 8%; right: 3%; transform: rotate(22deg); }
+        .facility-glimpse .doodle--sun-tr    { width: 75px; top: 12%; right: 12%; }
+        .facility-glimpse .doodle--leaves-bl { width: 140px; bottom: 4%; left: -1%; transform: rotate(-8deg); }
+        .facility-glimpse .doodle--flowers-mr{ width: 90px; top: 42%; right: 2%; transform: rotate(16deg); opacity: 0.7; }
+        .facility-glimpse .doodle--swirl-bm  { width: 70px; bottom: 30%; left: 46%; transform: rotate(12deg); opacity: 0.5; }
+
+        @media (max-width: 720px) {
+            .facility-glimpse { padding: clamp(2.8rem, 7vw, 4rem) 1rem; }
+            .facility-glimpse__stage {
+                grid-template-columns: 1fr;
+                gap: 1.4rem;
+                padding: 0.6rem;
+            }
+            .facility-glimpse__figure {
+                aspect-ratio: 4 / 5;
+                border-radius: 54% 46% 58% 42% / 46% 58% 42% 54%;
+                box-shadow:
+                    0 18px 36px rgba(80, 55, 20, 0.2),
+                    inset 0 0 0 5px rgba(255, 255, 255, 0.4);
+            }
+            .facility-glimpse__figure--main { aspect-ratio: 4 / 3; }
+            .facility-glimpse__figure--accent {
+                aspect-ratio: 4 / 3;
+                transform: rotate(2deg);
+                max-width: 78%;
+                margin-left: auto;
+            }
+            .facility-glimpse__heading { margin-bottom: 1.8rem; }
+            .facility-glimpse .doodle--wheat-tl  { width: 62px; top: 3%; left: 2%; }
+            .facility-glimpse .doodle--wheat-br  { width: 70px; bottom: 5%; right: 0%; }
+            .facility-glimpse .doodle--sun-tr    { width: 46px; top: 6%; right: 5%; }
+            .facility-glimpse .doodle--leaves-bl { width: 78px; bottom: 2%; left: -3%; }
+            .facility-glimpse .doodle--flowers-mr{ display: none; }
+            .facility-glimpse .doodle--swirl-bm  { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .facility-glimpse__figure,
+            .facility-glimpse__figure--accent { transform: none; }
+        }
+
+        /* ブランドマーク装飾パターン（汎用）*/
+        .brand-marks {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .brand-marks .mark {
+            position: absolute;
+            opacity: 0.10;
+            transition: opacity 1.2s ease;
+        }
+        .brand-marks .mark img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .brand-marks .mark--xs { width: 32px; }
+        .brand-marks .mark--sm { width: 44px; }
+        .brand-marks .mark--md { width: 60px; }
+        .brand-marks .mark--lg { width: 80px; }
+
+        @media (max-width: 720px) {
+            .brand-marks .mark--lg { width: 50px; }
+            .brand-marks .mark--md { width: 38px; }
+            .brand-marks .mark--sm { width: 28px; }
+            .brand-marks .mark--xs { display: none; }
+        }
+
         /* コンセプトセクション */
         .concept {
             background: var(--color-cream);
+            position: relative;
+            overflow: hidden;
         }
+        .concept .section-inner { position: relative; z-index: 2; }
 
         .concept-content {
             display: grid;
@@ -563,7 +818,7 @@
         }
 
         @media (max-width: 900px) {
-            nav {
+            header nav {
                 display: none !important;
             }
             .header-contact {
@@ -592,7 +847,10 @@
         /* 設備紹介 */
         .equipment {
             background: var(--color-cream);
+            position: relative;
+            overflow: hidden;
         }
+        .equipment > .section-inner { position: relative; z-index: 2; }
 
         .equipment-intro {
             text-align: center;
@@ -874,6 +1132,26 @@
             font-size: 0.8rem;
             color: var(--color-text-light);
             padding-top: 0.5rem;
+        }
+
+        .detail-photo {
+            margin-top: 1.2rem;
+            border-radius: var(--radius-small);
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(60, 40, 10, 0.1);
+            aspect-ratio: 4 / 3;
+        }
+
+        .detail-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 1.2s cubic-bezier(.25,.8,.25,1);
+        }
+
+        .detail-photo:hover img {
+            transform: scale(1.04);
         }
 
         .detail-area {
@@ -1746,248 +2024,6 @@
             text-align: center;
         }
 
-        /* ギャラリーセクション */
-        .gallery {
-            background: var(--color-cream-dark);
-        }
-
-        .gallery-subtitle {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: var(--color-text-light);
-        }
-
-        .gallery-login {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .gallery-login-box {
-            background: var(--color-white);
-            padding: 3rem;
-            text-align: center;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .gallery-lock-icon {
-            margin-bottom: 1.5rem;
-        }
-
-        .gallery-login-text {
-            color: var(--color-text);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .gallery-password-form {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .gallery-password-form input {
-            flex: 1;
-            padding: 0.8rem 1rem;
-            border: 1px solid var(--color-border);
-            font-size: 1rem;
-            font-family: var(--font-body);
-        }
-
-        .gallery-password-form input:focus {
-            outline: none;
-            border-color: var(--color-accent);
-        }
-
-        .gallery-submit-btn {
-            padding: 0.8rem 1.5rem;
-            background: var(--color-primary);
-            color: var(--color-white);
-            border: none;
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-
-        .gallery-submit-btn:hover {
-            background: var(--color-secondary);
-        }
-
-        .gallery-password-hint {
-            font-size: 0.8rem;
-            color: var(--color-text-light);
-        }
-
-        .gallery-error {
-            margin-top: 1rem;
-            color: #c94a4a;
-            font-size: 0.85rem;
-        }
-
-        .gallery-description {
-            text-align: center;
-            color: var(--color-text-light);
-            margin-bottom: 2rem;
-        }
-
-        .gallery-user-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--color-white);
-            padding: 1rem 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .gallery-user-info p {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            color: var(--color-primary);
-            font-weight: 600;
-        }
-
-        .gallery-user-info span {
-            color: var(--color-accent-dark);
-        }
-
-        .gallery-logout-btn {
-            padding: 0.5rem 1rem;
-            background: transparent;
-            border: 1px solid var(--color-text-light);
-            color: var(--color-text-light);
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .gallery-logout-btn:hover {
-            background: var(--color-text-light);
-            color: var(--color-white);
-        }
-
-        .admin-panel {
-            background: var(--color-white);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .admin-panel h4 {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            color: var(--color-primary);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .admin-user-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-
-        .admin-user-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1.5rem;
-            background: var(--color-cream);
-            border: 1px solid var(--color-border);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .admin-user-btn:hover {
-            border-color: var(--color-accent);
-            background: var(--color-white);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .admin-user-name {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--color-primary);
-            margin-bottom: 0.3rem;
-        }
-
-        .admin-user-count {
-            font-size: 0.8rem;
-            color: var(--color-text-light);
-        }
-
-        .back-to-list-btn {
-            display: block;
-            margin: 2rem auto 0;
-            padding: 0.8rem 2rem;
-            background: var(--color-primary);
-            color: var(--color-white);
-            border: none;
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .back-to-list-btn:hover {
-            background: var(--color-secondary);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 4/3;
-            cursor: pointer;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-item-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(26, 51, 40, 0.9));
-            padding: 2rem 1rem 1rem;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .gallery-item-overlay {
-            opacity: 1;
-        }
-
-        .gallery-item-overlay span {
-            color: var(--color-white);
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-        }
-
-        .gallery-note {
-            margin-top: 2rem;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--color-text-light);
-        }
-
         /* フッター */
         footer {
             background: #2d5f47;
@@ -2345,6 +2381,10 @@
             padding: 8px;
             width: 44px;
             height: 44px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+            z-index: 1001;
         }
 
         .hamburger-btn .bar {
@@ -2380,34 +2420,47 @@
             display: none;
         }
 
-        /* mobile-nav ドロワー（kkDEB ハンバーガーメニュー） */
+        /* ============================================================
+         * モバイルメニュー（transform ベース・iOS Safari完全対応）
+         * 常にレンダリング → 画面外に translateX で逃しておき、
+         * .open で translateX(0) で滑り込む方式。
+         * display:none/flex に頼らないので、どんな衝突にも壊れない。
+         * ============================================================ */
         .mobile-nav-overlay {
-            display: none;
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.5);
-            z-index: 998;
+            z-index: 1100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
         }
 
         .mobile-nav-overlay.open {
-            display: block;
+            opacity: 1;
+            visibility: visible;
         }
 
         .mobile-nav {
-            display: none;
             position: fixed;
             top: 0;
             right: 0;
             width: min(320px, 85vw);
-            height: 100%;
+            height: 100vh;
+            height: 100dvh;
             background: var(--color-primary);
-            z-index: 999;
+            z-index: 1200;
+            display: flex;
             flex-direction: column;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15);
         }
 
         .mobile-nav.open {
-            display: flex;
+            transform: translateX(0);
         }
 
         .mobile-nav-header {
@@ -2591,7 +2644,7 @@
                 padding: 0.75rem 1.25rem;
             }
 
-            nav, .header-contact {
+            header nav, .header-contact {
                 display: none;
             }
 
@@ -2727,14 +2780,6 @@
                 padding: 1.5rem;
             }
 
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-
-            .gallery-login-box {
-                padding: 2rem 1.5rem;
-            }
 
             .admin-user-list {
                 grid-template-columns: 1fr;
@@ -2789,16 +2834,6 @@
                 justify-content: center;
             }
 
-            /* ギャラリーパスワード入力エリア */
-            .gallery-password-form {
-                flex-direction: column;
-            }
-
-            .gallery-password-form input,
-            .gallery-submit-btn {
-                width: 100%;
-            }
-
             /* 施設情報テーブル */
             .facility-label,
             .facility-value {
@@ -2831,9 +2866,162 @@
                 padding: 0 0.25rem;
             }
         }
+
+        /* ============================================================
+         * HBM = Hamburger Menu (新実装 / checkbox-hack / JS不要で動作)
+         * 旧 .mobile-nav 系統と一切干渉しないよう新クラス名で構築。
+         * Safari のキャッシュを確実に破壊するためにも別名を採用。
+         * ============================================================ */
+        /* ハンバーガーボタン（モバイル時に表示） */
+        .hbm-trigger {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            width: 44px;
+            height: 44px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+            z-index: 1001;
+        }
+        .hbm-trigger .bar {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.92);
+            transition: transform 0.25s ease, opacity 0.2s ease;
+            transform-origin: center;
+            pointer-events: none;
+        }
+        @media (max-width: 900px) {
+            .hbm-trigger { display: flex; }
+        }
+        /* 開いている時はバーをXに変形 */
+        body.hbm-open .hbm-trigger .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        body.hbm-open .hbm-trigger .bar:nth-child(2) {
+            opacity: 0;
+        }
+        body.hbm-open .hbm-trigger .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .hbm-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+            cursor: pointer;
+        }
+        body.hbm-open .hbm-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .hbm-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: min(320px, 85vw);
+            height: 100vh;
+            height: 100dvh;
+            background: var(--color-primary);
+            z-index: 1200;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: -8px 0 24px rgba(0, 0, 0, 0.18);
+        }
+        body.hbm-open .hbm-drawer {
+            transform: translateX(0);
+        }
+
+        .hbm-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .hbm-title {
+            font-family: var(--font-display);
+            color: var(--color-white);
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+        }
+        .hbm-close {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            color: rgba(255, 255, 255, 0.85);
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1.4rem;
+            line-height: 1;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        .hbm-close:hover { color: var(--color-accent); }
+        .hbm-close svg { pointer-events: none; }
+
+        .hbm-links {
+            list-style: none;
+            padding: 1rem 0;
+            margin: 0;
+            flex: 1;
+        }
+        .hbm-links li a {
+            display: block;
+            padding: 0.95rem 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hbm-links li a:hover {
+            color: var(--color-accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .hbm-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .hbm-tel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        /* 開いている間はページスクロールロック（JS が body.hbm-open を付与） */
+        body.hbm-open {
+            overflow: hidden;
+        }
     </style>
 </head>
-<body>
+<body data-theme="day">
     <!-- ヘッダー -->
     <header>
         <div class="header-inner">
@@ -2875,7 +3063,7 @@
                 <a href="tel:099-296-9844" class="header-contact-btn tel">TEL</a>
                 <a href="#contact" class="header-contact-btn mail">MAIL</a>
             </div>
-            <button class="hamburger-btn" id="hamburger-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-nav">
+            <button type="button" class="hbm-trigger" id="hamburger-btn" aria-label="メニューを開く" onclick="document.body.classList.toggle('hbm-open');this.setAttribute('aria-label',document.body.classList.contains('hbm-open')?'メニューを閉じる':'メニューを開く');">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -2883,18 +3071,18 @@
         </div>
     </header>
 
-    <!-- Mobile Nav Overlay -->
-    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <!-- HBM オーバーレイ（タップで閉じる） -->
+    <div class="hbm-overlay" aria-hidden="true" onclick="document.body.classList.remove('hbm-open');document.getElementById('hamburger-btn').setAttribute('aria-label','メニューを開く');"></div>
 
-    <!-- Mobile Nav Drawer -->
-    <nav class="mobile-nav" id="mobile-nav">
-        <div class="mobile-nav-header">
-            <span class="mobile-nav-title">ハーベスト</span>
-            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="メニューを閉じる">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 2L16 16M16 2L2 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <!-- HBM ドロワー本体 -->
+    <aside class="hbm-drawer" id="mobile-nav" role="dialog" aria-modal="true" aria-label="モバイルメニュー">
+        <div class="hbm-header">
+            <span class="hbm-title">ハーベスト</span>
+            <button type="button" class="hbm-close" aria-label="メニューを閉じる" onclick="document.body.classList.remove('hbm-open');document.getElementById('hamburger-btn').setAttribute('aria-label','メニューを開く');">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 2L16 16M16 2L2 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </button>
         </div>
-        <ul class="mobile-nav-links">
+        <ul class="hbm-links">
             <li><a href="#concept">コンセプト</a></li>
             <li><a href="#features">サービスの特徴</a></li>
             <li><a href="#equipment">充実の設備</a></li>
@@ -2905,31 +3093,126 @@
             <li><a href="caremanager.html">ケアマネの方へ</a></li>
             <li><a href="recruit.html">採用情報</a></li>
         </ul>
-        <div class="mobile-nav-footer">
-            <a href="tel:099-296-9844" class="mobile-tel-link">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div class="hbm-footer">
+            <a href="tel:099-296-9844" class="hbm-tel">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 099-296-9844
             </a>
         </div>
-    </nav>
+    </aside>
 
     <!-- ヒーローセクション -->
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-badge">地域密着型通所介護</div>
-            <h1>笑顔あふれる<span>毎日</span>を<br>みんなで一緒に</h1>
-            <p class="hero-description">
-                マッサージとリハビリで心も体もリフレッシュ。<br>
-                スタッフ一同、笑顔でお待ちしております。
-            </p>
-            <div class="hero-line"></div>
+    <section class="hero-v2">
+        <div class="doodle doodle--md doodle--flowers-tl" data-scroll="0.5">
+            <img src="assets/doodles/doodle-flowers.png" alt="" loading="eager">
+        </div>
+        <div class="doodle doodle--lg doodle--leaves-br" data-scroll="0.6">
+            <img src="assets/doodles/doodle-leaves.png" alt="" loading="eager">
+        </div>
+        <div class="doodle doodle--sm doodle--teacup-tr" data-scroll="0.4">
+            <img src="assets/doodles/doodle-heart-hands.png" alt="" loading="eager">
+        </div>
+        <div class="doodle doodle--xs doodle--star-mid" data-scroll="0.3">
+            <img src="assets/doodles/doodle-sun.png" alt="" loading="eager">
+        </div>
+        <div class="doodle doodle--sm doodle--swirl-bl" data-scroll="0.5">
+            <img src="assets/doodles/doodle-swirl.png" alt="" loading="eager">
+        </div>
+        <div class="doodle doodle--sm doodle--wheat-ml" data-scroll="0.45">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
+        </div>
+        <div class="doodle doodle--xs doodle--wheat-tr" data-scroll="0.35">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
+        </div>
+
+        <div class="hero__inner">
+            <div class="hero__copy">
+                <p class="hero__kicker">
+                    <span>Day Service</span>
+                    <span class="ja">地域密着型通所介護</span>
+                </p>
+                <h1 class="hero__title" data-split>笑顔あふれる<br><span class="scribble-under">毎日</span>を、<br>みんなで一緒に。</h1>
+                <p class="hero__lead">
+                    マッサージとリハビリで心も体もリフレッシュ。<br>
+                    スタッフ一同、笑顔でお待ちしております。
+                </p>
+                <div class="hero__actions">
+                    <a href="#pricing" class="btn btn--primary" data-magnetic="0.25">
+                        <span>料金を見る</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="tel:099-296-9844" class="btn btn--ghost" data-magnetic="0.18">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>099-296-9844</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero__visual">
+                <div class="hero__photo">
+                    <img src="assets/photos/real-dayservice-hero.png" alt="スタッフが利用者にお茶を提供する、ハーベストデイサービスの和やかな一コマ">
+                </div>
+                <div class="hero__seal">
+                    <span class="num">9:00</span>
+                    送迎から<br>始まる一日
+                </div>
+            </div>
+        </div>
+
+        <span class="hero__scroll">SCROLL</span>
+    </section>
+
+    <!-- 施設の様子 -->
+    <section class="facility-glimpse" aria-label="施設の様子">
+        <div class="doodle doodle--wheat-tl" data-scroll="0.35">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--wheat-br" data-scroll="0.45">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--sun-tr" data-scroll="0.3">
+            <img src="assets/doodles/doodle-sun.png" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--leaves-bl" data-scroll="0.5">
+            <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--flowers-mr" data-scroll="0.4">
+            <img src="assets/doodles/doodle-flowers.png" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--swirl-bm" data-scroll="0.55">
+            <img src="assets/doodles/doodle-swirl.png" alt="" loading="lazy">
+        </div>
+
+        <div class="facility-glimpse__inner">
+            <p class="facility-glimpse__kicker">Everyday at Harvest</p>
+            <h2 class="facility-glimpse__heading">光と木のぬくもりに包まれた、<br>私たちの居場所。</h2>
+            <div class="facility-glimpse__stage">
+                <figure class="facility-glimpse__figure facility-glimpse__figure--main">
+                    <img src="assets/photos/real-dayservice-room.png" alt="ハーベストデイサービスの広々とした多目的ルーム" loading="lazy">
+                </figure>
+                <figure class="facility-glimpse__figure facility-glimpse__figure--accent">
+                    <img src="assets/photos/real-dayservice-handwash.jpg" alt="鏡付きの手洗い場が3台並ぶ、木のぬくもり溢れる共用スペース" loading="lazy">
+                </figure>
+            </div>
+            <p class="facility-glimpse__caption">〜 ハーベストが育てる、穏やかな日常 〜</p>
         </div>
     </section>
 
     <!-- コンセプトセクション -->
     <section class="concept" id="concept">
+        <div class="brand-marks" aria-hidden="true">
+            <div class="mark mark--lg" style="top: 8%; left: 4%; transform: rotate(-12deg);"><img src="assets/logos/04-wheat-emblem.svg" alt=""></div>
+            <div class="mark mark--md" style="top: 14%; right: 8%; transform: rotate(8deg);"><img src="assets/logos/01-wheat-geometric.svg" alt=""></div>
+            <div class="mark mark--sm" style="top: 50%; left: 6%; transform: rotate(15deg);"><img src="assets/logos/13-leaf-pair.svg" alt=""></div>
+            <div class="mark mark--md" style="bottom: 12%; right: 5%; transform: rotate(-10deg);"><img src="assets/logos/18-wheat-cluster.svg" alt=""></div>
+            <div class="mark mark--xs" style="top: 38%; right: 18%; transform: rotate(20deg);"><img src="assets/logos/14-sun-rise.svg" alt=""></div>
+            <div class="mark mark--sm" style="bottom: 24%; left: 14%; transform: rotate(-6deg);"><img src="assets/logos/02-wheat-line.svg" alt=""></div>
+            <div class="mark mark--xs" style="top: 28%; left: 28%; transform: rotate(12deg);"><img src="assets/logos/06-monogram-h.svg" alt=""></div>
+        </div>
         <div class="section-inner">
             <div class="concept-content">
                 <div class="concept-text">
@@ -2963,17 +3246,15 @@
             </div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <svg class="feature-icon" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
-                        <g transform="translate(28, 28)" stroke="#e8a45c" fill="none" stroke-width="1.2" stroke-linecap="round">
-                            <path d="M-10 6 Q-14 -4 -11 -12" />
-                            <path d="M-5 4 Q-7 -6 -5 -15" />
-                            <path d="M1 4 Q0 -6 0 -15" />
-                            <path d="M7 4 Q7 -4 6 -12" />
-                            <path d="M11 6 Q13 -2 14 -8" />
-                            <path d="M-15 2 Q-10 10 0 12 Q10 10 15 2" />
-                            <circle cx="-2" cy="-2" r="4" stroke-width="0.8" opacity="0.4" />
-                            <path d="M-2 -6 Q-2 -2 -2 2" stroke-width="0.6" opacity="0.4" />
-                        </g>
+                    <svg class="feature-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#e8a45c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- ハンドケア（指の流れ＋手のひら） -->
+                        <path d="M14 38 Q12 26 18 22 Q22 24 22 32"/>
+                        <path d="M22 32 Q22 22 26 20 Q30 22 30 32"/>
+                        <path d="M30 32 Q30 24 34 22 Q38 24 38 32"/>
+                        <path d="M38 32 Q38 28 42 28 Q46 30 44 38"/>
+                        <path d="M14 38 Q14 50 28 52 Q44 52 44 38"/>
+                        <circle cx="50" cy="20" r="2" fill="#e8a45c" stroke="none" opacity="0.7"/>
+                        <circle cx="54" cy="14" r="1.2" fill="#e8a45c" stroke="none" opacity="0.5"/>
                     </svg>
                     <p class="feature-number">01</p>
                     <h3 class="feature-title">気持ちいいマッサージ</h3>
@@ -2982,16 +3263,15 @@
                     </p>
                 </div>
                 <div class="feature-card">
-                    <svg class="feature-icon" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
-                        <g transform="translate(28, 26)" stroke="#e8a45c" fill="none" stroke-width="1.2" stroke-linecap="round">
-                            <circle cx="0" cy="-12" r="4" />
-                            <path d="M0 -8 L0 4" />
-                            <path d="M0 4 L-6 14" />
-                            <path d="M0 4 L6 14" />
-                            <path d="M-7 -4 L0 -1 L7 -4" />
-                            <path d="M-10 0 Q-14 -2 -16 2" stroke-width="0.8" opacity="0.5" />
-                            <path d="M10 0 Q14 -2 16 2" stroke-width="0.8" opacity="0.5" />
-                        </g>
+                    <svg class="feature-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#e8a45c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- 歩く人 + 杖 -->
+                        <circle cx="30" cy="14" r="3.5" fill="#e8a45c" fill-opacity="0.4"/>
+                        <path d="M30 18 L28 32 L24 46"/>
+                        <path d="M28 32 L34 38 L36 50"/>
+                        <path d="M30 24 L40 22"/>
+                        <path d="M40 22 L46 28" stroke-width="1.2"/>
+                        <line x1="46" y1="28" x2="46" y2="50" stroke-width="1.0" opacity="0.6"/>
+                        <path d="M14 50 L52 50" stroke-width="0.8" opacity="0.5"/>
                     </svg>
                     <p class="feature-number">02</p>
                     <h3 class="feature-title">無理のないリハビリ</h3>
@@ -3000,14 +3280,13 @@
                     </p>
                 </div>
                 <div class="feature-card">
-                    <svg class="feature-icon" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
-                        <g transform="translate(28, 28)" stroke="#e8a45c" fill="none" stroke-width="1.2" stroke-linecap="round">
-                            <path d="M-12 10 L-12 -6 L0 -14 L12 -6 L12 10 Z" />
-                            <rect x="-4" y="2" width="8" height="8" rx="1" />
-                            <circle cx="0" cy="6" r="1.5" fill="#e8a45c" opacity="0.3" />
-                            <path d="M-8 -10 Q-6 -14 0 -14 Q6 -14 8 -10" stroke-width="0.6" opacity="0.4" />
-                            <path d="M-18 -6 Q-16 -12 0 -18 Q16 -12 18 -6" stroke-width="0.6" opacity="0.3" />
-                        </g>
+                    <svg class="feature-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#e8a45c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- 家エンブレム＋小麦 -->
+                        <circle cx="32" cy="32" r="24" stroke-width="0.9"/>
+                        <path d="M20 36 L32 22 L44 36 L44 46 L20 46 Z" fill="#e8a45c" fill-opacity="0.18"/>
+                        <path d="M32 22 L32 36" stroke-width="0.8" opacity="0.5"/>
+                        <ellipse cx="29" cy="28" rx="1.6" ry="3" transform="rotate(-25 29 28)" fill="#e8a45c" fill-opacity="0.6" stroke="none"/>
+                        <ellipse cx="35" cy="28" rx="1.6" ry="3" transform="rotate(25 35 28)" fill="#e8a45c" fill-opacity="0.6" stroke="none"/>
                     </svg>
                     <p class="feature-number">03</p>
                     <h3 class="feature-title">アットホームな雰囲気</h3>
@@ -3016,19 +3295,14 @@
                     </p>
                 </div>
                 <div class="feature-card">
-                    <svg class="feature-icon" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
-                        <g transform="translate(28, 28)" stroke="#e8a45c" fill="none" stroke-width="1.2" stroke-linecap="round">
-                            <!-- マイク -->
-                            <ellipse cx="0" cy="-8" rx="6" ry="8" />
-                            <path d="M-10 -6 Q-10 6 0 10 Q10 6 10 -6" />
-                            <path d="M0 10 L0 16" stroke-width="1.5" />
-                            <path d="M-6 16 L6 16" stroke-width="1.5" />
-                            <!-- 音符 -->
-                            <circle cx="14" cy="-10" r="2.5" fill="#e8a45c" opacity="0.5" />
-                            <path d="M16.5 -10 L16.5 -18 L20 -16" stroke-width="1" opacity="0.5" />
-                            <circle cx="-14" cy="-4" r="2" fill="#e8a45c" opacity="0.4" />
-                            <path d="M-12 -4 L-12 -10" stroke-width="0.8" opacity="0.4" />
-                        </g>
+                    <svg class="feature-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#e8a45c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- 音符ペア -->
+                        <ellipse cx="22" cy="46" rx="6" ry="4.5" transform="rotate(-15 22 46)" fill="#e8a45c" fill-opacity="0.45"/>
+                        <line x1="27" y1="44" x2="27" y2="18"/>
+                        <ellipse cx="42" cy="42" rx="6" ry="4.5" transform="rotate(-15 42 42)" fill="#e8a45c" fill-opacity="0.45"/>
+                        <line x1="47" y1="40" x2="47" y2="14"/>
+                        <path d="M27 18 Q37 14 47 14" stroke-width="1.2"/>
+                        <path d="M27 24 Q37 20 47 20" stroke-width="0.8" opacity="0.5"/>
                     </svg>
                     <p class="feature-number">04</p>
                     <h3 class="feature-title">午後は楽しいレクリエーション</h3>
@@ -3042,6 +3316,15 @@
 
     <!-- 設備紹介 -->
     <section class="equipment" id="equipment">
+        <div class="brand-marks" aria-hidden="true">
+            <div class="mark mark--md" style="top: 6%; left: 3%; transform: rotate(10deg);"><img src="assets/logos/05-wheat-badge.svg" alt=""></div>
+            <div class="mark mark--lg" style="top: 12%; right: 4%; transform: rotate(-8deg);"><img src="assets/logos/12-house-emblem.svg" alt=""></div>
+            <div class="mark mark--sm" style="top: 38%; left: 8%; transform: rotate(18deg);"><img src="assets/logos/10-circle-pulse.svg" alt=""></div>
+            <div class="mark mark--md" style="top: 52%; right: 6%; transform: rotate(-14deg);"><img src="assets/logos/19-bowl-grain.svg" alt=""></div>
+            <div class="mark mark--xs" style="top: 70%; left: 18%; transform: rotate(8deg);"><img src="assets/logos/03-wheat-negative.svg" alt=""></div>
+            <div class="mark mark--sm" style="bottom: 14%; right: 14%; transform: rotate(20deg);"><img src="assets/logos/15-cup-leaf.svg" alt=""></div>
+            <div class="mark mark--xs" style="bottom: 28%; left: 30%; transform: rotate(-6deg);"><img src="assets/logos/20-circle-wheat-mark.svg" alt=""></div>
+        </div>
         <div class="section-inner">
             <div class="section-header">
                 <p class="section-en">EQUIPMENT</p>
@@ -3947,210 +4230,6 @@
         </div>
     </section>
 
-    <!-- ギャラリーセクション -->
-    <section class="gallery" id="gallery">
-        <div class="section-inner">
-            <div class="section-header">
-                <p class="section-en">ご利用者様専用</p>
-                <h2 class="section-title">フォトギャラリー</h2>
-                <div class="section-line"></div>
-                <p class="gallery-subtitle">活動の様子をご覧いただけます</p>
-            </div>
-
-            <div class="gallery-login" id="galleryLogin">
-                <div class="gallery-login-box">
-                    <div class="gallery-lock-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <g stroke="#3d7a5a" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="10" y="22" width="28" height="20" rx="2" />
-                                <path d="M16 22 V16 Q16 6 24 6 Q32 6 32 16 V22" />
-                                <circle cx="24" cy="32" r="3" fill="#3d7a5a" opacity="0.3" />
-                                <line x1="24" y1="35" x2="24" y2="38" />
-                            </g>
-                        </svg>
-                    </div>
-                    <p class="gallery-login-text">このページはご利用者様専用です。<br>専用のパスワードを入力してください。</p>
-                    <div class="gallery-password-form">
-                        <input type="password" id="galleryPassword" placeholder="パスワードを入力">
-                        <button type="button" id="gallerySubmit" class="gallery-submit-btn">閲覧する</button>
-                    </div>
-                    <p class="gallery-password-hint">※パスワードは施設スタッフよりお知らせしております</p>
-                    <p class="gallery-error" id="galleryError"></p>
-                </div>
-            </div>
-
-            <div class="gallery-content" id="galleryContent" style="display: none;">
-                <div class="gallery-user-info">
-                    <p><span id="userName"></span><span id="userRole"></span></p>
-                    <button type="button" id="galleryLogout" class="gallery-logout-btn">ログアウト</button>
-                </div>
-
-                <div class="admin-panel" id="adminPanel" style="display: none;">
-                    <h4>ご利用者を選択してください</h4>
-                    <div class="admin-user-list" id="adminUserList"></div>
-                </div>
-
-                <div id="galleryPhotos" style="display: none;">
-                    <p class="gallery-description">施設での活動やイベントの様子をご覧いただけます。</p>
-                    <div class="gallery-grid" id="galleryGrid"></div>
-                    <p class="gallery-note">※ 写真の無断転載・二次利用はご遠慮ください。</p>
-                    <button type="button" id="backToList" class="back-to-list-btn" style="display: none;">← ご利用者一覧に戻る</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        (function() {
-            const adminPassword = 'harvest-admin2025';
-            const users = {
-                'yamada2025': {
-                    name: '山田',
-                    photos: []
-                },
-                'tanaka2025': {
-                    name: '田中',
-                    photos: []
-                },
-                'suzuki2025': {
-                    name: '鈴木',
-                    photos: []
-                }
-            };
-
-            const loginSection = document.getElementById('galleryLogin');
-            const contentSection = document.getElementById('galleryContent');
-            const passwordInput = document.getElementById('galleryPassword');
-            const submitBtn = document.getElementById('gallerySubmit');
-            const errorMsg = document.getElementById('galleryError');
-            const userNameDisplay = document.getElementById('userName');
-            const userRoleDisplay = document.getElementById('userRole');
-            const galleryGrid = document.getElementById('galleryGrid');
-            const galleryPhotos = document.getElementById('galleryPhotos');
-            const logoutBtn = document.getElementById('galleryLogout');
-            const adminPanel = document.getElementById('adminPanel');
-            const adminUserList = document.getElementById('adminUserList');
-            const backToListBtn = document.getElementById('backToList');
-
-            let isAdmin = false;
-
-            const savedPassword = sessionStorage.getItem('galleryPassword');
-            if (savedPassword) {
-                if (savedPassword === adminPassword) {
-                    showAdminPanel();
-                } else if (users[savedPassword]) {
-                    showUserGallery(savedPassword);
-                }
-            }
-
-            function showAdminPanel() {
-                isAdmin = true;
-                sessionStorage.setItem('galleryPassword', adminPassword);
-                loginSection.style.display = 'none';
-                contentSection.style.display = 'block';
-                userNameDisplay.textContent = '管理者';
-                userRoleDisplay.textContent = '（すべてのご利用者の写真を閲覧できます）';
-                userRoleDisplay.style.fontSize = '0.8rem';
-                userRoleDisplay.style.color = '#666';
-                adminPanel.style.display = 'block';
-                galleryPhotos.style.display = 'none';
-                backToListBtn.style.display = 'none';
-
-                adminUserList.innerHTML = '';
-                Object.keys(users).forEach(key => {
-                    const user = users[key];
-                    const btn = document.createElement('button');
-                    btn.className = 'admin-user-btn';
-                    btn.innerHTML = `
-                        <span class="admin-user-name">${user.name}様</span>
-                        <span class="admin-user-count">写真${user.photos.length}枚</span>
-                    `;
-                    btn.addEventListener('click', () => showPhotosForAdmin(key));
-                    adminUserList.appendChild(btn);
-                });
-            }
-
-            function showPhotosForAdmin(userKey) {
-                const user = users[userKey];
-                adminPanel.style.display = 'none';
-                galleryPhotos.style.display = 'block';
-                backToListBtn.style.display = 'block';
-                renderPhotos(user.photos);
-            }
-
-            function showUserGallery(password) {
-                const user = users[password];
-                if (!user) return;
-
-                isAdmin = false;
-                sessionStorage.setItem('galleryPassword', password);
-                loginSection.style.display = 'none';
-                contentSection.style.display = 'block';
-                userNameDisplay.textContent = user.name + '様';
-                userRoleDisplay.textContent = 'のギャラリー';
-                adminPanel.style.display = 'none';
-                galleryPhotos.style.display = 'block';
-                backToListBtn.style.display = 'none';
-                renderPhotos(user.photos);
-            }
-
-            function renderPhotos(photos) {
-                galleryGrid.innerHTML = '';
-                if (photos.length === 0) {
-                    galleryGrid.innerHTML = '<p style="text-align:center;color:var(--color-text-light);padding:3rem 0;grid-column:1/-1;">現在、写真を準備中です。しばらくお待ちください。</p>';
-                    return;
-                }
-                photos.forEach(photo => {
-                    const item = document.createElement('div');
-                    item.className = 'gallery-item';
-                    item.innerHTML = `
-                        <div class="gallery-item-overlay" style="opacity:1;">
-                            <span>${photo.caption}</span>
-                        </div>
-                    `;
-                    galleryGrid.appendChild(item);
-                });
-            }
-
-            function checkPassword() {
-                const inputPassword = passwordInput.value;
-                if (inputPassword === adminPassword) {
-                    showAdminPanel();
-                    errorMsg.textContent = '';
-                } else if (users[inputPassword]) {
-                    showUserGallery(inputPassword);
-                    errorMsg.textContent = '';
-                } else {
-                    errorMsg.textContent = 'パスワードが正しくありません';
-                    passwordInput.value = '';
-                    passwordInput.focus();
-                }
-            }
-
-            function logout() {
-                sessionStorage.removeItem('galleryPassword');
-                contentSection.style.display = 'none';
-                loginSection.style.display = 'block';
-                passwordInput.value = '';
-                galleryGrid.innerHTML = '';
-                isAdmin = false;
-            }
-
-            function backToList() {
-                adminPanel.style.display = 'block';
-                galleryPhotos.style.display = 'none';
-                backToListBtn.style.display = 'none';
-            }
-
-            submitBtn.addEventListener('click', checkPassword);
-            passwordInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') checkPassword();
-            });
-            logoutBtn.addEventListener('click', logout);
-            backToListBtn.addEventListener('click', backToList);
-        })();
-    </script>
-
     <!-- CTA -->
     <section class="cta" id="contact">
         <div class="cta-bg"></div>
@@ -4273,48 +4352,38 @@
             </div>
         </div>
     </footer>
-    <!-- Hamburger Menu JS -->
+    <!-- HBM (Hamburger Menu) JS：補助動作（リンクタップで閉じる / Escapeで閉じる） -->
+    <!-- 開閉の主動作は HTML の onclick 属性で完結。以下は体験向上のための追加処理のみ。 -->
     <script>
         (function() {
-            var btn    = document.getElementById('hamburger-btn');
-            var nav    = document.getElementById('mobile-nav');
-            var overlay = document.getElementById('mobile-nav-overlay');
-            var closeBtn = document.getElementById('mobile-nav-close');
-            var body   = document.body;
+            function init() {
+                var drawer = document.getElementById('mobile-nav');
+                var trigger = document.getElementById('hamburger-btn');
+                if (!drawer) return;
 
-            function openNav() {
-                nav.classList.add('open');
-                overlay.classList.add('open');
-                btn.classList.add('open');
-                btn.setAttribute('aria-expanded', 'true');
-                overlay.setAttribute('aria-hidden', 'false');
-                body.classList.add('nav-open');
-                closeBtn.focus();
+                function closeDrawer() {
+                    document.body.classList.remove('hbm-open');
+                    if (trigger) trigger.setAttribute('aria-label', 'メニューを開く');
+                }
+
+                // メニュー内のリンクタップで閉じる
+                drawer.querySelectorAll('a').forEach(function(a) {
+                    a.addEventListener('click', closeDrawer);
+                });
+
+                // Escape キーで閉じる
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && document.body.classList.contains('hbm-open')) {
+                        closeDrawer();
+                    }
+                });
             }
 
-            function closeNav() {
-                nav.classList.remove('open');
-                overlay.classList.remove('open');
-                btn.classList.remove('open');
-                btn.setAttribute('aria-expanded', 'false');
-                overlay.setAttribute('aria-hidden', 'true');
-                body.classList.remove('nav-open');
-                btn.focus();
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
             }
-
-            btn.addEventListener('click', openNav);
-            closeBtn.addEventListener('click', closeNav);
-            overlay.addEventListener('click', closeNav);
-
-            // Close on nav link click
-            nav.querySelectorAll('a').forEach(function(a) {
-                a.addEventListener('click', closeNav);
-            });
-
-            // Close on Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && nav.classList.contains('open')) closeNav();
-            });
         })();
     </script>
 </body>

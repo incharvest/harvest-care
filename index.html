@@ -31,7 +31,11 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/harvest.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="assets/js/harvest.js" defer></script>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23847669'/%3E%3Cg transform='translate(16,17)'%3E%3Cpath d='M0-9Q2-1 0 10' fill='none' stroke='%23f0e8df' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='-3' cy='-6' rx='2' ry='4' fill='%23f0e8df' transform='rotate(-25-3-6)'/%3E%3Cellipse cx='-4' cy='-1' rx='2' ry='3' fill='%23f0e8df' transform='rotate(-20-4-1)'/%3E%3Cellipse cx='3' cy='-6' rx='2' ry='4' fill='%23f0e8df' transform='rotate(25 3-6)'/%3E%3Cellipse cx='4' cy='-1' rx='2' ry='3' fill='%23f0e8df' transform='rotate(20 4-1)'/%3E%3C/g%3E%3C/svg%3E">
     <style>
         :root {
@@ -66,6 +70,10 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        @supports (overflow-x: clip) {
+            html { overflow-x: clip; }
         }
 
         body {
@@ -78,6 +86,10 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
+        }
+        @supports (overflow-x: clip) {
+            body { overflow-x: clip; }
         }
 
         /* ヘッダー */
@@ -775,12 +787,65 @@
         .section-concept {
             padding: 90px 2rem;
             background: var(--color-bg-warm);
+            position: relative;
+            overflow: hidden;
         }
+
+        /* ブランドマーク装飾レイヤー */
+        .brand-marks-layer {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .brand-marks-layer .mark {
+            position: absolute;
+            opacity: 0.10;
+        }
+        .brand-marks-layer .mark img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .brand-marks-layer .mark--xs { width: 30px; }
+        .brand-marks-layer .mark--sm { width: 42px; }
+        .brand-marks-layer .mark--md { width: 56px; }
+        .brand-marks-layer .mark--lg { width: 72px; }
+        @media (max-width: 720px) {
+            .brand-marks-layer .mark--lg { width: 48px; }
+            .brand-marks-layer .mark--md { width: 36px; }
+            .brand-marks-layer .mark--sm { width: 26px; }
+            .brand-marks-layer .mark--xs { display: none; }
+        }
+
+        .section-concept .doodle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+            mix-blend-mode: multiply;
+            opacity: 0.72;
+        }
+        .section-concept .doodle img { width: 100%; height: auto; display: block; }
+        .section-concept .doodle--wheat-tl { width: 100px; top: 6%; left: 3%; transform: rotate(-20deg); }
+        .section-concept .doodle--wheat-br { width: 110px; bottom: 4%; right: 2%; transform: rotate(22deg); }
+        .section-concept .doodle--leaves-tr { width: 130px; top: 1%; right: 1%; transform: rotate(14deg); opacity: 0.55; }
+        .section-concept .doodle--flowers-bl { width: 110px; bottom: 3%; left: 0.5%; transform: rotate(-12deg); opacity: 0.65; }
+        .section-concept .doodle--sun-ml { width: 60px; top: 44%; left: 1%; opacity: 0.55; }
 
         .section-inner {
             max-width: 920px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 720px) {
+            .section-concept .doodle--wheat-tl,
+            .section-concept .doodle--wheat-br { width: 56px; }
+            .section-concept .doodle--leaves-tr,
+            .section-concept .doodle--flowers-bl,
+            .section-concept .doodle--sun-ml { display: none; }
         }
 
         .section-heading {
@@ -988,6 +1053,247 @@
                 height: 300px;
             }
         }
+
+        /* ============================================================
+         * ヒーローを写真背景型に（index専用オーバーライド）
+         * 正面玄関の写真を全体に敷き、左に温かいウォッシュで文字可読性を確保
+         * ============================================================ */
+        body:not([data-theme]) .hero {
+            background-color: var(--color-bg);
+            background-image:
+                linear-gradient(95deg,
+                    rgba(247, 244, 240, 0.55) 0%,
+                    rgba(247, 244, 240, 0.22) 38%,
+                    rgba(247, 244, 240, 0.00) 75%),
+                url('assets/photos/hero-entrance-v3.jpg');
+            background-size: auto, cover;
+            background-position: center, center;
+            background-repeat: no-repeat, no-repeat;
+            /* main の align-items:center / padding に巻き込まれず全幅まで広げる */
+            align-self: stretch;
+            width: calc(100% + 4rem);
+            margin-left: -2rem;
+            margin-right: -2rem;
+        }
+
+        /* 単一カラム化：文字を主役に、写真は全幅背景に */
+        body:not([data-theme]) .hero__inner {
+            grid-template-columns: minmax(0, 1fr);
+            max-width: 1280px;
+        }
+
+        /* 左側コピーの上限幅を制限し、右側に写真の見せ場を残す */
+        body:not([data-theme]) .hero__copy {
+            max-width: 640px;
+        }
+
+        /* 既存の右カラム写真は背景に統合したため非表示。シールは浮かせて維持 */
+        body:not([data-theme]) .hero__photo { display: none; }
+        body:not([data-theme]) .hero__visual {
+            position: absolute;
+            top: 7.5rem;
+            right: 2rem;
+            width: auto;
+            max-width: none;
+            z-index: 3;
+        }
+        body:not([data-theme]) .hero__seal {
+            position: static;
+        }
+
+        /* 文字に薄い影を入れて、写真側に寄ったときも読みやすく */
+        body:not([data-theme]) .hero__title,
+        body:not([data-theme]) .hero__lead,
+        body:not([data-theme]) .hero__kicker {
+            text-shadow: 0 1px 2px rgba(247, 244, 240, 0.6);
+        }
+
+        /* ヒーローのCTAボタンを写真の上でも視認性高く・上品に
+           — フロステッドガラス調で背景になじませつつコントラストを確保 */
+        body:not([data-theme]) .hero__actions .btn {
+            backdrop-filter: blur(14px) saturate(120%);
+            -webkit-backdrop-filter: blur(14px) saturate(120%);
+            font-weight: 500;
+            transition: background 0.4s var(--ease), color 0.4s var(--ease),
+                        border-color 0.4s var(--ease), box-shadow 0.4s var(--ease),
+                        transform 0.4s var(--ease);
+        }
+        body:not([data-theme]) .hero__actions .btn--primary {
+            background: var(--ink);
+            color: var(--washi);
+            box-shadow:
+                0 6px 22px rgba(58, 51, 48, 0.32),
+                0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+        }
+        body:not([data-theme]) .hero__actions .btn--primary:hover {
+            background: var(--accent-deep);
+            box-shadow:
+                0 10px 30px rgba(156, 107, 83, 0.38),
+                0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+        }
+        body:not([data-theme]) .hero__actions .btn--ghost {
+            background: rgba(255, 255, 255, 0.78);
+            color: var(--ink);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            box-shadow:
+                0 6px 22px rgba(58, 51, 48, 0.18),
+                0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+        }
+        body:not([data-theme]) .hero__actions .btn--ghost:hover {
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--accent);
+            border-color: rgba(255, 255, 255, 1);
+        }
+
+        @media (max-width: 768px) {
+            /* スマホは縦方向のグラデーションに切り替え（文字を上、写真を下） */
+            body:not([data-theme]) .hero {
+                background-color: var(--color-bg);
+                background-image:
+                    linear-gradient(180deg,
+                        rgba(247, 244, 240, 0.85) 0%,
+                        rgba(247, 244, 240, 0.45) 40%,
+                        rgba(247, 244, 240, 0.10) 75%,
+                        rgba(247, 244, 240, 0.00) 100%),
+                    url('assets/photos/real-harvest-entrance.jpg');
+                background-size: auto, contain;
+                background-position: center, center;
+                background-repeat: no-repeat, no-repeat;
+                /* スマホでは main の 1.5rem padding に揃えて breakout をリセット
+                   （デスクトップ用の calc(100% + 4rem) は 2rem 前提だったため
+                   モバイルでは viewport を超過して横スクロールを引き起こしていた） */
+                width: 100vw;
+                max-width: 100vw;
+                margin-left: calc(50% - 50vw);
+                margin-right: calc(50% - 50vw);
+            }
+            body:not([data-theme]) .hero__inner {
+                width: 100%;
+                min-width: 0;
+            }
+            body:not([data-theme]) .hero__copy {
+                max-width: 100%;
+                min-width: 0;
+            }
+            body:not([data-theme]) .hero__visual {
+                position: absolute;
+                top: auto;
+                bottom: 1.5rem;
+                right: 1rem;
+                max-width: calc(100vw - 2rem);
+            }
+        }
+
+        /* ==================================================================
+         * 住宅型有料老人ホーム 空室情報バー（トップページ用・控えめトーン）
+         * ================================================================== */
+        .home-vacancy-notice {
+            background: linear-gradient(180deg, #f7f1e8 0%, #f2ebde 100%);
+            border-top: 1px solid rgba(184, 160, 122, 0.3);
+            border-bottom: 1px solid rgba(184, 160, 122, 0.3);
+            padding: 0.85rem 1.5rem;
+        }
+        .home-vacancy-notice__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .home-vacancy-notice__lead {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .home-vacancy-notice__tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--color-resthome);
+            color: var(--color-white);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            border-radius: 2px;
+            white-space: nowrap;
+        }
+        .home-vacancy-notice__dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #c96b45;
+            box-shadow: 0 0 0 3px rgba(201, 107, 69, 0.2);
+            animation: homeVacancyPulse 2.2s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+        @keyframes homeVacancyPulse {
+            0%, 100% { box-shadow: 0 0 0 3px rgba(201, 107, 69, 0.2); }
+            50%      { box-shadow: 0 0 0 7px rgba(201, 107, 69, 0.02); }
+        }
+        .home-vacancy-notice__text {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--color-text);
+            letter-spacing: 0.03em;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .home-vacancy-notice__text time {
+            color: var(--color-text-light);
+            font-size: 0.85em;
+        }
+        .home-vacancy-notice__text strong {
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: #a15234;
+            letter-spacing: 0.04em;
+        }
+        .home-vacancy-notice__cap {
+            color: var(--color-text-muted);
+            font-size: 0.82em;
+            letter-spacing: 0.03em;
+        }
+        .home-vacancy-notice__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            color: var(--color-resthome);
+            text-decoration: none;
+            border: 1px solid var(--color-resthome);
+            border-radius: 20px;
+            font-size: 0.82rem;
+            letter-spacing: 0.05em;
+            background: transparent;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .home-vacancy-notice__link:hover {
+            background: var(--color-resthome);
+            color: var(--color-white);
+        }
+        .home-vacancy-notice__link svg {
+            transition: transform 0.25s ease;
+        }
+        .home-vacancy-notice__link:hover svg {
+            transform: translateX(2px);
+        }
+        @media (max-width: 720px) {
+            .home-vacancy-notice {
+                padding: 0.7rem 1rem;
+            }
+            .home-vacancy-notice__inner { gap: 0.75rem; }
+            .home-vacancy-notice__lead  { gap: 0.5rem; }
+            .home-vacancy-notice__text  { font-size: 0.82rem; }
+            .home-vacancy-notice__text strong { font-size: 0.95rem; }
+            .home-vacancy-notice__link  { font-size: 0.75rem; padding: 5px 12px; }
+        }
     </style>
 </head>
 <body>
@@ -1033,29 +1339,93 @@
     </div>
 
     <main>
-        <div class="main-content">
-            <!-- 稲穂ロゴマーク -->
-            <div class="main-logo-mark">
-                <svg width="60" height="70" viewBox="0 0 60 70" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(30, 35)" opacity="0.6">
-                        <path d="M0 -28 Q4 -5 0 28" fill="none" stroke="#5a4d42" stroke-width="1.5" stroke-linecap="round"/>
-                        <ellipse cx="-7" cy="-20" rx="4" ry="7" fill="none" stroke="#5a4d42" stroke-width="1" transform="rotate(-28 -7 -20)"/>
-                        <ellipse cx="-9" cy="-8" rx="4" ry="7" fill="none" stroke="#5a4d42" stroke-width="1" transform="rotate(-22 -9 -8)"/>
-                        <ellipse cx="-7" cy="4" rx="3" ry="6" fill="none" stroke="#5a4d42" stroke-width="1" transform="rotate(-18 -7 4)"/>
-                        <ellipse cx="7" cy="-20" rx="4" ry="7" fill="none" stroke="#5a4d42" stroke-width="1" transform="rotate(28 7 -20)"/>
-                        <ellipse cx="9" cy="-8" rx="4" ry="7" fill="none" stroke="#5a4d42" stroke-width="1" transform="rotate(22 9 -8)"/>
-                        <ellipse cx="7" cy="4" rx="3" ry="6" fill="none" stroke="#5a4d42" stroke-width="1" transform="rotate(18 7 4)"/>
-                    </g>
-                </svg>
+        <!-- ============ MS1: 新ヒーロー ============ -->
+        <section class="hero">
+            <!-- 浮遊ドゥードル -->
+            <div class="doodle doodle--md doodle--flowers-tl" data-scroll="0.5">
+                <img src="assets/doodles/doodle-flowers.png" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--lg doodle--leaves-br" data-scroll="0.6">
+                <img src="assets/doodles/doodle-leaves.png" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--sm doodle--teacup-tr" data-scroll="0.4">
+                <img src="assets/doodles/doodle-teacup.png" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--xs doodle--star-mid" data-scroll="0.3">
+                <img src="assets/doodles/doodle-star.png" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--sm doodle--swirl-bl" data-scroll="0.5">
+                <img src="assets/doodles/doodle-swirl.png" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--sm doodle--wheat-ml" data-scroll="0.45">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--xs doodle--wheat-tr" data-scroll="0.35">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
             </div>
 
-            <p class="main-badge">鹿児島市東谷山</p>
-            <h1 class="main-title">心と体に<span>やすらぎ</span>を<br>上質なケアをあなたに</h1>
-            <p class="main-description">
-                ハーベストは、一人ひとりに寄り添う丁寧なケアで<br>
-                ご利用者様の暮らしをサポートいたします
-            </p>
+            <div class="hero__inner">
+                <div class="hero__copy">
+                    <p class="hero__kicker">
+                        <span>Harvest</span>
+                        <span class="ja">鹿児島市東谷山</span>
+                    </p>
+                    <h1 class="hero__title" data-split>心と体に<br><span class="scribble-under">やすらぎ</span>を、<br>上質なケアを、<br>あなたに。</h1>
+                    <p class="hero__lead">
+                        ハーベストは、一人ひとりに寄り添う丁寧なケアで<br>
+                        ご利用者様の暮らしをサポートいたします。
+                    </p>
+                    <div class="hero__actions">
+                        <a href="#service" class="btn btn--primary" data-magnetic="0.25">
+                            <span>サービスを見る</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="tel:099-296-9844" class="btn btn--ghost" data-magnetic="0.18">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <span>099-296-9844</span>
+                        </a>
+                    </div>
+                </div>
 
+                <div class="hero__visual">
+                    <div class="hero__photo">
+                        <img src="assets/photos/real-harvest-entrance.jpg" alt="深緑のウッド外壁と木目の天井が温かく迎える、ハーベストの正面玄関">
+                    </div>
+                    <div class="hero__seal">
+                        <span class="num">8</span>
+                        少人数制<br>住宅型ホーム
+                    </div>
+                </div>
+            </div>
+
+            <span class="hero__scroll">SCROLL</span>
+        </section>
+
+        <!-- 住宅型有料老人ホーム 空室情報バー -->
+        <aside class="home-vacancy-notice" aria-label="住宅型有料老人ホームの空室情報">
+            <div class="home-vacancy-notice__inner">
+                <div class="home-vacancy-notice__lead">
+                    <span class="home-vacancy-notice__tag">住宅型有料老人ホーム</span>
+                    <span class="home-vacancy-notice__dot" aria-hidden="true"></span>
+                    <p class="home-vacancy-notice__text">
+                        <time datetime="2026-07">2026年7月現在</time>
+                        <strong>空室 1室</strong>
+                        <span class="home-vacancy-notice__cap">／ 定員8名</span>
+                    </p>
+                </div>
+                <a href="resthome.html#contact" class="home-vacancy-notice__link" aria-label="住宅型有料老人ホームの詳細と空室状況を見る">
+                    <span>詳しくはこちら</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="16" height="16" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </aside>
+
+        <!-- ============ 旧ヒーロー以下のコンテンツ（MS2/3で再設計予定） ============ -->
+        <div class="main-content" id="service">
             <div class="service-cards">
                 <a href="dayservice.html" class="service-card dayservice">
                     <!-- デイサービス：手のひらと葉のモチーフ -->
@@ -1154,6 +1524,29 @@
 
     <!-- コンセプトセクション -->
     <section class="section-concept">
+        <div class="brand-marks-layer" aria-hidden="true">
+            <div class="mark mark--md" style="top: 18%; left: 8%; transform: rotate(-10deg);"><img src="assets/logos/04-wheat-emblem.svg" alt=""></div>
+            <div class="mark mark--sm" style="top: 28%; right: 12%; transform: rotate(15deg);"><img src="assets/logos/01-wheat-geometric.svg" alt=""></div>
+            <div class="mark mark--xs" style="top: 56%; left: 18%; transform: rotate(-18deg);"><img src="assets/logos/13-leaf-pair.svg" alt=""></div>
+            <div class="mark mark--md" style="bottom: 18%; right: 6%; transform: rotate(8deg);"><img src="assets/logos/17-monogram-harvest.svg" alt=""></div>
+            <div class="mark mark--sm" style="bottom: 30%; left: 5%; transform: rotate(20deg);"><img src="assets/logos/18-wheat-cluster.svg" alt=""></div>
+            <div class="mark mark--xs" style="top: 42%; right: 22%; transform: rotate(-10deg);"><img src="assets/logos/06-monogram-h.svg" alt=""></div>
+        </div>
+        <div class="doodle doodle--wheat-tl" data-scroll="0.3">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--wheat-br" data-scroll="0.4">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--leaves-tr" data-scroll="0.35">
+            <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--flowers-bl" data-scroll="0.25">
+            <img src="assets/doodles/doodle-flowers.png" alt="" loading="lazy">
+        </div>
+        <div class="doodle doodle--sun-ml" data-scroll="0.3">
+            <img src="assets/doodles/doodle-sun.png" alt="" loading="lazy">
+        </div>
         <div class="section-inner">
             <h2 class="section-heading">ハーベストが大切にしていること</h2>
             <p class="section-subtext">一人ひとりの尊厳を守り、その人らしい暮らしを<br>丁寧にサポートすることが私たちの使命です</p>

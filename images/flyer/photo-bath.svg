@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice">
+  <rect width="300" height="220" fill="#85C1A3" opacity="0.35"/>
+  <rect x="0" y="0" width="300" height="220" fill="#FBF9F4" opacity="0.45"/>
+  <!-- 浴槽の輪郭 -->
+  <rect x="55" y="115" width="190" height="65" rx="22" fill="none" stroke="#85C1A3" stroke-width="3"/>
+  <path d="M 70 130 Q 90 122 110 130 T 150 130 T 190 130 T 230 130" fill="none" stroke="#85C1A3" stroke-width="2" opacity="0.65"/>
+  <path d="M 70 145 Q 90 137 110 145 T 150 145 T 190 145 T 230 145" fill="none" stroke="#85C1A3" stroke-width="2" opacity="0.45"/>
+  <!-- 湯気 -->
+  <path d="M 100 80 Q 105 65 100 50" stroke="#C38D5E" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <path d="M 130 75 Q 135 60 130 45" stroke="#C38D5E" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <path d="M 160 80 Q 165 65 160 50" stroke="#C38D5E" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <text x="150" y="105" text-anchor="middle" font-family="'Noto Sans JP', sans-serif" font-size="13" fill="#3D3128" letter-spacing="2">写真がここに入ります</text>
+</svg>

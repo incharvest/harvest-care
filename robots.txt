@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://incharvest.github.io/harvest-care/sitemap.xml

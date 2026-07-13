@@ -9,7 +9,11 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Old+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/harvest.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="assets/js/harvest.js" defer></script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%234a4035'/%3E%3Cg transform='translate(16,17)'%3E%3Cpath d='M0-9Q2-1 0 10' fill='none' stroke='%23b8956e' stroke-width='1.5' stroke-linecap='round'/%3E%3Cellipse cx='-3' cy='-6' rx='2' ry='4' fill='%23b8956e' transform='rotate(-25-3-6)'/%3E%3Cellipse cx='-4' cy='-1' rx='2' ry='3' fill='%23b8956e' transform='rotate(-20-4-1)'/%3E%3Cellipse cx='3' cy='-6' rx='2' ry='4' fill='%23b8956e' transform='rotate(25 3-6)'/%3E%3Cellipse cx='4' cy='-1' rx='2' ry='3' fill='%23b8956e' transform='rotate(20 4-1)'/%3E%3C/g%3E%3C/svg%3E">
@@ -18,7 +22,7 @@
     <link rel="stylesheet" href="design-system/harvest.css">
     <link rel="stylesheet" href="design-system/pages/resthome.css">
 </head>
-<body>
+<body data-theme="rest">
     <!-- Skip Navigation -->
     <a href="#main" class="skip-link">本文へスキップ</a>
 
@@ -87,31 +91,137 @@
     <!-- Main Content -->
     <main id="main">
 
-        <!-- Hero Section -->
-        <section class="resthome-hero" aria-label="ヒーロー">
-            <div class="resthome-hero-bg" role="img" aria-label="老人ホームの温かな風景"></div>
-            <div class="resthome-hero-overlay"></div>
-            <div class="resthome-hero-content">
-                <span class="resthome-hero-badge">住宅型有料老人ホーム</span>
-                <h1 class="resthome-hero-title">
-                    あなたらしい<span class="accent">暮らし</span>を<br>ここから、はじめる
-                </h1>
-                <p class="resthome-hero-subtitle">
-                    安心と快適を備えた住まいで、<br>
-                    ゆとりある毎日をお届けします
-                </p>
+        <!-- Hero Section (v2) -->
+        <section class="hero-v2" aria-label="ヒーロー">
+            <div class="doodle doodle--md doodle--flowers-tl" data-scroll="0.5">
+                <img src="assets/doodles/doodle-flowers.png" alt="" loading="eager">
             </div>
-            <div class="resthome-hero-scroll" aria-hidden="true">
-                <span>SCROLL</span>
-                <svg width="16" height="24" viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <line x1="8" y1="0" x2="8" y2="20"/>
-                    <polyline points="3,15 8,20 13,15"/>
-                </svg>
+            <div class="doodle doodle--lg doodle--leaves-br" data-scroll="0.6">
+                <img src="assets/doodles/doodle-leaves.png" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--sm doodle--teacup-tr" data-scroll="0.4">
+                <img src="assets/doodles/doodle-teacup.png" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--xs doodle--star-mid" data-scroll="0.3">
+                <img src="assets/doodles/doodle-bird.png" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--sm doodle--swirl-bl" data-scroll="0.5">
+                <img src="assets/doodles/doodle-swirl.png" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--sm doodle--wheat-ml" data-scroll="0.45">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
+            </div>
+            <div class="doodle doodle--xs doodle--wheat-tr" data-scroll="0.35">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
+            </div>
+
+            <div class="hero__inner">
+                <div class="hero__copy">
+                    <p class="hero__kicker">
+                        <span>Rest Home</span>
+                        <span class="ja">住宅型有料老人ホーム</span>
+                    </p>
+                    <h1 class="hero__title" data-split>あなたらしい<br><span class="scribble-under">暮らし</span>を、<br>ここから、はじめる。</h1>
+                    <p class="hero__lead">
+                        安心と快適を備えた住まいで、<br>
+                        ゆとりある毎日をお届けします。
+                    </p>
+                    <div class="hero__actions">
+                        <a href="#contact" class="btn btn--primary" data-magnetic="0.25">
+                            <span>ご相談・お問い合わせ</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="tel:099-296-9844" class="btn btn--ghost" data-magnetic="0.18">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <span>099-296-9844</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero__visual">
+                    <div class="hero__photo">
+                        <img src="assets/photos/real-bedroom-hero.jpg" alt="明るい光が差し込む居室の風景">
+                    </div>
+                    <div class="hero__seal">
+                        <span class="num">8</span>
+                        定員8名<br>少人数制
+                    </div>
+                </div>
+            </div>
+
+            <span class="hero__scroll">SCROLL</span>
+        </section>
+
+        <!-- 空室状況のお知らせバー -->
+        <section class="vacancy-bar" aria-label="空室状況のお知らせ">
+            <div class="vacancy-bar__inner">
+                <div class="vacancy-bar__lead">
+                    <span class="vacancy-bar__badge vacancy-bar__badge--live">空室あり</span>
+                    <div class="vacancy-bar__status">
+                        <p class="vacancy-bar__status-main">
+                            <span class="vacancy-bar__status-count">残り 1室</span>
+                            <span class="vacancy-bar__status-cap">／ 定員8名</span>
+                        </p>
+                        <p class="vacancy-bar__status-sub">
+                            <time datetime="2026-07">2026年7月現在</time>　ご見学・ご入居のご相談はお早めにお電話ください。
+                        </p>
+                    </div>
+                </div>
+                <a href="tel:099-296-9844" class="vacancy-bar__cta" aria-label="電話で空室状況を問い合わせる">
+                    <span class="vacancy-bar__cta-icon" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </span>
+                    <span class="vacancy-bar__cta-body">
+                        <span class="vacancy-bar__cta-number">099-296-9844</span>
+                        <span class="vacancy-bar__cta-hours">受付 8:30〜17:30 ／ 日曜定休</span>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Photo Strip (装飾的写真帯) -->
+        <section class="photo-strip" aria-hidden="true">
+            <div class="doodle doodle--wheat-tl" data-scroll="0.3">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+            </div>
+            <div class="doodle doodle--wheat-br" data-scroll="0.4">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+            </div>
+            <div class="doodle doodle--flowers-tr" data-scroll="0.35">
+                <img src="assets/doodles/doodle-flowers.png" alt="" loading="lazy">
+            </div>
+            <div class="doodle doodle--leaves-bl" data-scroll="0.3">
+                <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy">
+            </div>
+            <div class="photo-strip__inner">
+                <div class="photo-strip__item photo-strip__item--1">
+                    <img src="assets/photos/real-dining-detail.jpg" alt="" loading="lazy">
+                </div>
+                <div class="photo-strip__item photo-strip__item--2">
+                    <img src="assets/photos/real-bedroom-detail.jpg" alt="" loading="lazy">
+                </div>
+                <div class="photo-strip__item photo-strip__item--3">
+                    <img src="assets/photos/real-dining-mood.jpg" alt="" loading="lazy">
+                </div>
+                <p class="photo-strip__caption">Everyday Moments</p>
             </div>
         </section>
 
         <!-- Concept Section -->
         <section class="section section--cream" id="concept" aria-labelledby="concept-title">
+            <div class="doodle doodle--wheat-mr" data-scroll="0.35">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+            </div>
+            <div class="doodle doodle--sun-tl" data-scroll="0.3">
+                <img src="assets/doodles/doodle-sun.png" alt="" loading="lazy">
+            </div>
+            <div class="doodle doodle--leaves-bl" data-scroll="0.4">
+                <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy">
+            </div>
             <div class="container container--content">
                 <div class="concept-grid reveal">
                     <div class="concept-text">
@@ -418,6 +528,15 @@
                     ※ 上記料金は目安です。介護サービス費は別途必要となります。<br>
                     ※ 詳しい料金についてはお気軽にお問い合わせください。
                 </p>
+
+                <div class="vacancy-callout reveal">
+                    <p class="vacancy-callout__text">
+                        <strong>空室あり</strong>　<time datetime="2026-07">2026年7月現在</time>、残り <strong class="vacancy-callout__count">1室</strong>（定員8名）
+                    </p>
+                    <a href="tel:099-296-9844" class="vacancy-callout__link" aria-label="電話で空室状況を確認する">
+                        ご見学・ご入居のご相談はお早めにお電話ください　099-296-9844
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -505,6 +624,59 @@
                         </div>
                     </div>
                     <p class="body-small mt-4 text-muted-light">※ 詳細は契約書（重要事項説明書）にてご説明いたします。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Care Detail Section（設備のおしゃれショーケース） -->
+        <section class="section" id="care-detail" aria-labelledby="care-detail-title">
+            <div class="brand-marks-layer" aria-hidden="true">
+                <div class="mark mark--md" style="top: 14%; left: 6%; transform: rotate(-12deg);"><img src="assets/logos/04-wheat-emblem.svg" alt=""></div>
+                <div class="mark mark--sm" style="top: 28%; right: 14%; transform: rotate(10deg);"><img src="assets/logos/13-leaf-pair.svg" alt=""></div>
+                <div class="mark mark--xs" style="top: 60%; left: 12%; transform: rotate(20deg);"><img src="assets/logos/06-monogram-h.svg" alt=""></div>
+                <div class="mark mark--md" style="bottom: 18%; right: 8%; transform: rotate(-6deg);"><img src="assets/logos/14-sun-rise.svg" alt=""></div>
+                <div class="mark mark--sm" style="bottom: 32%; left: 22%; transform: rotate(15deg);"><img src="assets/logos/19-bowl-grain.svg" alt=""></div>
+                <div class="mark mark--xs" style="top: 44%; right: 32%; transform: rotate(-18deg);"><img src="assets/logos/15-cup-leaf.svg" alt=""></div>
+            </div>
+            <div class="doodle doodle--wheat-tr" data-scroll="0.35">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+            </div>
+            <div class="doodle doodle--leaves-bl" data-scroll="0.45">
+                <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy">
+            </div>
+            <div class="doodle doodle--sun-ml" data-scroll="0.3">
+                <img src="assets/doodles/doodle-sun.png" alt="" loading="lazy">
+            </div>
+
+            <div class="container container--content">
+                <div class="section-header reveal">
+                    <span class="section-label">Care Detail</span>
+                    <h2 class="section-title" id="care-detail-title">細部に宿る、安心と尊厳。</h2>
+                    <p class="section-description">
+                        毎日触れる場所だからこそ、清潔感とプライバシーに配慮した設えを。
+                    </p>
+                </div>
+
+                <div class="care-detail-grid reveal">
+                    <figure class="care-detail-figure care-detail-figure--restroom">
+                        <div class="care-detail-figure__img-wrap">
+                            <img src="assets/photos/real-resthome-restroom.jpg" alt="L字手すりとペーパーホルダーを備えた専用お手洗い" loading="lazy">
+                        </div>
+                        <figcaption>
+                            <span class="care-detail-kicker">Comfort</span>
+                            <span class="care-detail-text">手すり付き・温水洗浄便座を備えた、安心のバリアフリー設計。</span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="care-detail-figure care-detail-figure--sink">
+                        <div class="care-detail-figure__img-wrap">
+                            <img src="assets/photos/real-resthome-sink.jpg" alt="観葉植物と絵画が彩る、ハーベストの洗面コーナー全体" loading="lazy">
+                        </div>
+                        <figcaption>
+                            <span class="care-detail-kicker">Hygiene</span>
+                            <span class="care-detail-text">一人ひとりの動線に寄り添う、独立した洗面スペース。</span>
+                        </figcaption>
+                    </figure>
                 </div>
             </div>
         </section>
