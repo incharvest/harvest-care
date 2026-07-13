@@ -28,12 +28,6 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # 非公開ファイル（手渡し限定チラシ等）をデプロイから除外
-      # git 上には残すが GitHub Pages には公開しない
-      - name: Remove private files before deploy
-        run: |
-          rm -f flyer.html
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

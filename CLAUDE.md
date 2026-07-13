@@ -22,24 +22,30 @@ GitHub Pages のデプロイもこのブランチから行われています。
   誤配置。全て手動で cherry-pick して復旧した。
   → この事故を防ぐため本ルールを設置。
 
-## 事業とWeb公開の区別ルール
+## 事業とブランチ構成のルール
 
-**このリポジトリで扱っている事業は2つ:**
+**このリポジトリで扱っている事業は2つで、ブランチも用途別に分離:**
 
-1. **介護施設**（デイサービス／住宅型有料老人ホーム）
-   - ホームページ: **公開する** (`index.html`, `dayservice.html`, `resthome.html`, `caremanager.html`, `recruit.html`)
-   - チラシ: **公開OK** (`dayservice-flyer.html`, `dayservice-flyer-v2.html`)
+### 1. 介護施設（デイサービス／住宅型有料老人ホーム）
+- **ブランチ**: `claude/review-harvest-care-sites-FhpVz` (このブランチ)
+- **ホームページ**: 公開 (`index.html`, `dayservice.html`, `resthome.html`, `caremanager.html`, `recruit.html`)
+- **チラシ**: `dayservice-flyer.html`, `dayservice-flyer-v2.html`
+  - 現在は制作中（未完成）、完成後にHPへ正式リンクを組み込む予定
+- **GitHub Pages デプロイ元**: このブランチ
 
-2. **訪問鍼灸マッサージ**
-   - ホームページ: **無し**（今後も作らない）
-   - チラシ: `flyer.html` のみ、**手渡し配布用でWeb非公開**
-     - `.github/workflows/deploy.yml` の "Remove private files" ステップで
-       デプロイ対象から除外済み
-     - **絶対に sitemap.xml に追加しないこと**
-     - **絶対に他ページからリンクしないこと**
-     - **絶対に Google Search Console にインデックス登録しないこと**
+### 2. 訪問鍼灸マッサージ
+- **ブランチ**: `claude/chirashi-private`（**別ブランチで完全隔離**）
+- **ホームページ**: 無し（今後も作らない方針）
+- **チラシ**: `flyer.html` のみ、手渡し配布用
+- **絶対に `claude/review-harvest-care-sites-FhpVz` と混ぜないこと**
+- **絶対に merge しないこと**（orphan branch として独立）
 
-**メインの介護施設サイトから、訪問鍼灸マッサージへの言及は完全にゼロにすること。**
+### 絶対に守るルール
+
+- **`claude/review-harvest-care-sites-FhpVz` ブランチには `flyer.html` を絶対に置かない**
+- **`claude/review-harvest-care-sites-FhpVz` ブランチの `sitemap.xml` に訪問マッサージの URL を追加しない**
+- **介護施設のホームページから訪問鍼灸マッサージへの言及・リンクは一切しない**
+- **`claude/chirashi-private` は Web 公開しない**（デプロイ元は review ブランチのみ）
 
 ## 言葉遣いのルール
 
