@@ -22,6 +22,25 @@ GitHub Pages のデプロイもこのブランチから行われています。
   誤配置。全て手動で cherry-pick して復旧した。
   → この事故を防ぐため本ルールを設置。
 
+## 事業とWeb公開の区別ルール
+
+**このリポジトリで扱っている事業は2つ:**
+
+1. **介護施設**（デイサービス／住宅型有料老人ホーム）
+   - ホームページ: **公開する** (`index.html`, `dayservice.html`, `resthome.html`, `caremanager.html`, `recruit.html`)
+   - チラシ: **公開OK** (`dayservice-flyer.html`, `dayservice-flyer-v2.html`)
+
+2. **訪問鍼灸マッサージ**
+   - ホームページ: **無し**（今後も作らない）
+   - チラシ: `flyer.html` のみ、**手渡し配布用でWeb非公開**
+     - `.github/workflows/deploy.yml` の "Remove private files" ステップで
+       デプロイ対象から除外済み
+     - **絶対に sitemap.xml に追加しないこと**
+     - **絶対に他ページからリンクしないこと**
+     - **絶対に Google Search Console にインデックス登録しないこと**
+
+**メインの介護施設サイトから、訪問鍼灸マッサージへの言及は完全にゼロにすること。**
+
 ## 言葉遣いのルール
 
 専門用語を使う際は、必ず日本語の説明をカッコ内に添える。
