@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>マッサージ・リハビリ重視型デイサービス ハーベスト｜A4横チラシ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   デイサービス ハーベスト A4横チラシ（両面）
+   ・A4横（297×210mm）／事務所プリンタ印刷を前提
+   ・四辺9mmの余白内にすべての要素を配置（フチなし印刷不要）
+   ============================================================ */
+@page { size: A4 landscape; margin: 0; }
+
+:root{
+  --green:#1e5c3a;
+  --green-mid:#2d7a52;
+  --green-soft:#4a7c59;
+  --gold:#b8862f;
+  --gold-light:#e8d9b8;
+  --cream:#f7f4ec;
+  --cream-2:#eef2e9;
+  --ink:#1d2a24;
+  --ink-2:#4a5a52;
+  --line:#d9d3c4;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html{ background:#8f948f; }
+
+body{
+  font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;
+  color:var(--ink);
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+  line-height:1.6;
+}
+
+.page{
+  position:relative;
+  width:297mm;
+  height:210mm;
+  padding:9mm;
+  background:#fff;
+  overflow:hidden;
+  margin:0 auto 8mm;
+  box-shadow:0 2mm 6mm rgba(0,0,0,.35);
+}
+
+/* ── 画面用ツールバー（印刷されません） ── */
+.toolbar{
+  max-width:297mm; margin:6mm auto 4mm; padding:4mm 5mm;
+  background:#fff; border-left:2mm solid var(--green);
+  font-size:10pt; line-height:1.8; box-shadow:0 1mm 3mm rgba(0,0,0,.25);
+}
+.toolbar h1{ font-size:12pt; color:var(--green); margin-bottom:1mm; }
+.toolbar button{
+  margin-top:2mm; padding:2mm 6mm; font-size:10pt; font-weight:700; cursor:pointer;
+  background:var(--green); color:#fff; border:none; border-radius:1mm;
+}
+.toolbar ol{ margin:1mm 0 0 5mm; }
+
+/* ══════════════ 共通パーツ ══════════════ */
+.sheet{ display:flex; flex-direction:column; height:100%; }
+
+.head{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:0.7mm solid var(--green); padding-bottom:2mm;
+}
+.head-l{ display:flex; align-items:center; gap:3mm; }
+.mark{
+  width:11mm; height:11mm; border-radius:50%; background:var(--green);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.mark span{ font-family:'Zen Old Mincho',serif; color:#fff; font-size:13pt; line-height:1; }
+.head-type{ font-size:7.5pt; letter-spacing:.18em; color:var(--gold); font-weight:700; }
+.head-name{
+  font-family:'Zen Old Mincho',serif; font-size:16pt; font-weight:700;
+  letter-spacing:.06em; line-height:1.25; color:var(--green);
+}
+.head-r{ text-align:right; font-size:8pt; color:var(--ink-2); line-height:1.5; }
+.head-r strong{ font-size:11.5pt; color:var(--green); letter-spacing:.02em; }
+
+.sec-title{
+  font-family:'Zen Old Mincho',serif; font-size:12pt; font-weight:700; color:var(--green);
+  letter-spacing:.06em; display:flex; align-items:baseline; gap:2.5mm;
+}
+.sec-title em{ font-style:normal; font-size:6.5pt; letter-spacing:.22em; color:var(--gold); font-weight:700; }
+
+/* ══════════════ 表面 ══════════════ */
+.p1{ display:grid; grid-template-rows:15mm 87mm 40mm 1fr; gap:3.5mm; height:100%; }
+.p1>*{ min-height:0; }
+
+/* ヒーロー */
+.hero{ display:grid; grid-template-columns:132mm 1fr; gap:5mm; }
+.hero-photo{ position:relative; overflow:hidden; border-radius:1.5mm; min-height:0; }
+.hero-photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.badge{
+  position:absolute; right:4mm; bottom:4mm;
+  width:31mm; height:31mm; border-radius:50%; background:rgba(30,92,58,.94);
+  color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; border:0.6mm solid rgba(255,255,255,.55);
+}
+.badge .b1{ font-size:6pt; letter-spacing:.1em; }
+.badge .b2{ font-family:'Zen Old Mincho',serif; font-size:23pt; font-weight:700; line-height:1; margin:.5mm 0; }
+.badge .b3{ font-size:6.5pt; font-weight:700; line-height:1.35; }
+
+.hero-text{ display:flex; flex-direction:column; }
+.eyebrow{ font-size:7.5pt; letter-spacing:.2em; color:var(--gold); font-weight:700; margin-bottom:2mm; }
+.catch{
+  font-family:'Zen Old Mincho',serif; font-size:25pt; font-weight:700; line-height:1.42;
+  letter-spacing:.02em; color:var(--ink);
+}
+.catch b{ color:var(--green); font-weight:700; }
+.catch .mk{ background:linear-gradient(transparent 62%, var(--gold-light) 62%); }
+.lead{ font-size:9pt; line-height:1.85; color:var(--ink-2); margin-top:3.5mm; }
+.lead strong{ color:var(--green); font-weight:700; }
+.voice{ margin-top:auto; background:var(--cream); border-left:0.9mm solid var(--gold); padding:2.5mm 3.5mm; }
+.voice p{ font-size:8.5pt; line-height:1.75; color:var(--ink); }
+.voice cite{ display:block; font-style:normal; font-size:7.5pt; color:var(--ink-2); margin-top:1mm; }
+.hero-facts{ margin-top:3mm; border-top:0.3mm solid var(--line); padding-top:2.5mm; display:flex; gap:4mm; }
+.hero-facts div{ font-size:7.5pt; color:var(--ink-2); line-height:1.45; }
+.hero-facts b{ display:block; font-size:9.5pt; color:var(--green); font-weight:700; }
+
+/* 特徴4点 */
+.feats{ display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; }
+.feat{ background:var(--cream); border-top:0.8mm solid var(--green-soft); padding:3mm 3.5mm; position:relative; }
+.feat .no{
+  font-family:'Zen Old Mincho',serif; font-size:8pt; color:var(--gold); letter-spacing:.1em; font-weight:700;
+}
+.feat h3{ font-size:11pt; font-weight:700; color:var(--green); line-height:1.35; margin:.8mm 0 1.5mm; }
+.feat p{ font-size:8pt; line-height:1.7; color:var(--ink-2); }
+
+/* 下段：体験＋連絡先 */
+.p1-foot{ display:grid; grid-template-columns:1fr 108mm; gap:4mm; }
+.trial{ background:var(--cream-2); padding:4mm 5mm; display:flex; flex-direction:column; justify-content:center; }
+.trial-tag{
+  display:inline-block; align-self:flex-start; background:var(--gold); color:#fff;
+  font-size:7.5pt; font-weight:700; letter-spacing:.12em; padding:.8mm 3mm; border-radius:.8mm;
+}
+.trial h3{ font-family:'Zen Old Mincho',serif; font-size:15pt; color:var(--green); margin:1.8mm 0 1.2mm; letter-spacing:.03em; }
+.trial p{ font-size:8.5pt; color:var(--ink-2); line-height:1.7; }
+.trial ul{ display:flex; gap:3mm; margin-top:2mm; list-style:none; }
+.trial li{ font-size:8pt; font-weight:700; color:var(--green); }
+.trial li::before{ content:'✓ '; color:var(--gold); }
+
+.contact{ background:var(--green); color:#fff; padding:4mm 5mm; display:flex; flex-direction:column; justify-content:center; }
+.contact .c-lab{ font-size:7.5pt; letter-spacing:.2em; color:var(--gold-light); font-weight:700; }
+.contact .c-tel{ font-family:'Zen Old Mincho',serif; font-size:29pt; font-weight:700; line-height:1.1; letter-spacing:.01em; margin:.5mm 0; }
+.contact .c-sub{ font-size:8pt; color:rgba(255,255,255,.9); line-height:1.6; }
+.contact .c-adr{ font-size:8pt; color:rgba(255,255,255,.9); border-top:0.3mm solid rgba(255,255,255,.35); margin-top:2mm; padding-top:2mm; line-height:1.6; }
+
+/* ══════════════ 裏面 ══════════════ */
+.p2{ display:grid; grid-template-rows:11mm 40mm 68mm 1fr; gap:3.5mm; height:100%; }
+.p2>*{ min-height:0; }
+
+.p2-head{ display:flex; align-items:center; justify-content:space-between; border-bottom:0.5mm solid var(--green); padding-bottom:2mm; }
+.p2-head .t{ font-family:'Zen Old Mincho',serif; font-size:13pt; font-weight:700; color:var(--green); letter-spacing:.05em; }
+.p2-head .s{ font-size:8pt; color:var(--ink-2); }
+
+/* 一日の流れ */
+.flow{ display:flex; flex-direction:column; }
+.flow-wrap{ display:grid; grid-template-columns:repeat(7,1fr); gap:2mm; margin-top:2.5mm; flex:1; min-height:0; }
+.step{ background:var(--cream); padding:2.5mm; display:flex; flex-direction:column; border-bottom:0.6mm solid var(--green-soft); }
+.step .tm{ font-family:'Zen Old Mincho',serif; font-size:11pt; font-weight:700; color:var(--gold); line-height:1; }
+.step h4{ font-size:8.5pt; font-weight:700; color:var(--green); margin:1.2mm 0 1mm; line-height:1.35; }
+.step p{ font-size:7pt; line-height:1.55; color:var(--ink-2); }
+
+/* 料金・写真 */
+.mid{ display:grid; grid-template-columns:1fr 96mm; gap:4mm; min-height:0; }
+.mid>*{ min-height:0; }
+.price-box{ display:flex; flex-direction:column; }
+.sim{ display:grid; grid-template-columns:repeat(3,1fr); gap:2.5mm; margin-top:2.5mm; }
+.sim-card{ border:0.4mm solid var(--line); padding:2.5mm 3mm; text-align:center; background:#fff; }
+.sim-card .k{ font-size:8pt; font-weight:700; color:var(--green); background:var(--cream-2); padding:.5mm 0; }
+.sim-card .v{ font-family:'Zen Old Mincho',serif; font-size:16pt; font-weight:700; color:var(--ink); line-height:1.2; margin-top:1.5mm; }
+.sim-card .v small{ font-size:8pt; }
+.sim-card .n{ font-size:6.5pt; color:var(--ink-2); line-height:1.4; margin-top:1mm; }
+.price-row{ display:flex; gap:3mm; margin-top:2.5mm; }
+.price-row div{ flex:1; background:var(--cream); padding:2mm 3mm; font-size:7.5pt; color:var(--ink-2); line-height:1.5; }
+.price-row b{ display:block; font-size:9pt; color:var(--green); }
+.note{ font-size:6.5pt; color:var(--ink-2); line-height:1.55; margin-top:auto; padding-top:2mm; }
+
+.photos{ display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:2.5mm; min-height:0; }
+.ph{ position:relative; overflow:hidden; border-radius:1mm; min-height:0; }
+.ph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.ph span{
+  position:absolute; left:0; bottom:0; background:rgba(30,92,58,.88); color:#fff;
+  font-size:7pt; font-weight:700; padding:.8mm 2.5mm; letter-spacing:.05em;
+}
+
+/* 下段：対象者・流れ・事業所情報 */
+.p2-foot{ display:grid; grid-template-columns:1fr 1fr 96mm; gap:4mm; }
+.blk h4{ font-size:9.5pt; font-weight:700; color:var(--green); border-bottom:0.4mm solid var(--line); padding-bottom:1mm; margin-bottom:1.5mm; }
+.tgt{ list-style:none; }
+.tgt li{ font-size:8pt; line-height:1.6; color:var(--ink-2); padding-left:4mm; position:relative; }
+.tgt li::before{ content:'●'; position:absolute; left:0; color:var(--green-soft); font-size:5.5pt; top:1mm; }
+.tgt li b{ color:var(--ink); font-weight:700; }
+.steps{ list-style:none; counter-reset:s; }
+.steps li{ font-size:8pt; line-height:1.55; color:var(--ink-2); padding-left:6mm; position:relative; margin-bottom:1.2mm; counter-increment:s; }
+.steps li::before{
+  content:counter(s); position:absolute; left:0; top:.3mm; width:4mm; height:4mm; border-radius:50%;
+  background:var(--green); color:#fff; font-size:6.5pt; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+.steps li b{ color:var(--ink); }
+
+.info-table{ width:100%; border-collapse:collapse; }
+.info-table th,.info-table td{ border-bottom:0.3mm dotted var(--line); padding:0.9mm 0; font-size:7.5pt; text-align:left; vertical-align:top; line-height:1.5; }
+.info-table th{ width:24mm; color:var(--green); font-weight:700; }
+.info-table td{ color:var(--ink-2); }
+.p2-tel{ background:var(--green); color:#fff; padding:2.5mm 3.5mm; margin-top:2mm; display:flex; align-items:center; justify-content:space-between; }
+.p2-tel .l{ font-size:7.5pt; letter-spacing:.12em; color:var(--gold-light); font-weight:700; line-height:1.5; }
+.p2-tel .r{ font-family:'Zen Old Mincho',serif; font-size:19pt; font-weight:700; line-height:1.1; }
+
+@media print{
+  html,body{ background:#fff; }
+  .toolbar{ display:none !important; }
+  .page{ margin:0; box-shadow:none; page-break-after:always; }
+  .page:last-child{ page-break-after:auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <h1>デイサービス ハーベスト A4横チラシ（両面）</h1>
+  <p>このページを開いたまま <b>Ctrl + P</b>（Macは ⌘ + P）で印刷できます。プリンタ設定は次の通りにしてください。</p>
+  <ol>
+    <li>用紙サイズ：<b>A4</b>／向き：<b>横</b></li>
+    <li>倍率：<b>100%</b>（「実際のサイズ」）</li>
+    <li><b>背景のグラフィック（背景色と画像）にチェック</b>を入れる ← 色が出ないときはここです</li>
+    <li>両面印刷：<b>長辺とじ</b></li>
+  </ol>
+  <button onclick="window.print()">印刷する</button>
+</div>
+
+<!-- ══════════════════ 表面 ══════════════════ -->
+<section class="page">
+ <div class="sheet p1">
+
+  <header class="head">
+    <div class="head-l">
+      <div class="mark"><span>穂</span></div>
+      <div>
+        <div class="head-type">地域密着型通所介護 ／ 鹿児島市東谷山</div>
+        <div class="head-name">マッサージ・リハビリ重視型デイサービス ハーベスト</div>
+      </div>
+    </div>
+    <div class="head-r">
+      ご見学・ご相談はお気軽に<br>
+      <strong>099-296-9844</strong>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-photo">
+      <img src="assets/photos/flyer/ds-hero.jpg" alt="デイサービス ハーベストの日中の様子">
+      <div class="badge">
+        <div class="b1">国家資格</div>
+        <div class="b2">6<small style="font-size:9pt">名</small></div>
+        <div class="b3">鍼灸<br>マッサージ師<br>在籍</div>
+      </div>
+    </div>
+    <div class="hero-text">
+      <div class="eyebrow">DAY SERVICE IN KAGOSHIMA</div>
+      <h2 class="catch">笑顔あふれる<b>毎日</b>を、<br><span class="mk">みんなで一緒に。</span></h2>
+      <p class="lead">
+        国家資格を持つ<strong>鍼灸マッサージ師6名</strong>が、肩こり・腰痛・むくみなど、
+        お一人おひとりのお体に合わせて丁寧に整えます。午前は運動と施術、午後はカラオケや脳トレ。
+        <strong>ご自分のペースで過ごせる一日</strong>を、少人数のあたたかな空間で。
+      </p>
+      <blockquote class="voice">
+        <p>「最初は行きたくないと言っていた父が、今では利用日を楽しみにしています。マッサージが気に入ったようで『体が楽になる』と喜んでいます。」</p>
+        <cite>― ご家族の声（80代男性のご家族）</cite>
+      </blockquote>
+      <div class="hero-facts">
+        <div><b>定員18名</b>少人数制</div>
+        <div><b>9:00〜16:05</b>月〜土曜日</div>
+        <div><b>送迎無料</b>鹿児島市内</div>
+        <div><b>入浴・食事</b>あり</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feats">
+    <div class="feat">
+      <div class="no">01</div>
+      <h3>国家資格者の<br>マッサージ</h3>
+      <p>鍼灸マッサージ師6名が常駐。慢性的な痛みやこわばりに、専門職が個別に施術します。</p>
+    </div>
+    <div class="feat">
+      <div class="no">02</div>
+      <h3>無理のない<br>リハビリ</h3>
+      <p>「歩きたい」「自分でしたい」。ご本人の目標に合わせ、押し付けずゆったり支えます。</p>
+    </div>
+    <div class="feat">
+      <div class="no">03</div>
+      <h3>脳トレと<br>楽しいレク</h3>
+      <p>計算・回想法・カラオケ・手芸・季節の行事。聞くだけ、見るだけの参加も歓迎です。</p>
+    </div>
+    <div class="feat">
+      <div class="no">04</div>
+      <h3>ご家族の<br>負担も軽く</h3>
+      <p>送迎・入浴・食事・機能訓練を一日でまとめてサポート。ご様子は随時ご報告します。</p>
+    </div>
+  </div>
+
+  <div class="p1-foot">
+    <div class="trial">
+      <span class="trial-tag">無料</span>
+      <h3>見学・1日体験、随時受付中</h3>
+      <p>実際の雰囲気をその日のうちに確かめていただけます。まずはお電話ください。</p>
+      <ul>
+        <li>送迎つき</li>
+        <li>昼食つき</li>
+        <li>費用はかかりません</li>
+      </ul>
+    </div>
+    <div class="contact">
+      <div class="c-lab">VISIT &amp; EXPERIENCE</div>
+      <div class="c-tel">099-296-9844</div>
+      <div class="c-sub">受付 8:30〜17:30／月〜土曜日（日曜・年末年始 休）　FAX 099-296-9843</div>
+      <div class="c-adr">〒891-0113 鹿児島県鹿児島市東谷山2丁目40番15号　駐車場あり</div>
+    </div>
+  </div>
+
+ </div>
+</section>
+
+<!-- ══════════════════ 裏面 ══════════════════ -->
+<section class="page">
+ <div class="sheet p2">
+
+  <div class="p2-head">
+    <div class="t">ハーベストの一日と、ご利用のご案内</div>
+    <div class="s">マッサージ・リハビリ重視型デイサービス ハーベスト／地域密着型通所介護（事業所番号 4670111212）</div>
+  </div>
+
+  <div class="flow">
+    <div class="sec-title">一日のスケジュール <em>DAILY SCHEDULE</em></div>
+    <div class="flow-wrap">
+      <div class="step"><div class="tm">8:00</div><h4>お迎え</h4><p>ご自宅の玄関先まで。車椅子のまま乗れる車もございます。</p></div>
+      <div class="step"><div class="tm">9:00</div><h4>健康チェック</h4><p>体温・血圧・脈拍を測り、その日の体調を確認します。</p></div>
+      <div class="step"><div class="tm">9:15</div><h4>運動・施術・入浴</h4><p>個別運動と全体体操、鍼灸マッサージ師による施術。入浴もこの時間に。</p></div>
+      <div class="step"><div class="tm">12:00</div><h4>昼食・口腔ケア</h4><p>口腔体操のあとお食事。きざみ食・ソフト食・減塩食にも対応します。</p></div>
+      <div class="step"><div class="tm">13:00</div><h4>休憩</h4><p>お昼寝、テレビ、おしゃべり。ご自由にお過ごしください。</p></div>
+      <div class="step"><div class="tm">14:00</div><h4>レク・機能訓練</h4><p>カラオケ・脳トレ・手芸・季節の行事。入浴や個別運動もこの時間に。</p></div>
+      <div class="step"><div class="tm">15:30</div><h4>おやつ〜お送り</h4><p>お茶とおやつのあと、16:05にご自宅までお送りします。</p></div>
+    </div>
+  </div>
+
+  <div class="mid">
+    <div class="price-box">
+      <div class="sec-title">ご利用料金の目安 <em>PRICING</em></div>
+      <div class="sim">
+        <div class="sim-card">
+          <div class="k">要介護1</div>
+          <div class="v">約12,400<small>円</small></div>
+          <div class="n">介護保険 849円 + 昼食 700円<br>×月8回</div>
+        </div>
+        <div class="sim-card">
+          <div class="k">要介護2</div>
+          <div class="v">約13,500<small>円</small></div>
+          <div class="n">介護保険 986円 + 昼食 700円<br>×月8回</div>
+        </div>
+        <div class="sim-card">
+          <div class="k">要介護3</div>
+          <div class="v">約14,600<small>円</small></div>
+          <div class="n">介護保険 1,128円 + 昼食 700円<br>×月8回</div>
+        </div>
+      </div>
+      <div class="price-row">
+        <div><b>週2回・1割負担の場合</b>の1か月の目安です</div>
+        <div><b>送迎 無料</b>鹿児島市内（松元・桜島地区を除く）</div>
+        <div><b>昼食代 700円/回</b>おやつ代を含みます</div>
+      </div>
+      <p class="note">
+        ※ 令和6年度介護報酬改定に基づく、7時間以上8時間未満ご利用の場合の金額です。入浴介助加算・個別機能訓練加算を含み、別途 介護職員等処遇改善加算（Ⅲ）がかかります。<br>
+        ※ 2割・3割負担の方は金額が異なります。キャンセル料は前日50%・当日100%（昼食代）を申し受ける場合があります。詳しくはお問い合わせください。
+      </p>
+    </div>
+
+    <div class="photos">
+      <div class="ph"><img src="assets/photos/flyer/ds-room.jpg" alt="多目的ルーム"><span>明るい多目的ルーム</span></div>
+      <div class="ph"><img src="assets/photos/flyer/ds-bath.jpg" alt="浴室"><span>手すり付きの浴室</span></div>
+      <div class="ph"><img src="images/meal/meal-3.jpg" alt="昼食"><span>栄養バランスの昼食</span></div>
+      <div class="ph"><img src="images/rehab/rehab-3.jpg" alt="機能訓練機器"><span>多彩な機能訓練機器</span></div>
+    </div>
+  </div>
+
+  <div class="p2-foot">
+    <div class="blk">
+      <h4>こんな方がご利用されています</h4>
+      <ul class="tgt">
+        <li><b>要介護1〜5</b>の認定を受けた方が対象です</li>
+        <li>肩こり・腰痛など<b>慢性的な痛み</b>でお悩みの方</li>
+        <li>脳卒中後のリハビリ、<b>体力・筋力の低下</b>が気になる方</li>
+        <li><b>認知症</b>の方（対応可能）・車椅子をご利用の方</li>
+        <li>一人暮らしで<b>話し相手</b>がほしい方</li>
+        <li>ご家族の<b>介護負担</b>を軽くしたい方</li>
+      </ul>
+    </div>
+    <div class="blk">
+      <h4>ご利用までの流れ</h4>
+      <ol class="steps">
+        <li><b>お問い合わせ</b>／お電話でご相談ください</li>
+        <li><b>見学・体験利用</b>／送迎・昼食つきで無料</li>
+        <li><b>ケアマネジャーへ相談</b>／ケアプランに組み込みます</li>
+        <li><b>契約・ご利用開始</b>／初日はスタッフが付き添います</li>
+      </ol>
+      <p class="note" style="margin-top:1.5mm">※ 介護認定がまだの方は、お住まいの市区町村窓口または地域包括支援センターへご相談ください。</p>
+    </div>
+    <div class="blk">
+      <h4>事業所のご案内</h4>
+      <table class="info-table">
+        <tr><th>運営法人</th><td>株式会社ハーベスト</td></tr>
+        <tr><th>サービス種別</th><td>地域密着型通所介護（定員18名）</td></tr>
+        <tr><th>営業日・時間</th><td>月〜土曜日 8:30〜17:30（日曜・年末年始 休）</td></tr>
+        <tr><th>所在地</th><td>〒891-0113 鹿児島県鹿児島市東谷山2丁目40番15号</td></tr>
+        <tr><th>アクセス</th><td>鹿児島市電 谷山電停より徒歩約5分／JR指宿枕崎線 谷山駅より徒歩約10分</td></tr>
+      </table>
+      <div class="p2-tel">
+        <div class="l">ご見学・体験<br>随時受付中</div>
+        <div class="r">099-296-9844</div>
+      </div>
+    </div>
+  </div>
+
+ </div>
+</section>
+
+</body>
+</html>

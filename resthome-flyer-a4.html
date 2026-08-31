@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>住宅型有料老人ホーム ハーベスト｜A4横チラシ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   住宅型有料老人ホーム ハーベスト A4横チラシ（両面）
+   ・A4横（297×210mm）／事務所プリンタ印刷を前提
+   ・四辺9mmの余白内にすべての要素を配置（フチなし印刷不要）
+   ============================================================ */
+@page { size: A4 landscape; margin: 0; }
+
+:root{
+  --green:#1e5c3a;
+  --green-soft:#4a7c59;
+  --gold:#a87b28;
+  --gold-light:#e9dcbe;
+  --cream:#f8f4ea;
+  --cream-2:#f0ece0;
+  --ink:#241f18;
+  --ink-2:#55503f;
+  --line:#ddd5c2;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ background:#8f948f; }
+body{
+  font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;
+  color:var(--ink); line-height:1.6;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+
+.page{
+  position:relative; width:297mm; height:210mm; padding:9mm;
+  background:#fff; overflow:hidden; margin:0 auto 8mm;
+  box-shadow:0 2mm 6mm rgba(0,0,0,.35);
+}
+.sheet{ display:flex; flex-direction:column; height:100%; }
+
+/* ── 画面用ツールバー（印刷されません） ── */
+.toolbar{
+  max-width:297mm; margin:6mm auto 4mm; padding:4mm 5mm;
+  background:#fff; border-left:2mm solid var(--gold);
+  font-size:10pt; line-height:1.8; box-shadow:0 1mm 3mm rgba(0,0,0,.25);
+}
+.toolbar h1{ font-size:12pt; color:var(--green); margin-bottom:1mm; }
+.toolbar button{
+  margin-top:2mm; padding:2mm 6mm; font-size:10pt; font-weight:700; cursor:pointer;
+  background:var(--green); color:#fff; border:none; border-radius:1mm;
+}
+.toolbar ol{ margin:1mm 0 0 5mm; }
+
+/* ══════════════ 共通パーツ ══════════════ */
+.head{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.7mm solid var(--green); padding-bottom:2mm; }
+.head-l{ display:flex; align-items:center; gap:3mm; }
+.mark{ width:11mm; height:11mm; border-radius:50%; background:var(--green); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.mark span{ font-family:'Zen Old Mincho',serif; color:#fff; font-size:13pt; line-height:1; }
+.head-type{ font-size:7.5pt; letter-spacing:.18em; color:var(--gold); font-weight:700; }
+.head-name{ font-family:'Zen Old Mincho',serif; font-size:16pt; font-weight:700; letter-spacing:.06em; line-height:1.25; color:var(--green); }
+.head-r{ text-align:right; font-size:8pt; color:var(--ink-2); line-height:1.5; }
+.head-r strong{ font-size:11.5pt; color:var(--green); letter-spacing:.02em; }
+
+.sec-title{ font-family:'Zen Old Mincho',serif; font-size:12pt; font-weight:700; color:var(--green); letter-spacing:.06em; display:flex; align-items:baseline; gap:2.5mm; }
+.sec-title em{ font-style:normal; font-size:6.5pt; letter-spacing:.22em; color:var(--gold); font-weight:700; }
+
+/* ══════════════ 表面 ══════════════ */
+.p1{ display:grid; grid-template-rows:15mm 87mm 40mm 1fr; gap:3.5mm; height:100%; }
+.p1>*{ min-height:0; }
+
+.hero{ display:grid; grid-template-columns:132mm 1fr; gap:5mm; }
+.hero-photo{ position:relative; overflow:hidden; border-radius:1.5mm; min-height:0; }
+.hero-photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.badge{
+  position:absolute; right:4mm; bottom:4mm; width:31mm; height:31mm; border-radius:50%;
+  background:rgba(30,92,58,.94); color:#fff; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center; border:0.6mm solid rgba(255,255,255,.55);
+}
+.badge .b1{ font-size:6pt; letter-spacing:.1em; }
+.badge .b2{ font-family:'Zen Old Mincho',serif; font-size:23pt; font-weight:700; line-height:1; margin:.5mm 0; }
+.badge .b3{ font-size:6.5pt; font-weight:700; line-height:1.35; }
+
+.hero-text{ display:flex; flex-direction:column; }
+.eyebrow{ font-size:7.5pt; letter-spacing:.2em; color:var(--gold); font-weight:700; margin-bottom:2mm; }
+.catch{ font-family:'Zen Old Mincho',serif; font-size:25pt; font-weight:700; line-height:1.42; letter-spacing:.02em; }
+.catch b{ color:var(--green); font-weight:700; }
+.catch .mk{ background:linear-gradient(transparent 62%, var(--gold-light) 62%); }
+.lead{ font-size:9pt; line-height:1.85; color:var(--ink-2); margin-top:3.5mm; }
+.lead strong{ color:var(--green); font-weight:700; }
+
+.price-hero{ margin-top:auto; background:var(--green); color:#fff; padding:3mm 4mm; display:flex; align-items:center; justify-content:space-between; }
+.price-hero .l{ font-size:8pt; letter-spacing:.1em; line-height:1.5; }
+.price-hero .l b{ display:block; font-size:9pt; color:var(--gold-light); font-weight:700; }
+.price-hero .r{ font-family:'Zen Old Mincho',serif; font-size:26pt; font-weight:700; line-height:1; }
+.price-hero .r small{ font-size:11pt; }
+
+.hero-facts{ margin-top:3mm; border-top:0.3mm solid var(--line); padding-top:2.5mm; display:flex; gap:5mm; }
+.hero-facts div{ font-size:7.5pt; color:var(--ink-2); line-height:1.45; }
+.hero-facts b{ display:block; font-size:9.5pt; color:var(--green); font-weight:700; }
+
+.feats{ display:grid; grid-template-columns:repeat(3,1fr); gap:3mm; }
+.feat{ background:var(--cream); border-top:0.8mm solid var(--gold); padding:3mm 4mm; }
+.feat .no{ font-family:'Zen Old Mincho',serif; font-size:8pt; color:var(--gold); letter-spacing:.1em; font-weight:700; }
+.feat h3{ font-size:11.5pt; font-weight:700; color:var(--green); line-height:1.35; margin:.8mm 0 1.5mm; }
+.feat p{ font-size:8.5pt; line-height:1.75; color:var(--ink-2); }
+
+.p1-foot{ display:grid; grid-template-columns:1fr 108mm; gap:4mm; }
+.visit{ background:var(--cream-2); padding:4mm 5mm; display:flex; flex-direction:column; justify-content:center; }
+.visit-tag{ display:inline-block; align-self:flex-start; background:var(--gold); color:#fff; font-size:7.5pt; font-weight:700; letter-spacing:.12em; padding:.8mm 3mm; border-radius:.8mm; }
+.visit h3{ font-family:'Zen Old Mincho',serif; font-size:15pt; color:var(--green); margin:1.8mm 0 1.2mm; letter-spacing:.03em; }
+.visit p{ font-size:8.5pt; color:var(--ink-2); line-height:1.7; }
+.visit ul{ display:flex; gap:3mm; margin-top:2mm; list-style:none; }
+.visit li{ font-size:8pt; font-weight:700; color:var(--green); }
+.visit li::before{ content:'✓ '; color:var(--gold); }
+
+.contact{ background:var(--green); color:#fff; padding:4mm 5mm; display:flex; flex-direction:column; justify-content:center; }
+.contact .c-lab{ font-size:7.5pt; letter-spacing:.2em; color:var(--gold-light); font-weight:700; }
+.contact .c-tel{ font-family:'Zen Old Mincho',serif; font-size:29pt; font-weight:700; line-height:1.1; margin:.5mm 0; }
+.contact .c-sub{ font-size:8pt; color:rgba(255,255,255,.9); line-height:1.6; }
+.contact .c-adr{ font-size:8pt; color:rgba(255,255,255,.9); border-top:0.3mm solid rgba(255,255,255,.35); margin-top:2mm; padding-top:2mm; line-height:1.6; }
+
+/* ══════════════ 裏面 ══════════════ */
+.p2{ display:grid; grid-template-rows:11mm 70mm 36mm 1fr; gap:3.5mm; height:100%; }
+.p2>*{ min-height:0; }
+
+.p2-head{ display:flex; align-items:center; justify-content:space-between; border-bottom:0.5mm solid var(--green); padding-bottom:2mm; }
+.p2-head .t{ font-family:'Zen Old Mincho',serif; font-size:13pt; font-weight:700; color:var(--green); letter-spacing:.05em; }
+.p2-head .s{ font-size:8pt; color:var(--ink-2); }
+
+.mid{ display:grid; grid-template-columns:1fr 96mm; gap:4mm; min-height:0; }
+.mid>*{ min-height:0; }
+.cost{ display:flex; flex-direction:column; }
+.cost-table{ width:100%; border-collapse:collapse; margin-top:2.5mm; }
+.cost-table th,.cost-table td{ border-bottom:0.3mm solid var(--line); padding:1.2mm 2mm; font-size:8.5pt; text-align:left; }
+.cost-table th{ color:var(--ink); font-weight:700; width:34mm; }
+.cost-table td.num{ text-align:right; font-weight:700; color:var(--green); width:24mm; white-space:nowrap; }
+.cost-table td.rem{ font-size:7pt; color:var(--ink-2); line-height:1.5; }
+.cost-table tr.total th,.cost-table tr.total td{ background:var(--cream-2); font-size:9.5pt; border-bottom:none; padding:2mm; }
+.cost-table tr.total td.num{ font-family:'Zen Old Mincho',serif; font-size:14pt; }
+.note{ font-size:6.5pt; color:var(--ink-2); line-height:1.6; margin-top:2.5mm; padding-top:0; }
+
+.photos{ display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:2.5mm; min-height:0; }
+.ph{ position:relative; overflow:hidden; border-radius:1mm; min-height:0; }
+.ph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.ph span{ position:absolute; left:0; bottom:0; background:rgba(30,92,58,.88); color:#fff; font-size:7pt; font-weight:700; padding:.8mm 2.5mm; letter-spacing:.05em; }
+
+.care{ display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; }
+.care-card{ background:var(--cream); padding:3mm 3.5mm; border-left:0.8mm solid var(--green-soft); }
+.care-card h4{ font-size:9.5pt; font-weight:700; color:var(--green); margin-bottom:1.2mm; line-height:1.35; }
+.care-card p{ font-size:8pt; line-height:1.7; color:var(--ink-2); }
+
+.p2-foot{ display:grid; grid-template-columns:1fr 1fr 96mm; gap:4mm; }
+.blk{ display:flex; flex-direction:column; }
+.blk h4{ font-size:9.5pt; font-weight:700; color:var(--green); border-bottom:0.4mm solid var(--line); padding-bottom:1mm; margin-bottom:1.5mm; }
+.tgt{ list-style:none; }
+.tgt li{ font-size:8pt; line-height:1.6; color:var(--ink-2); padding-left:4mm; position:relative; }
+.tgt li::before{ content:'●'; position:absolute; left:0; color:var(--green-soft); font-size:5.5pt; top:1mm; }
+.tgt li b{ color:var(--ink); font-weight:700; }
+.steps{ list-style:none; counter-reset:s; }
+.steps li{ font-size:8pt; line-height:1.55; color:var(--ink-2); padding-left:6mm; position:relative; margin-bottom:1.2mm; counter-increment:s; }
+.steps li::before{
+  content:counter(s); position:absolute; left:0; top:.3mm; width:4mm; height:4mm; border-radius:50%;
+  background:var(--green); color:#fff; font-size:6.5pt; font-weight:700; display:flex; align-items:center; justify-content:center;
+}
+.steps li b{ color:var(--ink); }
+
+.info-table{ width:100%; border-collapse:collapse; }
+.info-table th,.info-table td{ border-bottom:0.3mm dotted var(--line); padding:0.9mm 0; font-size:7.5pt; text-align:left; vertical-align:top; line-height:1.5; }
+.info-table th{ width:24mm; color:var(--green); font-weight:700; }
+.info-table td{ color:var(--ink-2); }
+.p2-tel{ background:var(--green); color:#fff; padding:2.5mm 3.5mm; margin-top:auto; display:flex; align-items:center; justify-content:space-between; }
+.p2-tel .l{ font-size:7.5pt; letter-spacing:.12em; color:var(--gold-light); font-weight:700; line-height:1.5; }
+.p2-tel .r{ font-family:'Zen Old Mincho',serif; font-size:19pt; font-weight:700; line-height:1.1; }
+
+@media print{
+  html,body{ background:#fff; }
+  .toolbar{ display:none !important; }
+  .page{ margin:0; box-shadow:none; page-break-after:always; }
+  .page:last-child{ page-break-after:auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <h1>住宅型有料老人ホーム ハーベスト A4横チラシ（両面）</h1>
+  <p>このページを開いたまま <b>Ctrl + P</b>（Macは ⌘ + P）で印刷できます。プリンタ設定は次の通りにしてください。</p>
+  <ol>
+    <li>用紙サイズ：<b>A4</b>／向き：<b>横</b></li>
+    <li>倍率：<b>100%</b>（「実際のサイズ」）</li>
+    <li><b>背景のグラフィック（背景色と画像）にチェック</b>を入れる ← 色が出ないときはここです</li>
+    <li>両面印刷：<b>長辺とじ</b></li>
+  </ol>
+  <button onclick="window.print()">印刷する</button>
+</div>
+
+<!-- ══════════════════ 表面 ══════════════════ -->
+<section class="page">
+ <div class="sheet p1">
+
+  <header class="head">
+    <div class="head-l">
+      <div class="mark"><span>穂</span></div>
+      <div>
+        <div class="head-type">株式会社ハーベスト 運営 ／ 鹿児島市東谷山</div>
+        <div class="head-name">住宅型有料老人ホーム ハーベスト</div>
+      </div>
+    </div>
+    <div class="head-r">
+      ご見学・ご入居のご相談は<br>
+      <strong>099-296-9844</strong>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-photo">
+      <img src="assets/photos/real-bedroom-hero.jpg" alt="住宅型有料老人ホーム ハーベストの居室">
+      <div class="badge">
+        <div class="b1">定員</div>
+        <div class="b2">8<small style="font-size:9pt">名</small></div>
+        <div class="b3">少人数制<br>全室個室</div>
+      </div>
+    </div>
+    <div class="hero-text">
+      <div class="eyebrow">REST HOME IN KAGOSHIMA</div>
+      <h2 class="catch">あなたらしい<b>暮らし</b>を、<br><span class="mk">ここから、はじめる。</span></h2>
+      <p class="lead">
+        定員<strong>8名</strong>の少人数制だから、スタッフ全員がお一人おひとりのお名前・体調・お好みを把握しています。
+        「いつもと違う」小さな変化も見逃さない<strong>24時間常駐</strong>の見守りと、
+        使い慣れた家具を持ち込める<strong>全室個室</strong>で、第二の我が家としての毎日を。
+      </p>
+      <div class="price-hero">
+        <div class="l"><b>月額費用</b>家賃・管理費・食費・光熱水費・洗濯費を含む</div>
+        <div class="r">144,000<small>円〜</small></div>
+      </div>
+      <div class="hero-facts">
+        <div><b>24時間</b>スタッフ常駐</div>
+        <div><b>全室個室</b>14㎡・エアコン</div>
+        <div><b>デイサービス併設</b>マッサージ・リハビリ</div>
+        <div><b>医療・歯科連携</b>訪問歯科も</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feats">
+    <div class="feat">
+      <div class="no">01</div>
+      <h3>定員8名だから、急かさないケア</h3>
+      <p>大規模施設と比べ、お一人あたりに向き合える時間が長くとれます。ご自身のペースで一日を過ごしていただけます。</p>
+    </div>
+    <div class="feat">
+      <div class="no">02</div>
+      <h3>24時間スタッフ常駐の見守り</h3>
+      <p>夜間の巡回・安否確認、緊急時の迅速な対応。協力医療機関・協力歯科との連携で健康管理も安心です。</p>
+    </div>
+    <div class="feat">
+      <div class="no">03</div>
+      <h3>デイサービス併設で広がる交流</h3>
+      <p>併設のデイサービスでマッサージやリハビリを受けられ、外から通われる方との会話も毎日の刺激になります。</p>
+    </div>
+  </div>
+
+  <div class="p1-foot">
+    <div class="visit">
+      <span class="visit-tag">見学随時</span>
+      <h3>施設見学・ご入居のご相談を承ります</h3>
+      <p>お部屋や食堂、実際の暮らしの様子をご覧いただけます。空室状況もお電話でお気軽にご確認ください。</p>
+      <ul>
+        <li>ご家族の同席歓迎</li>
+        <li>ご予約制</li>
+        <li>日曜を除く</li>
+      </ul>
+      <!-- 空室数を載せたいときは、上の <p> を例えば次のように書き換えてください
+           「◯年◯月現在、空室◯室です。ご見学・ご入居のご相談はお早めにどうぞ。」 -->
+    </div>
+    <div class="contact">
+      <div class="c-lab">VISIT &amp; CONSULTATION</div>
+      <div class="c-tel">099-296-9844</div>
+      <div class="c-sub">受付 8:30〜17:30（見学・入居相談は日曜を除く）　FAX 099-296-9843</div>
+      <div class="c-adr">〒891-0113 鹿児島県鹿児島市東谷山2丁目40番15号　駐車場あり</div>
+    </div>
+  </div>
+
+ </div>
+</section>
+
+<!-- ══════════════════ 裏面 ══════════════════ -->
+<section class="page">
+ <div class="sheet p2">
+
+  <div class="p2-head">
+    <div class="t">ご入居のご案内 ― 費用・お部屋・入居条件</div>
+    <div class="s">住宅型有料老人ホーム ハーベスト／事業主体 株式会社ハーベスト（令和2年10月5日開設）</div>
+  </div>
+
+  <div class="mid">
+    <div class="cost">
+      <div class="sec-title">月額費用の内訳 <em>MONTHLY COST</em></div>
+      <table class="cost-table">
+        <tr><th>家賃</th><td class="num">45,000円</td><td class="rem">全室個室（14㎡）・エアコン・ナースコール完備</td></tr>
+        <tr><th>管理費</th><td class="num">35,000円</td><td class="rem">人件費・事務費、共用施設等の維持管理費</td></tr>
+        <tr><th>食費</th><td class="num">52,500円</td><td class="rem">1日3食・30日分／朝400円・昼700円・夕650円</td></tr>
+        <tr><th>光熱水費</th><td class="num">9,500円</td><td class="rem">洗濯費を含みます</td></tr>
+        <tr class="total"><th>月額合計</th><td class="num">144,000円〜</td><td class="rem">別途、オムツ廃棄費用 2,000円（ご使用の方のみ）</td></tr>
+      </table>
+      <p class="note">
+        ※ 上記は目安です。<b>介護サービス費（介護保険の自己負担分）は別途</b>必要となります。食費は日数により月ごとに変動します。<br>
+        ※ 介護保険給付対象外の費用（個別選択のサービス利用料など）は原則その都度払い、月単位でまとめて申し受ける場合があります。<br>
+        ※ 物価上昇や人件費高騰などにより、月額費用を再検討させていただく場合があります。詳しくは重要事項説明書にてご説明いたします。
+      </p>
+    </div>
+
+    <div class="photos">
+      <div class="ph"><img src="assets/photos/real-bedroom-detail.jpg" alt="居室"><span>全室個室の居室</span></div>
+      <div class="ph"><img src="assets/photos/real-dining-wide.jpg" alt="食堂"><span>みんなで囲む食堂</span></div>
+      <div class="ph"><img src="assets/photos/real-resthome-sink.jpg" alt="洗面"><span>独立した洗面スペース</span></div>
+      <div class="ph"><img src="assets/photos/real-resthome-restroom.jpg" alt="トイレ"><span>手すり付きのトイレ</span></div>
+    </div>
+  </div>
+
+  <div class="care">
+    <div class="care-card">
+      <h4>栄養バランスの取れたお食事</h4>
+      <p>季節感のあるメニューを毎日ご用意。きざみ食・ミキサー食・減塩食・アレルギー対応も可能です（入居前にご相談ください）。</p>
+    </div>
+    <div class="care-card">
+      <h4>医療・歯科との連携</h4>
+      <p>協力医療機関・協力歯科と連携し、日々の健康管理から緊急時まで対応。訪問歯科による口腔ケアも受けられます。</p>
+    </div>
+    <div class="care-card">
+      <h4>ご家族との時間も大切に</h4>
+      <p>面会・外出・外泊が可能です（事前にご相談ください）。日曜面会は午前1組（10時〜）、午後2組（14時〜・15時〜）。</p>
+    </div>
+    <div class="care-card">
+      <h4>ご自分らしいお部屋づくり</h4>
+      <p>使い慣れた家具や思い出の品をお持ち込みいただけます（家具・家電は事前にご相談ください）。</p>
+    </div>
+  </div>
+
+  <div class="p2-foot">
+    <div class="blk">
+      <h4>ご入居の条件</h4>
+      <ul class="tgt">
+        <li><b>60歳以上</b>の方</li>
+        <li><b>要介護認定</b>を受けている方</li>
+        <li>自傷・他害のおそれのない方</li>
+        <li>共同生活に支障のない方</li>
+        <li><b>身元引受人</b>を定められる方<br>（やむを得ないご事情がある場合はご相談ください）</li>
+      </ul>
+    </div>
+    <div class="blk">
+      <h4>ご入居までの流れ</h4>
+      <ol class="steps">
+        <li><b>お問い合わせ・ご相談</b>／お電話でご連絡ください</li>
+        <li><b>施設見学・面談</b>／お部屋と暮らしをご確認ください</li>
+        <li><b>入居審査・ご契約</b>／重要事項をご説明します</li>
+        <li><b>ご入居</b>／スタッフ一同でお迎えいたします</li>
+      </ol>
+      <p class="note" style="margin-top:1.5mm">※ 解約は30日前までのお申し出で承ります。詳細は契約書（重要事項説明書）にてご説明いたします。</p>
+    </div>
+    <div class="blk">
+      <h4>施設のご案内</h4>
+      <table class="info-table">
+        <tr><th>事業主体</th><td>株式会社ハーベスト（令和2年10月5日 開設）</td></tr>
+        <tr><th>定員・居室</th><td>8名／全室個室 14㎡（エアコン・ナースコール完備）</td></tr>
+        <tr><th>構造・規模</th><td>鉄骨造 地上2階建（延床 169.87㎡／2階部分）</td></tr>
+        <tr><th>共用施設</th><td>食堂・浴室・便所・洗面設備・談話室・洗濯室・駐車場</td></tr>
+        <tr><th>所在地</th><td>〒891-0113 鹿児島県鹿児島市東谷山2丁目40番15号</td></tr>
+        <tr><th>アクセス</th><td>鹿児島市電 谷山電停より徒歩約5分／JR指宿枕崎線 谷山駅より徒歩約10分</td></tr>
+      </table>
+      <div class="p2-tel">
+        <div class="l">ご見学・ご相談<br>随時受付中</div>
+        <div class="r">099-296-9844</div>
+      </div>
+    </div>
+  </div>
+
+ </div>
+</section>
+
+</body>
+</html>
