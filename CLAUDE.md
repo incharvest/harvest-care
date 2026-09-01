@@ -29,8 +29,10 @@ GitHub Pages のデプロイもこのブランチから行われています。
 ### 1. 介護施設（デイサービス／住宅型有料老人ホーム）
 - **ブランチ**: `claude/review-harvest-care-sites-FhpVz` (このブランチ)
 - **ホームページ**: 公開 (`index.html`, `dayservice.html`, `resthome.html`, `caremanager.html`, `recruit.html`)
-- **チラシ**: `dayservice-flyer.html`, `dayservice-flyer-v2.html`
-  - 現在は制作中（未完成）、完成後にHPへ正式リンクを組み込む予定
+- **チラシ**: `dayservice-flyer-a4.html`（デイサービス）, `resthome-flyer-a4.html`（有料老人ホーム）
+  - どちらも A4横・両面。事務所プリンタでの印刷前提（四辺9mmの余白内に全要素）
+  - 検索避け（noindex）のため sitemap には載せない
+  - 旧版 `dayservice-flyer.html` / `dayservice-flyer-v2.html` は2026-09-01に削除
 - **GitHub Pages デプロイ元**: このブランチ
 
 ### 2. 訪問鍼灸マッサージ

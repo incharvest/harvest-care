@@ -93,7 +93,7 @@ body{
 .sec-title em{ font-style:normal; font-size:6.5pt; letter-spacing:.22em; color:var(--gold); font-weight:700; }
 
 /* ══════════════ 表面 ══════════════ */
-.p1{ display:grid; grid-template-rows:15mm 87mm 40mm 1fr; gap:3.5mm; height:100%; }
+.p1{ display:grid; grid-template-rows:15mm 87mm 33mm 1fr; gap:3.5mm; height:100%; }
 .p1>*{ min-height:0; }
 
 /* ヒーロー */
@@ -149,7 +149,11 @@ body{
 .trial li{ font-size:8pt; font-weight:700; color:var(--green); }
 .trial li::before{ content:'✓ '; color:var(--gold); }
 
-.contact{ background:var(--green); color:#fff; padding:4mm 5mm; display:flex; flex-direction:column; justify-content:center; }
+.contact{ background:var(--green); color:#fff; padding:3.5mm 5mm; display:flex; align-items:center; gap:4mm; }
+.c-main{ flex:1; min-width:0; }
+.c-qr{ width:23mm; flex-shrink:0; text-align:center; }
+.c-qr img{ width:23mm; height:23mm; display:block; background:#fff; padding:1mm; border-radius:1mm; }
+.c-qr span{ display:block; font-size:6.5pt; font-weight:700; color:var(--gold-light); margin-top:1.2mm; line-height:1.35; }
 .contact .c-lab{ font-size:7.5pt; letter-spacing:.2em; color:var(--gold-light); font-weight:700; }
 .contact .c-tel{ font-family:'Zen Old Mincho',serif; font-size:29pt; font-weight:700; line-height:1.1; letter-spacing:.01em; margin:.5mm 0; }
 .contact .c-sub{ font-size:8pt; color:rgba(255,255,255,.9); line-height:1.6; }
@@ -323,10 +327,16 @@ body{
       </ul>
     </div>
     <div class="contact">
-      <div class="c-lab">VISIT &amp; EXPERIENCE</div>
-      <div class="c-tel">099-296-9844</div>
-      <div class="c-sub">受付 8:30〜17:30／月〜土曜日（日曜・年末年始 休）　FAX 099-296-9843</div>
-      <div class="c-adr">〒891-0113 鹿児島県鹿児島市東谷山2丁目40番15号　駐車場あり</div>
+      <div class="c-main">
+        <div class="c-lab">VISIT &amp; EXPERIENCE</div>
+        <div class="c-tel">099-296-9844</div>
+        <div class="c-sub">受付 8:30〜17:30／月〜土曜日（日曜・年末年始 休）　FAX 099-296-9843</div>
+        <div class="c-adr">〒891-0113 鹿児島県鹿児島市東谷山2丁目40番15号　駐車場あり</div>
+      </div>
+      <div class="c-qr">
+        <img src="images/flyer/qr-line-dayservice.svg" alt="LINE友だち追加QRコード">
+        <span>LINEでも<br>ご相談OK</span>
+      </div>
     </div>
   </div>
 
