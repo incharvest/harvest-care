@@ -40,7 +40,7 @@
 | `assets/photos/flyer/ds-hero.jpg` | 表面メイン（日中の様子） |
 | `assets/photos/flyer/ds-room.jpg` | 裏面（多目的ルーム） |
 | `assets/photos/flyer/ds-bath.jpg` | 裏面（浴室） |
-| `images/meal/meal-3.jpg` | 裏面（昼食） |
+| `images/meal/meal-5.jpg` | 裏面（昼食） |
 | `images/rehab/rehab-3.jpg` | 裏面（機能訓練機器） |
 
 `assets/photos/flyer/` の3点は、印刷とPDFを軽くするために元写真を縮小した複製です
@@ -105,3 +105,20 @@
 `dayservice-flyer.html` と `dayservice-flyer-v2.html` は、文字の重なり・
 「[代表者氏名]」の入れ忘れ・対象者の誤記（要支援）などがあったため、
 2026-09-01 に削除し、本チラシへ一本化しました。過去の内容は git の履歴に残っています。
+
+---
+
+## 7. ケアマネジャー向けページからの配布
+
+`caremanager.html` の「ご案内資料（チラシ）」セクション（送迎エリアとお問い合わせの間）から、
+ケアマネジャー様が自分でチラシを保存・印刷できるようにしています。
+
+| 置き場所 | 中身 |
+|---|---|
+| `assets/flyers/harvest-dayservice-flyer.pdf` | デイサービスのチラシPDF（両面） |
+| `assets/flyers/harvest-resthome-flyer.pdf` | 有料老人ホームのチラシPDF（両面） |
+| `assets/flyers/thumb-*.jpg` | セクションに出す表紙サムネイル |
+
+**チラシのHTMLを直したら、このPDFとサムネイルも作り直してください。**
+作り直さないと、ケアマネジャー様が古いチラシをダウンロードしてしまいます。
+（ヘッドレスChromeでA4横・背景ありでPDF化 → 表面を長辺900pxのJPEGにしてサムネイルに）

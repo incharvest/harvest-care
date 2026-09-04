@@ -1316,6 +1316,7 @@
             .home-vacancy-notice__link  { font-size: 0.75rem; padding: 5px 12px; }
         }
     </style>
+    <link rel="preload" as="image" href="assets/photos/hero-entrance-v3.jpg" fetchpriority="high">
 </head>
 <body>
     <header>
@@ -1364,25 +1365,25 @@
         <section class="hero">
             <!-- 浮遊ドゥードル -->
             <div class="doodle doodle--md doodle--flowers-tl" data-scroll="0.5">
-                <img src="assets/doodles/doodle-flowers.png" alt="" loading="eager">
+                <img src="assets/doodles/doodle-flowers.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--lg doodle--leaves-br" data-scroll="0.6">
-                <img src="assets/doodles/doodle-leaves.png" alt="" loading="eager">
+                <img src="assets/doodles/doodle-leaves.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--sm doodle--teacup-tr" data-scroll="0.4">
-                <img src="assets/doodles/doodle-teacup.png" alt="" loading="eager">
+                <img src="assets/doodles/doodle-teacup.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--xs doodle--star-mid" data-scroll="0.3">
-                <img src="assets/doodles/doodle-star.png" alt="" loading="eager">
+                <img src="assets/doodles/doodle-star.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--sm doodle--swirl-bl" data-scroll="0.5">
-                <img src="assets/doodles/doodle-swirl.png" alt="" loading="eager">
+                <img src="assets/doodles/doodle-swirl.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--sm doodle--wheat-ml" data-scroll="0.45">
-                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--xs doodle--wheat-tr" data-scroll="0.35">
-                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager" decoding="async" fetchpriority="low">
             </div>
 
             <div class="hero__inner">
@@ -1414,7 +1415,7 @@
 
                 <div class="hero__visual">
                     <div class="hero__photo">
-                        <img src="assets/photos/real-harvest-entrance.jpg" alt="深緑のウッド外壁と木目の天井が温かく迎える、ハーベストの正面玄関">
+                        <img src="assets/photos/real-harvest-entrance.jpg" alt="深緑のウッド外壁と木目の天井が温かく迎える、ハーベストの正面玄関" width="1448" height="1086" decoding="async">
                     </div>
                     <div class="hero__seal">
                         <span class="num">8</span>
@@ -1431,14 +1432,13 @@
             <div class="home-vacancy-notice__inner">
                 <div class="home-vacancy-notice__lead">
                     <span class="home-vacancy-notice__tag">住宅型有料老人ホーム</span>
-                    <span class="home-vacancy-notice__dot" aria-hidden="true"></span>
                     <p class="home-vacancy-notice__text">
-                        <time datetime="2026-07">2026年7月現在</time>
-                        <strong>空室 1室</strong>
-                        <span class="home-vacancy-notice__cap">／ 定員8名</span>
+                        <time datetime="2026-09">2026年9月現在</time>
+                        <strong>満室</strong>
+                        <span class="home-vacancy-notice__cap">／ 定員8名　空室が出次第ご案内します</span>
                     </p>
                 </div>
-                <a href="resthome.html#contact" class="home-vacancy-notice__link" aria-label="住宅型有料老人ホームの詳細と空室状況を見る">
+                <a href="resthome.html#contact" class="home-vacancy-notice__link" aria-label="住宅型有料老人ホームの詳細を見る">
                     <span>詳しくはこちら</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="16" height="16" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
@@ -1546,27 +1546,27 @@
     <!-- コンセプトセクション -->
     <section class="section-concept">
         <div class="brand-marks-layer" aria-hidden="true">
-            <div class="mark mark--md" style="top: 18%; left: 8%; transform: rotate(-10deg);"><img src="assets/logos/04-wheat-emblem.svg" alt=""></div>
-            <div class="mark mark--sm" style="top: 28%; right: 12%; transform: rotate(15deg);"><img src="assets/logos/01-wheat-geometric.svg" alt=""></div>
-            <div class="mark mark--xs" style="top: 56%; left: 18%; transform: rotate(-18deg);"><img src="assets/logos/13-leaf-pair.svg" alt=""></div>
-            <div class="mark mark--md" style="bottom: 18%; right: 6%; transform: rotate(8deg);"><img src="assets/logos/17-monogram-harvest.svg" alt=""></div>
-            <div class="mark mark--sm" style="bottom: 30%; left: 5%; transform: rotate(20deg);"><img src="assets/logos/18-wheat-cluster.svg" alt=""></div>
-            <div class="mark mark--xs" style="top: 42%; right: 22%; transform: rotate(-10deg);"><img src="assets/logos/06-monogram-h.svg" alt=""></div>
+            <div class="mark mark--md" style="top: 18%; left: 8%; transform: rotate(-10deg);"><img src="assets/logos/04-wheat-emblem.svg" alt="" decoding="async"></div>
+            <div class="mark mark--sm" style="top: 28%; right: 12%; transform: rotate(15deg);"><img src="assets/logos/01-wheat-geometric.svg" alt="" decoding="async"></div>
+            <div class="mark mark--xs" style="top: 56%; left: 18%; transform: rotate(-18deg);"><img src="assets/logos/13-leaf-pair.svg" alt="" decoding="async"></div>
+            <div class="mark mark--md" style="bottom: 18%; right: 6%; transform: rotate(8deg);"><img src="assets/logos/17-monogram-harvest.svg" alt="" decoding="async"></div>
+            <div class="mark mark--sm" style="bottom: 30%; left: 5%; transform: rotate(20deg);"><img src="assets/logos/18-wheat-cluster.svg" alt="" decoding="async"></div>
+            <div class="mark mark--xs" style="top: 42%; right: 22%; transform: rotate(-10deg);"><img src="assets/logos/06-monogram-h.svg" alt="" decoding="async"></div>
         </div>
         <div class="doodle doodle--wheat-tl" data-scroll="0.3">
-            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--wheat-br" data-scroll="0.4">
-            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--leaves-tr" data-scroll="0.35">
-            <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy">
+            <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy" width="1024" height="1024" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--flowers-bl" data-scroll="0.25">
-            <img src="assets/doodles/doodle-flowers.png" alt="" loading="lazy">
+            <img src="assets/doodles/doodle-flowers.png" alt="" loading="lazy" width="1024" height="1024" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--sun-ml" data-scroll="0.3">
-            <img src="assets/doodles/doodle-sun.png" alt="" loading="lazy">
+            <img src="assets/doodles/doodle-sun.png" alt="" loading="lazy" width="1024" height="1024" decoding="async" fetchpriority="low">
         </div>
         <div class="section-inner">
             <h2 class="section-heading">ハーベストが大切にしていること</h2>

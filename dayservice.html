@@ -3227,6 +3227,7 @@
             overflow: hidden;
         }
     </style>
+    <link rel="preload" as="image" href="assets/photos/real-dayservice-hero.jpg" fetchpriority="high">
 </head>
 <body data-theme="day">
     <!-- ヘッダー -->
@@ -3311,25 +3312,25 @@
     <!-- ヒーローセクション -->
     <section class="hero-v2">
         <div class="doodle doodle--md doodle--flowers-tl" data-scroll="0.5">
-            <img src="assets/doodles/doodle-flowers.png" alt="" loading="eager">
+            <img src="assets/doodles/doodle-flowers.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--lg doodle--leaves-br" data-scroll="0.6">
-            <img src="assets/doodles/doodle-leaves.png" alt="" loading="eager">
+            <img src="assets/doodles/doodle-leaves.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--sm doodle--teacup-tr" data-scroll="0.4">
-            <img src="assets/doodles/doodle-heart-hands.png" alt="" loading="eager">
+            <img src="assets/doodles/doodle-heart-hands.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--xs doodle--star-mid" data-scroll="0.3">
-            <img src="assets/doodles/doodle-sun.png" alt="" loading="eager">
+            <img src="assets/doodles/doodle-sun.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--sm doodle--swirl-bl" data-scroll="0.5">
-            <img src="assets/doodles/doodle-swirl.png" alt="" loading="eager">
+            <img src="assets/doodles/doodle-swirl.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--sm doodle--wheat-ml" data-scroll="0.45">
-            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--xs doodle--wheat-tr" data-scroll="0.35">
-            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager" decoding="async" fetchpriority="low">
         </div>
 
         <div class="hero__inner">
@@ -3361,7 +3362,7 @@
 
             <div class="hero__visual">
                 <div class="hero__photo">
-                    <img src="assets/photos/real-dayservice-hero.png" alt="スタッフが利用者にお茶を提供する、ハーベストデイサービスの和やかな一コマ">
+                    <img src="assets/photos/real-dayservice-hero.jpg" alt="スタッフが利用者にお茶を提供する、ハーベストデイサービスの和やかな一コマ" width="1024" height="1536" decoding="async" fetchpriority="high">
                 </div>
                 <div class="hero__seal">
                     <span class="num">9:00</span>
@@ -3376,22 +3377,22 @@
     <!-- 施設の様子 -->
     <section class="facility-glimpse" aria-label="施設の様子">
         <div class="doodle doodle--wheat-tl" data-scroll="0.35">
-            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--wheat-br" data-scroll="0.45">
-            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+            <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--sun-tr" data-scroll="0.3">
-            <img src="assets/doodles/doodle-sun.png" alt="" loading="lazy">
+            <img src="assets/doodles/doodle-sun.png" alt="" loading="lazy" width="1024" height="1024" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--leaves-bl" data-scroll="0.5">
-            <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy">
+            <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy" width="1024" height="1024" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--flowers-mr" data-scroll="0.4">
-            <img src="assets/doodles/doodle-flowers.png" alt="" loading="lazy">
+            <img src="assets/doodles/doodle-flowers.png" alt="" loading="lazy" width="1024" height="1024" decoding="async" fetchpriority="low">
         </div>
         <div class="doodle doodle--swirl-bm" data-scroll="0.55">
-            <img src="assets/doodles/doodle-swirl.png" alt="" loading="lazy">
+            <img src="assets/doodles/doodle-swirl.png" alt="" loading="lazy" width="1024" height="1024" decoding="async" fetchpriority="low">
         </div>
 
         <div class="facility-glimpse__inner">
@@ -3399,10 +3400,10 @@
             <h2 class="facility-glimpse__heading">光と木のぬくもりに包まれた、<br>私たちの居場所。</h2>
             <div class="facility-glimpse__stage">
                 <figure class="facility-glimpse__figure facility-glimpse__figure--main">
-                    <img src="assets/photos/real-dayservice-room.png" alt="ハーベストデイサービスの広々とした多目的ルーム" loading="lazy">
+                    <img src="assets/photos/real-dayservice-room.jpg" alt="ハーベストデイサービスの広々とした多目的ルーム" loading="lazy" width="1024" height="1536" decoding="async">
                 </figure>
                 <figure class="facility-glimpse__figure facility-glimpse__figure--accent">
-                    <img src="assets/photos/real-dayservice-handwash.jpg" alt="鏡付きの手洗い場が3台並ぶ、木のぬくもり溢れる共用スペース" loading="lazy">
+                    <img src="assets/photos/real-dayservice-handwash.jpg" alt="鏡付きの手洗い場が3台並ぶ、木のぬくもり溢れる共用スペース" loading="lazy" width="1448" height="1086" decoding="async">
                 </figure>
             </div>
             <p class="facility-glimpse__caption">〜 ハーベストが育てる、穏やかな日常 〜</p>
@@ -3412,13 +3413,13 @@
     <!-- コンセプトセクション -->
     <section class="concept" id="concept">
         <div class="brand-marks" aria-hidden="true">
-            <div class="mark mark--lg" style="top: 8%; left: 4%; transform: rotate(-12deg);"><img src="assets/logos/04-wheat-emblem.svg" alt=""></div>
-            <div class="mark mark--md" style="top: 14%; right: 8%; transform: rotate(8deg);"><img src="assets/logos/01-wheat-geometric.svg" alt=""></div>
-            <div class="mark mark--sm" style="top: 50%; left: 6%; transform: rotate(15deg);"><img src="assets/logos/13-leaf-pair.svg" alt=""></div>
-            <div class="mark mark--md" style="bottom: 12%; right: 5%; transform: rotate(-10deg);"><img src="assets/logos/18-wheat-cluster.svg" alt=""></div>
-            <div class="mark mark--xs" style="top: 38%; right: 18%; transform: rotate(20deg);"><img src="assets/logos/14-sun-rise.svg" alt=""></div>
-            <div class="mark mark--sm" style="bottom: 24%; left: 14%; transform: rotate(-6deg);"><img src="assets/logos/02-wheat-line.svg" alt=""></div>
-            <div class="mark mark--xs" style="top: 28%; left: 28%; transform: rotate(12deg);"><img src="assets/logos/06-monogram-h.svg" alt=""></div>
+            <div class="mark mark--lg" style="top: 8%; left: 4%; transform: rotate(-12deg);"><img src="assets/logos/04-wheat-emblem.svg" alt="" decoding="async"></div>
+            <div class="mark mark--md" style="top: 14%; right: 8%; transform: rotate(8deg);"><img src="assets/logos/01-wheat-geometric.svg" alt="" decoding="async"></div>
+            <div class="mark mark--sm" style="top: 50%; left: 6%; transform: rotate(15deg);"><img src="assets/logos/13-leaf-pair.svg" alt="" decoding="async"></div>
+            <div class="mark mark--md" style="bottom: 12%; right: 5%; transform: rotate(-10deg);"><img src="assets/logos/18-wheat-cluster.svg" alt="" decoding="async"></div>
+            <div class="mark mark--xs" style="top: 38%; right: 18%; transform: rotate(20deg);"><img src="assets/logos/14-sun-rise.svg" alt="" decoding="async"></div>
+            <div class="mark mark--sm" style="bottom: 24%; left: 14%; transform: rotate(-6deg);"><img src="assets/logos/02-wheat-line.svg" alt="" decoding="async"></div>
+            <div class="mark mark--xs" style="top: 28%; left: 28%; transform: rotate(12deg);"><img src="assets/logos/06-monogram-h.svg" alt="" decoding="async"></div>
         </div>
         <div class="section-inner">
             <div class="concept-content">
@@ -3697,13 +3698,13 @@
     <!-- 設備紹介 -->
     <section class="equipment" id="equipment">
         <div class="brand-marks" aria-hidden="true">
-            <div class="mark mark--md" style="top: 6%; left: 3%; transform: rotate(10deg);"><img src="assets/logos/05-wheat-badge.svg" alt=""></div>
-            <div class="mark mark--lg" style="top: 12%; right: 4%; transform: rotate(-8deg);"><img src="assets/logos/12-house-emblem.svg" alt=""></div>
-            <div class="mark mark--sm" style="top: 38%; left: 8%; transform: rotate(18deg);"><img src="assets/logos/10-circle-pulse.svg" alt=""></div>
-            <div class="mark mark--md" style="top: 52%; right: 6%; transform: rotate(-14deg);"><img src="assets/logos/19-bowl-grain.svg" alt=""></div>
-            <div class="mark mark--xs" style="top: 70%; left: 18%; transform: rotate(8deg);"><img src="assets/logos/03-wheat-negative.svg" alt=""></div>
-            <div class="mark mark--sm" style="bottom: 14%; right: 14%; transform: rotate(20deg);"><img src="assets/logos/15-cup-leaf.svg" alt=""></div>
-            <div class="mark mark--xs" style="bottom: 28%; left: 30%; transform: rotate(-6deg);"><img src="assets/logos/20-circle-wheat-mark.svg" alt=""></div>
+            <div class="mark mark--md" style="top: 6%; left: 3%; transform: rotate(10deg);"><img src="assets/logos/05-wheat-badge.svg" alt="" decoding="async"></div>
+            <div class="mark mark--lg" style="top: 12%; right: 4%; transform: rotate(-8deg);"><img src="assets/logos/12-house-emblem.svg" alt="" decoding="async"></div>
+            <div class="mark mark--sm" style="top: 38%; left: 8%; transform: rotate(18deg);"><img src="assets/logos/10-circle-pulse.svg" alt="" decoding="async"></div>
+            <div class="mark mark--md" style="top: 52%; right: 6%; transform: rotate(-14deg);"><img src="assets/logos/19-bowl-grain.svg" alt="" decoding="async"></div>
+            <div class="mark mark--xs" style="top: 70%; left: 18%; transform: rotate(8deg);"><img src="assets/logos/03-wheat-negative.svg" alt="" decoding="async"></div>
+            <div class="mark mark--sm" style="bottom: 14%; right: 14%; transform: rotate(20deg);"><img src="assets/logos/15-cup-leaf.svg" alt="" decoding="async"></div>
+            <div class="mark mark--xs" style="bottom: 28%; left: 30%; transform: rotate(-6deg);"><img src="assets/logos/20-circle-wheat-mark.svg" alt="" decoding="async"></div>
         </div>
         <div class="section-inner">
             <div class="section-header">
@@ -4675,7 +4676,7 @@
                         <p class="contact-label">LINEでのお問い合わせ</p>
                         <p style="color:rgba(255,255,255,0.7);margin-bottom:1rem;font-size:0.9rem;">友だち追加でお気軽にご相談いただけます</p>
                         <a href="https://line.me/R/ti/p/@856izjct" target="_blank" rel="noopener noreferrer">
-                            <img src="https://qr-official.line.me/gs/M_856izjct_GW.png?oat_content=qr" alt="LINE友だち追加QRコード" width="160" style="border-radius:8px;background:#fff;padding:8px;">
+                            <img src="images/flyer/qr-line-dayservice.svg" alt="LINE友だち追加QRコード" width="160" style="border-radius:8px;background:#fff;padding:8px;">
                         </a>
                         <p style="margin-top:1rem;">
                             <a href="https://line.me/R/ti/p/@856izjct" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#06C755;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;">友だち追加</a>

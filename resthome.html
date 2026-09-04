@@ -62,6 +62,7 @@
     <!-- Design System CSS -->
     <link rel="stylesheet" href="design-system/harvest.css">
     <link rel="stylesheet" href="design-system/pages/resthome.css">
+    <link rel="preload" as="image" href="assets/photos/real-bedroom-hero.jpg" fetchpriority="high">
 </head>
 <body data-theme="rest">
     <!-- Skip Navigation -->
@@ -135,25 +136,25 @@
         <!-- Hero Section (v2) -->
         <section class="hero-v2" aria-label="ヒーロー">
             <div class="doodle doodle--md doodle--flowers-tl" data-scroll="0.5">
-                <img src="assets/doodles/doodle-flowers.png" alt="" loading="eager">
+                <img src="assets/doodles/doodle-flowers.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--lg doodle--leaves-br" data-scroll="0.6">
-                <img src="assets/doodles/doodle-leaves.png" alt="" loading="eager">
+                <img src="assets/doodles/doodle-leaves.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--sm doodle--teacup-tr" data-scroll="0.4">
-                <img src="assets/doodles/doodle-teacup.png" alt="" loading="eager">
+                <img src="assets/doodles/doodle-teacup.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--xs doodle--star-mid" data-scroll="0.3">
-                <img src="assets/doodles/doodle-bird.png" alt="" loading="eager">
+                <img src="assets/doodles/doodle-bird.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--sm doodle--swirl-bl" data-scroll="0.5">
-                <img src="assets/doodles/doodle-swirl.png" alt="" loading="eager">
+                <img src="assets/doodles/doodle-swirl.png" alt="" loading="eager" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--sm doodle--wheat-ml" data-scroll="0.45">
-                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--xs doodle--wheat-tr" data-scroll="0.35">
-                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="eager" decoding="async" fetchpriority="low">
             </div>
 
             <div class="hero__inner">
@@ -185,7 +186,7 @@
 
                 <div class="hero__visual">
                     <div class="hero__photo">
-                        <img src="assets/photos/real-bedroom-hero.jpg" alt="明るい光が差し込む居室の風景">
+                        <img src="assets/photos/real-bedroom-hero.jpg" alt="明るい光が差し込む居室の風景" width="1200" height="1200" decoding="async" fetchpriority="high">
                     </div>
                     <div class="hero__seal">
                         <span class="num">8</span>
@@ -201,14 +202,14 @@
         <section class="vacancy-bar" aria-label="空室状況のお知らせ">
             <div class="vacancy-bar__inner">
                 <div class="vacancy-bar__lead">
-                    <span class="vacancy-bar__badge vacancy-bar__badge--live">空室あり</span>
+                    <span class="vacancy-bar__badge">空室状況</span>
                     <div class="vacancy-bar__status">
                         <p class="vacancy-bar__status-main">
-                            <span class="vacancy-bar__status-count">残り 1室</span>
+                            <span class="vacancy-bar__status-count">現在 満室</span>
                             <span class="vacancy-bar__status-cap">／ 定員8名</span>
                         </p>
                         <p class="vacancy-bar__status-sub">
-                            <time datetime="2026-07">2026年7月現在</time>　ご見学・ご入居のご相談はお早めにお電話ください。
+                            <time datetime="2026-09">2026年9月現在</time>　空室が出次第ご案内いたします。ご見学・ご相談は随時承っております。
                         </p>
                     </div>
                 </div>
@@ -227,26 +228,26 @@
         <!-- Photo Strip (装飾的写真帯) -->
         <section class="photo-strip" aria-hidden="true">
             <div class="doodle doodle--wheat-tl" data-scroll="0.3">
-                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--wheat-br" data-scroll="0.4">
-                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--flowers-tr" data-scroll="0.35">
-                <img src="assets/doodles/doodle-flowers.png" alt="" loading="lazy">
+                <img src="assets/doodles/doodle-flowers.png" alt="" loading="lazy" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--leaves-bl" data-scroll="0.3">
-                <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy">
+                <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="photo-strip__inner">
                 <div class="photo-strip__item photo-strip__item--1">
-                    <img src="assets/photos/real-dining-detail.jpg" alt="" loading="lazy">
+                    <img src="assets/photos/real-dining-detail.jpg" alt="" loading="lazy" width="1000" height="804" decoding="async">
                 </div>
                 <div class="photo-strip__item photo-strip__item--2">
-                    <img src="assets/photos/real-bedroom-detail.jpg" alt="" loading="lazy">
+                    <img src="assets/photos/real-bedroom-detail.jpg" alt="" loading="lazy" width="1000" height="865" decoding="async">
                 </div>
                 <div class="photo-strip__item photo-strip__item--3">
-                    <img src="assets/photos/real-dining-mood.jpg" alt="" loading="lazy">
+                    <img src="assets/photos/real-dining-mood.jpg" alt="" loading="lazy" width="1200" height="519" decoding="async">
                 </div>
                 <p class="photo-strip__caption">Everyday Moments</p>
             </div>
@@ -255,13 +256,13 @@
         <!-- Concept Section -->
         <section class="section section--cream" id="concept" aria-labelledby="concept-title">
             <div class="doodle doodle--wheat-mr" data-scroll="0.35">
-                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--sun-tl" data-scroll="0.3">
-                <img src="assets/doodles/doodle-sun.png" alt="" loading="lazy">
+                <img src="assets/doodles/doodle-sun.png" alt="" loading="lazy" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--leaves-bl" data-scroll="0.4">
-                <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy">
+                <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="container container--content">
                 <div class="concept-grid reveal">
@@ -572,10 +573,10 @@
 
                 <div class="vacancy-callout reveal">
                     <p class="vacancy-callout__text">
-                        <strong>空室あり</strong>　<time datetime="2026-07">2026年7月現在</time>、残り <strong class="vacancy-callout__count">1室</strong>（定員8名）
+                        <strong>現在 満室</strong>　<time datetime="2026-09">2026年9月現在</time>（定員8名）
                     </p>
                     <a href="tel:099-296-9844" class="vacancy-callout__link" aria-label="電話で空室状況を確認する">
-                        ご見学・ご入居のご相談はお早めにお電話ください　099-296-9844
+                        空室が出次第ご案内いたします。ご見学・ご相談は随時承っております　099-296-9844
                     </a>
                 </div>
             </div>
@@ -672,21 +673,21 @@
         <!-- Care Detail Section（設備のおしゃれショーケース） -->
         <section class="section" id="care-detail" aria-labelledby="care-detail-title">
             <div class="brand-marks-layer" aria-hidden="true">
-                <div class="mark mark--md" style="top: 14%; left: 6%; transform: rotate(-12deg);"><img src="assets/logos/04-wheat-emblem.svg" alt=""></div>
-                <div class="mark mark--sm" style="top: 28%; right: 14%; transform: rotate(10deg);"><img src="assets/logos/13-leaf-pair.svg" alt=""></div>
-                <div class="mark mark--xs" style="top: 60%; left: 12%; transform: rotate(20deg);"><img src="assets/logos/06-monogram-h.svg" alt=""></div>
-                <div class="mark mark--md" style="bottom: 18%; right: 8%; transform: rotate(-6deg);"><img src="assets/logos/14-sun-rise.svg" alt=""></div>
-                <div class="mark mark--sm" style="bottom: 32%; left: 22%; transform: rotate(15deg);"><img src="assets/logos/19-bowl-grain.svg" alt=""></div>
-                <div class="mark mark--xs" style="top: 44%; right: 32%; transform: rotate(-18deg);"><img src="assets/logos/15-cup-leaf.svg" alt=""></div>
+                <div class="mark mark--md" style="top: 14%; left: 6%; transform: rotate(-12deg);"><img src="assets/logos/04-wheat-emblem.svg" alt="" decoding="async"></div>
+                <div class="mark mark--sm" style="top: 28%; right: 14%; transform: rotate(10deg);"><img src="assets/logos/13-leaf-pair.svg" alt="" decoding="async"></div>
+                <div class="mark mark--xs" style="top: 60%; left: 12%; transform: rotate(20deg);"><img src="assets/logos/06-monogram-h.svg" alt="" decoding="async"></div>
+                <div class="mark mark--md" style="bottom: 18%; right: 8%; transform: rotate(-6deg);"><img src="assets/logos/14-sun-rise.svg" alt="" decoding="async"></div>
+                <div class="mark mark--sm" style="bottom: 32%; left: 22%; transform: rotate(15deg);"><img src="assets/logos/19-bowl-grain.svg" alt="" decoding="async"></div>
+                <div class="mark mark--xs" style="top: 44%; right: 32%; transform: rotate(-18deg);"><img src="assets/logos/15-cup-leaf.svg" alt="" decoding="async"></div>
             </div>
             <div class="doodle doodle--wheat-tr" data-scroll="0.35">
-                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy">
+                <img src="assets/doodles/doodle-wheat.svg" alt="" loading="lazy" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--leaves-bl" data-scroll="0.45">
-                <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy">
+                <img src="assets/doodles/doodle-leaves.png" alt="" loading="lazy" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
             <div class="doodle doodle--sun-ml" data-scroll="0.3">
-                <img src="assets/doodles/doodle-sun.png" alt="" loading="lazy">
+                <img src="assets/doodles/doodle-sun.png" alt="" loading="lazy" width="1024" height="1024" decoding="async" fetchpriority="low">
             </div>
 
             <div class="container container--content">
@@ -701,7 +702,7 @@
                 <div class="care-detail-grid reveal">
                     <figure class="care-detail-figure care-detail-figure--restroom">
                         <div class="care-detail-figure__img-wrap">
-                            <img src="assets/photos/real-resthome-restroom.jpg" alt="L字手すりとペーパーホルダーを備えた専用お手洗い" loading="lazy">
+                            <img src="assets/photos/real-resthome-restroom.jpg" alt="L字手すりとペーパーホルダーを備えた専用お手洗い" loading="lazy" width="1200" height="1600" decoding="async">
                         </div>
                         <figcaption>
                             <span class="care-detail-kicker">Comfort</span>
@@ -711,7 +712,7 @@
 
                     <figure class="care-detail-figure care-detail-figure--sink">
                         <div class="care-detail-figure__img-wrap">
-                            <img src="assets/photos/real-resthome-sink.jpg" alt="観葉植物と絵画が彩る、ハーベストの洗面コーナー全体" loading="lazy">
+                            <img src="assets/photos/real-resthome-sink.jpg" alt="観葉植物と絵画が彩る、ハーベストの洗面コーナー全体" loading="lazy" width="1200" height="1600" decoding="async">
                         </div>
                         <figcaption>
                             <span class="care-detail-kicker">Hygiene</span>
@@ -806,7 +807,7 @@
                         <h3 class="cta-box-title">LINEでのお問い合わせ</h3>
                         <p class="cta-box-desc">友だち追加でお気軽にご相談いただけます</p>
                         <a href="https://line.me/R/ti/p/@057duijv" target="_blank" rel="noopener noreferrer" class="line-qr-link">
-                            <img src="https://qr-official.line.me/gs/M_057duijv_GW.png?oat_content=qr" alt="LINE友だち追加QRコード" width="180" class="line-qr-image">
+                            <img src="images/flyer/qr-line-resthome.svg" alt="LINE友だち追加QRコード" width="180" class="line-qr-image">
                         </a>
                         <p class="line-btn-wrap">
                             <a href="https://line.me/R/ti/p/@057duijv" target="_blank" rel="noopener noreferrer" class="btn btn-line">
