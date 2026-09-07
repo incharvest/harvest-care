@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>鍼灸マッサージ治療院 白 -HAKU-｜訪問チラシ A4縦・両面</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   鍼灸マッサージ治療院 白 -HAKU-　訪問鍼灸マッサージ チラシ【A4縦】
+   ・210×297mm 両面／事務所プリンタ印刷を前提
+   ・四辺10mmの余白内にすべての要素を配置（フチなし印刷不要）
+   ・屋号「白」にちなんだ、白・クリーム・ベージュのやさしい配色
+   ・料金は令和8年6月5日 保発0605第8号（令和8年7月1日施行）に準拠
+
+   ▼写真の入れ方
+     <div class="photo"><span>施術の様子</span></div>
+        ↓ ここに写真を入れる場合
+     <div class="photo"><img src="photos/ファイル名.jpg" alt=""></div>
+     写真が無いままでも成立するデザインです。枚数が決まってから差し込めます。
+   ============================================================ */
+@page { size: A4 portrait; margin: 0; }
+
+:root{
+  --cream:#faf7f1;        /* 生成り：主背景 */
+  --cream-2:#f3ece0;      /* クリーム：面 */
+  --beige:#e4d8c5;        /* ベージュ：罫・枠 */
+  --beige-deep:#cdb99c;   /* 濃ベージュ */
+  --brown:#5b4a3a;        /* 焦茶：見出し */
+  --brown-mid:#7a6753;
+  --ink:#3f382f;          /* 本文 */
+  --ink-mute:#6b6154;
+  --accent:#a9743f;       /* キャメル：差し色 */
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ background:#9a958d; }
+body{
+  font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;
+  color:var(--ink); line-height:1.7;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+
+.page{
+  position:relative; width:210mm; height:297mm; padding:10mm;
+  background:var(--cream); overflow:hidden; margin:0 auto 8mm;
+  box-shadow:0 2mm 6mm rgba(0,0,0,.3);
+}
+.sheet{ display:flex; flex-direction:column; height:100%; }
+
+/* ── 画面用ツールバー（印刷されません） ── */
+.toolbar{
+  max-width:210mm; margin:6mm auto 4mm; padding:4mm 5mm;
+  background:#fff; border-left:2mm solid var(--accent);
+  font-size:10pt; line-height:1.8; box-shadow:0 1mm 3mm rgba(0,0,0,.2);
+}
+.toolbar h1{ font-size:12pt; color:var(--brown); margin-bottom:1mm; }
+.toolbar button{
+  margin-top:2mm; padding:2mm 6mm; font-size:10pt; font-weight:700; cursor:pointer;
+  background:var(--brown); color:#fff; border:none; border-radius:1mm;
+}
+.toolbar ol{ margin:1mm 0 0 5mm; }
+
+/* ── 写真枠（写真が無いときは、やわらかい面として成立します）── */
+.photo{
+  background:var(--cream-2); border:0.3mm solid var(--beige);
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden; position:relative; min-height:0;
+}
+.photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.photo span{ font-size:8pt; color:var(--beige-deep); letter-spacing:.18em; }
+
+/* ══════════════ 表面 ══════════════ */
+.p1{ display:grid; grid-template-rows:22mm 72mm 34mm 56mm 42mm 1fr; gap:3.5mm; height:100%; }
+.p1>*{ min-height:0; }
+
+.brand{ display:flex; align-items:center; justify-content:space-between; border-bottom:0.6mm solid var(--beige-deep); padding-bottom:2.5mm; }
+.brand-l{ display:flex; align-items:center; gap:4mm; }
+.brand-mark{
+  width:16mm; height:16mm; background:#fff; border:0.5mm solid var(--beige-deep); flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Zen Old Mincho',serif; font-size:20pt; font-weight:600; color:var(--brown);
+}
+.brand-type{ font-size:8pt; letter-spacing:.26em; color:var(--brown-mid); font-weight:700; }
+.brand-name{ font-family:'Zen Old Mincho',serif; font-size:19pt; font-weight:700; letter-spacing:.1em; line-height:1.25; color:var(--brown); }
+.brand-name em{ font-style:normal; font-size:10.5pt; letter-spacing:.24em; color:var(--accent); margin-left:2mm; }
+.brand-r{ text-align:right; }
+.brand-r .lab{ font-size:8pt; color:var(--ink-mute); }
+.brand-r .tel{ font-family:'Zen Old Mincho',serif; font-size:18pt; font-weight:700; color:var(--brown); line-height:1.15; }
+
+/* ヒーロー */
+.hero{ display:grid; grid-template-columns:1fr 72mm; gap:5mm; }
+.hero-l{ display:flex; flex-direction:column; justify-content:center; }
+.eyebrow{ font-size:9pt; font-weight:700; letter-spacing:.16em; color:var(--accent); margin-bottom:3mm; }
+.catch{ font-family:'Zen Old Mincho',serif; font-size:26pt; font-weight:700; line-height:1.5; color:var(--brown); }
+.catch .mk{ background:linear-gradient(transparent 66%, #ecdfc9 66%); }
+.lead{ font-size:11pt; line-height:1.9; color:var(--ink); margin-top:4mm; }
+.lead strong{ color:var(--accent); font-weight:700; }
+
+/* こんな方に */
+.check{ background:#fff; border:0.3mm solid var(--beige); padding:4mm 5mm; display:flex; align-items:center; gap:5mm; }
+.check h3{ font-family:'Zen Old Mincho',serif; font-size:13pt; font-weight:700; color:var(--brown); letter-spacing:.06em; white-space:nowrap; padding-right:5mm; border-right:0.3mm solid var(--beige); }
+.check ul{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:1mm 5mm; flex:1; }
+.check li{ font-size:10pt; line-height:1.55; padding-left:5mm; position:relative; }
+.check li::before{ content:'●'; position:absolute; left:0; top:0; color:var(--beige-deep); font-size:6pt; top:1.4mm; }
+
+/* 3つの施術（写真枠つき） */
+.svc{ display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; }
+.svc-card{ display:grid; grid-template-rows:31mm auto; gap:2.5mm; min-height:0; }
+.svc-body h3{ font-family:'Zen Old Mincho',serif; font-size:14pt; font-weight:700; color:var(--brown); letter-spacing:.08em; }
+.svc-body p{ font-size:9.5pt; line-height:1.7; color:var(--ink-mute); margin-top:1mm; }
+
+/* 保険＋料金 */
+.hoken{ background:var(--cream-2); border-left:1.5mm solid var(--accent); padding:4mm 5mm; display:grid; grid-template-columns:1fr 64mm; gap:5mm; align-items:center; }
+.hoken h3{ font-family:'Zen Old Mincho',serif; font-size:17pt; font-weight:700; color:var(--brown); line-height:1.4; }
+.hoken p{ font-size:10pt; line-height:1.75; color:var(--ink); margin-top:1.5mm; }
+.hoken p b{ color:var(--accent); }
+.hoken-box{ background:#fff; border:0.3mm solid var(--beige-deep); padding:3mm 4mm; text-align:center; }
+.hoken-box .k{ font-size:8.5pt; color:var(--ink-mute); }
+.hoken-box .v{ font-family:'Zen Old Mincho',serif; font-size:23pt; font-weight:700; color:var(--accent); line-height:1.2; }
+.hoken-box .v small{ font-size:10pt; }
+.hoken-box .n{ font-size:7.5pt; color:var(--ink-mute); margin-top:.5mm; }
+
+/* 連絡先 */
+.cta{ background:var(--brown); color:var(--cream); padding:5mm 6mm; display:grid; grid-template-columns:1fr auto; gap:5mm; align-items:center; }
+.cta-l .t{ font-family:'Zen Old Mincho',serif; font-size:15pt; font-weight:600; letter-spacing:.05em; }
+.cta-l p{ font-size:9.5pt; line-height:1.7; color:rgba(250,247,241,.88); margin-top:1.5mm; }
+.cta-r{ text-align:right; }
+.cta-r .lab{ font-size:8pt; letter-spacing:.18em; color:var(--beige-deep); font-weight:700; }
+.cta-r .tel{ font-family:'Zen Old Mincho',serif; font-size:30pt; font-weight:700; line-height:1.1; }
+.cta-r .sub{ font-size:8.5pt; color:rgba(250,247,241,.88); }
+
+/* ══════════════ 裏面 ══════════════ */
+.p2{ display:grid; grid-template-rows:11mm 52mm 102mm 36mm 1fr; gap:3mm; height:100%; }
+.p2>*{ min-height:0; }
+
+.p2-head{ display:flex; align-items:center; justify-content:space-between; border-bottom:0.5mm solid var(--beige-deep); padding-bottom:2.5mm; }
+.p2-head .t{ font-family:'Zen Old Mincho',serif; font-size:15pt; font-weight:700; color:var(--brown); letter-spacing:.06em; }
+.p2-head .s{ font-size:9pt; color:var(--ink-mute); }
+
+.sec-title{ font-family:'Zen Old Mincho',serif; font-size:12.5pt; font-weight:700; color:var(--brown); letter-spacing:.06em; margin-bottom:2mm; }
+
+.qa{ display:flex; flex-direction:column; }
+.qa-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2.5mm 6mm; align-content:start; flex:1; min-height:0; }
+.qa-item{ border-bottom:0.3mm dotted var(--beige); padding-bottom:2mm; }
+.qa-item h4{ font-size:10.5pt; font-weight:700; color:var(--brown); line-height:1.45; }
+.qa-item h4 span{ color:var(--accent); margin-right:1.2mm; font-family:'Zen Old Mincho',serif; }
+.qa-item p{ font-size:9.5pt; line-height:1.7; color:var(--ink-mute); margin-top:.6mm; }
+
+.price{ display:flex; flex-direction:column; }
+.price-table{ width:100%; border-collapse:collapse; background:#fff; }
+.price-table th, .price-table td{ border:0.3mm solid var(--beige); padding:1.1mm 2mm; font-size:9pt; text-align:center; }
+.price-table thead th{ background:var(--brown); color:var(--cream); font-weight:700; font-size:9pt; }
+.price-table tbody th{ background:var(--cream-2); text-align:left; font-weight:700; color:var(--ink); }
+.price-table td.main{ font-weight:700; color:var(--accent); font-size:11pt; }
+.price-add{ display:flex; gap:2.5mm; margin-top:2mm; }
+.price-add div{ flex:1; background:#fff; border:0.3mm solid var(--beige); padding:1.3mm 2.2mm; font-size:7.5pt; line-height:1.5; color:var(--ink-mute); }
+.price-add b{ display:block; font-size:10pt; color:var(--brown); }
+.note{ font-size:7pt; color:var(--ink-mute); line-height:1.55; margin-top:2mm; }
+
+.flow{ display:flex; flex-direction:column; }
+.flow-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:2.5mm; flex:1; min-height:0; }
+.step{ background:#fff; border:0.3mm solid var(--beige); border-top:1mm solid var(--beige-deep); padding:2mm 2.5mm; display:flex; flex-direction:column; }
+.step .no{ font-family:'Zen Old Mincho',serif; font-size:9pt; color:var(--accent); font-weight:700; }
+.step h4{ font-size:9.5pt; font-weight:700; color:var(--brown); margin:.6mm 0 .8mm; }
+.step p{ font-size:8pt; line-height:1.55; color:var(--ink-mute); }
+
+.foot{ display:grid; grid-template-columns:1fr 76mm; gap:5mm; }
+.foot-l{ display:grid; grid-template-rows:1fr auto; gap:3mm; min-height:0; }
+.foot-photos{ display:grid; grid-template-columns:1fr 1fr; gap:3mm; min-height:0; }
+.info-table{ width:100%; border-collapse:collapse; }
+.info-table th, .info-table td{ border-bottom:0.3mm dotted var(--beige); padding:1mm 0; font-size:9pt; text-align:left; vertical-align:top; line-height:1.55; }
+.info-table th{ width:24mm; color:var(--brown); font-weight:700; }
+.info-table td{ color:var(--ink-mute); }
+.foot-cta{ background:var(--cream-2); border:0.5mm solid var(--beige-deep); padding:4mm 5mm; display:flex; flex-direction:column; justify-content:center; text-align:center; }
+.foot-cta .lab{ font-size:9pt; font-weight:700; letter-spacing:.12em; color:var(--brown); }
+.foot-cta .tel{ font-family:'Zen Old Mincho',serif; font-size:25pt; font-weight:700; color:var(--brown); line-height:1.15; margin:1mm 0; }
+.foot-cta .sub{ font-size:8.5pt; line-height:1.6; color:var(--ink-mute); }
+
+@media print{
+  html{ background:#fff; }
+  .toolbar{ display:none !important; }
+  .page{ margin:0; box-shadow:none; page-break-after:always; }
+  .page:last-child{ page-break-after:auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <h1>鍼灸マッサージ治療院 白 -HAKU- 訪問チラシ（A4縦・両面）</h1>
+  <p>このページを開いたまま <b>Ctrl + P</b>（Macは ⌘ + P）で印刷できます。プリンタ設定は次の通りにしてください。</p>
+  <ol>
+    <li>用紙サイズ：<b>A4</b>／向き：<b>縦</b></li>
+    <li>倍率：<b>100%</b>（「実際のサイズ」）</li>
+    <li><b>背景のグラフィック（背景色と画像）にチェック</b>を入れる ← 色が出ないときはここです</li>
+    <li>両面印刷：<b>長辺とじ</b></li>
+  </ol>
+  <button onclick="window.print()">印刷する</button>
+</div>
+
+<!-- ══════════════════ 表面 ══════════════════ -->
+<section class="page">
+ <div class="sheet p1">
+
+  <header class="brand">
+    <div class="brand-l">
+      <div class="brand-mark">白</div>
+      <div>
+        <div class="brand-type">鍼 灸 マ ッ サ ー ジ 治 療 院</div>
+        <div class="brand-name">白<em>H A K U</em></div>
+      </div>
+    </div>
+    <div class="brand-r">
+      <div class="lab">ご相談はお電話で</div>
+      <div class="tel">099-296-9843</div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-l">
+      <div class="eyebrow">訪問鍼灸マッサージ ／ 鹿児島市</div>
+      <h2 class="catch">通院がむずかしい方の<br><span class="mk">お宅へ、伺います。</span></h2>
+      <p class="lead">国家資格をもつ施術者が、ご自宅や施設へお伺いします。<br>
+        <strong>医師の同意があれば健康保険が使えます。</strong></p>
+    </div>
+    <!-- 写真①：施術の様子（横長）／手元だけの写真がおすすめです -->
+    <div class="photo"><span>写 真 ①</span></div>
+  </div>
+
+  <div class="check">
+    <h3>こんな方に</h3>
+    <ul>
+      <li>脳梗塞などの後遺症で麻痺がある</li>
+      <li>関節が固くなってきた</li>
+      <li>筋力が落ち、寝ている時間が長い</li>
+      <li>痛み・しびれ・むくみが続く</li>
+      <li>お一人では通院できない</li>
+      <li>今の生活を続けたい</li>
+    </ul>
+  </div>
+
+  <div class="svc">
+    <div class="svc-card">
+      <!-- 写真②：マッサージ -->
+      <div class="photo"><span>写 真 ②</span></div>
+      <div class="svc-body">
+        <h3>マッサージ</h3>
+        <p>硬くなった筋肉をやわらげ、関節の動きを広げます。</p>
+      </div>
+    </div>
+    <div class="svc-card">
+      <!-- 写真③：はり -->
+      <div class="photo"><span>写 真 ③</span></div>
+      <div class="svc-body">
+        <h3>は り</h3>
+        <p>髪の毛ほどの細い鍼で、痛みをやわらげます。</p>
+      </div>
+    </div>
+    <div class="svc-card">
+      <!-- 写真④：きゅう -->
+      <div class="photo"><span>写 真 ④</span></div>
+      <div class="svc-body">
+        <h3>き ゅ う</h3>
+        <p>心地よい温かさで、冷えやこわばりをゆるめます。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hoken">
+    <div>
+      <h3>健康保険が使えます</h3>
+      <p>ご利用には<b>医師の同意書</b>が必要です。書類の準備はお手伝いします。<br>
+         介護保険は使わないため、デイサービスなどと<b>併用できます</b>。</p>
+    </div>
+    <div class="hoken-box">
+      <div class="k">1割負担の方</div>
+      <div class="v">約389<small>円</small></div>
+      <div class="n">3局所＋温罨法／1回</div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <div class="cta-l">
+      <div class="t">まずはお電話でご相談ください</div>
+      <p>ケアマネジャー様・施設ご担当者様からのご相談も承ります。</p>
+    </div>
+    <div class="cta-r">
+      <div class="lab">T E L ・ F A X</div>
+      <div class="tel">099-296-9843</div>
+      <div class="sub">受付 9:00〜17:30／日曜定休</div>
+    </div>
+  </div>
+
+ </div>
+</section>
+
+<!-- ══════════════════ 裏面 ══════════════════ -->
+<section class="page">
+ <div class="sheet p2">
+
+  <div class="p2-head">
+    <div class="t">よくあるご質問と、ご利用料金</div>
+    <div class="s">鍼灸マッサージ治療院 白 -HAKU-</div>
+  </div>
+
+  <div class="qa">
+    <div class="sec-title">気になる点にお答えします</div>
+    <div class="qa-grid">
+      <div class="qa-item">
+        <h4><span>Q.</span>なにをするのですか？</h4>
+        <p>週1〜3回お伺いし、マッサージ・はり・きゅう・関節の運動を行います。1回20〜35分ほどです。</p>
+      </div>
+      <div class="qa-item">
+        <h4><span>Q.</span>介護保険を使いますか？</h4>
+        <p>使いません。デイサービスやヘルパー、施設サービスと併用できます。</p>
+      </div>
+      <div class="qa-item">
+        <h4><span>Q.</span>同意書とは何ですか？</h4>
+        <p>保険を使うため、かかりつけの先生に書いていただく書類です。当院がお手伝いします。</p>
+      </div>
+      <div class="qa-item">
+        <h4><span>Q.</span>鍼は痛くないですか？</h4>
+        <p>髪の毛ほどの細さです。苦手な方は刺さない鍼や、マッサージのみでも対応します。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="price">
+    <div class="sec-title">ご利用料金（令和8年7月1日改定の料金にもとづく目安）</div>
+    <table class="price-table">
+      <thead>
+        <tr><th style="width:44mm">施術の内容</th><th>施術料</th><th>1割負担</th><th>2割負担</th><th>3割負担</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>マッサージ 1局所</th><td>2,770円</td><td class="main">約277円</td><td>約554円</td><td>約831円</td></tr>
+        <tr><th>マッサージ 2局所</th><td>3,240円</td><td class="main">約324円</td><td>約648円</td><td>約972円</td></tr>
+        <tr><th>マッサージ 3局所</th><td>3,710円</td><td class="main">約371円</td><td>約742円</td><td>約1,113円</td></tr>
+        <tr><th>マッサージ 4局所</th><td>4,180円</td><td class="main">約418円</td><td>約836円</td><td>約1,254円</td></tr>
+        <tr><th>マッサージ 5局所</th><td>4,650円</td><td class="main">約465円</td><td>約930円</td><td>約1,395円</td></tr>
+        <tr><th>はり・きゅう（併用）</th><td>4,120円</td><td class="main">約412円</td><td>約824円</td><td>約1,236円</td></tr>
+      </tbody>
+    </table>
+    <div class="price-add">
+      <div><b>温罨法 ＋180円</b>体をあたためる施術（1割の方は＋18円）</div>
+      <div><b>変形徒手矯正術 ＋470円</b>関節の動きを広げる施術／1肢につき</div>
+      <div><b>週2回・月8回のめやす</b>3局所＋温罨法・1割負担で <b>月およそ3,100円</b></div>
+    </div>
+    <p class="note">
+      ※「訪問施術料1」（お一人のお宅へお伺いする場合）の料金です。お住まいの状況により金額は異なり、実際の請求額は保険者の端数処理で数円前後します。<br>
+      ※ 初回は初検料（はり・きゅうの場合 2,320円）が別途かかります。同一の方への月16回目以降の施術は、料金が半額で計算されます。
+    </p>
+  </div>
+
+  <div class="flow">
+    <div class="sec-title">ご利用までの流れ</div>
+    <div class="flow-grid">
+      <div class="step"><div class="no">01</div><h4>お電話</h4><p>ご様子をお聞きします。</p></div>
+      <div class="step"><div class="no">02</div><h4>ご訪問・ご説明</h4><p>内容と費用をご説明。</p></div>
+      <div class="step"><div class="no">03</div><h4>書類のご準備</h4><p>一緒に作成します。</p></div>
+      <div class="step"><div class="no">04</div><h4>同意書の取得</h4><p>先生にご記入いただきます。</p></div>
+      <div class="step"><div class="no">05</div><h4>施術開始</h4><p>訪問を開始します。</p></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="foot-l">
+      <!-- 写真⑤⑥：ご希望に応じて。無い場合はこの2枠を削っても成立します -->
+      <div class="foot-photos">
+        <div class="photo"><span>写 真 ⑤</span></div>
+        <div class="photo"><span>写 真 ⑥</span></div>
+      </div>
+      <table class="info-table">
+        <tr><th>治療院名</th><td>鍼灸マッサージ治療院 白 -HAKU-</td></tr>
+        <tr><th>所在地</th><td>鹿児島県鹿児島市皇徳寺台3丁目58-1</td></tr>
+        <tr><th>訪問エリア</th><td>鹿児島市全域（喜入・桜島エリアを除く）</td></tr>
+      </table>
+    </div>
+    <div class="foot-cta">
+      <div class="lab">お 気 軽 に お 電 話 く だ さ い</div>
+      <div class="tel">099-296-9843</div>
+      <div class="sub">受付 9:00〜17:30／日曜定休<br>TEL・FAX 共通</div>
+    </div>
+  </div>
+
+ </div>
+</section>
+
+</body>
+</html>
