@@ -178,6 +178,8 @@ body{
 
 @media print{
   html{ background:#fff; }
+  /* 写真が未定の枠は、印刷では「写 真 ○」の文字を消して無地の面にする */
+  .photo span{ display:none; }
   .toolbar{ display:none !important; }
   .page{ margin:0; box-shadow:none; page-break-after:always; }
   .page:last-child{ page-break-after:auto; }
@@ -224,7 +226,7 @@ body{
     </div>
     <!-- 写真①：施術所の外観や道具など。施術の様子を写す場合は、
          効果を暗示しない構図（手元のみ等）にしてください -->
-    <div class="photo"><span>写 真 ①</span></div>
+    <div class="photo"><img src="photos/hari-01.jpg" alt=""></div>
   </div>
 
   <div class="fee">
@@ -284,7 +286,7 @@ body{
     </div>
     <div class="svc-card">
       <!-- 写真③ -->
-      <div class="photo"><span>写 真 ③</span></div>
+      <div class="photo"><img src="photos/hari-02.jpg" alt=""></div>
       <div class="svc-body">
         <h4>は り</h4>
         <p>はり師（国家資格保有）が行います。</p>
@@ -292,7 +294,7 @@ body{
     </div>
     <div class="svc-card">
       <!-- 写真④ -->
-      <div class="photo"><span>写 真 ④</span></div>
+      <div class="photo"><img src="photos/kyu-01.jpg" alt=""></div>
       <div class="svc-body">
         <h4>き ゅ う</h4>
         <p>きゅう師（国家資格保有）が行います。</p>
