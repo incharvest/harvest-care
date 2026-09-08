@@ -33,7 +33,7 @@
   --sumi:#1a1a1a;        /* 墨：見出し・数字 */
   --sumi-2:#3d3d3d;      /* 本文 */
   --sumi-3:#6e6e6e;      /* 補足 */
-  --shu:#b7282e;         /* 朱：一点だけ使う */
+  --shu:#d3381c;         /* 朱：一点だけ使う */
   --rule:#dcdcdc;        /* 極細の罫 */
   --rule-2:#efefef;      /* さらに薄い罫 */
   --ph:#f5f5f5;          /* 写真枠（写真が入るまでの面） */
@@ -76,7 +76,7 @@ body{
 .photo span{ font-size:7.5pt; color:#c4c4c4; letter-spacing:.2em; }
 
 /* ══════════════ 表面 ══════════════ */
-.p1{ display:grid; grid-template-rows:26mm 92mm 58mm 22mm 1fr; gap:11mm; height:100%; }
+.p1{ display:grid; grid-template-rows:20mm 100mm 60mm 24mm 1fr; gap:10mm; height:100%; }
 .p1>*{ min-height:0; }
 
 /* 屋号：文字そのものを主役に、囲まない */
@@ -86,14 +86,14 @@ body{
 .brand-sub{ line-height:1.6; }
 .brand-sub .en{ font-family:'Zen Old Mincho',serif; font-size:11pt; letter-spacing:.45em; color:var(--sumi-3); }
 .brand-sub .ja{ font-size:8.5pt; letter-spacing:.2em; color:var(--sumi-3); }
-.brand-r{ text-align:right; font-size:8.5pt; color:var(--sumi-3); letter-spacing:.04em; line-height:1.9; }
+.brand-r{ text-align:right; font-size:9.5pt; color:var(--sumi-3); letter-spacing:.04em; line-height:1.9; }
 
 /* ヒーロー */
 .hero{ display:grid; grid-template-columns:1fr 74mm; gap:8mm; }
 .hero-l{ display:flex; flex-direction:column; justify-content:center; }
 .eyebrow{ font-size:8.5pt; letter-spacing:.24em; color:var(--sumi-3); margin-bottom:5mm; }
 .catch{ font-family:'Zen Old Mincho',serif; font-size:24pt; font-weight:500; line-height:1.75; color:var(--sumi); letter-spacing:.04em; }
-.lead{ font-size:10.5pt; line-height:2.0; color:var(--sumi-2); margin-top:5mm; }
+.lead{ font-size:12pt; line-height:2.0; color:var(--sumi-2); margin-top:5mm; }
 
 /* 料金：紙面の主役 */
 .fee{ border-top:0.4mm solid var(--sumi); border-bottom:0.2mm solid var(--rule); padding:5mm 0 4mm; display:flex; flex-direction:column; }
@@ -105,40 +105,40 @@ body{
 .fee-main .num i{ font-style:normal; font-size:17pt; margin-right:1mm; }
 .fee-main .per{ font-size:10pt; color:var(--sumi-3); }
 .fee-sub{ margin-top:3.5mm; padding-top:3mm; border-top:0.2mm solid var(--rule-2); }
-.fee-sub div{ font-size:10.5pt; color:var(--sumi-2); line-height:1.95; }
+.fee-sub div{ font-size:12pt; color:var(--sumi-2); line-height:1.95; }
 .fee-sub b{ color:var(--sumi); font-weight:700; }
-.fee-note{ font-size:8pt; color:var(--sumi-3); margin-top:2.5mm; line-height:1.7; }
+.fee-note{ font-size:9pt; color:var(--sumi-3); margin-top:2.5mm; line-height:1.7; }
 
 /* 対象 */
 .target{ display:flex; align-items:center; gap:7mm; }
 .target h3{ font-family:'Zen Old Mincho',serif; font-size:12pt; font-weight:600; color:var(--sumi); white-space:nowrap; letter-spacing:.1em; }
 .target ul{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:2mm 8mm; flex:1; }
-.target li{ font-size:9.5pt; line-height:1.6; color:var(--sumi-2); padding-left:4mm; position:relative; }
+.target li{ font-size:11pt; line-height:1.6; color:var(--sumi-2); padding-left:4mm; position:relative; }
 .target li.wide{ grid-column:1 / -1; }
 .target li::before{ content:''; position:absolute; left:0; top:2.4mm; width:1.4mm; height:1.4mm; background:var(--shu); }
 
 /* 施術3種＋写真 */
-.svc{ display:grid; grid-template-columns:repeat(3,1fr); gap:6mm; }
-.svc-card{ display:grid; grid-template-rows:1fr auto; gap:3mm; min-height:0; }
+.svc{ display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:1fr auto; grid-auto-flow:column; gap:3mm 6mm; }
+.svc-card{ display:contents; }
 .svc-body h4{ font-family:'Zen Old Mincho',serif; font-size:13pt; font-weight:600; color:var(--sumi); letter-spacing:.12em; }
-.svc-body p{ font-size:9pt; line-height:1.75; color:var(--sumi-3); margin-top:1mm; }
+.svc-body p{ font-size:11pt; line-height:1.75; color:var(--sumi-3); margin-top:1mm; }
 
 /* 電話：朱の一点 */
 .tel-bar{ border-top:0.4mm solid var(--sumi); padding-top:4mm; display:flex; align-items:flex-end; justify-content:space-between; }
 .tel-l .t{ font-family:'Zen Old Mincho',serif; font-size:13pt; font-weight:600; color:var(--sumi); letter-spacing:.06em; }
-.tel-l p{ font-size:9pt; color:var(--sumi-3); margin-top:1.5mm; }
+.tel-l p{ font-size:10pt; color:var(--sumi-3); margin-top:1.5mm; }
 .tel-r{ text-align:right; }
 .tel-r .lab{ font-size:8pt; letter-spacing:.24em; color:var(--sumi-3); }
 .tel-r .num{ font-family:'Zen Old Mincho',serif; font-size:30pt; font-weight:600; color:var(--shu); line-height:1.15; }
-.tel-r .sub{ font-size:8.5pt; color:var(--sumi-3); }
+.tel-r .sub{ font-size:9.5pt; color:var(--sumi-3); }
 
 /* ══════════════ 裏面 ══════════════ */
-.p2{ display:grid; grid-template-rows:14mm 76mm 52mm 44mm 1fr; gap:9mm; height:100%; }
+.p2{ display:grid; grid-template-rows:13mm 1fr 54mm 47mm 54mm; gap:9mm; height:100%; }
 .p2>*{ min-height:0; }
 
 .p2-head{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.4mm solid var(--sumi); padding-bottom:3mm; }
 .p2-head .t{ font-family:'Zen Old Mincho',serif; font-size:14pt; font-weight:600; color:var(--sumi); letter-spacing:.08em; }
-.p2-head .s{ font-size:8.5pt; color:var(--sumi-3); }
+.p2-head .s{ font-size:9.5pt; color:var(--sumi-3); }
 
 .sec-title{ font-family:'Zen Old Mincho',serif; font-size:12pt; font-weight:600; color:var(--sumi); letter-spacing:.1em; margin-bottom:3mm; }
 
@@ -149,14 +149,14 @@ body{
 .price-table thead th{ border-bottom:0.4mm solid var(--sumi); font-weight:700; color:var(--sumi); font-size:8.5pt; letter-spacing:.06em; }
 .price-table tbody th{ text-align:left; font-weight:500; color:var(--sumi-2); }
 .price-table td.main{ font-weight:700; color:var(--shu); font-size:10.5pt; }
-.note{ font-size:7.5pt; color:var(--sumi-3); line-height:1.7; margin-top:3mm; }
+.note{ font-size:9pt; color:var(--sumi-3); line-height:1.7; margin-top:3mm; }
 
 /* 流れ */
 .flow-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:5mm; }
 .step{ border-top:0.4mm solid var(--rule); padding-top:2.5mm; }
 .step .no{ font-family:'Zen Old Mincho',serif; font-size:9pt; color:var(--shu); letter-spacing:.1em; }
-.step h4{ font-size:10pt; font-weight:700; color:var(--sumi); margin:1mm 0 1mm; }
-.step p{ font-size:8.5pt; line-height:1.7; color:var(--sumi-3); }
+.step h4{ font-size:11pt; font-weight:700; color:var(--sumi); margin:1mm 0 1mm; }
+.step p{ font-size:10pt; line-height:1.7; color:var(--sumi-3); }
 
 /* Q&A */
 .qa-grid{ display:grid; grid-template-columns:1fr 1fr; gap:3mm 8mm; }
@@ -168,13 +168,13 @@ body{
 .foot{ display:grid; grid-template-columns:1fr auto; gap:8mm; align-items:center; border-top:0.4mm solid var(--sumi); padding-top:5mm; }
 .foot-photos{ display:grid; grid-template-columns:1fr 1fr; gap:4mm; min-height:0; }
 .info-table{ width:100%; border-collapse:collapse; }
-.info-table th, .info-table td{ padding:1mm 0; font-size:9pt; text-align:left; vertical-align:top; line-height:1.7; }
-.info-table th{ width:24mm; color:var(--sumi); font-weight:700; }
+.info-table th, .info-table td{ padding:1mm 0; font-size:10.5pt; text-align:left; vertical-align:top; line-height:1.7; }
+.info-table th{ width:30mm; white-space:nowrap; color:var(--sumi); font-weight:700; }
 .info-table td{ color:var(--sumi-3); }
 .foot-tel{ text-align:right; }
 .foot-tel .lab{ font-size:8pt; letter-spacing:.2em; color:var(--sumi-3); }
 .foot-tel .num{ font-family:'Zen Old Mincho',serif; font-size:26pt; font-weight:600; color:var(--shu); line-height:1.2; }
-.foot-tel .sub{ font-size:8.5pt; color:var(--sumi-3); }
+.foot-tel .sub{ font-size:9.5pt; color:var(--sumi-3); }
 
 @media print{
   html{ background:#fff; }
