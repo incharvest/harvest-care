@@ -76,7 +76,7 @@ body{
 .photo span{ font-size:7.5pt; color:#c4c4c4; letter-spacing:.2em; }
 
 /* ══════════════ 表面 ══════════════ */
-.p1{ display:grid; grid-template-rows:26mm 78mm 58mm 40mm 1fr; gap:10mm; height:100%; }
+.p1{ display:grid; grid-template-rows:26mm 92mm 58mm 22mm 1fr; gap:11mm; height:100%; }
 .p1>*{ min-height:0; }
 
 /* 屋号：文字そのものを主役に、囲まない */
@@ -114,6 +114,7 @@ body{
 .target h3{ font-family:'Zen Old Mincho',serif; font-size:12pt; font-weight:600; color:var(--sumi); white-space:nowrap; letter-spacing:.1em; }
 .target ul{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:2mm 8mm; flex:1; }
 .target li{ font-size:9.5pt; line-height:1.6; color:var(--sumi-2); padding-left:4mm; position:relative; }
+.target li.wide{ grid-column:1 / -1; }
 .target li::before{ content:''; position:absolute; left:0; top:2.4mm; width:1.4mm; height:1.4mm; background:var(--shu); }
 
 /* 施術3種＋写真 */
@@ -241,10 +242,10 @@ body{
   <div class="target">
     <h3>ご案内</h3>
     <ul>
-      <li>訪問できる地域：鹿児島市全域（喜入・桜島エリアを除く）</li>
+      <li class="wide">訪問できる地域：鹿児島市全域（喜入・桜島を除く）</li>
       <li>施術日：月曜日〜土曜日（日曜は休療日）</li>
       <li>受付時間：9:00〜17:30</li>
-      <li>ご予約に基づいて訪問いたします</li>
+      <li class="wide">ご予約に基づいて訪問いたします</li>
     </ul>
   </div>
 
@@ -330,7 +331,7 @@ body{
         <tr><th>施術所名</th><td>鍼灸マッサージ治療院 白 -HAKU-</td></tr>
         <tr><th>所在地</th><td>鹿児島県鹿児島市皇徳寺台3丁目58-1</td></tr>
         <tr><th>業務の種類</th><td>あん摩マッサージ指圧・はり・きゅう</td></tr>
-        <tr><th>訪問できる地域</th><td>鹿児島市全域（喜入・桜島エリアを除く）</td></tr>
+        <tr><th>訪問できる地域</th><td>鹿児島市全域（喜入・桜島を除く）</td></tr>
         <tr><th>施術日・受付</th><td>月曜日〜土曜日 9:00〜17:30（日曜は休療日）</td></tr>
       </table>
     </div>
