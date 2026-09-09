@@ -73,12 +73,14 @@ body{
   overflow:hidden; position:relative; min-height:0;
 }
 .photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+/* はりの写真は、ピントの合った指先と鍼が枠に入るよう下寄せにする */
+.photo img.p-hari{ object-position:50% 72%; }
 /* 写真はモノクロ。カラーに戻すときは、次の1行を消してください */
 .photo img{ filter:grayscale(1) contrast(1.06) brightness(1.02); }
 .photo span{ font-size:7.5pt; color:#c4c4c4; letter-spacing:.2em; }
 
 /* ══════════════ 表面 ══════════════ */
-.p1{ display:grid; grid-template-rows:28mm 92mm 60mm 24mm 1fr; gap:10mm; height:100%; }
+.p1{ display:grid; grid-template-rows:26mm 106mm 58mm 24mm 1fr; gap:8mm; height:100%; }
 .p1>*{ min-height:0; }
 
 /* 屋号：文字そのものを主役に、囲まない */
@@ -91,8 +93,9 @@ body{
 .brand-r{ text-align:right; font-size:9.5pt; color:var(--sumi-3); letter-spacing:.04em; line-height:1.9; }
 
 /* ヒーロー */
-.hero{ display:grid; grid-template-columns:1fr 74mm; gap:8mm; }
-.hero-l{ display:flex; flex-direction:column; justify-content:center; }
+.hero{ display:grid; grid-template-columns:1fr 88mm; gap:4mm; }
+.hero-l{ display:flex; flex-direction:column; justify-content:center; padding-right:4mm; }
+.hero .photo{ border:0.3mm solid var(--sumi); }
 .eyebrow{ font-size:8.5pt; letter-spacing:.24em; color:var(--sumi-3); margin-bottom:5mm; }
 .catch{ font-family:'Zen Old Mincho',serif; font-size:24pt; font-weight:500; line-height:1.75; color:var(--sumi); letter-spacing:.04em; }
 .lead{ font-size:12pt; line-height:2.0; color:var(--sumi-2); margin-top:5mm; }
@@ -120,10 +123,16 @@ body{
 .target li::before{ content:''; position:absolute; left:0; top:2.4mm; width:1.4mm; height:1.4mm; background:var(--shu); }
 
 /* 施術3種＋写真 */
-.svc{ display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:1fr auto; grid-auto-flow:column; gap:3mm 6mm; }
-.svc-card{ display:contents; }
-.svc-body h4{ font-family:'Zen Old Mincho',serif; font-size:13pt; font-weight:600; color:var(--sumi); letter-spacing:.12em; }
-.svc-body p{ font-size:11pt; line-height:1.75; color:var(--sumi-3); margin-top:1mm; }
+/* 施術3種：漫画のコマ割り。大小を不揃いにし、すき間を詰め、墨の枠で締める */
+.svc-block{ display:grid; grid-template-rows:1fr auto; gap:3.5mm; min-height:0; }
+.svc{ display:grid; grid-template-columns:86mm 50mm 46mm; gap:2mm; min-height:0; }
+.svc-card{ position:relative; overflow:hidden; border:0.3mm solid var(--sumi); min-height:0; }
+.svc-card .photo{ position:absolute; inset:0; }
+.svc-cap{ position:absolute; left:0; bottom:0; background:#fff;
+  border-top:0.3mm solid var(--sumi); border-right:0.3mm solid var(--sumi);
+  padding:1.6mm 3.5mm 1.2mm; font-family:'Zen Old Mincho',serif;
+  font-size:12.5pt; font-weight:600; color:var(--sumi); letter-spacing:.1em; }
+.svc-note{ font-size:11pt; line-height:1.7; color:var(--sumi-2); }
 
 /* 電話：朱の一点 */
 .tel-bar{ border-top:0.4mm solid var(--sumi); padding-top:4mm; display:flex; align-items:flex-end; justify-content:space-between; }
@@ -135,7 +144,7 @@ body{
 .tel-r .sub{ font-size:9.5pt; color:var(--sumi-3); }
 
 /* ══════════════ 裏面 ══════════════ */
-.p2{ display:grid; grid-template-rows:13mm 1fr 54mm 47mm 54mm; gap:9mm; height:100%; }
+.p2{ display:grid; grid-template-rows:12mm 1fr 54mm 47mm 53mm; gap:8mm; height:100%; }
 .p2>*{ min-height:0; }
 
 .p2-head{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.4mm solid var(--sumi); padding-bottom:3mm; }
@@ -277,31 +286,25 @@ body{
     <div class="s">鍼灸マッサージ治療院 白 -HAKU-</div>
   </div>
 
-  <div class="svc">
+  <div class="svc-block">
+   <div class="svc">
     <div class="svc-card">
       <!-- 写真② -->
       <div class="photo"><img src="photos/massage-01.jpg" alt=""></div>
-      <div class="svc-body">
-        <h4>あん摩マッサージ指圧</h4>
-        <p>あん摩マッサージ指圧師（国家資格保有）が行います。</p>
-      </div>
+      <div class="svc-cap">あん摩マッサージ指圧</div>
     </div>
     <div class="svc-card">
       <!-- 写真③ -->
-      <div class="photo"><img src="photos/hari-02.jpg" alt=""></div>
-      <div class="svc-body">
-        <h4>は り</h4>
-        <p>はり師（国家資格保有）が行います。</p>
-      </div>
+      <div class="photo"><img class="p-hari" src="photos/hari-02.jpg" alt=""></div>
+      <div class="svc-cap">は り</div>
     </div>
     <div class="svc-card">
       <!-- 写真④ -->
       <div class="photo"><img src="photos/kyu-01.jpg" alt=""></div>
-      <div class="svc-body">
-        <h4>き ゅ う</h4>
-        <p>きゅう師（国家資格保有）が行います。</p>
-      </div>
+      <div class="svc-cap">き ゅ う</div>
     </div>
+   </div>
+   <p class="svc-note">あん摩マッサージ指圧師・はり師・きゅう師<b>（いずれも国家資格保有）</b>が、ご自宅や施設へ訪問して施術を行います。</p>
   </div>
 
   <div class="price">
