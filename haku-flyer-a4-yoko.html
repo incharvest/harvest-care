@@ -75,8 +75,10 @@ body{
 .photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
 /* はりの写真は、ピントの合った指先と鍼が枠に入るよう下寄せにする */
 .photo img.p-hari{ object-position:50% 72%; }
-/* 写真はモノクロ。カラーに戻すときは、次の1行を消してください */
-.photo img{ filter:grayscale(1) contrast(1.06) brightness(1.02); }
+/* 写真は漫画調（線画＋ベタ＋網点）に変換したものを photos/manga/ から読んでいます。
+   元の写真に戻すときは、img の src を photos/○○.jpg に書き換えてください。
+   その場合はモノクロにするため、次の1行を有効にしてください。 */
+/* .photo img{ filter:grayscale(1) contrast(1.06) brightness(1.02); } */
 .photo span{ font-size:7.5pt; color:#c4c4c4; letter-spacing:.2em; }
 
 /* ══════════════ 表面 ══════════════ */
@@ -242,7 +244,7 @@ body{
         ご自宅や施設へ訪問して施術を行います。</p>
     </div>
     <!-- 写真①：効果を暗示しない構図（手元のみ等）にしてください -->
-    <div class="photo"><img src="photos/hari-01.jpg" alt=""></div>
+    <div class="photo"><img src="photos/manga/hari-01.png" alt=""></div>
   </div>
 
   <div class="p1-mid">
@@ -297,17 +299,17 @@ body{
    <div class="svc">
     <div class="svc-card">
       <!-- 写真② -->
-      <div class="photo"><img src="photos/massage-01.jpg" alt=""></div>
+      <div class="photo"><img src="photos/manga/massage-01.png" alt=""></div>
       <div class="svc-cap">あん摩マッサージ指圧</div>
     </div>
     <div class="svc-card">
       <!-- 写真③ -->
-      <div class="photo"><img class="p-hari" src="photos/hari-02.jpg" alt=""></div>
+      <div class="photo"><img class="p-hari" src="photos/manga/hari-02.png" alt=""></div>
       <div class="svc-cap">は り</div>
     </div>
     <div class="svc-card">
       <!-- 写真④ -->
-      <div class="photo"><img src="photos/kyu-01.jpg" alt=""></div>
+      <div class="photo"><img src="photos/manga/kyu-01.png" alt=""></div>
       <div class="svc-cap">き ゅ う</div>
     </div>
    </div>
