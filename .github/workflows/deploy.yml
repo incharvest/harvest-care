@@ -1,10 +1,13 @@
 name: Deploy to GitHub Pages
 
+# 自動公開は main ブランチのみ。
+# 作業用ブランチにプッシュしてもホームページは書き換わりません。
+# main に統合（マージ）したときだけ公開されます。
 on:
   push:
     branches:
       - main
-      - claude/*
+  workflow_dispatch:   # GitHubのActions画面から手動で再公開することもできます
 
 permissions:
   contents: read
