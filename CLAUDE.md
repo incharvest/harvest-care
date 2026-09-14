@@ -1,53 +1,74 @@
 # Claude Code Settings
 
-## 作業ブランチの絶対ルール
+## ブランチ（作業場所）の構成ルール
 
-**このリポジトリのメイン作業ブランチは `claude/review-harvest-care-sites-FhpVz` です。**
-GitHub Pages のデプロイもこのブランチから行われています。
+**このリポジトリ（ファイルの保管庫）は、ホームページの公開専用です。**
 
-### 遵守事項
+### main — 原本。唯一の公開ブランチ
 
-1. **セッション開始時に必ず `git branch --show-current` で現在地を確認する**
-2. **もし別のブランチ（例: `claude/care-home-website-GygxF`）にいた場合、
-   作業に取りかかる前に必ず `claude/review-harvest-care-sites-FhpVz` に
-   `git checkout` する**
-3. **全ての commit / push は `claude/review-harvest-care-sites-FhpVz` に対して行う**
-4. **他のブランチが「指定ブランチ」として自動設定されていても無視し、
-   常に `claude/review-harvest-care-sites-FhpVz` を優先する**
+- ホームページとして公開されるのは **main の内容だけ**
+- 自動公開（`.github/workflows/deploy.yml`）は **main への push でのみ動く**
+- 作業ブランチに push してもホームページは変わらない。
+  **main に統合（マージ）して初めて公開される**
 
-### 過去の教訓
+### `保管/` で始まるブランチ — 倉庫。公開されない
 
-- 2026-07-13: セッションコンテキスト圧縮後、git が自動的に
-  `claude/care-home-website-GygxF` に切り替わり、そこに5コミット
-  誤配置。全て手動で cherry-pick して復旧した。
-  → この事故を防ぐため本ルールを設置。
+| ブランチ | 中身 |
+|---|---|
+| `保管/HAKUチラシ一式` | 鍼灸マッサージ治療院 白 -HAKU- のチラシ。あはき法の広告規制を調べた上で作成。作業ログ・厚労省ガイドライン同梱 |
+| `保管/日報アプリの試作` | 日報アプリ・訪問アプリの試作（Firebase 連携の検討あり） |
+| `保管/報告メモアプリ` | `houkoku-memo.html` と引き継ぎ文書 |
+| `保管/訪問マッサージアプリの雛形` | React 一式 |
 
-## 事業とブランチ構成のルール
+### 作業の進め方
 
-**このリポジトリで扱っている事業は2つで、ブランチも用途別に分離:**
+1. **main から**作業ブランチを作る
+2. 作業して push（**この時点では公開されない**）
+3. 問題なければ **main に統合** → 自動で公開される
+
+### 過去の経緯（同じ失敗を繰り返さないために）
+
+- 2026-04-15 を最後に main への統合が止まり、以後5か月間、
+  作業ブランチが直接公開される状態が続いた
+- 原因は `deploy.yml` が `claude/*` も公開対象にしていたこと。
+  **main に戻さなくてもサイトが更新されるため、異常が表面化しなかった**
+- 2026-09-14 に再編。公開対象を main のみに限定し、作業ブランチ22本を整理した
+
+---
+
+## このリポジトリに置いてはいけないもの
+
+- 決算書・試算表・売上データ
+- 利用者情報・職員名簿・給与関連・出勤簿・勤務表
+- パスワード、Firebase などの認証情報
+
+`.gitignore`（公開除外リスト）で除外しているが、**そもそも置かないこと。**
+経営資料は Cowork（別の作業環境）で扱う。
+
+> **重要：** このリポジトリは public（公開）のため、**main 以外のブランチも
+> GitHub 上では誰でも閲覧できる。**「サイトに出ない」と「誰にも見えない」は別物。
+
+---
+
+## 事業とコンテンツの分離
 
 ### 1. 介護施設（デイサービス／住宅型有料老人ホーム）
-- **ブランチ**: `claude/review-harvest-care-sites-FhpVz` (このブランチ)
-- **ホームページ**: 公開 (`index.html`, `dayservice.html`, `resthome.html`, `caremanager.html`, `recruit.html`)
-- **チラシ**: `dayservice-flyer-a4.html`（デイサービス）, `resthome-flyer-a4.html`（有料老人ホーム）
-  - どちらも A4横・両面。事務所プリンタでの印刷前提（四辺9mmの余白内に全要素）
-  - 検索避け（noindex）のため sitemap には載せない
-  - 旧版 `dayservice-flyer.html` / `dayservice-flyer-v2.html` は2026-09-01に削除
-- **GitHub Pages デプロイ元**: このブランチ
 
-### 2. 訪問鍼灸マッサージ
-- **ブランチ**: `claude/chirashi-private`（**別ブランチで完全隔離**）
-- **ホームページ**: 無し（今後も作らない方針）
-- **チラシ**: `flyer.html` のみ、手渡し配布用
-- **絶対に `claude/review-harvest-care-sites-FhpVz` と混ぜないこと**
-- **絶対に merge しないこと**（orphan branch として独立）
+- **ホームページ**: `index.html` `dayservice.html` `resthome.html` `caremanager.html` `recruit.html`
+- **チラシ**: `dayservice-flyer-a4.html` `resthome-flyer-a4.html`
+  （印刷手順・写真・QRコードの詳細は `README.md` を参照）
+- **配布用PDF**: `assets/flyers/` — チラシHTMLを直したらPDFとサムネイルも作り直すこと
 
-### 絶対に守るルール
+### 2. 訪問鍼灸マッサージ（鍼灸マッサージ治療院 白 -HAKU-）
 
-- **`claude/review-harvest-care-sites-FhpVz` ブランチには `flyer.html` を絶対に置かない**
-- **`claude/review-harvest-care-sites-FhpVz` ブランチの `sitemap.xml` に訪問マッサージの URL を追加しない**
-- **介護施設のホームページから訪問鍼灸マッサージへの言及・リンクは一切しない**
-- **`claude/chirashi-private` は Web 公開しない**（デプロイ元は review ブランチのみ）
+- **ホームページは作らない方針**
+- **チラシは `保管/HAKUチラシ一式` ブランチのみ。main に持ち込まない**
+- **介護施設のホームページから治療院への言及・リンクは一切しない**
+- チラシは**あはき法第7条の広告制限**を受ける。
+  **適応症・効能効果・施術料金・「初回無料体験」は広告に書けない。**
+  根拠と書ける内容の一覧は `保管/HAKUチラシ一式` の README.md を参照
+
+---
 
 ## 言葉遣いのルール
 
@@ -60,6 +81,8 @@ GitHub Pages のデプロイもこのブランチから行われています。
 - プッシュ（GitHubへの送信）
 - マージ（作業場所の統合）
 - リポジトリ（ファイルの保管庫）
+
+---
 
 ## Allowed Tools
 
