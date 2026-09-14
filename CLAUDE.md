@@ -7,7 +7,10 @@
 ### main — 原本。唯一の公開ブランチ
 
 - ホームページとして公開されるのは **main の内容だけ**
-- 自動公開（`.github/workflows/deploy.yml`）は **main への push でのみ動く**
+- GitHub Pages の設定（Settings → Pages → Source: **Deploy from a branch** →
+  **`main` / (root)**）により、**main からしか公開されない**
+- 公開は GitHub 標準の **「pages build and deployment」** が自動で行う。
+  専用の設定ファイル（ワークフロー）は不要
 - 作業ブランチに push してもホームページは変わらない。
   **main に統合（マージ）して初めて公開される**
 
@@ -30,9 +33,13 @@
 
 - 2026-04-15 を最後に main への統合が止まり、以後5か月間、
   作業ブランチが直接公開される状態が続いた
-- 原因は `deploy.yml` が `claude/*` も公開対象にしていたこと。
-  **main に戻さなくてもサイトが更新されるため、異常が表面化しなかった**
-- 2026-09-14 に再編。公開対象を main のみに限定し、作業ブランチ22本を整理した
+- **原因は GitHub Pages の公開元が作業ブランチ
+  （`claude/review-harvest-care-sites-FhpVz`）に設定されていたこと。**
+  そのブランチを更新するだけでサイトが更新されるため、
+  **main に戻さなくても何も困らず、異常が表面化しなかった**
+- 2026-09-14 に再編。公開元を main に変更し、作業ブランチ22本を整理した
+- 併せて、使われていなかったワークフロー `.github/workflows/deploy.yml` を削除
+  （GitHub Pages の設定で公開しているため不要。残すと失敗の赤×が出続ける）
 
 ---
 
