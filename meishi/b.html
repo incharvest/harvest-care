@@ -1,0 +1,65 @@
+<meta charset="utf-8"><title>名刺B案</title>
+<link rel="stylesheet" href="_common.css">
+<style>
+.yoko{ padding:7mm 8mm 7mm 13mm; display:flex; flex-direction:column; }
+.rule{ position:absolute; left:0; top:0; width:2.2mm; height:100%; background:#c1121f; }
+.head{ display:flex; align-items:flex-start; gap:3.6mm; }
+.head .k{ font-size:13pt; line-height:1.05; letter-spacing:.02em; }
+.head .en{ font-size:5.8pt; letter-spacing:.5em; color:#6e6e6e; text-indent:.5em; line-height:1; }
+.head .ja{ font-size:7pt; letter-spacing:.16em; margin-top:1.8mm; text-indent:.16em; line-height:1; }
+.biz{ font-size:5.8pt; letter-spacing:.13em; color:#8a8a8a; margin-top:2.8mm; }
+.who{ margin-top:auto; padding-top:3mm; display:flex; align-items:baseline; gap:4mm; }
+.who .t{ font-size:6.2pt; letter-spacing:.26em; color:#6e6e6e; }
+.who .n{ font-size:14pt; letter-spacing:.16em; font-weight:500; }
+.info{ margin-top:4.4mm; padding-top:3mm; border-top:0.2mm solid #dcdcdc;
+  display:flex; justify-content:space-between; align-items:flex-end; gap:5mm; }
+.info .l{ font-size:5.6pt; line-height:1.9; letter-spacing:.04em; color:#4a4a4a; }
+.info .l b{ font-weight:500; color:#1a1a1a; letter-spacing:.08em; }
+.info .r{ font-size:5.6pt; line-height:1.9; letter-spacing:.04em; color:#4a4a4a; text-align:right; white-space:nowrap; }
+/* 裏面 */
+.back{ padding:7mm 7mm 7mm 8mm; display:grid; grid-template-columns:22mm 1fr; align-items:center; gap:5mm; }
+.bk-l{ text-align:center; }
+.bk-l .k{ font-size:14pt; line-height:1; }
+.bk-l .en{ font-size:5.4pt; letter-spacing:.56em; color:#6e6e6e; margin-top:2.2mm; text-indent:.56em; }
+.bk-l .ja{ font-size:5.4pt; letter-spacing:.1em; margin-top:1.2mm; text-indent:.1em; white-space:nowrap; }
+.bk-r dl{ margin:0; display:grid; grid-template-columns:auto 1fr; gap:2mm 2.4mm; font-size:5.4pt; line-height:1.5; }
+.bk-r dt{ color:#8a8a8a; letter-spacing:.04em; white-space:nowrap; font-size:5.2pt; }
+.bk-r dd{ margin:0; color:#1a1a1a; letter-spacing:.03em; }
+.bk-r .note{ margin-top:3.2mm; padding-top:2.4mm; border-top:0.2mm solid #e4e4e4;
+  font-size:5.6pt; line-height:1.75; color:#4a4a4a; }
+.bk-r .note b{ color:#c1121f; font-weight:500; }
+</style>
+<div class="card yoko">
+  <div class="rule"></div>
+  <div class="head">
+    <div class="k mi">白</div>
+    <div>
+      <div class="en mi">HAKU</div>
+      <div class="ja">鍼灸マッサージ治療院</div>
+    </div>
+  </div>
+  <div class="biz">あん摩マッサージ指圧・はり・きゅう</div>
+  <div class="who">
+    <div class="t">代　表</div>
+    <div class="n">白根　寛征</div>
+  </div>
+  <div class="info">
+    <div class="l"><b>株式会社ハーベスト</b><br>〒891-0113　鹿児島市東谷山2丁目40-15</div>
+    <div class="r">TEL 099-296-9844<br>FAX 099-296-9843<br>inc.harvest@gmail.com</div>
+  </div>
+</div>
+<div class="card yoko back">
+  <div class="bk-l">
+    <div class="k mi">白</div>
+    <div class="en mi">HAKU</div>
+    <div class="ja">鍼灸マッサージ治療院</div>
+  </div>
+  <div class="bk-r">
+    <dl>
+      <dt>業　　務</dt><dd>あん摩マッサージ指圧・はり・きゅう</dd>
+      <dt>訪問地域</dt><dd>鹿児島市全域（喜入・桜島を除く）</dd>
+      <dt>施術日</dt><dd>月〜土　9:00〜17:30（日曜休療）</dd>
+    </dl>
+    <div class="note"><b>医療保険療養費の支給申請ができます。</b><br>※ 申請には、医師の同意が必要です。</div>
+  </div>
+</div>

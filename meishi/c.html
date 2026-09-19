@@ -1,0 +1,53 @@
+<meta charset="utf-8"><title>名刺C案</title>
+<link rel="stylesheet" href="_common.css">
+<style>
+.yoko{ padding:7mm 9mm; display:flex; flex-direction:column; }
+.emboss{ position:absolute; right:-9mm; top:50%; transform:translateY(-50%);
+  font-family:'Zen Old Mincho',serif; font-size:64pt; line-height:1; color:#f1f0ee; letter-spacing:0; }
+.inner{ position:relative; display:flex; flex-direction:column; flex:1; }
+.head .k{ font-size:11pt; line-height:1; }
+.head .en{ font-size:5.6pt; letter-spacing:.56em; color:#6e6e6e; margin-top:2mm; text-indent:.56em; }
+.head .ja{ font-size:6.6pt; letter-spacing:.2em; margin-top:1mm; text-indent:.2em; }
+.head .biz{ font-size:5.6pt; letter-spacing:.12em; color:#8a8a8a; margin-top:2.2mm; }
+.who{ margin-top:auto; padding-top:2mm; }
+.who .t{ font-size:6pt; letter-spacing:.26em; color:#6e6e6e; }
+.who .n{ font-size:13.5pt; letter-spacing:.16em; margin-top:1.4mm; }
+.info{ margin-top:3.6mm; font-size:5.5pt; line-height:1.85; letter-spacing:.04em; color:#4a4a4a; }
+.info b{ font-weight:500; color:#1a1a1a; letter-spacing:.08em; }
+/* 裏面 */
+.back{ padding:9mm; display:flex; flex-direction:column; justify-content:center; text-align:center; }
+.back .lead{ font-size:7.6pt; line-height:1.9; letter-spacing:.06em; color:#1a1a1a; }
+.back .sub{ font-size:5.8pt; line-height:1.8; letter-spacing:.05em; color:#6e6e6e; margin-top:3mm; }
+.back .foot{ margin-top:6mm; padding-top:3.2mm; border-top:0.2mm solid #e0e0e0;
+  display:flex; align-items:center; justify-content:center; gap:3mm; }
+.back .foot .k{ font-size:10pt; line-height:1; }
+.back .foot .ja{ font-size:5.8pt; letter-spacing:.2em; color:#4a4a4a; text-indent:.2em; }
+</style>
+<div class="card yoko">
+  <div class="emboss">白</div>
+  <div class="inner">
+    <div class="head">
+      <div class="k mi">白</div>
+      <div class="en mi">HAKU</div>
+      <div class="ja">鍼灸マッサージ治療院</div>
+      <div class="biz">あん摩マッサージ指圧・はり・きゅう</div>
+    </div>
+    <div class="who">
+      <div class="t">代　表</div>
+      <div class="n mi">白根　寛征</div>
+    </div>
+    <div class="info">
+      <b>株式会社ハーベスト</b><br>
+      〒891-0113　鹿児島市東谷山2丁目40-15<br>
+      TEL 099-296-9844　FAX 099-296-9843　inc.harvest@gmail.com
+    </div>
+  </div>
+</div>
+<div class="card yoko back">
+  <div class="lead mi">通院がむずかしい方の<br>お宅へ、伺います。</div>
+  <div class="sub">医療保険療養費の支給申請ができます。<br>※ 申請には、医師の同意が必要です。</div>
+  <div class="foot">
+    <div class="k mi">白</div>
+    <div class="ja">鍼灸マッサージ治療院</div>
+  </div>
+</div>

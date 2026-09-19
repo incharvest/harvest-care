@@ -1,0 +1,11 @@
+@page{ margin:0; }
+html,body{ margin:0; padding:0; background:#bfbfbf; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+*{ box-sizing:border-box; }
+.card{ background:#fff; position:relative; overflow:hidden; page-break-after:always;
+  font-family:'Zen Kaku Gothic New',sans-serif; color:#1a1a1a; }
+.card:last-child{ page-break-after:auto; }
+.mi{ font-family:'Zen Old Mincho',serif; }
+.yoko{ width:91mm; height:55mm; }
+.tate{ width:55mm; height:91mm; }
+.g{ color:#6e6e6e; }
+.g2{ color:#4a4a4a; }
