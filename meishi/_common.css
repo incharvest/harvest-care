@@ -1,4 +1,6 @@
 @page{ margin:0; }
+/* 朱（しゅ）＝印刷の4色で出せる最も鮮やかな赤。CMYK M100 Y100 相当 */
+:root{ --shu:#E60012; }
 html,body{ margin:0; padding:0; background:#bfbfbf; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
 *{ box-sizing:border-box; }
 .card{ background:#fff; position:relative; overflow:hidden; page-break-after:always;

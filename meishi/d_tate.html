@@ -1,0 +1,74 @@
+<meta charset="utf-8"><title>名刺 縦型（白根様）</title>
+<link rel="stylesheet" href="_common.css">
+<style>
+/* ══ 表面 ══ 横型と同じ設計思想。上＝屋号／中＝人／下＝連絡先 ══ */
+.tate{ padding:9mm 7mm 7mm; display:grid; grid-template-rows:auto 1fr auto; }
+.brand{ text-align:center; }
+.brand .k{ font-size:26pt; line-height:1; letter-spacing:.02em; }
+.brand .bar{ width:9mm; height:0.45mm; background:var(--shu); margin:3.4mm auto 3mm; }
+.brand .en{ font-size:6pt; letter-spacing:.56em; color:#6e6e6e; text-indent:.56em; }
+.brand .ja{ font-size:6.6pt; letter-spacing:.16em; margin-top:1.6mm; text-indent:.16em; }
+.who{ display:flex; flex-direction:column; justify-content:center; align-items:center;
+  text-align:center; }
+.who .t{ font-size:6.2pt; letter-spacing:.3em; color:#6e6e6e; text-indent:.3em; }
+.who .n{ font-size:15pt; letter-spacing:.18em; margin-top:2mm; text-indent:.18em; }
+.who .biz{ font-size:5.6pt; letter-spacing:.08em; color:#8a8a8a; margin-top:3.4mm; }
+.info{ padding-top:3mm; border-top:0.2mm solid #e2e2e2; text-align:center;
+  font-size:5.3pt; line-height:1.95; letter-spacing:.02em; color:#4a4a4a; }
+/* ══ 裏面 ══ */
+.back{ padding:9mm 7mm 7mm; display:flex; flex-direction:column; }
+.back .sign{ text-align:center; }
+.back .sign .k{ font-size:12pt; line-height:1; }
+.back .sign .ja{ font-size:5.2pt; letter-spacing:.14em; color:#8a8a8a;
+  margin-top:1.6mm; text-indent:.14em; }
+.back .lead{ margin-top:6mm; font-size:9pt; line-height:1.85; letter-spacing:.05em;
+  text-align:center; }
+.back .ins{ margin-top:4.4mm; font-size:5.8pt; line-height:1.75; letter-spacing:.02em;
+  color:#4a4a4a; text-align:center; }
+.back .ins b{ color:var(--shu); font-weight:500; }
+.back dl{ margin:0; margin-top:auto; padding-top:3mm; border-top:0.2mm solid #e2e2e2;
+  display:grid; gap:1.6mm; font-size:5.3pt; line-height:1.5; }
+.back dt{ color:#8a8a8a; letter-spacing:.06em; }
+.back dd{ margin:0; margin-top:.5mm; color:#1a1a1a; }
+.back .todoke{ color:#6e6e6e; }
+</style>
+
+<!-- 表面 -->
+<div class="card tate">
+  <div class="brand">
+    <div class="k mi hina">白</div>
+    <div class="bar"></div>
+    <div class="en mi">HAKU</div>
+    <div class="ja mi">鍼灸マッサージ治療院</div>
+  </div>
+  <div class="who">
+    <div class="t">代　表</div>
+    <div class="n mi">白根　寛征</div>
+    <div class="biz">あん摩マッサージ指圧・はり・きゅう</div>
+  </div>
+  <div class="info">
+    〒八九一－〇一〇三<br>
+    鹿児島市皇徳寺台三丁目五十八－一<br>
+    TEL・FAX　099-296-9843<br>
+    HAKU.shinkyu2010@gmail.com
+  </div>
+</div>
+
+<!-- 裏面 -->
+<div class="card tate back">
+  <div class="sign">
+    <div class="k mi hina">白</div>
+    <div class="ja mi">鍼灸マッサージ治療院</div>
+  </div>
+  <div class="lead mi">通院がむずかしい方の<br>お宅へ、伺います。</div>
+  <div class="ins">国家資格をもつ施術者が、<br>ご自宅や施設へ訪問して施術を行います。<br>
+    <b>医療保険療養費の支給申請ができます。</b><br>※ 医師の同意が必要です。</div>
+  <dl>
+    <dt>訪問地域</dt>
+    <dd>鹿児島市内（直線十六キロ以内）<br>喜入・吉田・桜島を除く</dd>
+    <dt>施術日・受付</dt>
+    <dd>月〜土　9:00〜17:30（日曜は休療日）</dd>
+    <dt>届出</dt>
+    <dd class="todoke">二〇一〇年一月十五日　鹿児島市　開設届出済</dd>
+  </dl>
+</div>

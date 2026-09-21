@@ -33,7 +33,7 @@
   --sumi:#1a1a1a;        /* 墨：見出し・数字 */
   --sumi-2:#3d3d3d;      /* 本文 */
   --sumi-3:#6e6e6e;      /* 補足 */
-  --shu:#c1121f;         /* 赤：一点だけ使う（血の色） */
+  --shu:#E60012;         /* 赤：一点だけ使う。印刷の4色で出せる最も鮮やかな赤（CMYK M100 Y100 相当）*/
   --rule:#dcdcdc;        /* 極細の罫 */
   --rule-2:#efefef;      /* さらに薄い罫 */
   --ph:#f5f5f5;          /* 写真枠（写真が入るまでの面） */
@@ -141,7 +141,8 @@ body{
 .tel-r .sub{ font-size:9.5pt; color:var(--sumi-3); }
 
 /* ══════════════ 裏面 ══════════════ */
-.p2{ display:grid; grid-template-rows:13mm 1fr 54mm 47mm 54mm; gap:9mm; height:100%; }
+.p2{ display:grid; grid-template-rows:13mm 1fr 54mm 47mm auto; gap:8mm; height:100%; }
+.p2>*{ min-height:0; }
 .p2>*{ min-height:0; }
 
 .p2-head{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.4mm solid var(--sumi); padding-bottom:3mm; }
@@ -176,9 +177,10 @@ body{
 .foot{ display:grid; grid-template-columns:1fr auto; gap:8mm; align-items:center; border-top:0.4mm solid var(--sumi); padding-top:5mm; }
 .foot-photos{ display:grid; grid-template-columns:1fr 1fr; gap:4mm; min-height:0; }
 .info-table{ width:100%; border-collapse:collapse; }
-.info-table th, .info-table td{ padding:1mm 0; font-size:10.5pt; text-align:left; vertical-align:top; line-height:1.7; }
+.info-table th, .info-table td{ padding:0.8mm 0; font-size:10.5pt; text-align:left; vertical-align:top; line-height:1.7; }
 .info-table th{ width:30mm; white-space:nowrap; color:var(--sumi); font-weight:700; }
 .info-table td{ color:var(--sumi-3); }
+.info-table .nb{ white-space:nowrap; }  /* 数字や地名が行の途中で割れないように */
 .foot-tel{ text-align:right; }
 .foot-tel .lab{ font-size:8pt; letter-spacing:.2em; color:var(--sumi-3); }
 .foot-tel .num{ font-family:'Zen Old Mincho',serif; font-size:26pt; font-weight:600; color:var(--shu); line-height:1.2; }
@@ -340,10 +342,11 @@ body{
     <div>
       <table class="info-table">
         <tr><th>施術所名</th><td>鍼灸マッサージ治療院 白 -HAKU-</td></tr>
-        <tr><th>所在地</th><td>鹿児島県鹿児島市皇徳寺台3丁目58-1</td></tr>
+        <tr><th>所在地</th><td>〒八九一－〇一〇三　<span class="nb">鹿児島市皇徳寺台三丁目五十八－一</span></td></tr>
         <tr><th>業務の種類</th><td>あん摩マッサージ指圧・はり・きゅう</td></tr>
-        <tr><th>訪問できる地域</th><td>鹿児島市内・治療院から直線16km以内（喜入・吉田・桜島を除く）</td></tr>
+        <tr><th>訪問できる地域</th><td>鹿児島市内・治療院から直線16km以内<br><span class="nb">（喜入・吉田・桜島を除く）</span></td></tr>
         <tr><th>施術日・受付</th><td>月曜日〜土曜日 9:00〜17:30（日曜は休療日）</td></tr>
+        <tr><th>届出</th><td><span class="nb">二〇一〇年一月十五日</span>　<span class="nb">鹿児島市　開設届出済</span></td></tr>
       </table>
     </div>
     <div class="foot-tel">
