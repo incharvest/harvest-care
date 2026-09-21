@@ -1,0 +1,71 @@
+<meta charset="utf-8"><title>名刺D案 横型</title>
+<link rel="stylesheet" href="_common.css">
+<style>
+/* ══ 表面 ══ */
+.yoko{ padding:7mm 8mm 6.5mm; display:grid; grid-template-rows:1fr auto; }
+.top{ position:relative; display:grid; grid-template-columns:25mm 1fr; gap:7mm; }
+.top::after{ content:''; position:absolute; left:28.5mm; top:1mm; bottom:1mm;
+  width:0.2mm; background:#dcdcdc; }
+.brand{ display:flex; flex-direction:column; justify-content:center; }
+.brand .k{ font-size:22pt; line-height:1; letter-spacing:.02em; }
+.brand .bar{ width:7mm; height:0.45mm; background:#c1121f; margin:3mm 0 2.6mm; }
+.brand .en{ font-size:5.6pt; letter-spacing:.5em; color:#6e6e6e; text-indent:.5em; }
+.brand .ja{ font-size:6.2pt; letter-spacing:.1em; margin-top:1.4mm; line-height:1.55; }
+.who{ display:flex; flex-direction:column; justify-content:center; }
+.who .t{ font-size:6.2pt; letter-spacing:.3em; color:#6e6e6e; }
+.who .n{ font-size:15pt; letter-spacing:.18em; margin-top:1.8mm; }
+.who .biz{ font-size:5.8pt; letter-spacing:.1em; color:#8a8a8a; margin-top:3.2mm; }
+.info{ padding-top:3mm; border-top:0.2mm solid #e2e2e2;
+  display:flex; justify-content:space-between; align-items:flex-start; gap:5mm; }
+.info div{ font-size:5.3pt; line-height:1.9; letter-spacing:.02em; color:#4a4a4a; white-space:nowrap; }
+.info b{ font-weight:500; color:#1a1a1a; letter-spacing:.06em; }
+.info .r{ text-align:right; }
+/* ══ 裏面 ══ */
+.back{ padding:7mm 8mm 6.5mm; display:flex; flex-direction:column; }
+.back .sign{ position:absolute; right:8mm; top:6.5mm; text-align:right; }
+.back .sign .k{ font-size:11pt; line-height:1; }
+.back .sign .ja{ font-size:5.2pt; letter-spacing:.1em; color:#8a8a8a; margin-top:1.4mm; }
+.back .lead{ font-size:9.5pt; line-height:1.8; letter-spacing:.05em; }
+.back .ins{ margin-top:4mm; font-size:6.2pt; line-height:1.75; letter-spacing:.02em; color:#4a4a4a; }
+.back .ins b{ color:#c1121f; font-weight:500; }
+.back dl{ margin:0; margin-top:auto; padding-top:3mm; border-top:0.2mm solid #e2e2e2;
+  display:grid; grid-template-columns:auto 1fr; gap:1.4mm 3.4mm; font-size:5.6pt; line-height:1.5; }
+.back dt{ color:#8a8a8a; letter-spacing:.06em; white-space:nowrap; }
+.back dd{ margin:0; color:#1a1a1a; }
+</style>
+
+<!-- 表面 -->
+<div class="card yoko">
+  <div class="top">
+    <div class="brand">
+      <div class="k mi hina">白</div>
+      <div class="bar"></div>
+      <div class="en mi">HAKU</div>
+      <div class="ja mi">鍼灸マッサージ<br>治療院</div>
+    </div>
+    <div class="who">
+      <div class="t">代　表</div>
+      <div class="n mi">白根　寛征</div>
+      <div class="biz">あん摩マッサージ指圧・はり・きゅう</div>
+    </div>
+  </div>
+  <div class="info">
+    <div><b>株式会社ハーベスト</b><br>〒891-0103　鹿児島市皇徳寺台三丁目58-1</div>
+    <div class="r">TEL・FAX　099-296-9843<br>inc.harvest@gmail.com</div>
+  </div>
+</div>
+
+<!-- 裏面 -->
+<div class="card yoko back">
+  <div class="sign">
+    <div class="k mi hina">白</div>
+    <div class="ja mi">鍼灸マッサージ治療院</div>
+  </div>
+  <div class="lead mi">通院がむずかしい方の<br>お宅へ、伺います。</div>
+  <div class="ins">国家資格を有する施術者が、ご自宅や施設へ訪問して施術を行います。<br>
+    <b>医療保険療養費の支給申請ができます。</b>　※ 医師の同意が必要です。</div>
+  <dl>
+    <dt>訪問地域</dt><dd>鹿児島市全域（喜入・桜島を除く）</dd>
+    <dt>施術日・受付</dt><dd>月〜土　9:00〜17:30（日曜は休療日）</dd>
+  </dl>
+</div>
