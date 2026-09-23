@@ -55,19 +55,24 @@ GitHub Pages のデプロイもこのブランチから行われています。
   - 旧版 `dayservice-flyer.html` / `dayservice-flyer-v2.html` は2026-09-01に削除
 - **GitHub Pages デプロイ元**: このブランチ
 
-### 2. 訪問鍼灸マッサージ
-- **ブランチ**: `claude/chirashi-private`（**別ブランチで完全隔離**）
+### 2. 訪問鍼灸マッサージ（HAKU）
+- **ブランチ**: `保管/HAKUチラシ一式`（**別ブランチで完全隔離**）
 - **ホームページ**: 無し（今後も作らない方針）
-- **チラシ**: `flyer.html` のみ、手渡し配布用
+- **チラシ**: `haku-flyer-a4-*.html`（A4縦・A4横、体験版あり／なしの計4種）
+  - 手渡し配布用、Web非公開
 - **絶対に `claude/review-harvest-care-sites-FhpVz` と混ぜないこと**
-- **絶対に merge しないこと**（orphan branch として独立）
+- **絶対に merge しないこと**（別系統ブランチとして独立管理）
+- 2026-09: 旧 `claude/chirashi-private`（README + flyer.html の暫定分離ブランチ）は
+  役目を終えて削除済み。訪問マッサージのチラシは全てこの HAKU ブランチで管理。
 
 ### 絶対に守るルール
 
-- **`claude/review-harvest-care-sites-FhpVz` ブランチには `flyer.html` を絶対に置かない**
-- **`claude/review-harvest-care-sites-FhpVz` ブランチの `sitemap.xml` に訪問マッサージの URL を追加しない**
-- **介護施設のホームページから訪問鍼灸マッサージへの言及・リンクは一切しない**
-- **`claude/chirashi-private` は Web 公開しない**（デプロイ元は review ブランチのみ）
+- **`claude/review-harvest-care-sites-FhpVz` ブランチには `flyer.html` や
+  `haku-flyer-*.html` を絶対に置かない**
+- **`claude/review-harvest-care-sites-FhpVz` ブランチの `sitemap.xml` に
+  訪問マッサージの URL を追加しない**
+- **介護施設のホームページから訪問鍼灸マッサージ（HAKU）への言及・リンクは一切しない**
+- **`保管/HAKUチラシ一式` は Web 公開しない**（デプロイ元は review ブランチのみ）
 
 ## 言葉遣いのルール
 
