@@ -783,8 +783,97 @@
                 display: flex;
             }
         }
+
+        /* Work Features section (旧 Photo Strip の置き換え) */
+        .work-features {
+            background: var(--color-bg);
+            padding: 90px 2rem;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+        }
+        .work-features__inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .work-features__eyebrow {
+            text-align: center;
+            font-family: 'Cormorant Garamond', 'Zen Old Mincho', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            letter-spacing: 0.3em;
+            color: var(--color-accent);
+            margin-bottom: 3rem;
+        }
+        .work-features__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+        .work-features__item {
+            padding: 0 1rem;
+            text-align: center;
+            position: relative;
+        }
+        .work-features__item + .work-features__item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 60%;
+            background: var(--color-border);
+        }
+        .work-features__num {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.15em;
+            color: var(--color-accent);
+            margin-bottom: 1.2rem;
+        }
+        .work-features__title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--color-text);
+            letter-spacing: 0.08em;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+        .work-features__desc {
+            font-size: 0.88rem;
+            line-height: 1.95;
+            color: var(--color-text-light);
+            letter-spacing: 0.02em;
+            text-align: left;
+        }
+
+        @media (max-width: 720px) {
+            .work-features {
+                padding: 60px 1.25rem;
+            }
+            .work-features__eyebrow {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+            }
+            .work-features__grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .work-features__item {
+                padding: 0;
+            }
+            .work-features__item + .work-features__item {
+                padding-top: 2.5rem;
+                border-top: 1px solid var(--color-border);
+            }
+            .work-features__item + .work-features__item::before {
+                display: none;
+            }
+        }
     </style>
-    <link rel="preload" as="image" href="assets/photos/photo-staff-portrait.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/photos/real-harvest-entrance.jpg" fetchpriority="high">
 </head>
 <body data-theme="recruit">
     <header>
@@ -858,7 +947,7 @@
 
             <div class="hero__visual">
                 <div class="hero__photo">
-                    <img src="assets/photos/photo-staff-portrait.jpg" alt="ハーベストで働くスタッフ" decoding="async" fetchpriority="high">
+                    <img src="assets/photos/real-harvest-entrance.jpg" alt="ハーベストの正面玄関。深緑のウッド外壁と木目の天井が温かく迎える施設外観" decoding="async" fetchpriority="high">
                 </div>
                 <div class="hero__seal">
                     <span class="num">6</span>
@@ -870,19 +959,27 @@
         <span class="hero__scroll">SCROLL</span>
     </section>
 
-    <!-- Photo Strip (採用用：職場の雰囲気) -->
-    <section class="photo-strip" aria-hidden="true">
-        <div class="photo-strip__inner">
-            <div class="photo-strip__item photo-strip__item--1">
-                <img src="assets/photos/photo-walk-support.jpg" alt="" loading="lazy" decoding="async">
+    <!-- Work Features (採用用：働く環境の特徴 3本柱) -->
+    <section class="work-features" aria-label="働く環境の特徴">
+        <div class="work-features__inner">
+            <p class="work-features__eyebrow">Our Workplace</p>
+            <div class="work-features__grid">
+                <div class="work-features__item">
+                    <span class="work-features__num">01</span>
+                    <h3 class="work-features__title">少人数制の<br>ゆとりある職場</h3>
+                    <p class="work-features__desc">大規模施設と違い、一人ひとりの利用者様と向き合える環境。慌ただしさに追われず、丁寧なケアに集中できます。</p>
+                </div>
+                <div class="work-features__item">
+                    <span class="work-features__num">02</span>
+                    <h3 class="work-features__title">専門家と<br>共に学べる環境</h3>
+                    <p class="work-features__desc">国家資格を持つ鍼灸マッサージ師6名が在籍。日々の業務のなかで専門的な技術や視点に触れられます。</p>
+                </div>
+                <div class="work-features__item">
+                    <span class="work-features__num">03</span>
+                    <h3 class="work-features__title">経験より<br>人柄を大切に</h3>
+                    <p class="work-features__desc">未経験・ブランクのある方も安心してご応募いただけます。「人の役に立ちたい」という気持ちを何より大切にしています。</p>
+                </div>
             </div>
-            <div class="photo-strip__item photo-strip__item--2">
-                <img src="assets/photos/photo-recreation.jpg" alt="" loading="lazy" decoding="async">
-            </div>
-            <div class="photo-strip__item photo-strip__item--3">
-                <img src="assets/photos/photo-hero-smile.jpg" alt="" loading="lazy" decoding="async">
-            </div>
-            <p class="photo-strip__caption">Our Workplace</p>
         </div>
     </section>
 
