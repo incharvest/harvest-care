@@ -1,0 +1,45 @@
+name: Deploy to GitHub Pages
+
+# 自動公開は main ブランチのみ。
+# 作業用ブランチにプッシュしてもホームページは書き換わりません。
+# main に統合（マージ）したときだけ公開されます。
+#
+# ⚠️ この対象に claude/* などを追加しないこと。
+#    2026-04〜09 に、作業ブランチからも公開される設定だったために
+#    main が5か月間放置され、どれが原本か分からなくなる事故が起きた。
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:   # GitHubのActions画面から手動で再公開することもできます
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
